@@ -80,27 +80,12 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-    
 
-    - name: Cache GraalVM tarball
-      id: cache-graalvm-tarball
-      uses: actions/cache@v1
+    - name: setup-graalvm-ce
+      uses: rinx/setup-graalvm-ce@v0.0.4
       with:
-        path: graalvm-ce-java11-20.3.0-dev
-        key: ${{ runner.os }}-graalvm-${{ env.GRAALVM_VERSION }}-${{ env.JAVA_VERSION }}
-    - name: Setup GraalVM
-      if: steps.cache-graalvm-tarball.outputs.cache-hit != 'true'
-      run: |
-        wget https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/20.3.0-dev-20200815_0210/graalvm-ce-java11-linux-amd64-20.3.0-dev.tar.gz
-        tar -zxf graalvm-ce-java11-linux-amd64-20.3.0-dev.tar.gz
-              
-    - name: Set variables
-      run: |
-        echo "::set-env name=GRAALVM_HOME::$(pwd)/graalvm-ce-java11-20.3.0-dev"
-        echo "::set-env name=JAVA_HOME::$(pwd)/graalvm-ce-java11-20.3.0-dev"
-        echo "::add-path::$(pwd)/graalvm-ce-java11-20.3.0-dev/bin"
-          
-    - name: Install native image
-      if: steps.cache-graalvm-tarball.outputs.cache-hit != 'true'
-      run: ${{ env.GRAALVM_HOME }}/bin/gu install native-image
+          graalvm-version: "20.2.0"
+          java-version: "java11"
+          native-image: "true"
       
     - name: Install missing packages
       run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
