@@ -46,11 +46,6 @@
 			<artifactId>util</artifactId>
 			<version>4.0.8</version>
 		</dependency>
-		<dependency>
-			<groupId>com.gluonhq.attach</groupId>
-			<artifactId>settings</artifactId>
-			<version>4.0.8</version>
-		</dependency>
 
 
 		<dependency>
@@ -112,7 +107,7 @@
 						<arg>-Duser.country=DE</arg>
 					</nativeImageArgs>
 					<attachList>
-						<list>settings</list>
+						<!--list>settings</list-->
 					</attachList>
 				</configuration>
 			</plugin>
