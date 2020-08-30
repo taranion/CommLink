@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.rpgframework.splittermond</groupId>
+	<artifactId>kommlink</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>KommLink</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<javafx.version>14.0.2.1</javafx.version>
+		<mainClassName>de.rpgframework.shadowrun6.commlink.CommLinkMain</mainClassName>
+		<maven.skip.deploy>true</maven.skip.deploy>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.prelle</groupId>
+			<artifactId>javafx-extensions</artifactId>
+			<version>5.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.prelle</groupId>
+			<artifactId>splittermond-data</artifactId>
+			<version>5.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>de.rpgframework</groupId>
+			<artifactId>eden-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gluonhq.attach</groupId>
+			<artifactId>util</artifactId>
+			<version>4.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gluonhq.attach</groupId>
+			<artifactId>settings</artifactId>
+			<version>4.0.8</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.13.3</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>jfrog</id>
+			<url>https://rpgframework.jfrog.io/artifactory/RPGFramework</url>
+		</repository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<release>11</release>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.4</version>
+				<configuration>
+					<mainClass>${mainClassName}</mainClass>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.gluonhq</groupId>
+				<artifactId>client-maven-plugin</artifactId>
+				<version>0.1.31</version>
+				<configuration>
+					<!-- Uncomment to run on iOS: -->
+					<!-- <target>ios</target> -->
+					<bundlesList>
+						<!--list>de.rpgframework.shadowrun6.commlink.BeastiaryPage</list-->
+					</bundlesList>
+					<mainClass>${mainClassName}</mainClass>
+					<!-- <reflectionList> -->
+					<!-- <list>org.prelle.javafx.NavigationView</list> -->
+					<!-- </reflectionList> -->
+					<!--reflectionList>org.apache.logging.log4j.message.DefaultFlowMessageFactory,org.apache.logging.log4j.message.ParameterizedMessageFactory</reflectionList -->
+					<nativeImageArgs>
+						<arg>-Duser.language=de</arg>
+						<arg>-Duser.country=DE</arg>
+					</nativeImageArgs>
+					<attachList>
+						<list>settings</list>
+					</attachList>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.1.1</version>
+
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>de.rpgframework.shadowrun6.commlink.CommLinkStarter</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>desktop</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.gluonhq</groupId>
+						<artifactId>client-maven-plugin</artifactId>
+						<version>0.1.31</version>
+						<configuration>
+							<!-- Uncomment to run on iOS: -->
+							<!-- <target>ios</target> -->
+							<mainClass>${mainClassName}</mainClass>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>android</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.gluonhq</groupId>
+						<artifactId>client-maven-plugin</artifactId>
+						<version>0.1.30</version>
+						<configuration>
+							<target>android</target>
+							<mainClass>${mainClassName}</mainClass>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>ios</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.gluonhq</groupId>
+						<artifactId>client-maven-plugin</artifactId>
+						<version>0.1.31</version>
+						<configuration>
+							<target>ios</target>
+							<mainClass>${mainClassName}</mainClass>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>gluon-releases</id>
+			<url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
