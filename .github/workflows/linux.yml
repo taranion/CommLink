@@ -54,8 +54,8 @@ jobs:
     - name: Upload Linux binary
       uses: actions/upload-artifact@v1
       with:
-        name: Mondtor-Linux
-        path: target/client/x86_64-linux/Mondtor
+        name: KommLink-Linux
+        path: target/client/x86_64-linux/KommLink
 
 #    - name: Upload 
 #      uses: appleboy/scp-action@master
@@ -120,8 +120,8 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
-        name: Mondtor.apk
-        path: target/client/aarch64-android/gvm/Mondtor.apk
+        name: KommLink.apk
+        path: target/client/aarch64-android/gvm/KommLink.apk
         
 #    - name: Upload
 #      uses: appleboy/scp-action@master
