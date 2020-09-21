@@ -4,6 +4,34 @@
   	-fx-background-repeat: no-repeat; 
 }
 
-.label {
-    -fx-text-fill: blue;
+#header {
+	-fx-graphic: url(commlink.png);
+	-fx-font-weight: bold;
+    -fx-border-width: 0px 0px 0px 0.3em;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-padding: 0.5em;
+    -fx-max-width: 12em;
+    -fx-alignment: center-left;
+}
+
+.category-button {
+	-fx-background-color: rgba(255,255,255, 0.4);
+	-fx-border-width: 1px;
+	-fx-border-style: solid;
+	-fx-border-color: rgba(0,0,0, 0.1);
+}
+.button:hover {
+	-fx-background-color: white;
+}
+
+#categories {
+	-fx-hgap: 1em;
+	-fx-vgap: 1em;
+	-fx-alignment: top-center;
+}
+
+#categories .button {
+	-fx-min-width: 15em;
+	-fx-pref-width: 20em;
 }
