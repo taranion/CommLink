@@ -1,7 +1,14 @@
 .root {
-	-fx-background-image: url(background.png);
-  	-fx-background-size: cover;
+	-fx-background-image: url(background.png), url(border.png);
+  	-fx-background-size: cover, contain;
+  	-fx-background-position: left top, right top;
   	-fx-background-repeat: no-repeat; 
+}
+
+.navigation-pane-vertical {
+	-fx-border-color: #c44895;
+	-fx-border-width: 0 1px 0 0;
+	-fx-border-style: solid;
 }
 
 #header {

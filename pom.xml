@@ -108,6 +108,31 @@
 			<artifactId>eden-client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+      <dependency>
+        <groupId>org.prelle</groupId>
+        <artifactId>simple-persist</artifactId>
+				<version>[3.2.0-SNAPSHOT,3.99.99)</version>
+        </dependency>
+		<dependency>
+			<groupId>de.rpgframework</groupId>
+			<artifactId>rpgframework-core</artifactId>
+			<version>5.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>de.rpgframework</groupId>
+			<artifactId>rpgframework-rules</artifactId>
+			<version>5.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.prelle</groupId>
+			<artifactId>shadowrun6-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+  <groupId>org.prelle.rpgframework</groupId>
+  <artifactId>shadowrun6-data</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>

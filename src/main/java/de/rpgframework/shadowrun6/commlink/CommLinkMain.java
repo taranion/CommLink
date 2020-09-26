@@ -13,6 +13,9 @@ import org.prelle.javafx.AppLayout;
 import org.prelle.javafx.CloseType;
 import org.prelle.javafx.FlexibleApplication;
 import org.prelle.javafx.Page;
+import org.prelle.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
+import org.prelle.shadowrun6.ShadowrunCore;
+import org.prelle.shadowrun6.Spell;
 
 import com.gluonhq.attach.settings.SettingsService;
 import com.gluonhq.attach.util.Services;
@@ -238,9 +241,9 @@ public class CommLinkMain extends FlexibleApplication {
 	//-------------------------------------------------------------------
 	private void loadData() {
 		Locale.setDefault(Locale.GERMANY);
-//		SplittermondDataPlugin plugin = new SplittermondDataPlugin();
-//		plugin.init( );
-//		logger.info("Loaded "+SplitterMondCore.getCreatures().size()+" creatures");
+		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
+		plugin.init( );
+		logger.info("Loaded "+ShadowrunCore.getItemList(Spell.class).size()+" spells");
 //		logger.info("Loaded "+SplitterMondCore.getItemList(CreatureType.class).size()+" creature types");
 
 	}

@@ -79,6 +79,13 @@ public class LibraryPageController {
 	public void openSpells(ActionEvent ev) {
 		logger.warn("Navigate Spells");
 		System.err.println("TODO: Navigate Spells");
+		try {
+			Page page = ScreenLoader.loadSpellsPage();
+			component.getAppLayout().setVisiblePage(page);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
     
 	//-------------------------------------------------------------------

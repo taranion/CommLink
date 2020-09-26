@@ -42,6 +42,19 @@ public class ScreenLoader {
 		return ret;
 	}
 
+	//-------------------------------------------------------------------
+	public static Page loadSpellsPage() throws IOException {
+		FXMLLoader loader = new FXMLLoader(
+				CommLinkMain.class.getResource("fxml/SpellsPage.fxml"),
+				ResourceBundle.getBundle("de.rpgframework.shadowrun6.commlink.SpellsPage")
+				);
+		FXMLLoader.setDefaultClassLoader(FlexibleApplication.class.getClassLoader());
+		loader.setBuilderFactory(new ExtendedComponentBuilderFactory());
+		Page ret = loader.load();
+		((SpellsPageController)loader.getController()).setComponent(ret);
+		return ret;
+	}
+
 //	//-------------------------------------------------------------------
 //	public static Page loadBeastiaryPage() throws IOException {
 //		FXMLLoader loader = new FXMLLoader(
