@@ -252,7 +252,7 @@ public class CommLinkMain extends FlexibleApplication {
 	private void stepPages() {
 		try {
 			Page page = ScreenLoader.loadLibraryPage();
-			this.getAppLayout().setVisiblePage(page);
+			this.getAppLayout().navigateTo(page, true);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -81,7 +81,7 @@ public class LibraryPageController {
 		System.err.println("TODO: Navigate Spells");
 		try {
 			Page page = ScreenLoader.loadSpellsPage();
-			component.getAppLayout().setVisiblePage(page);
+			component.getAppLayout().navigateTo(page, false);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.prelle.javafx.AppLayout;
 import org.prelle.javafx.Page;
+import org.prelle.javafx.Wizard;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +35,7 @@ public class MainScreenController {
 		this.screen = screen;
 		try {
 			Page page = ScreenLoader.loadLibraryPage();
-			screen.setVisiblePage(page);
+			screen.navigateTo(page, true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,7 +55,7 @@ public class MainScreenController {
 		try {
 			Page page = ScreenLoader.loadLibraryPage();
 
-			screen.setVisiblePage(page);
+			screen.navigateTo(page, true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
