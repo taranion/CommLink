@@ -1,12 +1,50 @@
 .root {
-	-fx-background-image: url(background.png), url(border.png);
-  	-fx-background-size: cover, contain;
-  	-fx-background-position: left top, right top;
+	-fx-background-image: url(background.jpg);
+  	-fx-background-size: cover;
+  	-fx-background-position: left top;
+  	-fx-background-repeat: no-repeat; 
+    light: derive(rgb(155, 209, 245), +50%); /* geraten #b4eaff */
+    highlight: #c44895;
+}
+
+.app-layout:minimal {
+	-jfxe-secondary-color: black;
+}
+
+.app-layout:nonminimal  {
+	-jfxe-secondary-color: transparent;
+	-jfxe-text-on-secondary-color: #c44895;
+	-fx-background-image: url(border.png);
+  	-fx-background-size: contain;
+  	-fx-background-position: right top;
   	-fx-background-repeat: no-repeat; 
 }
 
+.app-layout:minimal .page-content {
+	-fx-background-image: url(border.png);
+  	-fx-background-size: contain;
+  	-fx-background-position: right top;
+  	-fx-background-repeat: no-repeat; 
+	-fx-padding: 0 3em 0 1em;
+}
+
+.app-layout:minimal .page-head {
+	-fx-background-image: url(border.png);
+  	-fx-background-size: contain;
+  	-fx-background-position: right top;
+  	-fx-background-repeat: no-repeat; 
+	-fx-padding: 0 3em 0 1em;
+}
+
+.backdrop-front {
+  	-fx-background-size: cover;
+	-fx-background-radius: 16px 16px 0 0;
+	-fx-border-radius: 16px 16px 0 0;
+	-fx-padding: 0 1em 0 1em;
+}
+
 .navigation-pane-vertical {
-	-fx-border-color: #c44895;
+	-fx-border-color: highlight;
 	-fx-border-width: 0 1px 0 0;
 	-fx-border-style: solid;
 }
@@ -41,4 +79,18 @@
 #categories .button {
 	-fx-min-width: 15em;
 	-fx-pref-width: 20em;
+}
+
+.description-pane {
+	-fx-background-color: rgba(255,255,255, 0.5);
+	-fx-background-radius: 1em;
+	-fx-border-radius: 1em;
+	-fx-padding: 0 1em 0 1em;
+}
+
+.table-head {
+	-fx-text-fill: highlight;
+	-fx-background-color: #dbdad0;
+	-fx-font-weight: bold;
+	-fx-alignment: center;
 }

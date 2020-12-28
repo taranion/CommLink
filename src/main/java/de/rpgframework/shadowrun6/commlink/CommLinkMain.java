@@ -13,15 +13,15 @@ import org.prelle.javafx.AppLayout;
 import org.prelle.javafx.CloseType;
 import org.prelle.javafx.FlexibleApplication;
 import org.prelle.javafx.Page;
-import org.prelle.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
-import org.prelle.shadowrun6.ShadowrunCore;
-import org.prelle.shadowrun6.Spell;
 
 import com.gluonhq.attach.settings.SettingsService;
 import com.gluonhq.attach.util.Services;
 
 import de.rpgframework.eden.client.EdenConnection;
 import de.rpgframework.eden.client.EdenConnection.EdenPingInfo;
+import de.rpgframework.shadowrun6.Shadowrun6Core;
+import de.rpgframework.shadowrun6.Spell;
+import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
@@ -243,7 +243,7 @@ public class CommLinkMain extends FlexibleApplication {
 		Locale.setDefault(Locale.GERMANY);
 		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
 		plugin.init( );
-		logger.info("Loaded "+ShadowrunCore.getItemList(Spell.class).size()+" spells");
+		logger.info("Loaded "+Shadowrun6Core.getItemList(Spell.class).size()+" spells");
 //		logger.info("Loaded "+SplitterMondCore.getItemList(CreatureType.class).size()+" creature types");
 
 	}

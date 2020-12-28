@@ -6,19 +6,26 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
-<?import org.prelle.javafx.Page?>
+<?import org.prelle.javafx.BackdropPage?>
 
-<Page title="%page.title" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.rpgframework.shadowrun6.commlink.SpellsPageController">
-	<content>
-		<VBox style="-fx-vgap: 0.5em">
+<BackdropPage
+	xmlns="http://javafx.com/javafx/11.0.1" 
+	xmlns:fx="http://javafx.com/fxml/1" 
+	fx:controller="de.rpgframework.shadowrun6.commlink.SpellsPageController">
+	<backHeader>
+		<Label text="Back" />
+	</backHeader>
+	<backContent>
+		<VBox style="-fx-vgap: 0.5em" spacing="5">
 			<Label styleClass="base" text="%heading.type" />
 			<ChoiceBox id="spelltype" fx:id="cbType" maxWidth="1.7976931348623157E308" />
 			<TextField id="search" fx:id="tfSearch" maxWidth="1.7976931348623157E308" promptText="%tfSearch.prompt"/>
-			<Label styleClass="base" text="%heading.result">
-            <VBox.margin>
-               <Insets top="10" />
-            </VBox.margin></Label>
-         <ListView fx:id="lvResult" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1388.0" prefWidth="248.0" VBox.vgrow="ALWAYS" />
 		</VBox>
+	</backContent>
+	<header>
+		<Label styleClass="text-subheader" text="%page.title" />
+	</header>
+	<content>
+        <ListView fx:id="lvResult" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1388.0" prefWidth="248.0" VBox.vgrow="ALWAYS" />
 	</content>
-</Page>
+</BackdropPage>

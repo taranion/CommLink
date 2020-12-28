@@ -6,8 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.prelle.javafx.AppLayout;
 import org.prelle.javafx.Page;
-import org.prelle.javafx.Wizard;
 
+import de.rpgframework.shadowrun6.chargen.jfx.SR6CharactersOverviewPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -46,6 +46,9 @@ public class MainScreenController {
 	@FXML
 	public void navigateCharacters(ActionEvent ev) {
 		logger.debug("Navigate Characters");
+		Page page = new SR6CharactersOverviewPage();
+
+		screen.navigateTo(page, true);
 	}
 
 	//-------------------------------------------------------------------

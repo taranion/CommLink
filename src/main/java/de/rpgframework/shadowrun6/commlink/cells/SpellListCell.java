@@ -1,7 +1,9 @@
 package de.rpgframework.shadowrun6.commlink.cells;
 
-import org.prelle.shadowrun6.Spell;
+import java.util.Locale;
 
+import de.rpgframework.shadowrun6.Shadowrun6Core;
+import de.rpgframework.shadowrun6.Spell;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
@@ -36,7 +38,8 @@ public class SpellListCell extends ListCell<Spell> {
 			setGraphic(null);
 		} else {
 			lbName.setText(item.getName());
-			lbLevel.setText(item.getRange().getShortName());
+//			lbLevel.setText(item.getRange().getShortName());
+			lbLevel.setText(String.join(", ", Shadowrun6Core.getBestPageReferenceShortNames(item, Locale.getDefault())));
 			setGraphic(layout);
 		}
 	}
