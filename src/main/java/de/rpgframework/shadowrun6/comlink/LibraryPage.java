@@ -31,6 +31,7 @@ public class LibraryPage extends Page {
 	//-------------------------------------------------------------------
 	public LibraryPage() {
 		super(ResourceI18N.get(RES, "page.title"));
+		setId("library");
 		
 		ChangeListener<Node> scaleButtons = (ov,o,n) -> {
         	if (n!=null && (n instanceof ImageView)) {
