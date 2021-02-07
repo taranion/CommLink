@@ -10,7 +10,7 @@ env:
 
 jobs:
   compile-linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: checkout sources
       uses: actions/checkout@v2
@@ -53,7 +53,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: KommLink-Linux
-        path: target/client/x86_64-linux/KommLink
+        path: target/client/x86_64-linux/ComLink
 
 #    - name: Upload 
 #      uses: appleboy/scp-action@master
@@ -66,7 +66,7 @@ jobs:
 #        strip_components: 3
       
   compile-android:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: checkout sources
       uses: actions/checkout@v1
@@ -81,7 +81,7 @@ jobs:
     - name: setup-graalvm-ce
       uses: rinx/setup-graalvm-ce@v0.0.5
       with:
-          graalvm-version: "21.0.0"
+          graalvm-version: "20.3.0"
           java-version: "java11"
           native-image: "true"
       
@@ -118,8 +118,8 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
-        name: KommLink.apk
-        path: target/client/aarch64-android/gvm/KommLink.apk
+        name: ComLink6-de.apk
+        path: target/client/aarch64-android/gvm/ComLink6.apk
         
 #    - name: Upload
 #      uses: appleboy/scp-action@master
