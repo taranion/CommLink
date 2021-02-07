@@ -20,7 +20,7 @@
 		<maven.skip.install>true</maven.skip.install>
 		<slf4j.version>2.0.0-alpha1</slf4j.version>
 		<javafx.plugin.version>0.0.5</javafx.plugin.version>
-		<client.plugin.version>0.1.36</client.plugin.version>
+		<client.plugin.version>0.1.35</client.plugin.version>
 		<attach.version>4.0.10</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
 	</properties>
