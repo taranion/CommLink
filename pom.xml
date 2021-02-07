@@ -324,11 +324,16 @@
 		</profile>
 	</profiles>
 
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>gluon-releases</id>
 			<url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
 		</pluginRepository>
+		<pluginRepository>
+            <id>snapshots</id>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+        </pluginRepository>
 	</pluginRepositories>
 
 </project>
