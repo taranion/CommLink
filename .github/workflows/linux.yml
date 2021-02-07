@@ -10,7 +10,7 @@ env:
 
 jobs:
   compile-linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
     - name: checkout sources
       uses: actions/checkout@v2
@@ -66,7 +66,7 @@ jobs:
 #        strip_components: 3
       
   compile-android:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
     - name: checkout sources
       uses: actions/checkout@v1
