@@ -1,4 +1,4 @@
-package de.rpgframework.shadowrun6.commlink.cells;
+package de.rpgframework.shadowrun6.comlink.cells;
 
 import java.util.Locale;
 

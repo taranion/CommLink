@@ -1,7 +1,7 @@
-package de.rpgframework.shadowrun6.commlink;
+package de.rpgframework.shadowrun6.comlink;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.prelle.javafx.Page;
 
 import javafx.beans.value.ChangeListener;
@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
  */
 public class LibraryPageController {
 	
-	private final static Logger logger = LogManager.getLogger(LibraryPageController.class);
+	private final static Logger logger = LoggerFactory.getLogger(LibraryPageController.class);
 	
 	@FXML
 	private Button btnBeastiary;
@@ -47,7 +47,7 @@ public class LibraryPageController {
         	}
         };
        
-        btnBeastiary.graphicProperty().addListener( scaleButtons);
+//        btnBeastiary.graphicProperty().addListener( scaleButtons);
         btnSpells.graphicProperty().addListener( scaleButtons);
 //        btnMaster.graphicProperty().addListener( scaleButtons);
 //        btnPowers.graphicProperty().addListener( scaleButtons);
@@ -78,14 +78,14 @@ public class LibraryPageController {
 	@FXML
 	public void openSpells(ActionEvent ev) {
 		logger.warn("Navigate Spells");
-		System.err.println("TODO: Navigate Spells");
-		try {
-			Page page = ScreenLoader.loadSpellsPage();
-			component.getAppLayout().navigateTo(page, false);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.err.println("TODO: Navigate Spells: "+component.getAppLayout().canGoBack());
+//		try {
+//			Page page = ScreenLoader.loadSpellsPage();
+//			component.getAppLayout().navigateTo(page, false);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
     
 	//-------------------------------------------------------------------

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
-  <Properties>
-    <Property name="logPath">/var/log</Property>
-    <Property name="rollingFileName">uranos-server</Property>
-  </Properties>
   <Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
 			<PatternLayout pattern="%5p [%15c] (%F:%L) - %m%n" />
@@ -13,13 +9,8 @@
 		<Root level="debug">
 			<AppenderRef ref="Console" />
 		</Root>
-		<Logger name="org.eclipse" level="info" additivity="false">
-			<AppenderRef ref="Console" />
-		</Logger>
     <Logger name="xml" level="warn"/>
     <Logger name="uranos.backend" level="info" />>
-
-		
 	</Loggers>
 </Configuration>
 			
