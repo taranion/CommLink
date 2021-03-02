@@ -1,4 +1,4 @@
-package de.rpgframework.shadowrun6.comlink;
+package de.rpgframework.shadowrun6.comlink.pages;
 
 import java.util.ResourceBundle;
 

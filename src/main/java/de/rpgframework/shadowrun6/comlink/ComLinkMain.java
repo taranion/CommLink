@@ -7,9 +7,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.prelle.javafx.AppLayout;
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.CloseType;
 import org.prelle.javafx.DebugPage;
@@ -18,6 +15,8 @@ import org.prelle.javafx.FontIcon;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.SymbolIcon;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.gluonhq.attach.settings.SettingsService;
 import com.gluonhq.attach.util.Services;
@@ -25,8 +24,9 @@ import com.gluonhq.attach.util.Services;
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.eden.client.EdenConnection;
 import de.rpgframework.eden.client.EdenConnection.EdenPingInfo;
+import de.rpgframework.shadowrun.Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
-import de.rpgframework.shadowrun6.Spell;
+import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -54,7 +54,7 @@ public class ComLinkMain extends FlexibleApplication {
 	
     //-------------------------------------------------------------------
     public static void main(String[] args) {
-		Locale.setDefault(Locale.GERMANY);
+		Locale.setDefault(Locale.ENGLISH);
        launch(args);
     }
 	
@@ -154,6 +154,7 @@ public class ComLinkMain extends FlexibleApplication {
         
         stepPages();
         
+        FlexibleApplication.setStyle(stage.getScene(), DARK_STYLE);
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stepAccount();
     }
@@ -199,7 +200,6 @@ public class ComLinkMain extends FlexibleApplication {
 
 	//-------------------------------------------------------------------
 	private void loadData() {
-		Locale.setDefault(Locale.GERMANY);
 		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
 		plugin.init( );
 		logger.info("Loaded "+Shadowrun6Core.getItemList(Spell.class).size()+" spells");
@@ -225,8 +225,8 @@ public class ComLinkMain extends FlexibleApplication {
 	@Override
 	public void populateNavigationPane(NavigationPane drawer) {
 		// Header
-		Label header = new Label("AppName");
-		BitmapIcon icoCommLink = new BitmapIcon(ComLinkMain.class.getResource("ic_launcher.png").toString());
+		Label header = new Label("ComLink5");
+		BitmapIcon icoCommLink = new BitmapIcon(ComLinkMain.class.getResource("AppLogo.png").toString());
 		icoCommLink.setStyle("-fx-pref-width: 3em");
 		header.setGraphic(icoCommLink);
 		drawer.setHeader(header);
@@ -238,6 +238,9 @@ public class ComLinkMain extends FlexibleApplication {
 		navigLookup = new MenuItem(ResourceI18N.get(RES, "navig.lookup"), icoLookup);
 		navigAccount= new MenuItem(ResourceI18N.get(RES, "navig.account"), icoAccount);
 		navigAbout  = new MenuItem(ResourceI18N.get(RES, "navig.about"), icoAbout);
+		navigLookup.setId("navig-lookup");
+		navigAbout.setId("navig-about");
+		navigAccount.setId("navig-account");
 		
 		drawer.getItems().addAll(navigLookup, navigAccount, navigAbout);
 		
@@ -260,12 +263,16 @@ public class ComLinkMain extends FlexibleApplication {
 	public Page createPage(MenuItem menuItem) {
 		// TODO Auto-generated method stub
 		logger.info("createPage("+menuItem+")");
+		try {
 		if (menuItem==navigAbout) {
 			return new DebugPage();
 		} else if (menuItem==navigLookup) {
 			return new LibraryPage();
 		} else {
 			logger.warn("No page for "+menuItem.getText());
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 //		try {
 //			if (menuItem==navLibrary) {

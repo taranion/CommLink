@@ -20,7 +20,7 @@
 		<maven.skip.install>true</maven.skip.install>
 		<slf4j.version>2.0.0-alpha1</slf4j.version>
 		<javafx.plugin.version>0.0.5</javafx.plugin.version>
-		<client.plugin.version>0.1.37-SNAPSHOT</client.plugin.version>
+		<client.plugin.version>0.1.37</client.plugin.version>
 		<attach.version>4.0.10</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
 	</properties>
@@ -207,16 +207,12 @@
 					<!-- Uncomment to run on iOS: -->
 					<!-- <target>ios</target> -->
 					<bundlesList>
-						<list>de.rpgframework.shadowrun6.comlink.LibraryPage</list>
 						<list>de.rpgframework.shadowrun6.comlink.LoginDialog</list>
-						<list>de.rpgframework.shadowrun6.comlink.SpellsPage</list>
 						<list>de.rpgframework.shadowrun6.comlink.ComLinkMain</list>
-						<list>org.prelle.javafx.JavaFXConstants</list>
 						<list>de.rpgframework.shadowrun.ShadowrunAttribute</list>
 						<list>de.rpgframework.shadowrun6.data.core.i18n.core</list>
 						<list>de.rpgframework.shadowrun6.i18n.core</list>
 						<list>de.rpgframework.shadowrun6.core</list>
-						<list>de.rpgframework.shadowrun6.chargen.jfx.pane.SpellDescriptionPane</list>
 					</bundlesList>
 					<mainClass>${mainClassName}</mainClass>
 					<!-- <reflectionList> -->

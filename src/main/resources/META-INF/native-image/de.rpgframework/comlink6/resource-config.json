@@ -1,0 +1,10 @@
+{
+  "resources":{
+  "includes":[
+  ]},
+  "bundles":[
+    {"name":"de.rpgframework.shadowrun6.comlink.ComLinkMain"}, 
+    {"name":"de.rpgframework.shadowrun6.comlink.pages.LibraryPage"}, 
+    {"name":"de.rpgframework.shadowrun6.comlink.pages.SpellsPage"}
+  ]
+}

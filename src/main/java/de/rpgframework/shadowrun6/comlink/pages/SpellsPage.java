@@ -1,61 +1,67 @@
-package de.rpgframework.shadowrun6.comlink;
+package de.rpgframework.shadowrun6.comlink.pages;
 
 import java.text.Collator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.prelle.javafx.JavaFXConstants;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.ResponsiveControlManager;
 import org.prelle.javafx.WindowMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import de.rpgframework.ResourceI18N;
+import de.rpgframework.shadowrun.Spell;
+import de.rpgframework.shadowrun.chargen.jfx.listcell.SpellListCell;
+import de.rpgframework.shadowrun.chargen.jfx.pane.SpellDescriptionPane;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
-import de.rpgframework.shadowrun6.Spell;
 import de.rpgframework.shadowrun6.chargen.jfx.SR6JFXUtil;
-import de.rpgframework.shadowrun6.chargen.jfx.pane.SpellDescriptionPane;
-import de.rpgframework.shadowrun6.comlink.cells.SpellListCell;
-import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
 import javafx.util.StringConverter;
 
-public class SpellsPageController {
+/**
+ * @author prelle
+ *
+ */
+public class SpellsPage extends Page {
 	
-	private Logger logger = LoggerFactory.getLogger(SpellsPageController.class);
-
-	private transient Page page;
-
-	@FXML
+	private final static Logger logger = LoggerFactory.getLogger(SpellsPage.class);
+	
+	private final static ResourceBundle RES = ResourceBundle.getBundle(SpellsPage.class.getName());
+	
 	private ChoiceBox<Spell.Category> cbType;
-	@FXML
 	private TextField tfSearch;
-	@FXML
 	private ListView<Spell> lvResult;
-	@FXML
 	private VBox description;
-	@FXML
 	private Label descTitle;
-	@FXML
 	private Label descSources;
-	@FXML
 	private TextFlow descFlow;
-
+				
 	//-------------------------------------------------------------------
-	public SpellsPageController() {
-		// TODO Auto-generated constructor stub
+	public SpellsPage() {
+		initComponents();
+		initLayout();
+		initStyle();
+		description.setVisible(ResponsiveControlManager.getCurrentMode()!=WindowMode.MINIMAL);
+		description.setManaged(ResponsiveControlManager.getCurrentMode()!=WindowMode.MINIMAL);
+		refresh();
 	}
 
 	//-------------------------------------------------------------------
-	@FXML
-	public void initialize() {
+	private void initComponents() {
+		cbType = new ChoiceBox<>();
 		cbType.getItems().addAll(Spell.Category.values());
 		Collections.sort(cbType.getItems(), new Comparator<Spell.Category>() {
 			public int compare(Spell.Category o1, Spell.Category o2) {
@@ -63,23 +69,25 @@ public class SpellsPageController {
 			}
 		});
 		cbType.setConverter(new StringConverter<Spell.Category>() {
-
-			@Override
 			public String toString(Spell.Category val) {
 				if (val==null) return "";
 				return val.getName();
 			}
-
-			@Override
-			public Spell.Category fromString(String string) {
-				// TODO Auto-generated method stub
-				return null;
-			}
+			public Spell.Category fromString(String string) { return null; }
 		});
 		cbType.getSelectionModel().selectedItemProperty().addListener( (ov,o,n) -> {
 			refresh();
 			tfSearch.clear();
 		});
+		
+		tfSearch = new TextField();
+		descTitle = new Label();
+		descTitle.getStyleClass().add(JavaFXConstants.STYLE_HEADING3);
+		descTitle.setStyle("-fx-text-fill: highlight");
+		descSources = new Label();
+		
+		lvResult = new ListView<Spell>();
+		lvResult.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		
 		lvResult.setCellFactory(lv -> new SpellListCell());
 		// React to list selections
@@ -91,6 +99,29 @@ public class SpellsPageController {
 		tfSearch.setOnAction(ev -> {
 			refresh();
 		});
+	}
+
+	//-------------------------------------------------------------------
+	private void initLayout() {
+		Label header = new Label(ResourceI18N.get(RES, "heading.type"));
+		header.getStyleClass().add(JavaFXConstants.STYLE_HEADING5);
+		VBox secondary = new VBox(5, header, cbType, tfSearch);
+		setSecondaryContent(secondary);
+		
+		description = new VBox(5, descTitle, descSources);
+		description.setId("description");
+		
+		HBox content = new HBox(20, lvResult, description);
+		content.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		VBox.setVgrow(content, Priority.ALWAYS);
+		setContent(content);
+	}
+
+	//-------------------------------------------------------------------
+	private void initStyle() {
+		cbType.setStyle("-fx-max-width: 15em");
+		tfSearch.setStyle("-fx-max-width: 15em");
+		lvResult.setStyle("-fx-pref-width: 25em");
 	}
 	
 	//-------------------------------------------------------------------
@@ -104,9 +135,10 @@ public class SpellsPageController {
 			try {
 //				Page toOpen = ScreenLoader.loadSpellDescriptionPage(value);
 				Page toOpen = new Page(value.getName());
-				SpellDescriptionPane box = new SpellDescriptionPane(value);
+				SpellDescriptionPane box = new SpellDescriptionPane();
+				box.setData(value);
 				toOpen.setContent(box);
-				page.getAppLayout().navigateTo(toOpen, false);
+				getAppLayout().navigateTo(toOpen, false);
 			} catch (Exception e) {
 				logger.error("Error opening SpellDescriptionPage",e);
 			} 
@@ -114,20 +146,10 @@ public class SpellsPageController {
 			descTitle.setText(value.getName());
 			descSources.setText(SR6JFXUtil.createSourceText(value));
 			description.getChildren().retainAll(descTitle, descSources);
-			SpellDescriptionPane box = new SpellDescriptionPane(value);
-//				VBox box = ScreenLoader.loadSpellDescriptionVBox(value);
+			SpellDescriptionPane box = new SpellDescriptionPane();
+			box.setData(value);
 				description.getChildren().add(box);
 		}
-	}
-
-	//-------------------------------------------------------------------
-	public void setComponent(Page page) {
-		this.page = page;
-		description.setVisible(ResponsiveControlManager.getCurrentMode()!=WindowMode.MINIMAL);
-		description.setManaged(ResponsiveControlManager.getCurrentMode()!=WindowMode.MINIMAL);
-		refresh();
-		
-		
 	}
 
 	//-------------------------------------------------------------------
@@ -148,5 +170,5 @@ public class SpellsPageController {
 		});
 		lvResult.getItems().setAll(list);
 	}
-
+	
 }

@@ -135,4 +135,17 @@
   -fx-background-repeat: no-repeat;
 }
 
+.metatype-table   {
+	-fx-background-color: #D0D0D0;
+	-fx-text-fill: #010101;
+	-fx-fill: green;
+}
+
+.metatype-table .odd  {
+	-fx-background-color: #E0E0E0;
+}
+
+.metatype-table * .text {
+	-fx-fill: #010101;
+}
 
