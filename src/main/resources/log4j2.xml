@@ -10,7 +10,6 @@
 			<AppenderRef ref="Console" />
 		</Root>
     <Logger name="xml" level="warn"/>
-    <Logger name="uranos.backend" level="info" />>
 	</Loggers>
 </Configuration>
 			

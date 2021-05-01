@@ -64,7 +64,7 @@
     -fx-background-color: transparent;
 }
 .backdrop-back-content {
-    -fx-background-color: lime;
+    -fx-background-color: transparent;
 }
 .backdrop-back-header {
     -fx-background-color: transparent;
@@ -114,9 +114,13 @@
 
 .table-head {
 	-fx-text-fill: highlight;
+	-fx-fill: highlight;
 	-fx-background-color: #dbdad0;
 	-fx-font-weight: bold;
 	-fx-alignment: center;
+}
+.table-head > .text{
+	-fx-fill: highlight;
 }
 .table-data {
 	-fx-text-fill: derive(-fx-text-base-color, -80%);
@@ -135,17 +139,10 @@
   -fx-background-repeat: no-repeat;
 }
 
-.metatype-table   {
-	-fx-background-color: #D0D0D0;
+.metatype-table {
+	-fx-background-color: #e9e9e2;
+}
+.metatype-table .label {
 	-fx-text-fill: #010101;
-	-fx-fill: green;
-}
-
-.metatype-table .odd  {
-	-fx-background-color: #E0E0E0;
-}
-
-.metatype-table * .text {
-	-fx-fill: #010101;
 }
 

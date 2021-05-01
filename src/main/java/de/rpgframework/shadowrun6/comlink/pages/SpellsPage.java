@@ -16,11 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.rpgframework.ResourceI18N;
+import de.rpgframework.jfx.RPGFrameworkJavaFX;
 import de.rpgframework.shadowrun.Spell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.SpellListCell;
 import de.rpgframework.shadowrun.chargen.jfx.pane.SpellDescriptionPane;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
-import de.rpgframework.shadowrun6.chargen.jfx.SR6JFXUtil;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -144,7 +144,7 @@ public class SpellsPage extends Page {
 			} 
 		} else {
 			descTitle.setText(value.getName());
-			descSources.setText(SR6JFXUtil.createSourceText(value));
+			descSources.setText(RPGFrameworkJavaFX.createSourceText(value));
 			description.getChildren().retainAll(descTitle, descSources);
 			SpellDescriptionPane box = new SpellDescriptionPane();
 			box.setData(value);

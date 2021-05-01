@@ -1,8 +1,8 @@
 package de.rpgframework.shadowrun6.comlink.pages;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 import org.prelle.javafx.Page;
 import org.slf4j.Logger;
@@ -11,9 +11,15 @@ import org.slf4j.LoggerFactory;
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.genericrpg.modification.Modification;
 import de.rpgframework.jfx.FilteredListPage;
-import de.rpgframework.shadowrun.MetaType;
+import de.rpgframework.jfx.GenericDescriptionVBox;
+import de.rpgframework.shadowrun.AdeptPower;
+import de.rpgframework.shadowrun.Quality;
 import de.rpgframework.shadowrun.Spell;
+import de.rpgframework.shadowrun.chargen.jfx.listcell.AdeptPowerListCell;
+import de.rpgframework.shadowrun.chargen.jfx.listcell.QualityListCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.SpellListCell;
+import de.rpgframework.shadowrun.chargen.jfx.pages.FilterQualities;
+import de.rpgframework.shadowrun.chargen.jfx.pane.AdeptPowerPane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.MetatypePane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.SpellDescriptionPane;
 import de.rpgframework.shadowrun6.SR6MetaType;
@@ -38,7 +44,9 @@ public class LibraryPage extends Page {
 
 	private FlowPane content;
 	private Button btnSpells;
+	private Button btnPowers;
 	private Button btnMetatypes;
+	private Button btnQualities;
 
 	//-------------------------------------------------------------------
 	public LibraryPage() {
@@ -65,6 +73,16 @@ public class LibraryPage extends Page {
 		btnSpells.getStyleClass().add("category-button");
 		btnSpells.graphicProperty().addListener( scaleButtons);
 
+		btnPowers    = new Button(ResourceI18N.get(RES, "category.powers"));
+		btnPowers.setId("powers");
+		btnPowers.getStyleClass().add("category-button");
+		btnPowers.graphicProperty().addListener( scaleButtons);
+
+		btnQualities    = new Button(ResourceI18N.get(RES, "category.qualities"));
+		btnQualities.setId("qualities");
+		btnQualities.getStyleClass().add("category-button");
+		btnQualities.graphicProperty().addListener( scaleButtons);
+
 		btnMetatypes    = new Button(ResourceI18N.get(RES, "category.metatypes"));
 		btnMetatypes.setId("metatypes");
 		btnMetatypes.getStyleClass().add("category-button");
@@ -73,7 +91,7 @@ public class LibraryPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void initLayout() {
-		content = new FlowPane(btnSpells, btnMetatypes);
+		content = new FlowPane(btnSpells, btnPowers, btnQualities, btnMetatypes);
 		content.setVgap(10);
 		content.setHgap(10);
 		content.setId("categories");
@@ -98,6 +116,8 @@ public class LibraryPage extends Page {
 	//-------------------------------------------------------------------
 	private void initInteractivity() {
 		btnSpells.setOnAction(ev -> openSpells(ev));
+		btnPowers.setOnAction(ev -> openPowers(ev));
+		btnQualities.setOnAction(ev -> openQualities(ev));
 		btnMetatypes.setOnAction(ev -> openMetatypes(ev));
 	}
 
@@ -116,6 +136,40 @@ public class LibraryPage extends Page {
 			getAppLayout().navigateTo(page, false);
 		} catch (Exception e) {
 			logger.error("Error opening SpellPage",e);
+		}
+	}
+
+	//-------------------------------------------------------------------
+	private void openPowers(ActionEvent ev) {
+		logger.debug("Navigate Powers");
+		try {
+			FilteredListPage<AdeptPower> page =new FilteredListPage<AdeptPower>(
+					ResourceI18N.get(LibraryPage.RES, "category.powers"), 
+					() -> Shadowrun6Core.getItemList(AdeptPower.class), 
+					new AdeptPowerPane((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					);
+			page.setCellFactory(lv -> new AdeptPowerListCell());
+//			page.setFilterInjector(new FilterQualities());
+			getAppLayout().navigateTo(page, false);
+		} catch (Exception e) {
+			logger.error("Error opening Powers",e);
+		}
+	}
+
+	//-------------------------------------------------------------------
+	private void openQualities(ActionEvent ev) {
+		logger.debug("Navigate Qualities");
+		try {
+			FilteredListPage<Quality> page =new FilteredListPage<Quality>(
+					ResourceI18N.get(LibraryPage.RES, "category.qualities"), 
+					() -> Shadowrun6Core.getItemList(Quality.class), 
+					new GenericDescriptionVBox<Quality>((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					);
+			page.setCellFactory(lv -> new QualityListCell());
+			page.setFilterInjector(new FilterQualities());
+			getAppLayout().navigateTo(page, false);
+		} catch (Exception e) {
+			logger.error("Error opening QualityPage",e);
 		}
 	}
 

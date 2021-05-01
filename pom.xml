@@ -222,6 +222,8 @@
 					<nativeImageArgs>
 						<arg>-Duser.language=de</arg>
 						<arg>-Duser.country=DE</arg>
+						<arg>-H:DefaultLocale=en</arg>
+						<arg>-H:+IncludeAllLocales</arg>
 					</nativeImageArgs>
 					<attachList>
                         <list>browser</list>
