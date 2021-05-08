@@ -15,13 +15,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<javafx.version>16-ea+6</javafx.version>
+		<javafx.version>16</javafx.version>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<slf4j.version>2.0.0-alpha1</slf4j.version>
 		<javafx.plugin.version>0.0.5</javafx.plugin.version>
-		<client.plugin.version>0.1.37</client.plugin.version>
-		<attach.version>4.0.10</attach.version>
+		<client.plugin.version>0.1.39</client.plugin.version>
+		<attach.version>4.0.11</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
 	</properties>
 
@@ -119,6 +119,11 @@
 		<dependency>
 			<groupId>de.rpgframework</groupId>
 			<artifactId>eden-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>de.rpgframework</groupId>
+			<artifactId>eden-client-jfx</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
       <dependency>
@@ -220,10 +225,8 @@
 					<!-- </reflectionList> -->
 					<!--reflectionList>org.apache.logging.log4j.message.DefaultFlowMessageFactory,org.apache.logging.log4j.message.ParameterizedMessageFactory</reflectionList -->
 					<nativeImageArgs>
-						<arg>-Duser.language=de</arg>
-						<arg>-Duser.country=DE</arg>
-						<arg>-H:DefaultLocale=en</arg>
-						<arg>-H:+IncludeAllLocales</arg>
+						<!--arg>-H:DefaultLocale=en</arg-->
+						<arg>-H:IncludeLocales=de,en</arg>
 					</nativeImageArgs>
 					<attachList>
                         <list>browser</list>
