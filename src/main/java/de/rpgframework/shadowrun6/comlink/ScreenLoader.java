@@ -7,7 +7,7 @@ import org.prelle.javafx.ExtendedComponentBuilderFactory;
 import org.prelle.javafx.FlexibleApplication;
 import org.prelle.javafx.Page;
 
-import de.rpgframework.shadowrun.Spell;
+import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun.chargen.jfx.fxml.SpellPageController;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
 import javafx.fxml.FXMLLoader;
@@ -40,12 +40,12 @@ public class ScreenLoader {
 				);
 		FXMLLoader.setDefaultClassLoader(FlexibleApplication.class.getClassLoader());
 		loader.setBuilderFactory(new ExtendedComponentBuilderFactory());
-		loader.setController(new SpellPageController( () -> Shadowrun6Core.getItemList(Spell.class)));
+		loader.setController(new SpellPageController( () -> Shadowrun6Core.getItemList(ASpell.class)));
 		Page ret = loader.load();
 		ret.setId("spells");
 		((SpellPageController)loader.getController()).setComponent(
 				ret, 
-				()-> Shadowrun6Core.getItemList(Spell.class),
+				()-> Shadowrun6Core.getItemList(ASpell.class),
 				(req) -> req.toString()
 				);
 		return ret;

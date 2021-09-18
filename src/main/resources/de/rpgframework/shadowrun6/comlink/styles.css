@@ -69,7 +69,7 @@
 .backdrop-back-header {
     -fx-background-color: transparent;
 }
-.backddrop-front {
+.backdrop-front {
   	-fx-background-size: cover;
 	-fx-background-radius: 16px 16px 0 0;
 	-fx-border-radius: 16px 16px 0 0;

@@ -1,48 +1,33 @@
 package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
-import java.net.Authenticator;
-import java.net.InetAddress;
-import java.net.PasswordAuthentication;
 import java.net.URISyntaxException;
-import java.net.UnknownHostException;
-import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.prefs.Preferences;
 
 import org.prelle.javafx.BitmapIcon;
-import org.prelle.javafx.CloseType;
 import org.prelle.javafx.DebugPage;
 import org.prelle.javafx.FlexibleApplication;
 import org.prelle.javafx.FontIcon;
-import org.prelle.javafx.ManagedDialog;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.SymbolIcon;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.gluonhq.attach.browser.BrowserService;
 import com.gluonhq.attach.browser.impl.DummyBrowserService;
-import com.gluonhq.attach.settings.SettingsService;
 import com.gluonhq.attach.util.Platform;
-import com.gluonhq.attach.util.Services;
 import com.gluonhq.attach.util.impl.ServiceFactory;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.CharacterProviderLoader;
 import de.rpgframework.core.RoleplayingSystem;
-import de.rpgframework.eden.client.EdenCharacterProvider;
-import de.rpgframework.eden.client.EdenConnection;
-import de.rpgframework.eden.client.EdenConnection.EdenAccountInfo;
-import de.rpgframework.eden.client.EdenConnection.EdenPingInfo;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
-import de.rpgframework.shadowrun.Spell;
+import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
 import de.rpgframework.shadowrun6.chargen.jfx.SR6CharactersOverviewPage;
 import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
+import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -113,20 +98,9 @@ public class ComLinkMain extends EdenClientApplication {
 	protected void loadData() {
 		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
 		plugin.init( );
-		logger.info("Loaded "+Shadowrun6Core.getItemList(Spell.class).size()+" spells");
+		logger.info("Loaded "+Shadowrun6Core.getItemList(ASpell.class).size()+" spells");
 //		logger.info("Loaded "+SplitterMondCore.getItemList(CreatureType.class).size()+" creature types");
 
-	}
-
-	//-------------------------------------------------------------------
-	private void stepPages() {
-		try {
-			Page page = createPage(navigLookup);
-			this.getAppLayout().navigateTo(page, true);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	//-------------------------------------------------------------------
@@ -185,6 +159,8 @@ public class ComLinkMain extends EdenClientApplication {
 			SR6CharactersOverviewPage pg = new SR6CharactersOverviewPage();
 			CharacterProviderLoader.getCharacterProvider().setListener(pg);
 			return pg;
+		} else if (menuItem==navigAccount) {
+			return new Shadowrun6ContentPacksPage(eden);
 		} else {
 			logger.warn("No page for "+menuItem.getText());
 		}
@@ -198,7 +174,7 @@ public class ComLinkMain extends EdenClientApplication {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		} 
-//		logger.warn("No page for "+menuItem.getText());
+		logger.warn("No page for "+menuItem.getText());
 		return null;
 	}
 

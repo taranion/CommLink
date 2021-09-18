@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.jfx.RPGFrameworkJavaFX;
-import de.rpgframework.shadowrun.Spell;
+import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.SpellListCell;
 import de.rpgframework.shadowrun.chargen.jfx.pane.SpellDescriptionPane;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
@@ -41,9 +41,9 @@ public class SpellsPage extends Page {
 	
 	private final static ResourceBundle RES = ResourceBundle.getBundle(SpellsPage.class.getName());
 	
-	private ChoiceBox<Spell.Category> cbType;
+	private ChoiceBox<ASpell.Category> cbType;
 	private TextField tfSearch;
-	private ListView<Spell> lvResult;
+	private ListView<ASpell> lvResult;
 	private VBox description;
 	private Label descTitle;
 	private Label descSources;
@@ -62,18 +62,18 @@ public class SpellsPage extends Page {
 	//-------------------------------------------------------------------
 	private void initComponents() {
 		cbType = new ChoiceBox<>();
-		cbType.getItems().addAll(Spell.Category.values());
-		Collections.sort(cbType.getItems(), new Comparator<Spell.Category>() {
-			public int compare(Spell.Category o1, Spell.Category o2) {
+		cbType.getItems().addAll(ASpell.Category.values());
+		Collections.sort(cbType.getItems(), new Comparator<ASpell.Category>() {
+			public int compare(ASpell.Category o1, ASpell.Category o2) {
 				return o1.getName().compareTo(o2.getName());
 			}
 		});
-		cbType.setConverter(new StringConverter<Spell.Category>() {
-			public String toString(Spell.Category val) {
+		cbType.setConverter(new StringConverter<ASpell.Category>() {
+			public String toString(ASpell.Category val) {
 				if (val==null) return "";
 				return val.getName();
 			}
-			public Spell.Category fromString(String string) { return null; }
+			public ASpell.Category fromString(String string) { return null; }
 		});
 		cbType.getSelectionModel().selectedItemProperty().addListener( (ov,o,n) -> {
 			refresh();
@@ -86,7 +86,7 @@ public class SpellsPage extends Page {
 		descTitle.setStyle("-fx-text-fill: highlight");
 		descSources = new Label();
 		
-		lvResult = new ListView<Spell>();
+		lvResult = new ListView<ASpell>();
 		lvResult.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		
 		lvResult.setCellFactory(lv -> new SpellListCell());
@@ -125,7 +125,7 @@ public class SpellsPage extends Page {
 	}
 	
 	//-------------------------------------------------------------------
-	private void showAction(Spell value) {
+	private void showAction(ASpell value) {
 		logger.info("Show spell "+value);
 		
 		description.setVisible(ResponsiveControlManager.getCurrentMode()!=WindowMode.MINIMAL);
@@ -155,7 +155,7 @@ public class SpellsPage extends Page {
 	//-------------------------------------------------------------------
 	private void refresh() {
 		logger.warn("TODO: refresh");
-		List<Spell> list = Shadowrun6Core.getItemList(Spell.class);
+		List<ASpell> list = Shadowrun6Core.getItemList(ASpell.class);
 		String key = tfSearch.getText(); 
 		if (key!=null && !key.isBlank()) {
 			list = list.stream().filter(crea -> crea.getName(Locale.getDefault()).contains(key)).collect(Collectors.toList());
@@ -163,8 +163,8 @@ public class SpellsPage extends Page {
 		if (cbType.getValue()!=null) {
 			list = list.stream().filter(crea -> crea.getCategory()==cbType.getValue()).collect(Collectors.toList());
 		}
-		Collections.sort(list, new Comparator<Spell>() {
-			public int compare(Spell o1, Spell o2) {
+		Collections.sort(list, new Comparator<ASpell>() {
+			public int compare(ASpell o1, ASpell o2) {
 				return Collator.getInstance().compare(o1.getName(), o2.getName());
 			}
 		});

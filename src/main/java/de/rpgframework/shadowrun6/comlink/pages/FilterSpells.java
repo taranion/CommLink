@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import de.rpgframework.jfx.AFilterInjector;
 import de.rpgframework.jfx.FilteredListPage;
-import de.rpgframework.shadowrun.Spell;
+import de.rpgframework.shadowrun.ASpell;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.FlowPane;
 import javafx.util.StringConverter;
@@ -17,36 +17,36 @@ import javafx.util.StringConverter;
  * @author prelle
  *
  */
-public class FilterSpells extends AFilterInjector<Spell> {
+public class FilterSpells extends AFilterInjector<ASpell> {
 
-	private ChoiceBox<Spell.Category> cbType;
+	private ChoiceBox<ASpell.Category> cbType;
 
 	//-------------------------------------------------------------------
 	/**
 	 * @see de.rpgframework.jfx.AFilterInjector#addFilter(de.rpgframework.jfx.FilteredListPage, javafx.scene.layout.FlowPane)
 	 */
 	@Override
-	public void addFilter(FilteredListPage<Spell> page, FlowPane filterPane) {
+	public void addFilter(FilteredListPage<ASpell> page, FlowPane filterPane) {
 		/*
 		 * Spell Category
 		 */
-		cbType = new ChoiceBox<Spell.Category>();
+		cbType = new ChoiceBox<ASpell.Category>();
 		cbType.getItems().add(null);
-		cbType.getItems().addAll(Spell.Category.values());
-		Collections.sort(cbType.getItems(), new Comparator<Spell.Category>() {
-			public int compare(Spell.Category o1, Spell.Category o2) {
+		cbType.getItems().addAll(ASpell.Category.values());
+		Collections.sort(cbType.getItems(), new Comparator<ASpell.Category>() {
+			public int compare(ASpell.Category o1, ASpell.Category o2) {
 				if (o1==null) return -1;
 				if (o2==null) return  1;
 				return Collator.getInstance().compare(o1.getName(), o2.getName());
 			}
 		});
 		cbType.getSelectionModel().selectedItemProperty().addListener( (ov,o,n) -> page.refreshList());
-		cbType.setConverter(new StringConverter<Spell.Category>() {
-			public String toString(Spell.Category val) {
+		cbType.setConverter(new StringConverter<ASpell.Category>() {
+			public String toString(ASpell.Category val) {
 				if (val==null) return "alle Typen";
 				return val.getName();
 			}
-			public Spell.Category fromString(String string) { return null; }
+			public ASpell.Category fromString(String string) { return null; }
 		});
 		filterPane.getChildren().add(cbType);
 
@@ -57,7 +57,7 @@ public class FilterSpells extends AFilterInjector<Spell> {
 	 * @see de.rpgframework.jfx.AFilterInjector#applyFilter(de.rpgframework.jfx.FilteredListPage, java.util.List)
 	 */
 	@Override
-	public List<Spell> applyFilter(FilteredListPage<Spell> page, List<Spell> input) {
+	public List<ASpell> applyFilter(FilteredListPage<ASpell> page, List<ASpell> input) {
 		// Match spell category
 		if (cbType.getValue()!=null) {
 			input = input.stream()

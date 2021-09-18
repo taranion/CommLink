@@ -14,7 +14,7 @@ import de.rpgframework.jfx.FilteredListPage;
 import de.rpgframework.jfx.GenericDescriptionVBox;
 import de.rpgframework.shadowrun.AdeptPower;
 import de.rpgframework.shadowrun.Quality;
-import de.rpgframework.shadowrun.Spell;
+import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.AdeptPowerListCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.QualityListCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.SpellListCell;
@@ -126,9 +126,9 @@ public class LibraryPage extends Page {
 		logger.info("Navigate Spells");
 		logger.info("   history: "+getAppLayout().canGoBack());
 		try {
-			FilteredListPage<Spell> page =new FilteredListPage<Spell>(
+			FilteredListPage<ASpell> page =new FilteredListPage<ASpell>(
 					ResourceI18N.get(LibraryPage.RES, "category.spells"), 
-					() -> Shadowrun6Core.getItemList(Spell.class), 
+					() -> Shadowrun6Core.getItemList(ASpell.class), 
 					new SpellDescriptionPane()
 					);
 			page.setCellFactory(lv -> new SpellListCell());
