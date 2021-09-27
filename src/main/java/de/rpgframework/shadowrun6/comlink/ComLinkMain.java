@@ -42,7 +42,7 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
-		Locale.setDefault(Locale.GERMAN);
+		Locale.setDefault(Locale.ENGLISH);
        launch(args);
     }
 	
@@ -88,7 +88,7 @@ public class ComLinkMain extends EdenClientApplication {
 		stage.setMaxWidth(1800);
 		stage.setMaxHeight(1100);
 		stage.setMinWidth(360);
-		stage.setMinHeight(560);
+		stage.setMinHeight(600);
 		super.start(stage);
         setStyle(stage.getScene(), FlexibleApplication.DARK_STYLE);
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
