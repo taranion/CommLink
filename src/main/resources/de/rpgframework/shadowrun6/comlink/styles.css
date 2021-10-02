@@ -146,3 +146,23 @@
 	-fx-text-fill: #010101;
 }
 
+
+
+/*
+ * Priority table 
+ */
+.priobutton {
+	-fx-background-color: transparent;
+}
+.priobutton:hover {
+    -fx-background-color: -fx-accent;
+}
+.priobutton:hover {
+    -fx-background-color: -fx-cell-hover-color;
+}
+.priobutton:selected {
+	-fx-background-color: highlight;
+}
+.priobutton:selected:hover {
+  -fx-background-color: -fx-focus-color;
+}
