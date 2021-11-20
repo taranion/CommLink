@@ -125,6 +125,24 @@
 .table-data {
 	-fx-text-fill: derive(-fx-text-base-color, -80%);
 }
+.table-head-toggle  {
+	-fx-text-fill: highlight;
+	-fx-fill: highlight;
+	-fx-background-color: #dbdad0;
+	-fx-font-weight: bold;
+	-fx-alignment: center;
+	-fx-padding: 1px;
+}
+.table-head-toggle:selected {
+	-fx-background-color: primary;
+	-fx-text-fill: -fx-base;
+}
+.table-head-toggle:focused{
+	-fx-background-color: derive(#4CD7F6, +20%);
+}
+.table-head-toggle:hover  {
+	-fx-background-color: derive(#dbdad0, -20%);
+}
 
 /*
 .page#debug {
@@ -165,4 +183,8 @@
 }
 .priobutton:selected:hover {
   -fx-background-color: -fx-focus-color;
+}
+
+.detail-card {
+  -fx-background-color: rgba(0,0,0,0.7);
 }

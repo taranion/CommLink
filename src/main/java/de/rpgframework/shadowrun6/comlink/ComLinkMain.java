@@ -91,6 +91,7 @@ public class ComLinkMain extends EdenClientApplication {
 		stage.setMinHeight(600);
 		super.start(stage);
         setStyle(stage.getScene(), FlexibleApplication.DARK_STYLE);
+        stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
     }
 
