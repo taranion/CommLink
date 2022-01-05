@@ -1,12 +1,13 @@
 package de.rpgframework.shadowrun6.comlink.pages;
 
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.function.BiFunction;
 
+import org.prelle.javafx.ApplicationScreen;
 import org.prelle.javafx.Page;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.genericrpg.modification.Modification;
@@ -40,7 +41,7 @@ public class LibraryPage extends Page {
 
 	public final static ResourceBundle RES = ResourceBundle.getBundle(LibraryPage.class.getName());
 
-	private final static Logger logger = LoggerFactory.getLogger(LibraryPage.class);
+	private final static Logger logger = System.getLogger(LibraryPage.class.getPackageName());
 
 	private FlowPane content;
 	private Button btnSpells;
@@ -123,8 +124,7 @@ public class LibraryPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void openSpells(ActionEvent ev) {
-		logger.info("Navigate Spells");
-		logger.info("   history: "+getAppLayout().canGoBack());
+		logger.log(Level.WARNING, "Navigate Spells");
 		try {
 			FilteredListPage<ASpell> page =new FilteredListPage<ASpell>(
 					ResourceI18N.get(LibraryPage.RES, "category.spells"), 
@@ -133,15 +133,16 @@ public class LibraryPage extends Page {
 					);
 			page.setCellFactory(lv -> new SpellListCell());
 			page.setFilterInjector(new FilterSpells());
-			getAppLayout().navigateTo(page, false);
+//			getAppLayout().navigateTo(page, false);
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
-			logger.error("Error opening SpellPage",e);
+			logger.log(Level.ERROR, "Error opening SpellPage",e);
 		}
 	}
 
 	//-------------------------------------------------------------------
 	private void openPowers(ActionEvent ev) {
-		logger.debug("Navigate Powers");
+		logger.log(Level.DEBUG, "Navigate Powers");
 		try {
 			FilteredListPage<AdeptPower> page =new FilteredListPage<AdeptPower>(
 					ResourceI18N.get(LibraryPage.RES, "category.powers"), 
@@ -150,15 +151,15 @@ public class LibraryPage extends Page {
 					);
 			page.setCellFactory(lv -> new AdeptPowerListCell());
 //			page.setFilterInjector(new FilterQualities());
-			getAppLayout().navigateTo(page, false);
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
-			logger.error("Error opening Powers",e);
+			logger.log(Level.ERROR, "Error opening Powers",e);
 		}
 	}
 
 	//-------------------------------------------------------------------
 	private void openQualities(ActionEvent ev) {
-		logger.debug("Navigate Qualities");
+		logger.log(Level.DEBUG, "Navigate Qualities");
 		try {
 			FilteredListPage<Quality> page =new FilteredListPage<Quality>(
 					ResourceI18N.get(LibraryPage.RES, "category.qualities"), 
@@ -167,17 +168,16 @@ public class LibraryPage extends Page {
 					);
 			page.setCellFactory(lv -> new QualityListCell());
 			page.setFilterInjector(new FilterQualities());
-			getAppLayout().navigateTo(page, false);
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
-			logger.error("Error opening QualityPage",e);
+			logger.log(Level.ERROR, "Error opening QualityPage",e);
 		}
 	}
 
 	//-------------------------------------------------------------------
 	private void openMetatypes(ActionEvent ev) {
-		logger.info("Navigate Metatypes");
-		logger.info("   history: "+getAppLayout().canGoBack());
-		logger.info("Navigate Metatypes  "+Shadowrun6Core.getItemList(SR6MetaType.class));
+		logger.log(Level.INFO, "Navigate Metatypes");
+		logger.log(Level.INFO, "Navigate Metatypes  "+Shadowrun6Core.getItemList(SR6MetaType.class));
 		BiFunction<SR6MetaType,Modification,String> modResolver = new BiFunction<SR6MetaType,Modification, String>() {
 			public String apply(SR6MetaType data, Modification t) {
 				return Shadowrun6Tools.getModificationString(data, t);
@@ -193,9 +193,9 @@ public class LibraryPage extends Page {
 					);
 //			page.setCellFactory(lv -> new SpellListCell());
 //			page.setFilterInjector(new FilterSpells());
-			getAppLayout().navigateTo(page, false);
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
-			logger.error("Error opening MetatypesPage",e);
+			logger.log(Level.ERROR, "Error opening MetatypesPage",e);
 		}
 	}
 }

@@ -1,5 +1,7 @@
 package de.rpgframework.shadowrun6.comlink.pages;
 
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.text.Collator;
 import java.util.Collections;
 import java.util.Comparator;
@@ -8,12 +10,11 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import org.prelle.javafx.ApplicationScreen;
 import org.prelle.javafx.JavaFXConstants;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.ResponsiveControlManager;
 import org.prelle.javafx.WindowMode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.jfx.RPGFrameworkJavaFX;
@@ -37,7 +38,7 @@ import javafx.util.StringConverter;
  */
 public class SpellsPage extends Page {
 	
-	private final static Logger logger = LoggerFactory.getLogger(SpellsPage.class);
+	private final static Logger logger = System.getLogger(SpellsPage.class.getPackageName());
 	
 	private final static ResourceBundle RES = ResourceBundle.getBundle(SpellsPage.class.getName());
 	
@@ -126,7 +127,7 @@ public class SpellsPage extends Page {
 	
 	//-------------------------------------------------------------------
 	private void showAction(ASpell value) {
-		logger.info("Show spell "+value);
+		logger.log(Level.INFO, "Show spell "+value);
 		
 		description.setVisible(ResponsiveControlManager.getCurrentMode()!=WindowMode.MINIMAL);
 		description.setManaged(ResponsiveControlManager.getCurrentMode()!=WindowMode.MINIMAL);
@@ -138,9 +139,9 @@ public class SpellsPage extends Page {
 				SpellDescriptionPane box = new SpellDescriptionPane();
 				box.setData(value);
 				toOpen.setContent(box);
-				getAppLayout().navigateTo(toOpen, false);
+				getAppLayout().getApplication().openScreen(new ApplicationScreen(toOpen));
 			} catch (Exception e) {
-				logger.error("Error opening SpellDescriptionPage",e);
+				logger.log(Level.ERROR, "Error opening SpellDescriptionPage",e);
 			} 
 		} else {
 			descTitle.setText(value.getName());
@@ -154,7 +155,7 @@ public class SpellsPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void refresh() {
-		logger.warn("TODO: refresh");
+		logger.log(Level.WARNING, "TODO: refresh");
 		List<ASpell> list = Shadowrun6Core.getItemList(ASpell.class);
 		String key = tfSearch.getText(); 
 		if (key!=null && !key.isBlank()) {

@@ -1,14 +1,13 @@
 package de.rpgframework.shadowrun6.comlink.pages;
 
 import java.io.IOException;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.net.URISyntaxException;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.gluonhq.attach.browser.BrowserService;
 import com.gluonhq.attach.util.Platform;
@@ -28,7 +27,7 @@ import javafx.scene.text.TextFlow;
  */
 public class Shadowrun6ContentPacksPage extends ContentPacksPage {
 	
-	private final static Logger logger = LoggerFactory.getLogger(Shadowrun6ContentPacksPage.class);
+	private final static Logger logger = System.getLogger(Shadowrun6ContentPacksPage.class.getPackageName());
 	
 	private final static ResourceBundle RES = ResourceBundle.getBundle(Shadowrun6ContentPacksPage.class.getName());
 	
@@ -72,7 +71,7 @@ public class Shadowrun6ContentPacksPage extends ContentPacksPage {
 	private void initActivityHere() {
 		link.setOnAction(ev -> {
 			String url = ResourceI18N.get(RES, "page.contents.more.link.url");
-			logger.info("Visit "+url);
+			logger.log(Level.INFO, "Visit "+url);
 			
 			BrowserService.create().ifPresent(service -> {
 			      try {

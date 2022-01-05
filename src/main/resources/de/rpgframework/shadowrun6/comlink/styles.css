@@ -49,6 +49,31 @@
 }
 */
 
+.toggle-button {
+	-fx-background-color: transparent;
+	-fx-padding: 4px 4px 0 4px;
+	-fx-border-width: 0px;
+}
+.toggle-button:selected {
+	-fx-border-width: 0 0 2px 0;
+}
+
+.application-screen-navig {
+	-fx-background-color: rgba(32,32,32,0.8);
+}
+
+.page-pile {
+	-fx-background-color: linear-gradient(from 0px 0px to 100% 20em ,-fx-base, transparent);
+}
+.backdrop {
+	-fx-background-color: transparent;
+}
+.backdrop-front {
+	-fx-background-color: transparent;
+}
+.backdrop-front-uplift {
+	-fx-background-color: -fx-base;
+}
 .navigation-pane-vertical {
     -fx-min-width: 12em;
     -fx-pref-width: 12em;
