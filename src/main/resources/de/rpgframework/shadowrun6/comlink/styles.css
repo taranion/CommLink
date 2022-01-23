@@ -4,6 +4,13 @@
     -jfxe-backplane-color: #202020;
 }
 
+.character-view-layout {
+  -fx-background-image: url(Seattle_CRB1.jpg);
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: cover;
+}
+
 .app-layout {
 	-fx-background-color: #202020;
   -fx-background-image: url(SR6Logo1.png);
@@ -117,9 +124,6 @@
 	-fx-border-width: 1px;
 	-fx-border-style: solid;
 	-fx-border-color: rgba(0,0,0, 0.1);
-}
-.bdutton:hover {
-	-fx-background-color: white;
 }
 
 #categories {

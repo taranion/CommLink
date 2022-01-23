@@ -166,7 +166,7 @@ public class LibraryPage extends Page {
 					() -> Shadowrun6Core.getItemList(Quality.class), 
 					new GenericDescriptionVBox<Quality>((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
 					);
-			page.setCellFactory(lv -> new QualityListCell());
+			page.setCellFactory(lv -> new QualityListCell(null));
 			page.setFilterInjector(new FilterQualities());
 			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
