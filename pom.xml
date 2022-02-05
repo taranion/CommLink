@@ -13,14 +13,13 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.release>11</maven.compiler.release>
 		<javafx.version>18-ea+8</javafx.version>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
-		<javafx.plugin.version>0.0.5</javafx.plugin.version>
-		<client.plugin.version>0.1.39</client.plugin.version>
-		<attach.version>4.0.11</attach.version>
+		<javafx.plugin.version>0.0.8</javafx.plugin.version>
+		<client.plugin.version>1.0.12</client.plugin.version>
+		<attach.version>4.0.13</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
 	</properties>
 
@@ -155,6 +154,13 @@
 			<artifactId>shadowrun6-data</artifactId>
   			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>giles</groupId> -->
+<!-- 			<artifactId>scenic-view</artifactId> -->
+<!--   			<version>0.0.1-SNAPSHOT</version> -->
+<!--   			<scope>system</scope> -->
+<!--   			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath> -->
+<!-- 		</dependency> -->
 	</dependencies>
 
 	<repositories>
@@ -174,9 +180,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
-				<configuration>
-					<release>11</release>
-				</configuration>
 			</plugin>
 
 	      <plugin>
@@ -193,11 +196,11 @@
 
 			<plugin>
 				<groupId>com.gluonhq</groupId>
-				<artifactId>client-maven-plugin</artifactId>
+				<artifactId>gluonfx-maven-plugin</artifactId>
 				<version>${client.plugin.version}</version>
 				<configuration>
 					<!-- Uncomment to run on iOS: -->
-					<!-- <target>ios</target> -->
+					<target>${gluonfx.target}</target>
 					<bundlesList>
 						<list>de.rpgframework.shadowrun6.comlink.LoginDialog</list>
 						<list>de.rpgframework.shadowrun6.comlink.ComLinkMain</list>
@@ -265,7 +268,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<client.target>host</client.target>
+				<gluonfx.target>host</gluonfx.target>
 			</properties>
 			<dependencies>
                 <dependency>

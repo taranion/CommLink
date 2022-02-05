@@ -10,6 +10,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
     <Logger name="xml" level="warn"/>
+    <Logger name="jdk" level="warn"/>
     <Logger name="javafx" level="info"/>
     <Logger name="prelle.jfx" level="WARN"/>
     <Logger name="de.rpgframework.genericrpg.chargen" level="DEBUG"/>

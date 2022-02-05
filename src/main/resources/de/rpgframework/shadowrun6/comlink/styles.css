@@ -173,6 +173,10 @@
 	-fx-background-color: derive(#dbdad0, -20%);
 }
 
+.hello {
+	-fx-background-color: rgba(0,0,0, 0.5);
+	-fx-pref-width: 30em;
+}
 /*
 .page#debug {
 	-fx-background-color: rgba(255,0,0, 0.5);

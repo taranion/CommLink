@@ -6,5 +6,9 @@
 {
   "name":"org.apache.logging.log4j.message.ParameterizedMessageFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.logging.log4j.core.impl.Log4jContextFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]

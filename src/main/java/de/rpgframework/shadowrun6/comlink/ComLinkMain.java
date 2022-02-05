@@ -1,6 +1,7 @@
 package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
+import java.lang.System.Logger.Level;
 import java.net.URISyntaxException;
 import java.util.Locale;
 import java.util.Optional;
@@ -93,14 +94,17 @@ public class ComLinkMain extends EdenClientApplication {
         setStyle(stage.getScene(), FlexibleApplication.DARK_STYLE);
         stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        
+//       ScenicView.show(stage.getScene());
+
     }
 
 	//-------------------------------------------------------------------
 	protected void loadData() {
 		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
 		plugin.init( );
-		logger.info("Loaded "+Shadowrun6Core.getItemList(ASpell.class).size()+" spells");
-//		logger.info("Loaded "+SplitterMondCore.getItemList(CreatureType.class).size()+" creature types");
+		logger.log(Level.INFO, "Loaded "+Shadowrun6Core.getItemList(ASpell.class).size()+" spells");
+//		logger.log(Level.INFO, "Loaded "+SplitterMondCore.getItemList(CreatureType.class).size()+" creature types");
 
 	}
 
@@ -150,7 +154,7 @@ public class ComLinkMain extends EdenClientApplication {
 	@Override
 	public Page createPage(MenuItem menuItem) {
 		// TODO Auto-generated method stub
-		logger.info("createPage("+menuItem+")");
+		logger.log(Level.INFO, "createPage("+menuItem+")");
 		try {
 		if (menuItem==navigAbout) {
 			return new DebugPage();
@@ -163,7 +167,7 @@ public class ComLinkMain extends EdenClientApplication {
 		} else if (menuItem==navigAccount) {
 			return new Shadowrun6ContentPacksPage(eden);
 		} else {
-			logger.warn("No page for "+menuItem.getText());
+			logger.log(Level.WARNING, "No page for "+menuItem.getText());
 		}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -175,7 +179,7 @@ public class ComLinkMain extends EdenClientApplication {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		} 
-		logger.warn("No page for "+menuItem.getText());
+		logger.log(Level.WARNING, "No page for "+menuItem.getText());
 		return null;
 	}
 
