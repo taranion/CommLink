@@ -243,6 +243,7 @@
                         <list>statusbar</list>
                         <list>storage</list>
 					</attachList>
+					<macAppCategory>public.app-category.role-playing-games</macAppCategory>
 				</configuration>
 			</plugin>
 			<plugin>
