@@ -16,9 +16,7 @@ import org.prelle.javafx.Page;
 import org.prelle.javafx.SymbolIcon;
 
 import com.gluonhq.attach.browser.BrowserService;
-import com.gluonhq.attach.browser.impl.DummyBrowserService;
 import com.gluonhq.attach.util.Platform;
-import com.gluonhq.attach.util.impl.ServiceFactory;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.CharacterProviderLoader;
@@ -57,27 +55,27 @@ public class ComLinkMain extends EdenClientApplication {
         /*
          * If this is a desktop system, install a BrowserServic4e
          */
-        if (Platform.isDesktop()) {
-        	com.gluonhq.attach.util.Services.registerServiceFactory(new ServiceFactory<BrowserService>() {
-
-        		@Override
-        		public Class<BrowserService> getServiceType() {
-        			return BrowserService.class;
-        		}
-
-        		@Override
-        		public Optional<BrowserService> getInstance() {
-        			BrowserService foo = new DummyBrowserService() {
-        				@Override
-        				public void launchExternalBrowser(String url) throws IOException, URISyntaxException {
-        					System.err.println("Browse "+url);
-        					getHostServices().showDocument(url);
-        				}
-        			};
-        			return Optional.of(foo);
-        		}
-        	});
-        }
+//        if (Platform.isDesktop()) {
+//        	com.gluonhq.attach.util.Services.registerServiceFactory(new ServiceFactory<BrowserService>() {
+//
+//        		@Override
+//        		public Class<BrowserService> getServiceType() {
+//        			return BrowserService.class;
+//        		}
+//
+//        		@Override
+//        		public Optional<BrowserService> getInstance() {
+//        			BrowserService foo = new DummyBrowserService() {
+//        				@Override
+//        				public void launchExternalBrowser(String url) throws IOException, URISyntaxException {
+//        					System.err.println("Browse "+url);
+//        					getHostServices().showDocument(url);
+//        				}
+//        			};
+//        			return Optional.of(foo);
+//        		}
+//        	});
+//        }
 	}
 	
     //-------------------------------------------------------------------

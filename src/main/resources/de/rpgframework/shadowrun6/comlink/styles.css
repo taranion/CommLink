@@ -197,6 +197,9 @@
 	-fx-text-fill: #010101;
 }
 
+.list-section .list-view {
+	-fx-background-color: transparent;
+}
 
 
 /*

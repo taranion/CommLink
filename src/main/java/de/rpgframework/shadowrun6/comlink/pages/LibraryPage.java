@@ -133,6 +133,7 @@ public class LibraryPage extends Page {
 					);
 			page.setCellFactory(lv -> new SpellListCell());
 			page.setFilterInjector(new FilterSpells());
+			page.setAppLayout(getAppLayout());
 //			getAppLayout().navigateTo(page, false);
 			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
@@ -151,6 +152,7 @@ public class LibraryPage extends Page {
 					);
 			page.setCellFactory(lv -> new AdeptPowerListCell());
 //			page.setFilterInjector(new FilterQualities());
+			page.setAppLayout(getAppLayout());
 			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
 			logger.log(Level.ERROR, "Error opening Powers",e);
@@ -159,13 +161,14 @@ public class LibraryPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void openQualities(ActionEvent ev) {
-		logger.log(Level.DEBUG, "Navigate Qualities");
+		logger.log(Level.DEBUG, "Navigate Qualities  ");
 		try {
 			FilteredListPage<Quality> page =new FilteredListPage<Quality>(
 					ResourceI18N.get(LibraryPage.RES, "category.qualities"), 
 					() -> Shadowrun6Core.getItemList(Quality.class), 
 					new GenericDescriptionVBox<Quality>((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
 					);
+			page.setAppLayout(getAppLayout());
 			page.setCellFactory(lv -> new QualityListCell(null));
 			page.setFilterInjector(new FilterQualities());
 			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
@@ -193,6 +196,7 @@ public class LibraryPage extends Page {
 					);
 //			page.setCellFactory(lv -> new SpellListCell());
 //			page.setFilterInjector(new FilterSpells());
+			page.setAppLayout(getAppLayout());
 			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
 			logger.log(Level.ERROR, "Error opening MetatypesPage",e);
