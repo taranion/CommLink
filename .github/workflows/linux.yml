@@ -23,11 +23,14 @@ jobs:
           ${{ runner.os }}-maven-    
 
     - name: setup-graalvm-ce
-      uses: rinx/setup-graalvm-ce@v0.0.5
+      uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          graalvm-version: "21.1.0"
-          java-version: "java11"
-          native-image: "true"
+        # GraalVM version. Default: latest
+        graalvm: '22.0.0.3-Final'
+        # Java version. Since GraalVM 22, either java11 or java17, before GraalVM 22, empty. Default: java17
+        jdk: 'java17'
 
     - name: Compile
       run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:build
@@ -81,7 +84,7 @@ jobs:
     - name: setup-graalvm-ce
       uses: rinx/setup-graalvm-ce@v0.0.5
       with:
-          graalvm-version: "21.1.0"
+          graalvm-version: "22.0.0"
           java-version: "java11"
           native-image: "true"
       
@@ -89,18 +92,18 @@ jobs:
       run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
       
     - name: Compile
-      run:  locale ; mvn -U -s settings.xml clean client:compile  -Pandroid
+      run:  locale ; mvn -U -s settings.xml clean gluonfx:compile  -Pandroid
       env:
         LANG: "de_DE.UTF-8"
 
     - name: Link
-      run:  mvn client:link -Pandroid
+      run:  mvn gluonfx:link -Pandroid
         
     - name: Show result
       run: ls target/client
 
     - name: Package
-      run:  mvn client:package -Pandroid
+      run:  mvn gluonfx:package -Pandroid
         
     - name: Show result
       run: |
