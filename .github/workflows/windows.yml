@@ -9,7 +9,7 @@ env:
   LANG: "de_DE.UTF-8"
 
 jobs:
-  compile-linux:
+  compile-windows:
     runs-on: windows-latest
     steps:
     - name: checkout sources
@@ -40,7 +40,7 @@ jobs:
         jdk: 'java17'
 
     - name: Compile
-      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
+      run:  mvn -U -s settings.xml clean gluonfx:compile
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}

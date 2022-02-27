@@ -78,7 +78,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout sources
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       
     - uses: actions/cache@v1
       with:
@@ -101,18 +101,18 @@ jobs:
       run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
       
     - name: Compile
-      run:  locale ; mvn -U -s settings.xml clean gluonfx:compile  -Pandroid
+      run:  locale ; mvn -U -s settings.xml -Pandroid clean gluonfx:compile
       env:
         LANG: "de_DE.UTF-8"
 
     - name: Link
-      run:  mvn gluonfx:link -Pandroid
+      run:  mvn -Pandroid gluonfx:link
         
     - name: Show result
       run: ls target/gluonfx
 
     - name: Package
-      run:  mvn gluonfx:package -Pandroid
+      run:  mvn -Pandroid gluonfx:package
         
     - name: Show result
       run: |
