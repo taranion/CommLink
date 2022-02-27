@@ -320,13 +320,13 @@
 		<profile>
 			<id>android</id>
 			<properties>
-				<client.target>android</client.target>
+				<gluonfx.target>android</gluonfx.target>
 			</properties>
 		</profile>
 		<profile>
 			<id>ios</id>
 			<properties>
-				<client.target>ios</client.target>
+				<gluonfx.target>ios</gluonfx.target>
 			</properties>
 		</profile>
 	</profiles>
