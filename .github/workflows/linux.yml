@@ -106,13 +106,13 @@ jobs:
         LANG: "de_DE.UTF-8"
 
     - name: Link
-      run:  mvn -Pandroid gluonfx:link
+      run:  mvn -Pandroid -s settings.xml gluonfx:link
         
     - name: Show result
       run: ls target/gluonfx
 
     - name: Package
-      run:  mvn -Pandroid gluonfx:package
+      run:  mvn -Pandroid -s settings.xml gluonfx:package
         
     - name: Show result
       run: |

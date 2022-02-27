@@ -1,4 +1,4 @@
-name: Compile Linux
+name: Compile Windows
 on: [push]
 #on:
 #  push:
@@ -56,7 +56,7 @@ jobs:
       run:  mvn gluonfx:package
         
     - name: Show result
-      run: ls target/gluonfx/windows
+      run: ls target/gluonfx/x86_64-windows
 
     - name: Logs
       if: always()      
@@ -67,6 +67,12 @@ jobs:
       with:
         name: ComLink6-Windows
         path: target/gluonfx/x86_64-windows/ComLink6.exe
+
+    - name: Upload Windows MSI
+      uses: actions/upload-artifact@v1
+      with:
+        name: ComLink6-Windows
+        path: target/gluonfx/x86_64-windows/ComLink6-1.0.msi
 
 #    - name: Upload 
 #      uses: appleboy/scp-action@master
