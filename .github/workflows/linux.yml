@@ -115,6 +115,9 @@ jobs:
       run:  mvn -Pandroid -s settings.xml gluonfx:package
         
     - name: Show result
+      run: find target/gluonfx
+        
+    - name: Show result
       run: |
          ls target/gluonfx/aarch64-android/gvm 
          find target/gluonfx/aarch64-android/gensrc/android 
