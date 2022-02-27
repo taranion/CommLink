@@ -120,21 +120,27 @@ jobs:
     - name: Show result
       run: |
          ls target/gluonfx/aarch64-android/gvm 
-         find target/gluonfx/aarch64-android/gensrc/android 
-         cat target/gluonfx/aarch64-android/gensrc/android/AndroidManifest.xml
-         zip -r android-gensrc.zip target/gluonfx/aarch64-android/gensrc/android
+         find target/gluonfx/aarch64-android/
+#         cat target/gluonfx/aarch64-android/gensrc/android/AndroidManifest.xml
+#         zip -r android-gensrc.zip target/gluonfx/aarch64-android/gensrc/android
 
-    - name: Upload Generated sources
-      uses: actions/upload-artifact@v1
-      with:
-        name: android-gensrc.zip
-        path: android-gensrc.zip
+#    - name: Upload Generated sources
+#      uses: actions/upload-artifact@v1
+#      with:
+#        name: android-gensrc.zip
+#        path: android-gensrc.zip
 
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
         name: ComLink6-de.apk
         path: target/gluonfx/aarch64-android/gvm/ComLink6.apk
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v1
+      with:
+        name: ComLink6-de.aab
+        path: target/gluonfx/aarch64-android/gvm/ComLink6.aab
         
 #    - name: Upload
 #      uses: appleboy/scp-action@master
