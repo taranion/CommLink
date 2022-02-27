@@ -10,7 +10,7 @@ env:
 
 jobs:
   compile-linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: checkout sources
       uses: actions/checkout@v2
