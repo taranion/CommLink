@@ -30,7 +30,7 @@ jobs:
           native-image: "true"
 
     - name: Compile
-      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean client:compile
+      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:build
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}
@@ -40,7 +40,7 @@ jobs:
       run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
 
     - name: Link
-      run:  mvn client:link
+      run:  mvn gluonfx:package
         
     - name: Show result
       run: ls target/client/x86_64-linux
