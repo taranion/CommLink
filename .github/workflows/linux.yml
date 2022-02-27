@@ -48,7 +48,7 @@ jobs:
     - name: Show result
       run: ls target/gluonfx
 
-    - name: Link
+    - name: Package
       run:  mvn gluonfx:package
         
     - name: Show result
