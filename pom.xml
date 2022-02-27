@@ -244,6 +244,7 @@
                         <list>storage</list>
 					</attachList>
 					<macAppCategory>public.app-category.role-playing-games</macAppCategory>
+					<enableSWRendering>false</enableSWRendering>
 				</configuration>
 			</plugin>
 			<plugin>
