@@ -46,23 +46,23 @@ jobs:
       run:  mvn gluonfx:link
         
     - name: Show result
-      run: ls target/client
+      run: ls target/gluonfx
 
     - name: Link
       run:  mvn gluonfx:package
         
     - name: Show result
-      run: ls target/client/x86_64-linux
+      run: ls target/gluonfx/x86_64-linux
 
     - name: Logs
       if: always()      
-      run: cat target/client/x86_64-linux/gvm/log/client-debug0.log
+      run: cat target/gluonfx/x86_64-linux/gvm/log/client-debug0.log
 
     - name: Upload Linux binary
       uses: actions/upload-artifact@v1
       with:
         name: ComLink6-Linux
-        path: target/client/x86_64-linux/ComLink6
+        path: target/gluonfx/x86_64-linux/ComLink6
 
 #    - name: Upload 
 #      uses: appleboy/scp-action@master
@@ -109,17 +109,17 @@ jobs:
       run:  mvn gluonfx:link -Pandroid
         
     - name: Show result
-      run: ls target/client
+      run: ls target/gluonfx
 
     - name: Package
       run:  mvn gluonfx:package -Pandroid
         
     - name: Show result
       run: |
-         ls target/client/aarch64-android/gvm 
-         find target/client/aarch64-android/gensrc/android 
-         cat target/client/aarch64-android/gensrc/android/AndroidManifest.xml
-         zip -r android-gensrc.zip target/client/aarch64-android/gensrc/android
+         ls target/gluonfx/aarch64-android/gvm 
+         find target/gluonfx/aarch64-android/gensrc/android 
+         cat target/gluonfx/aarch64-android/gensrc/android/AndroidManifest.xml
+         zip -r android-gensrc.zip target/gluonfx/aarch64-android/gensrc/android
 
     - name: Upload Generated sources
       uses: actions/upload-artifact@v1
@@ -131,7 +131,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: ComLink6-de.apk
-        path: target/client/aarch64-android/gvm/ComLink6.apk
+        path: target/gluonfx/aarch64-android/gvm/ComLink6.apk
         
 #    - name: Upload
 #      uses: appleboy/scp-action@master
