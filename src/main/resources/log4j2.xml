@@ -13,13 +13,14 @@
     <Logger name="jdk" level="warn"/>
     <Logger name="javafx" level="info"/>
     <Logger name="prelle.jfx" level="DEBUG"/>
-    <Logger name="rpgframework.jfx" level="INFO"/>
+    <Logger name="rpgframework.jfx" level="DEBUG"/>
     <Logger name="de.rpgframework.genericrpg.chargen" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun" level="WARN"/>
     <Logger name="de.rpgframework.shadowrun.jfx" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6" level="DEBUG"/>
     <!--Logger name="de.rpgframework.shadowrun6.chargen" level="INFO"/-->
     <Logger name="de.rpgframework.shadowrun6.chargen" level="WARN"/>
+    <Logger name="de.rpgframework.shadowrun6.chargen.gen.mor" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.gen.skill" level="TRACE"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.jfx" level="DEBUG"/>
     <Logger name="de.rpgframework.jfx.wizard.WizardPageGenerator" level="TRACE"/>    
