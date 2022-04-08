@@ -335,7 +335,7 @@
 	<pluginRepositories>
 		<pluginRepository>
             <id>snapshots</id>
-            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </pluginRepository>
 		<pluginRepository>
 			<id>gluon-releases</id>
