@@ -18,7 +18,7 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.14-SNAPSHOT</client.plugin.version>
+		<client.plugin.version>1.0.13</client.plugin.version>
 		<attach.version>4.0.13</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
 	</properties>
@@ -334,13 +334,13 @@
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>gluon-releases</id>
-			<url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
-		</pluginRepository>
-		<pluginRepository>
             <id>snapshots</id>
             <url>http://oss.sonatype.org/content/repositories/snapshots</url>
         </pluginRepository>
+		<pluginRepository>
+			<id>gluon-releases</id>
+			<url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+		</pluginRepository>
 	</pluginRepositories>
 
 </project>
