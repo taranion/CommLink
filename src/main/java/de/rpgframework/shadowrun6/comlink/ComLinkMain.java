@@ -2,9 +2,11 @@ package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
 import java.lang.System.Logger.Level;
-import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
 import org.prelle.javafx.BitmapIcon;
@@ -14,9 +16,6 @@ import org.prelle.javafx.FontIcon;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.SymbolIcon;
-
-import com.gluonhq.attach.browser.BrowserService;
-import com.gluonhq.attach.util.Platform;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.CharacterProviderLoader;
@@ -41,6 +40,14 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
+    	System.setProperty("prism.forceGPU", "true");
+    	System.setProperty("prism.verbose", "true");
+    	List<String> keys = new ArrayList<String>();
+    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
+    	Collections.sort(keys);
+		for (String key : keys) {
+			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+		}
 		Locale.setDefault(Locale.ENGLISH);
        launch(args);
     }

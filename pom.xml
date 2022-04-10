@@ -21,6 +21,7 @@
 		<client.plugin.version>1.0.13</client.plugin.version>
 		<attach.version>4.0.13</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
+		<prism.verbose>true</prism.verbose>
 	</properties>
 
 	<dependencies>
@@ -162,7 +163,7 @@
 <!--   			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath> -->
 <!-- 		</dependency> -->
 
-		<!--dependency>
+		<dependency>
     		<groupId>org.apache.logging.log4j</groupId>
     		<artifactId>log4j-jpl</artifactId>
     		<version>2.17.2</version>
@@ -173,7 +174,7 @@
     		<artifactId>log4j-core</artifactId>
     		<version>2.17.2</version>
     		<scope>runtime</scope>
-		</dependency-->
+		</dependency>
 
 	</dependencies>
 
@@ -203,7 +204,7 @@
 		     <configuration>
 			    <mainClass>${mainClassName}</mainClass>
 			    <options>
-				     <option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option>
+				     <!--option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option-->
 			    </options>
 		     </configuration>
 	      </plugin>
@@ -222,6 +223,7 @@
 						<list>de.rpgframework.shadowrun6.data.core.i18n.core</list>
 						<list>de.rpgframework.shadowrun6.i18n.core</list>
 					</bundlesList>
+					<runtimeArgs>-Dprism.verbose=true</runtimeArgs>
 					<mainClass>${mainClassName}</mainClass>
 					<!-- <reflectionList> -->
 					<!-- <list>org.prelle.javafx.NavigationView</list> -->
@@ -244,7 +246,6 @@
                         <list>storage</list>
 					</attachList>
 					<macAppCategory>public.app-category.role-playing-games</macAppCategory>
-					<enableSWRendering>false</enableSWRendering>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -258,7 +259,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClass>
+							<mainClass>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
