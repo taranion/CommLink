@@ -14,13 +14,12 @@ import de.rpgframework.ResourceI18N;
 import de.rpgframework.genericrpg.modification.Modification;
 import de.rpgframework.jfx.FilteredListPage;
 import de.rpgframework.jfx.GenericDescriptionVBox;
+import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun.AdeptPower;
 import de.rpgframework.shadowrun.ComplexForm;
 import de.rpgframework.shadowrun.CritterPower;
 import de.rpgframework.shadowrun.NPCType;
 import de.rpgframework.shadowrun.Quality;
-import de.rpgframework.shadowrun.ANPC;
-import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.ComplexDataItemListCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.QualityListCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.SpellListCell;
@@ -31,6 +30,7 @@ import de.rpgframework.shadowrun.chargen.jfx.pane.MetatypePane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.SpellDescriptionPane;
 import de.rpgframework.shadowrun6.SR6MetaType;
 import de.rpgframework.shadowrun6.SR6NPC;
+import de.rpgframework.shadowrun6.SR6Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
 import de.rpgframework.shadowrun6.Shadowrun6Tools;
 import javafx.beans.value.ChangeListener;
@@ -163,7 +163,7 @@ public class LibraryPage extends Page {
 		try {
 			FilteredListPage<ASpell> page =new FilteredListPage<ASpell>(
 					ResourceI18N.get(LibraryPage.RES, "category.spells"), 
-					() -> Shadowrun6Core.getItemList(ASpell.class), 
+					() -> Shadowrun6Core.getItemList(SR6Spell.class), 
 					new SpellDescriptionPane()
 					);
 			page.setCellFactory(lv -> new SpellListCell());
