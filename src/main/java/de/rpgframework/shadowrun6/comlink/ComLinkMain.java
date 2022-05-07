@@ -40,14 +40,14 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
-    	System.setProperty("prism.forceGPU", "true");
-    	System.setProperty("prism.verbose", "true");
-    	List<String> keys = new ArrayList<String>();
-    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
-    	Collections.sort(keys);
-		for (String key : keys) {
-			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
-		}
+//    	System.setProperty("prism.forceGPU", "true");
+//    	System.setProperty("prism.verbose", "true");
+//    	List<String> keys = new ArrayList<String>();
+//    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
+//    	Collections.sort(keys);
+//		for (String key : keys) {
+//			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+//		}
 		Locale.setDefault(Locale.ENGLISH);
        launch(args);
     }

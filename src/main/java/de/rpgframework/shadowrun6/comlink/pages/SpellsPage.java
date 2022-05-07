@@ -29,7 +29,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextFlow;
 import javafx.util.StringConverter;
 
 /**
@@ -48,7 +47,6 @@ public class SpellsPage extends Page {
 	private VBox description;
 	private Label descTitle;
 	private Label descSources;
-	private TextFlow descFlow;
 				
 	//-------------------------------------------------------------------
 	public SpellsPage() {

@@ -20,6 +20,7 @@ import de.rpgframework.shadowrun.ComplexForm;
 import de.rpgframework.shadowrun.CritterPower;
 import de.rpgframework.shadowrun.NPCType;
 import de.rpgframework.shadowrun.Quality;
+import de.rpgframework.shadowrun.chargen.jfx.FilterSpells;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.ComplexDataItemListCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.QualityListCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.SpellListCell;

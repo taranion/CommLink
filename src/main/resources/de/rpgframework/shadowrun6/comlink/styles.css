@@ -201,6 +201,19 @@
 	-fx-background-color: transparent;
 }
 
+.list-section .list-view .list-cell{
+	-fx-background-color: transparent;
+}
+.list-section .list-view .list-cell:hover {
+	-fx-background-color: -fx-hover-base;
+}
+.list-section .list-view .list-cell:selected {
+    -fx-background-color: -fx-background;
+}
+.list-section .list-view .list-cell:selected:hover {
+    -fx-background-color: -fx-faint-focus-color;
+}
+
 
 /*
  * Priority table 
