@@ -91,8 +91,8 @@ public class ComLinkMain extends EdenClientApplication {
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     public void start(Stage stage) throws Exception {
-		stage.setMaxWidth(1800);
-		stage.setMaxHeight(1100);
+//		stage.setMaxWidth(1800);
+//		stage.setMaxHeight(1100);
 		stage.setMinWidth(360);
 		stage.setMinHeight(600);
 		super.start(stage);
