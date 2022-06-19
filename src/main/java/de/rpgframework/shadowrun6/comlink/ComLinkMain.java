@@ -1,14 +1,14 @@
 package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.System.Logger.Level;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
+import org.prelle.javafx.AlertManager;
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.DebugPage;
 import org.prelle.javafx.FlexibleApplication;
@@ -18,17 +18,27 @@ import org.prelle.javafx.Page;
 import org.prelle.javafx.SymbolIcon;
 
 import de.rpgframework.ResourceI18N;
+import de.rpgframework.character.Attachment;
+import de.rpgframework.character.CharacterHandle;
 import de.rpgframework.character.CharacterProviderLoader;
+import de.rpgframework.character.RuleSpecificCharacterObject;
+import de.rpgframework.character.Attachment.Format;
+import de.rpgframework.character.Attachment.Type;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
+import de.rpgframework.eden.client.jfx.PDFPage;
+import de.rpgframework.jfx.ReferencePDFViewer;
 import de.rpgframework.shadowrun.ASpell;
+import de.rpgframework.shadowrun6.Shadowrun6Character;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
+import de.rpgframework.shadowrun6.Shadowrun6Tools;
 import de.rpgframework.shadowrun6.chargen.jfx.SR6CharactersOverviewPage;
 import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
 import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -54,7 +64,7 @@ public class ComLinkMain extends EdenClientApplication {
 	
     //-------------------------------------------------------------------
 	public ComLinkMain() {
-		super(RoleplayingSystem.SHADOWRUN6, "ComLink6");
+		super(RoleplayingSystem.SHADOWRUN6, "CommLink6");
 	}
 
 	//-------------------------------------------------------------------
@@ -102,6 +112,7 @@ public class ComLinkMain extends EdenClientApplication {
         
 //       ScenicView.show(stage.getScene());
 
+        ReferencePDFViewer.setPDFPathResolver( (id,lang) -> getPDFPathFor(RoleplayingSystem.SHADOWRUN6,id,lang));
     }
 
 	//-------------------------------------------------------------------
@@ -111,6 +122,36 @@ public class ComLinkMain extends EdenClientApplication {
 		logger.log(Level.INFO, "Loaded "+Shadowrun6Core.getItemList(ASpell.class).size()+" spells");
 //		logger.log(Level.INFO, "Loaded "+SplitterMondCore.getItemList(CreatureType.class).size()+" creature types");
 
+		Thread thread = new Thread(() -> {
+			try {
+				List<CharacterHandle> handles = CharacterProviderLoader.getCharacterProvider().getMyCharacters(RoleplayingSystem.SHADOWRUN6);
+				for (CharacterHandle handle : handles) {
+					try {
+						Attachment attach = null;
+						try {
+							attach = CharacterProviderLoader.getCharacterProvider().getFirstAttachment(handle, Type.CHARACTER, Format.RULESPECIFIC);
+						} catch (Exception e) {
+							logger.log(Level.ERROR, "Error loading character attachment",e);
+							continue;
+						}
+						if (attach==null) continue;
+						Shadowrun6Character parsed = Shadowrun6Core.decode(attach.getData());
+						Shadowrun6Tools.resolveChar(parsed);
+						logger.log(Level.INFO, "Parsed character1: "+parsed);
+						handle.setCharacter(parsed);
+						handle.setShortDescription(parsed.getShortDescription());
+						logger.log(Level.INFO, "Parsed character2: "+parsed.getShortDescription());
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		thread.run();
 	}
 
 	//-------------------------------------------------------------------
@@ -128,18 +169,21 @@ public class ComLinkMain extends EdenClientApplication {
 
 		// Items
 		SymbolIcon icoLookup = new SymbolIcon("library");
-		FontIcon icoAbout = new FontIcon("\uD83D\uDEC8");
+		FontIcon icoAbout   = new FontIcon("\uD83D\uDEC8");
 		FontIcon icoAccount = new FontIcon("\uE2AF");
+		SymbolIcon icoPDF     = new SymbolIcon("pdf");
 		navigChars  = new MenuItem(ResourceI18N.get(RES, "navig.chars"), new SymbolIcon("people"));
 		navigLookup = new MenuItem(ResourceI18N.get(RES, "navig.lookup"), icoLookup);
 		navigAccount= new MenuItem(ResourceI18N.get(RES, "navig.account"), icoAccount);
+		navigPDF    = new MenuItem(ResourceI18N.get(RES, "navig.pdf"), icoPDF);
 		navigAbout  = new MenuItem(ResourceI18N.get(RES, "navig.about"), icoAbout);
 		navigChars  .setId("navig-chars");
 		navigLookup .setId("navig-lookup");
 		navigAbout  .setId("navig-about");
+		navigPDF    .setId("navig-pdf");
 		navigAccount.setId("navig-account");
 		
-		drawer.getItems().addAll(navigChars, navigLookup, navigAccount, navigAbout);
+		drawer.getItems().addAll(navigChars, navigLookup, navigAccount, navigPDF, navigAbout);
 		
 		// Footer
 		Image img = new Image(ComLinkMain.class.getResourceAsStream("SR6Logo2.png"));
@@ -171,6 +215,8 @@ public class ComLinkMain extends EdenClientApplication {
 			return pg;
 		} else if (menuItem==navigAccount) {
 			return new Shadowrun6ContentPacksPage(eden);
+		} else if (menuItem==navigPDF) {
+			return new PDFPage(this, RoleplayingSystem.SHADOWRUN6);
 		} else {
 			logger.log(Level.WARNING, "No page for "+menuItem.getText());
 		}

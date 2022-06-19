@@ -184,7 +184,7 @@ public class LibraryPage extends Page {
 			FilteredListPage<AdeptPower> page =new FilteredListPage<AdeptPower>(
 					ResourceI18N.get(LibraryPage.RES, "category.powers"), 
 					() -> Shadowrun6Core.getItemList(AdeptPower.class), 
-					new AdeptPowerPane((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					new AdeptPowerPane(Shadowrun6Tools.requirementResolver(Locale.getDefault()))
 					);
 			page.setCellFactory(lv -> new ComplexDataItemListCell<AdeptPower>( p -> String.valueOf(p.getCost())));
 //			page.setFilterInjector(new FilterQualities());
@@ -202,7 +202,7 @@ public class LibraryPage extends Page {
 			FilteredListPage<Quality> page =new FilteredListPage<Quality>(
 					ResourceI18N.get(LibraryPage.RES, "category.qualities"), 
 					() -> Shadowrun6Core.getItemList(Quality.class), 
-					new GenericDescriptionVBox<Quality>((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					new GenericDescriptionVBox<Quality>(Shadowrun6Tools.requirementResolver(Locale.getDefault()))
 					);
 			page.setAppLayout(getAppLayout());
 			page.setCellFactory(lv -> new QualityListCell(null));
@@ -230,6 +230,7 @@ public class LibraryPage extends Page {
 					() -> Shadowrun6Core.getItemList(SR6MetaType.class), 
 					descPane
 					);
+			page.setId("filtered-meta");
 //			page.setCellFactory(lv -> new SpellListCell());
 //			page.setFilterInjector(new FilterSpells());
 			page.setAppLayout(getAppLayout());
