@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
-	<artifactId>comlink6</artifactId>
+	<artifactId>commlink6</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ComLink6</name>
+	<name>CommLink6</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,7 +18,7 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.13</client.plugin.version>
+		<client.plugin.version>1.0.14</client.plugin.version>
 		<attach.version>4.0.13</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
 		<prism.verbose>true</prism.verbose>
@@ -163,18 +163,18 @@
 <!--   			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath> -->
 <!-- 		</dependency> -->
 
-		<dependency>
-    		<groupId>org.apache.logging.log4j</groupId>
-    		<artifactId>log4j-jpl</artifactId>
-    		<version>2.17.2</version>
-    		<scope>runtime</scope>
-		</dependency>
-		<dependency>
-    		<groupId>org.apache.logging.log4j</groupId>
-    		<artifactId>log4j-core</artifactId>
-    		<version>2.17.2</version>
-    		<scope>runtime</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!--     		<groupId>org.apache.logging.log4j</groupId> -->
+<!--     		<artifactId>log4j-jpl</artifactId> -->
+<!--     		<version>2.17.2</version> -->
+<!--     		<scope>runtime</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!--     		<groupId>org.apache.logging.log4j</groupId> -->
+<!--     		<artifactId>log4j-core</artifactId> -->
+<!--     		<version>2.17.2</version> -->
+<!--     		<scope>runtime</scope> -->
+<!-- 		</dependency> -->
 
 	</dependencies>
 
@@ -232,7 +232,6 @@
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
 						<arg>-H:IncludeLocales=de,en</arg>
-						<arg>--allow-incomplete-classpath</arg>
 					</nativeImageArgs>
 					<attachList>
                         <list>browser</list>

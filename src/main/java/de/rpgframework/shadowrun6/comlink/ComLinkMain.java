@@ -1,14 +1,11 @@
 package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.lang.System.Logger.Level;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import org.prelle.javafx.AlertManager;
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.DebugPage;
 import org.prelle.javafx.FlexibleApplication;
@@ -19,11 +16,10 @@ import org.prelle.javafx.SymbolIcon;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.Attachment;
-import de.rpgframework.character.CharacterHandle;
-import de.rpgframework.character.CharacterProviderLoader;
-import de.rpgframework.character.RuleSpecificCharacterObject;
 import de.rpgframework.character.Attachment.Format;
 import de.rpgframework.character.Attachment.Type;
+import de.rpgframework.character.CharacterHandle;
+import de.rpgframework.character.CharacterProviderLoader;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
@@ -38,7 +34,6 @@ import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
