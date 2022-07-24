@@ -34,9 +34,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Get version
-      run: $project_version=mvn help:evaluate -Dexpression=project.version -q -DforceStdout; echo "RELEASE_VERSION=$project_version" >> $Env:GITHUB_ENV
-
     - name: Compile
       run:  mvn -U -s settings.xml clean gluonfx:compile
       env: 
