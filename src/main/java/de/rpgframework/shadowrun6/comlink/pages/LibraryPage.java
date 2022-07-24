@@ -202,7 +202,7 @@ public class LibraryPage extends Page {
 			FilteredListPage<Quality> page =new FilteredListPage<Quality>(
 					ResourceI18N.get(LibraryPage.RES, "category.qualities"), 
 					() -> Shadowrun6Core.getItemList(Quality.class), 
-					new GenericDescriptionVBox<Quality>(Shadowrun6Tools.requirementResolver(Locale.getDefault()))
+					new GenericDescriptionVBox(Shadowrun6Tools.requirementResolver(Locale.getDefault()))
 					);
 			page.setAppLayout(getAppLayout());
 			page.setCellFactory(lv -> new QualityListCell(null));
@@ -266,7 +266,7 @@ public class LibraryPage extends Page {
 			FilteredListPage<CritterPower> page =new FilteredListPage<CritterPower>(
 					ResourceI18N.get(LibraryPage.RES, "category.critterpowers"), 
 					() -> Shadowrun6Core.getItemList(CritterPower.class), 
-					new GenericDescriptionVBox<CritterPower>((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					new GenericDescriptionVBox((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
 					);
 			page.setAppLayout(getAppLayout());
 //			page.setCellFactory(lv -> new QualityListCell(null));
@@ -284,7 +284,7 @@ public class LibraryPage extends Page {
 			FilteredListPage<SR6NPC> page =new FilteredListPage<SR6NPC>(
 					ResourceI18N.get(LibraryPage.RES, "category.critters"), 
 					() -> Shadowrun6Core.getItemList(SR6NPC.class).stream().filter(npc -> npc.getType()==NPCType.CRITTER || npc.getType()==NPCType.CRITTER_AWAKENED).collect(Collectors.toList()), 
-					new GenericDescriptionVBox<SR6NPC>((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					new GenericDescriptionVBox((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
 					);
 			page.setAppLayout(getAppLayout());
 //			page.setCellFactory(lv -> new QualityListCell(null));
@@ -302,7 +302,7 @@ public class LibraryPage extends Page {
 			FilteredListPage<SR6NPC> page =new FilteredListPage<SR6NPC>(
 					ResourceI18N.get(LibraryPage.RES, "category.grunts"), 
 					() -> Shadowrun6Core.getItemList(SR6NPC.class).stream().filter(npc -> npc.getType()==NPCType.GRUNT).collect(Collectors.toList()), 
-					new GenericDescriptionVBox<SR6NPC>((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					new GenericDescriptionVBox((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
 					);
 			page.setAppLayout(getAppLayout());
 //			page.setCellFactory(lv -> new QualityListCell(null));

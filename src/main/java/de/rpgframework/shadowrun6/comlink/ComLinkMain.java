@@ -138,6 +138,7 @@ public class ComLinkMain extends EdenClientApplication {
 						logger.log(Level.INFO, "Parsed character2: "+parsed.getShortDescription());
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
+						logger.log(Level.ERROR, "Failed loading character {0}", handle.getName(),e);
 						e.printStackTrace();
 					}
 				}
