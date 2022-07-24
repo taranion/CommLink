@@ -29,6 +29,13 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-    
 
+    - name: Get version
+      run: $project_version=mvn help:evaluate -Dexpression=project.version -q -DforceStdout; echo "project_version=$project_version" >> $Env:GITHUB_ENV
+
+    - name: Set Release version env variable
+      shell: bash -l {0}
+      run: echo $RELEASE_VERSION=mvn help:evaluate -Dexpression=project.version -q -DforceStdout; echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
+
     - name: setup-graalvm-ce
       uses: gluonhq/setup-graalvm@master
       env:
@@ -62,10 +69,6 @@ jobs:
       with:
         name: CommLink6-Windows-Executable
         path: target/gluonfx/x86_64-windows/CommLink6.exe
-
-    - name: Set Release version env variable
-      shell: bash -l {0}
-      run: echo $RELEASE_VERSION=mvn help:evaluate -Dexpression=project.version -q -DforceStdout; echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
 
     - name: Upload Windows MSI
       uses: actions/upload-artifact@v1
