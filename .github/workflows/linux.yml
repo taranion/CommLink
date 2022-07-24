@@ -51,16 +51,16 @@ jobs:
 
     - name: Package
       run:  mvn gluonfx:package
-        
-    - name: Show result
-      run: ls target/gluonfx/x86_64-linux
 
     - name: Logs
       if: always()      
       run: cat target/gluonfx/x86_64-linux/gvm/log/client-debug0.log
         
     - name: Prepare staging
-      run: mkdir staging ; cp target/gluonfx/x86_64-linux/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }}
+      run: mkdir staging ; cp target/gluonfx/x86_64-linux/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; chmod 755 staging/*
+        
+    - name: Show result
+      run: ls target/gluonfx/x86_64-linux ; ls staging
 
 #    - name: Upload Linux binary
 #      uses: actions/upload-artifact@v1
