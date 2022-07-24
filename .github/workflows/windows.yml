@@ -64,8 +64,8 @@ jobs:
         path: target/gluonfx/x86_64-windows/CommLink6.exe
 
     - name: Set Release version env variable
-      run: |
-        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+      shell: bash -l {0}
+      run: echo $RELEASE_VERSION=mvn help:evaluate -Dexpression=project.version -q -DforceStdout" >> $GITHUB_ENV
 
     - name: Upload Windows MSI
       uses: actions/upload-artifact@v1
