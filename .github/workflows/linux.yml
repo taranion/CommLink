@@ -142,14 +142,24 @@ jobs:
         name: CommLink6-de-${{ env.RELEASE_VERSION }}.aab
         path: target/gluonfx/aarch64-android/gvm/CommLink6.aab
         
-#    - name: Upload
-#      uses: appleboy/scp-action@master
-#      with:
-#        host: euve265084.serverprofi24.de
-#        username: bitbucket
-#        password: Oop6oi1o
-#        source: "target/client/aarch64-android/gvm/*.apk"
-#        target: "/var/www/html/downloads/linux"
-#        strip_components: 4
+    - name: Upload
+      uses: appleboy/scp-action@master
+      with:
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: Oop6oi1o
+        source: "target/client/aarch64-android/gvm/*.apk"
+        target: "/var/www/html/downloads/linux"
+        strip_components: 4
+        
+    - name: Upload
+      uses: appleboy/scp-action@master
+      with:
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: ${{ secrets.DEPLOY_PASSWORD }}
+        source: "target/client/aarch64-android/gvm/*.aab"
+        target: "/var/www/html/downloads/linux"
+        strip_components: 4
       
       
