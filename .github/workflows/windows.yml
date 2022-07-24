@@ -29,23 +29,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-    
 
-    - name: Get version (Powershell)
-      continue-on-error: true
-      run: project_version=mvn help:evaluate -Dexpression=project.version -q -DforceStdout; echo "project_version=$project_version" >> $Env:GITHUB_ENV
-
     - name: Get version (bash)
       continue-on-error: true
       shell: bash -l {0}
       run: echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-
-    - name: Extract Maven project version
-      continue-on-error: true
-      run: echo ::set-output name=version::$(mvn -q help:evaluate -Dexpression=project.version -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-      id: project
-
-    - name: Show extracted Maven project version
-      continue-on-error: true
-      run: echo ${{ steps.project.outputs.version }}
 
     - name: setup-graalvm-ce
       uses: gluonhq/setup-graalvm@master
@@ -78,7 +65,7 @@ jobs:
     - name: Upload Windows binary
       uses: actions/upload-artifact@v1
       with:
-        name: CommLink6-Windows-Executable
+        name: CommLink6-Windows-Executable-${{ env.RELEASE_VERSION }}
         path: target/gluonfx/x86_64-windows/CommLink6.exe
 
     - name: Upload Windows MSI
