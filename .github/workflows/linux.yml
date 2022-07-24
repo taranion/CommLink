@@ -77,8 +77,19 @@ jobs:
 #        source: "target/client/x86_64-linux/CommLink6"
 #        target: "/var/www/html/downloads/linux"
 #        strip_components: 3
+      
+    - name: Upload Grossgarten
+      continue-on-error: true
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: "staging/CommLink6"
+        remote: /var/www/html/commlink6-builds/linux/CommLink6-${{env.RELEASE_VERSION}}
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: ${{ secrets.DEPLOY_PASSWORD }}
         
     - name: Upload
+      continue-on-error: true
       uses: appleboy/scp-action@master
       with:
         host: eden.rpgframework.de
