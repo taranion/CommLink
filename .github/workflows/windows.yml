@@ -57,22 +57,32 @@ jobs:
       if: always()      
       run: cat target\gluonfx\x86_64-windows/gvm/log/client-debug0.log
 
+    - name: Get version
+      run: |
+        VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
+        echo "::set-output name=version::$VERSION"
+      id: get_version
+
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+
     - name: Upload Windows binary
       uses: actions/upload-artifact@v1
       with:
-        name: CommLink6-Windows
+        name: CommLink6-Windows-Executable
         path: target/gluonfx/x86_64-windows/CommLink6.exe
 
     - name: Upload Windows MSI
       uses: actions/upload-artifact@v1
       with:
-        name: CommLink6-Windows
+        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
         path: target/gluonfx/x86_64-windows/CommLink6-1.0.msi
 
 #    - name: Upload 
 #      uses: appleboy/scp-action@master
 #      with:
-#        host: euve265084.serverprofi24.de
+#        host: eden.rpgframework.de
 #        username: bitbucket
 #        password: Oop6oi1o
 #        source: "target/client/x86_64-linux/Mondtor"

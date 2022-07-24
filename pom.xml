@@ -218,6 +218,7 @@
 					<target>${gluonfx.target}</target>
 					<bundlesList>
 						<list>de.rpgframework.shadowrun6.comlink.LoginDialog</list>
+						<list>de.rpgframework.shadowrun6.comlink.pages.LibraryPage</list>
 						<list>de.rpgframework.shadowrun6.comlink.ComLinkMain</list>
 						<list>de.rpgframework.shadowrun.ShadowrunAttribute</list>
 						<list>de.rpgframework.shadowrun6.data.core.i18n.core</list>
@@ -244,11 +245,10 @@
                         <list>storage</list>
 					</attachList>
 					<macAppCategory>public.app-category.role-playing-games</macAppCategory>
-					<remoteHostName>eden.rpgframework.de</remoteHostName>
-					<remoteDir>/var/www/html/</remoteDir>
 					<releaseConfiguration>
 						<description>Shadowrun 6 character management</description>
 						<vendor>RPGFramework</vendor>
+						<version>${package.version}</version>
 					</releaseConfiguration>
 				</configuration>
 			</plugin>
