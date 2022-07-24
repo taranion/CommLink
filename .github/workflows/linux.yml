@@ -78,7 +78,7 @@ jobs:
 #        target: "/var/www/html/downloads/linux"
 #        strip_components: 3
       
-    - name: Upload Grossgarten
+    - name: Upload
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
@@ -88,17 +88,6 @@ jobs:
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
-        
-    - name: Upload
-      continue-on-error: true
-      uses: appleboy/scp-action@master
-      with:
-        host: eden.rpgframework.de
-        username: ghcommlink
-        password: ${{ secrets.DEPLOY_PASSWORD }}
-        source: "staging/CommLink6-${{ env.RELEASE_VERSION }}"
-        target: "/var/www/html/commlink6-builds/linux/"
-        strip_components: 1
       
   compile-android:
     runs-on: ubuntu-latest
@@ -183,15 +172,5 @@ jobs:
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
-        
-    - name: Upload
-      uses: appleboy/scp-action@master
-      with:
-        host: eden.rpgframework.de
-        username: ghcommlink
-        password: ${{ secrets.DEPLOY_PASSWORD }}
-        source: "staging/*.a*"
-        target: "/var/www/html/commlink6-builds/linux"
-        strip_components: 1
       
       
