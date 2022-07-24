@@ -26,11 +26,6 @@ jobs:
       uses: gluonhq/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        # GraalVM version. Default: latest
-        graalvm: '22.0.0.3-Final'
-        # Java version. Since GraalVM 22, either java11 or java17, before GraalVM 22, empty. Default: java17
-        jdk: 'java17'
 
     - name: Compile
       run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
@@ -42,7 +37,7 @@ jobs:
         CXX: g++-11
       
     - name: Install missing packages
-      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
+      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev  libpango1.0-dev libxtst-dev
 
     - name: Link
       run:  mvn gluonfx:link
