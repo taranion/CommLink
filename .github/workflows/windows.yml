@@ -57,21 +57,15 @@ jobs:
       if: always()      
       run: cat target\gluonfx\x86_64-windows/gvm/log/client-debug0.log
 
-    - name: Get version
-      run: |
-        VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
-        echo "::set-output name=version::$VERSION"
-      id: get_version
-
-    - name: Set Release version env variable
-      run: |
-        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-
     - name: Upload Windows binary
       uses: actions/upload-artifact@v1
       with:
         name: CommLink6-Windows-Executable
         path: target/gluonfx/x86_64-windows/CommLink6.exe
+
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
     - name: Upload Windows MSI
       uses: actions/upload-artifact@v1
