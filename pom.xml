@@ -221,7 +221,6 @@
 						<list>de.rpgframework.shadowrun6.comlink.ComLinkMain</list>
 						<list>de.rpgframework.shadowrun.ShadowrunAttribute</list>
 						<list>de.rpgframework.shadowrun6.data.core.i18n.core</list>
-						<list>de.rpgframework.shadowrun6.i18n.core</list>
 					</bundlesList>
 					<runtimeArgs>-Dprism.verbose=true</runtimeArgs>
 					<mainClass>${mainClassName}</mainClass>
@@ -245,6 +244,12 @@
                         <list>storage</list>
 					</attachList>
 					<macAppCategory>public.app-category.role-playing-games</macAppCategory>
+					<remoteHostName>eden.rpgframework.de</remoteHostName>
+					<remoteDir>/var/www/html/</remoteDir>
+					<releaseConfiguration>
+						<description>Shadowrun 6 character management</description>
+						<vendor>RPGFramework</vendor>
+					</releaseConfiguration>
 				</configuration>
 			</plugin>
 			<plugin>

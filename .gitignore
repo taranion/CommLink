@@ -1,3 +1,6 @@
 /target/
 /.settings/
 /.attach_pid*
+/build/
+/gradle/
+/.gradle/
