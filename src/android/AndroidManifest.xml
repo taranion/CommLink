@@ -12,7 +12,7 @@
                 <action android:name='android.intent.action.MAIN'/>
              </intent-filter>
         </activity>
-        <activity android:name='com.gluonhq.impl.android.PermissionRequestActivity'/>
+        <activity android:name='com.gluonhq.helloandroid.PermissionRequestActivity'/>
     </application>
 </manifest>
 
