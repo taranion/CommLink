@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import org.prelle.javafx.AlertType;
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.DebugPage;
 import org.prelle.javafx.FlexibleApplication;
@@ -19,7 +20,10 @@ import de.rpgframework.character.Attachment;
 import de.rpgframework.character.Attachment.Format;
 import de.rpgframework.character.Attachment.Type;
 import de.rpgframework.character.CharacterHandle;
+import de.rpgframework.character.CharacterIOException;
 import de.rpgframework.character.CharacterProviderLoader;
+import de.rpgframework.core.BabylonEventBus;
+import de.rpgframework.core.BabylonEventType;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
@@ -36,6 +40,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -111,6 +116,10 @@ public class ComLinkMain extends EdenClientApplication {
     }
 
 	//-------------------------------------------------------------------
+	/**
+	 * @see de.rpgframework.eden.client.jfx.EdenClientApplication#loadData()
+	 */
+    @Override
 	protected void loadData() {
 		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
 		plugin.init( );
@@ -142,9 +151,13 @@ public class ComLinkMain extends EdenClientApplication {
 						e.printStackTrace();
 					}
 				}
+			} catch (CharacterIOException e) {
+				logger.log(Level.ERROR, "Error accessing characters",e);
+				handleError(e);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				
 			}
 		});
 		thread.run();
