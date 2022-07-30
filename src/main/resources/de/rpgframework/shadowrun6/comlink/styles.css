@@ -13,7 +13,7 @@
 
 .app-layout {
   -fx-background-color: #202020;
-  -fx-background-image: url(Background_cleaned.png);
+  -fx-background-image: url(ChapterIntroBG.jpg);
   -fx-background-position: center;
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
@@ -69,6 +69,9 @@
 	-fx-background-color: rgba(32,32,32,0.8);
 }
 
+.page {
+	-fx-background-image: url(ChapterIntroBG.jpg);	
+}
 .page-pile {
 	-fx-background-color: linear-gradient(from 0px 0px to 100% 20em ,-fx-base, transparent);
 }
