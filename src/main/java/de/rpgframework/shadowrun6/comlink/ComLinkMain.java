@@ -2,11 +2,12 @@ package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
 import java.lang.System.Logger.Level;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import org.prelle.javafx.AlertType;
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.DebugPage;
 import org.prelle.javafx.FlexibleApplication;
@@ -22,8 +23,6 @@ import de.rpgframework.character.Attachment.Type;
 import de.rpgframework.character.CharacterHandle;
 import de.rpgframework.character.CharacterIOException;
 import de.rpgframework.character.CharacterProviderLoader;
-import de.rpgframework.core.BabylonEventBus;
-import de.rpgframework.core.BabylonEventType;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
@@ -40,7 +39,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -52,12 +50,12 @@ public class ComLinkMain extends EdenClientApplication {
     public static void main(String[] args) {
 //    	System.setProperty("prism.forceGPU", "true");
 //    	System.setProperty("prism.verbose", "true");
-//    	List<String> keys = new ArrayList<String>();
-//    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
-//    	Collections.sort(keys);
-//		for (String key : keys) {
-//			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
-//		}
+    	List<String> keys = new ArrayList<String>();
+    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
+    	Collections.sort(keys);
+		for (String key : keys) {
+			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+		}
 		Locale.setDefault(Locale.ENGLISH);
        launch(args);
     }
@@ -211,35 +209,27 @@ public class ComLinkMain extends EdenClientApplication {
 	 */
 	@Override
 	public Page createPage(MenuItem menuItem) {
-		// TODO Auto-generated method stub
-		logger.log(Level.INFO, "createPage("+menuItem+")");
+		logger.log(Level.INFO, "createPage(" + menuItem + ")");
 		try {
-		if (menuItem==navigAbout) {
-			return new DebugPage();
-		} else if (menuItem==navigLookup) {
-			return new LibraryPage();
-		} else if (menuItem==navigChars) {
-			SR6CharactersOverviewPage pg = new SR6CharactersOverviewPage();
-			CharacterProviderLoader.getCharacterProvider().setListener(pg);
-			return pg;
-		} else if (menuItem==navigAccount) {
-			return new Shadowrun6ContentPacksPage(eden);
-		} else if (menuItem==navigPDF) {
-			return new PDFPage(this, RoleplayingSystem.SHADOWRUN6);
-		} else {
-			logger.log(Level.WARNING, "No page for "+menuItem.getText());
-		}
+			if (menuItem == navigAbout) {
+				return new DebugPage();
+			} else if (menuItem == navigLookup) {
+				return new LibraryPage();
+			} else if (menuItem == navigChars) {
+				SR6CharactersOverviewPage pg = new SR6CharactersOverviewPage();
+				CharacterProviderLoader.getCharacterProvider().setListener(pg);
+				return pg;
+			} else if (menuItem == navigAccount) {
+				return new Shadowrun6ContentPacksPage(eden);
+			} else if (menuItem == navigPDF) {
+				return new PDFPage(this, RoleplayingSystem.SHADOWRUN6);
+			} else {
+				logger.log(Level.WARNING, "No page for " + menuItem.getText());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		try {
-//			if (menuItem==navLibrary) {
-//				return ScreenLoader.loadLibraryPage();
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} 
-		logger.log(Level.WARNING, "No page for "+menuItem.getText());
+		logger.log(Level.WARNING, "No page for " + menuItem.getText());
 		return null;
 	}
 
