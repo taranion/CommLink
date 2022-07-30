@@ -5,17 +5,17 @@
 }
 
 .character-view-layout {
-  -fx-background-image: url(Seattle_CRB1.jpg);
+   -fx-background-image: url(Seattle_CRB1.jpg);
 	-fx-background-repeat: no-repeat;
 	-fx-background-position: center;
 	-fx-background-size: cover;
 }
 
 .app-layout {
-	-fx-background-color: #202020;
-  -fx-background-image: url(SR6Logo1.png);
-  -fx-background-position: top right;
-  -fx-background-size: 100px;
+  -fx-background-color: #202020;
+  -fx-background-image: url(Background_cleaned.png);
+  -fx-background-position: center;
+  -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
 /*
@@ -84,7 +84,7 @@
 .navigation-pane-vertical {
     -fx-min-width: 12em;
     -fx-pref-width: 12em;
-    -fx-background-color: derive(-fx-base, +80%);
+    -fx-background-color: derive(-fx-base, +20%);
 }
 .page-head {
   -fx-background-image: url(SR6Logo1.png);
@@ -182,6 +182,7 @@
 	-fx-background-color: rgba(255,0,0, 0.5);
 }
 */
+/*
 #debug .page-content {
 	-fx-background-color: white;
 	-fx-background-image: url(PageBG1.jpg);
@@ -189,7 +190,7 @@
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
 }
-
+*/
 .metatype-table {
 	-fx-background-color: #e9e9e2;
 }
