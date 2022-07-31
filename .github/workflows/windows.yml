@@ -62,8 +62,8 @@ jobs:
       if: always()      
       run: cat target\gluonfx\x86_64-windows/gvm/log/client-debug0.log
 
-    - name: Logs2
-      run: cat target\gluonfx\x86_64-windows\gvm\tmp\tmpMSI\config\main.wxs
+    - name: Show created WIX config file
+      run: cat target\gluonfx\x86_64-windows\gvm\tmp\tmpMSI\config\main.wxs 
 
 #    - name: Upload Windows binary
 #      uses: actions/upload-artifact@v1
