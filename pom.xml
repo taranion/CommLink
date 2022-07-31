@@ -251,6 +251,7 @@
 						<!-- macOS -->
 						<macAppCategory>public.app-category.role-playing-games</macAppCategory>
 						<macAppStore>false</macAppStore>
+						<skipSigning>true</skipSigning>
 						<!-- macOS / iOS -->
 						<bundleName>Comlink 6</bundleName>
 						<bundleShortVersion>${package.version}</bundleShortVersion>
