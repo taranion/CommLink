@@ -39,9 +39,6 @@ jobs:
         LANG: en_EN
         CC: gcc-11
         CXX: g++-11
-      
-#    - name: Install missing packages
-#      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev  libpango1.0-dev libxtst-dev
 
     - name: Link
       run:  mvn gluonfx:link
@@ -54,10 +51,10 @@ jobs:
 
     - name: Logs
       if: always()      
-      run: ls target/gluonfx/x86_64-darwin/gvm/log/ ; ls target/gluonfx/x86_64-darwin/gensrc/darwin ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
+      run: find target/gluonfx/x86_64-darwin/gensrc/darwin ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
         
     - name: Prepare staging
-      run: mkdir staging ; cp target/gluonfx/x86_64-linux/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; chmod 755 staging/*
+      run: mkdir staging ; cp target/gluonfx/x86_64-darwin/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; chmod 755 staging/*
         
     - name: Show result
       run: ls target/gluonfx/x86_64-darwin ; find staging
