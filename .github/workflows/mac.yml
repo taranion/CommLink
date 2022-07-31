@@ -9,7 +9,7 @@ env:
   LANG: "de_DE.UTF-8"
 
 jobs:
-  compile-linux:
+  compile-osx:
     runs-on: macos-latest
     steps:
     - name: checkout sources
@@ -54,7 +54,7 @@ jobs:
 
     - name: Logs
       if: always()      
-      run: ls cat target/gluonfx/x86_64-darwin/gvm/log/ ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
+      run: ls target/gluonfx/x86_64-darwin/gvm/log/ ; ls target/gluonfx/x86_64-darwin/gensrc/darwin ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
         
     - name: Prepare staging
       run: mkdir staging ; cp target/gluonfx/x86_64-linux/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; chmod 755 staging/*
