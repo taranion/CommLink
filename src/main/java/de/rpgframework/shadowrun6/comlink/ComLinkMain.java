@@ -190,7 +190,7 @@ public class ComLinkMain extends EdenClientApplication {
 		navigPDF    .setId("navig-pdf");
 		navigAccount.setId("navig-account");
 		
-		drawer.getItems().addAll(navigChars, navigLookup, navigAccount, navigPDF, navigAbout);
+		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAbout);
 		
 		// Footer
 		Image img = new Image(ComLinkMain.class.getResourceAsStream("SR6Logo2.png"));
@@ -212,7 +212,7 @@ public class ComLinkMain extends EdenClientApplication {
 		logger.log(Level.INFO, "createPage(" + menuItem + ")");
 		try {
 			if (menuItem == navigAbout) {
-				return new DebugPage();
+				return new DebugPage(super.getDirectories());
 			} else if (menuItem == navigLookup) {
 				return new LibraryPage();
 			} else if (menuItem == navigChars) {

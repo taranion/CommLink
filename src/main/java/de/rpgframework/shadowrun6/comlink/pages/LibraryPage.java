@@ -124,7 +124,7 @@ public class LibraryPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void initLayout() {
-		content = new FlowPane(btnMetatypes, btnQualities, btnSpells, btnPowers, btnComplex, btnCritterPowers, btnCritters, btnGrunts);
+		content = new FlowPane(btnMetatypes, btnQualities, btnSpells, btnPowers, btnComplex); //, btnCritterPowers, btnCritters, btnGrunts);
 		content.setVgap(10);
 		content.setHgap(10);
 		content.setId("categories");
