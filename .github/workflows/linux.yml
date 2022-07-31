@@ -32,11 +32,11 @@ jobs:
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
     - name: Compile
-      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
+      run:  export LC_ALL=en_EN.UTF-8; export LC_MESSAGES=en_EN.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}
-        LANG: de_DE
+        LANG: en_EN
         CC: gcc-11
         CXX: g++-11
       

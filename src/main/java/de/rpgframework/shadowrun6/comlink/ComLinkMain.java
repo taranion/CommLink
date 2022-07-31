@@ -101,8 +101,8 @@ public class ComLinkMain extends EdenClientApplication {
     public void start(Stage stage) throws Exception {
 //		stage.setMaxWidth(1800);
 //		stage.setMaxHeight(1100);
-		stage.setMinWidth(360);
-		stage.setMinHeight(600);
+		stage.setMinWidth(370);
+		stage.setMinHeight(650);
 		super.start(stage);
         setStyle(stage.getScene(), FlexibleApplication.DARK_STYLE);
         stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
