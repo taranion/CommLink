@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Genesis
+GenericName=RPG Character Management
+Comment=A RPG character management software
+Comment[de]=Eine Software zur Verwaltung von Rollenspiel-Charakteren
+Exec=/opt/genesis/bin/Genesis
+TryExec=/opt/genesis/bin/Genesis
+Icon=/opt/genesis/lib/Genesis.jpg
+Terminal=true
+Type=Application
+Keywords=Genesis;RPG;Roleplaying
+Keywords[de]=Genesis;RPG;Rollenspiel
+Categories=Game;
+StartupNotify=true
+
