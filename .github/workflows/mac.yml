@@ -48,13 +48,16 @@ jobs:
 
     - name: Package
       run:  mvn gluonfx:package
+        
+    - name: Show result
+      run: ls target/gluonfx/x86_64-darwin
 
     - name: Logs
       if: always()      
       run: find target/gluonfx/x86_64-darwin/gensrc/darwin ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
         
     - name: Prepare staging
-      run: mkdir staging ; cp target/gluonfx/x86_64-darwin/CommLink6* staging/Commlink6-${{ env.RELEASE_VERSION }} ; chmod 755 staging/*
+      run: mkdir staging ; cp target/gluonfx/x86_64-darwin/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; cp target/gluonfx/x86_64-darwin/CommLink6.app staging/Commlink6-${{ env.RELEASE_VERSION }}.app ; chmod 755 staging/*
         
     - name: Show result
       run: ls target/gluonfx/x86_64-darwin ; find staging
@@ -80,8 +83,8 @@ jobs:
       uses: garygrossgarten/github-action-scp@release
       with:
         verbose: true
-        local: staging/Commlink6-${{ env.RELEASE_VERSION }}*
-        remote: /var/www/html/commlink6-builds/osx
+        local: staging/Commlink6-${{ env.RELEASE_VERSION }}
+        remote: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
