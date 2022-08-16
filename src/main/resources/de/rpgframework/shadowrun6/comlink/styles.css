@@ -2,6 +2,7 @@
     light: derive(rgb(155, 209, 245), +50%); /* geraten #b4eaff */
     highlight: #c44895;
     -jfxe-backplane-color: #202020;
+    textcolor-warning: brown;
 }
 
 .character-view-layout {
@@ -69,9 +70,6 @@
 	-fx-background-color: rgba(32,32,32,0.8);
 }
 
-.page {
-	-fx-background-image: url(ChapterIntroBG.jpg);	
-}
 .page-pile {
 	-fx-background-color: linear-gradient(from 0px 0px to 100% 20em ,-fx-base, transparent);
 }
@@ -180,11 +178,11 @@
 	-fx-background-color: rgba(0,0,0, 0.5);
 	-fx-pref-width: 30em;
 }
-/*
-.page#debug {
-	-fx-background-color: rgba(255,0,0, 0.5);
+
+.page #debug {
+	-fx-background-image: url(ChapterIntroBG.jpg);	
 }
-*/
+
 /*
 #debug .page-content {
 	-fx-background-color: white;
@@ -240,4 +238,28 @@
 
 .detail-card {
   -fx-background-color: rgba(0,0,0,0.7);
+}
+
+.todos {
+   -fx-background-color: #cbcac0;
+	-fx-text-fill: black;
+	-fx-padding: 1em;
+	-fx-background-radius: 1em; 
+	-fx-border-radius: 1em;
+	-fx-border-width: 5px;
+    -fx-border-color: -fx-base;
+}
+.todos .label {
+	-fx-text-fill: black;
+}
+
+.todos-stopper {
+    -fx-border-color: red;
+}
+.todos-warning {
+    -fx-border-color: orange;
+}
+
+.device-circle {
+	-fx-stroke: highlight; 
 }

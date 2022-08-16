@@ -2,11 +2,10 @@ package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
 import java.lang.System.Logger.Level;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.LogManager;
 
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.DebugPage;
@@ -15,6 +14,7 @@ import org.prelle.javafx.FontIcon;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.SymbolIcon;
+import org.prelle.shadowrun6.plugin.StandardPDFPlugin;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.Attachment;
@@ -26,6 +26,7 @@ import de.rpgframework.character.CharacterProviderLoader;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
+import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.ReferencePDFViewer;
 import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
@@ -50,19 +51,22 @@ public class ComLinkMain extends EdenClientApplication {
     public static void main(String[] args) {
 //    	System.setProperty("prism.forceGPU", "true");
 //    	System.setProperty("prism.verbose", "true");
-    	List<String> keys = new ArrayList<String>();
-    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
-    	Collections.sort(keys);
-		for (String key : keys) {
-			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
-		}
+//    	List<String> keys = new ArrayList<String>();
+//    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
+//    	Collections.sort(keys);
+//		for (String key : keys) {
+//			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+//		}
 		Locale.setDefault(Locale.ENGLISH);
+		LogManager.getLogManager().reset();
        launch(args);
     }
 	
     //-------------------------------------------------------------------
 	public ComLinkMain() {
 		super(RoleplayingSystem.SHADOWRUN6, "CommLink6");
+		
+		ExportPluginRegistry.register(new StandardPDFPlugin());
 	}
 
 	//-------------------------------------------------------------------
@@ -99,8 +103,8 @@ public class ComLinkMain extends EdenClientApplication {
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     public void start(Stage stage) throws Exception {
-//		stage.setMaxWidth(1800);
-//		stage.setMaxHeight(1100);
+		stage.setWidth(1600);
+		stage.setHeight(1100);
 		stage.setMinWidth(370);
 		stage.setMinHeight(650);
 		super.start(stage);
