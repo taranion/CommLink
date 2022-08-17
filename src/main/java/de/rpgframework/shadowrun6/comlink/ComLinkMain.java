@@ -14,7 +14,6 @@ import org.prelle.javafx.FontIcon;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.SymbolIcon;
-import org.prelle.shadowrun6.plugin.StandardPDFPlugin;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.Attachment;
@@ -66,7 +65,7 @@ public class ComLinkMain extends EdenClientApplication {
 	public ComLinkMain() {
 		super(RoleplayingSystem.SHADOWRUN6, "CommLink6");
 		
-		ExportPluginRegistry.register(new StandardPDFPlugin());
+		//ExportPluginRegistry.register(new StandardPDFPlugin());
 	}
 
 	//-------------------------------------------------------------------

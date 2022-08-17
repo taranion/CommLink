@@ -155,11 +155,11 @@
 			<artifactId>shadowrun6-data</artifactId>
   			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>org.prelle.rpgframework</groupId>
 			<artifactId>shadowrun6-export-pdf</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency-->
 <!-- 		<dependency> -->
 <!-- 			<groupId>giles</groupId> -->
 <!-- 			<artifactId>scenic-view</artifactId> -->
