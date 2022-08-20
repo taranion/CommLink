@@ -137,12 +137,22 @@
 		</dependency>
 		<dependency>
 			<groupId>de.rpgframework</groupId>
+			<artifactId>rpgframework-javafx</artifactId>
+			<version>5.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>de.rpgframework</groupId>
 			<artifactId>rpgframework-rules</artifactId>
 			<version>5.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>de.rpgframework</groupId>
 			<artifactId>shadowrun6-core</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>de.rpgframework</groupId>
+			<artifactId>shadowrun6-chargen</artifactId>
 			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -155,11 +165,11 @@
 			<artifactId>shadowrun6-data</artifactId>
   			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
-		<!--dependency>
+		<dependency>
 			<groupId>org.prelle.rpgframework</groupId>
 			<artifactId>shadowrun6-export-pdf</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency-->
+		</dependency>
 <!-- 		<dependency> -->
 <!-- 			<groupId>giles</groupId> -->
 <!-- 			<artifactId>scenic-view</artifactId> -->
@@ -294,6 +304,58 @@
 				</executions>
 
 			</plugin>
+			<!--plugin>
+    			<groupId>org.moditect</groupId>
+    			<artifactId>moditect-maven-plugin</artifactId>
+   			<version>1.0.0.RC2</version>
+    			<executions>
+        			<execution>
+            		<id>generate-module-infos</id>
+           			<phase>generate-sources</phase>
+            		<goals>
+                		<goal>generate-module-info</goal>
+            		</goals>
+            		<configuration>
+            			<modules>
+            				<module>
+            					<artifact>
+                           	<groupId>${groupId}</groupId>
+                           	<artifactId>${artifactId}</artifactId>
+                           	<version>${project.version}</version>
+                        	</artifact>
+                				<moduleInfo>
+                        		<name>de.rpgframework.shadowrun6.commlink6</name>
+                        		<open>true</open>
+                        		<exports>
+                        			de.rpgframework.shadowrun6.comlink;
+                        			de.rpgframework.shadowrun6;
+                        			!com.gluonhq.attach.display
+                        		</exports>
+                    			</moduleInfo>
+            				</module>
+            			</modules>
+            		</configuration>
+        			</execution>
+    			</executions>
+			</plugin-->			
+			<plugin>
+        		<artifactId>maven-assembly-plugin</artifactId>
+        		<version>3.4.2</version>
+        		<configuration>
+          		<descriptors>
+            		<descriptor>src/assembly/src.xml</descriptor>
+          		</descriptors>
+        		</configuration>
+        		<executions>
+            <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>      
+                <goals>
+                    <goal>single</goal>
+                </goals>
+            </execution>
+        </executions>
+        	</plugin>
 		</plugins>
 	</build>
 

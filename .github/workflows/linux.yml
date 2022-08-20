@@ -30,6 +30,21 @@ jobs:
     - name: Set Release version env variable
       run: |
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+        
+    - name: Compile update artifact
+      run: mvn install
+    
+    - name: Upload update artifact
+      continue-on-error: true
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        verbose: true
+        local: target/commlink6-${{ env.RELEASE_VERSION }}-complete.jar
+        remote: /var/www/html/commlink6-updates/linux/commLink6-${{env.RELEASE_VERSION}}.jar
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: ${{ secrets.DEPLOY_PASSWORD }}
+
 
     - name: Compile
       run:  export LC_ALL=en_EN.UTF-8; export LC_MESSAGES=en_EN.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
