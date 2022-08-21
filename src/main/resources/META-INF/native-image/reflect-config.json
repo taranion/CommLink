@@ -1,5 +1,15 @@
 [
 {
+  "name":"java.lang.String",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] },{"name":"valueOf","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"java.awt.image.ColorModel",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"de.rpgframework.classification.Gender",
   "allDeclaredFields":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]

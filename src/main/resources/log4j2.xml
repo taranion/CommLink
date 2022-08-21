@@ -18,18 +18,20 @@
     <Logger name="rpgframework.jfx.skill" level="DEBUG"/>
     <Logger name="de.rpgframework.jfx.pages" level="DEBUG"/>
     <Logger name="de.rpgframework.genericrpg" level="WARN"/>
-    <Logger name="de.rpgframework.genericrpg.chargen" level="WARN"/>
+    <Logger name="de.rpgframework.genericrpg.chargen" level="DEBUG"/>
     <Logger name="de.rpgframework.genericrpg.items" level="WARN"/>
     <Logger name="de.rpgframework.genericrpg.items.formula" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun" level="INFO"/>
+    <Logger name="de.rpgframework.shadowrun" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun.chargen.gen" level="WARN"/>
     <Logger name="de.rpgframework.shadowrun.jfx" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6" level="INFO"/>
-    <Logger name="de.rpgframework.shadowrun6.proc" level="WARN"/>
+    <Logger name="de.rpgframework.shadowrun6.proc" level="DEBUG"/>
     <!--Logger name="de.rpgframework.shadowrun6.chargen" level="INFO"/-->
-    <Logger name="de.rpgframework.shadowrun6.chargen" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun6.chargen.gen.attrib" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun6.chargen.charctrl" level="WARN"/>
+    <Logger name="de.rpgframework.shadowrun6.chargen" level="DEBUG"/>
+    <Logger name="de.rpgframework.shadowrun6.chargen.jfx" level="WARN"/>
+    <Logger name="de.rpgframework.shadowrun6.chargen.lvl" level="DEBUG"/>
+    <Logger name="de.rpgframework.shadowrun6.chargen.gen.attrib" level="DEBUG"/>
+    <Logger name="de.rpgframework.shadowrun6.chargen.charctrl" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.gen.skill" level="DEBUG"/>
 	</Loggers>
 </Configuration>

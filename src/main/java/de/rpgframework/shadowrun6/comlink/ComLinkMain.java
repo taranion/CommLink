@@ -5,7 +5,6 @@ import java.lang.System.Logger.Level;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.logging.LogManager;
 
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.DebugPage;
@@ -25,7 +24,6 @@ import de.rpgframework.character.CharacterProviderLoader;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
-import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.ReferencePDFViewer;
 import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
@@ -57,7 +55,7 @@ public class ComLinkMain extends EdenClientApplication {
 //			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
 //		}
 		Locale.setDefault(Locale.ENGLISH);
-		LogManager.getLogManager().reset();
+		//LogManager.getLogManager().reset();
        launch(args);
     }
 	
