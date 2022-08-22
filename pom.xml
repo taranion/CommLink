@@ -18,7 +18,7 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.14</client.plugin.version>
+		<client.plugin.version>1.0.15</client.plugin.version>
 		<attach.version>4.0.13</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
 		<prism.verbose>true</prism.verbose>
@@ -113,7 +113,7 @@
 		<dependency>
 			<groupId>org.prelle</groupId>
 			<artifactId>javafx-extensions</artifactId>
-			<version>5.0.0-SNAPSHOT</version>
+			<version>[5.0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>de.rpgframework</groupId>
@@ -238,7 +238,6 @@
 						<list>de.rpgframework.shadowrun.ShadowrunAttribute</list>
 						<list>de.rpgframework.shadowrun6.data.core.i18n.core</list>
 					</bundlesList>
-					<runtimeArgs>-Dprism.verbose=true</runtimeArgs>
 					<mainClass>${mainClassName}</mainClass>
 					<!-- <reflectionList> -->
 					<!-- <list>org.prelle.javafx.NavigationView</list> -->
@@ -272,7 +271,7 @@
 						<bundleShortVersion>${package.version}</bundleShortVersion>
 						<!-- Android -->
 						<appLabel>ComLink 6</appLabel>
-						<versionCode>1</versionCode>
+						<versionCode>${env.GITHUB_RUN_NUMBER}</versionCode>
 						<versionName>${package.version}</versionName>
 					</releaseConfiguration>
 				</configuration>
