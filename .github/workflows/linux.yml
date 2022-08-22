@@ -39,7 +39,7 @@ jobs:
       uses: garygrossgarten/github-action-scp@release
       with:
         verbose: true
-        local: target/commlink6-${{ env.RELEASE_VERSION }}-complete.jar
+        local: target/commlink6-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
         remote: /var/www/html/commlink6-updates/linux/commLink6-${{env.RELEASE_VERSION}}.jar
         host: eden.rpgframework.de
         username: ghcommlink

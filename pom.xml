@@ -18,7 +18,7 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.11</client.plugin.version>
+		<client.plugin.version>1.0.14</client.plugin.version>
 		<attach.version>4.0.13</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
 		<prism.verbose>true</prism.verbose>
@@ -277,7 +277,7 @@
 					</releaseConfiguration>
 				</configuration>
 			</plugin>
-			<!--plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>3.4.2</version>
@@ -303,7 +303,7 @@
 					</execution>
 				</executions>
 
-			</plugin-->
+			</plugin>
 			<!--plugin>
     			<groupId>org.moditect</groupId>
     			<artifactId>moditect-maven-plugin</artifactId>
