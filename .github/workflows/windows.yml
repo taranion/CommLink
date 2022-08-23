@@ -106,11 +106,11 @@ jobs:
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
       
-    - name: Deploy EXE
+    - name: Deploy MSI
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: "target\\gluonfx\\x86_64-windows\\CommLink6.exe"
-        remote: /var/www/html/commlink6-builds/win/CommLink6-${{env.RELEASE_VERSION}}.exe
+        local: "target\\jpackage\\CommLink6.exe-${{env.RELEASE_VERSION}}.msi"
+        remote: /var/www/html/commlink6-builds/win/CommLink6-JRE-${{env.RELEASE_VERSION}}.msi
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
