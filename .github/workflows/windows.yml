@@ -39,37 +39,37 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Compile
-      run:  mvn -U -s settings.xml clean gluonfx:compile
-      env: 
-        JFROG_USER: ${{ secrets.JFROG_USER }}
-        JFROG_PASS: ${{ secrets.JFROG_PASS }}
-        LANG: de_DE
+#    - name: Compile
+#      run:  mvn -U -s settings.xml clean gluonfx:compile
+#      env: 
+#        JFROG_USER: ${{ secrets.JFROG_USER }}
+#        JFROG_PASS: ${{ secrets.JFROG_PASS }}
+#        LANG: de_DE
 
-    - name: Link
-      run:  mvn gluonfx:link
+#    - name: Link
+#      run:  mvn gluonfx:link
         
-    - name: Show result
-      run: ls target/gluonfx
+#    - name: Show result
+#      run: ls target/gluonfx
+
+#    - name: Package
+#      run:  mvn gluonfx:package
+        
+#    - name: Show result
+#      run: ls target/gluonfx/x86_64-windows
 
     - name: Package
-      run:  mvn gluonfx:package
-        
-    - name: Show result
-      run: ls target/gluonfx/x86_64-windows
-
-    - name: Package
-      run:  mvn jpackage:hpackage
+      run:  mvn jpackage:jpackage
         
     - name: Show result
       run: ls target/jpackage
 
-    - name: Logs
-      if: always()      
-      run: cat target\gluonfx\x86_64-windows/gvm/log/client-debug0.log
+#    - name: Logs
+#      if: always()      
+#      run: cat target\gluonfx\x86_64-windows/gvm/log/client-debug0.log
 
-    - name: Show created WIX config file
-      run: cat target\gluonfx\x86_64-windows\gvm\tmp\tmpMSI\config\main.wxs 
+#    - name: Show created WIX config file
+#      run: cat target\gluonfx\x86_64-windows\gvm\tmp\tmpMSI\config\main.wxs 
 
 #    - name: Upload Windows binary
 #      uses: actions/upload-artifact@v1
