@@ -62,7 +62,7 @@ jobs:
       run: mkdir Staging
 
     - name: Package
-      run:  mvn jpackage:jpackage
+      run:  mvn package jpackage:jpackage
         
     - name: Show result
       run: ls target/jpackage

@@ -78,7 +78,7 @@ jobs:
 #      run: ls target/gluonfx/x86_64-linux ; find staging
 
     - name: Package
-      run:  mvn package jpackage:jpackage
+      run:  mvn jpackage:jpackage
         
     - name: Show result
       run: ls target/jpackage
