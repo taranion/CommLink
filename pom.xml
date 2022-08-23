@@ -392,16 +392,18 @@
 
     			<executions>
         			<execution>
-            <id>linux</id>
-            <configuration>
-                <icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
-            </configuration>
+            		<id>linux</id>
+            		<configuration>
+                		<icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
+							<type>RPM</type>                		
+            		</configuration>
         </execution>
         <execution>
             <id>win</id>
             <configuration>
                 <icon>src/windows/assets/icon.ico</icon>
                 <winMenu>true</winMenu>
+                <type>MSI</type>
             </configuration>
         </execution>
     </executions>

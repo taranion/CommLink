@@ -62,7 +62,7 @@ jobs:
       run: mkdir Staging
 
     - name: Package
-      run:  mvn package jpackage:jpackage
+      run:  mvn package jpackage:jpackage@win
         
     - name: Show result
       run: ls target/jpackage
@@ -86,7 +86,18 @@ jobs:
 #        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
 #        path: target/gluonfx/x86_64-windows/CommLink6-1.0.msi
       
+    - name: Deploy EXE
+      continue-on-error: true
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: "target\\gluonfx\\x86_64-windows\\CommLink6.exe"
+        remote: /var/www/html/commlink6-builds/win/CommLink6-${{env.RELEASE_VERSION}}.exe
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: ${{ secrets.DEPLOY_PASSWORD }}
+      
     - name: Deploy MSI
+      continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
         local: "target\\gluonfx\\x86_64-windows\\CommLink6-0.1.0.msi"
