@@ -1,10 +1,10 @@
 name: Compile Linux
-on: [push]
-#on:
-#  push:
-#    # Sequence of patterns matched against refs/tags
-#    tags:
-#    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+#on: [push]
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 env:
   LANG: "de_DE.UTF-8"
 
@@ -78,7 +78,7 @@ jobs:
 #      run: ls target/gluonfx/x86_64-linux ; find staging
 
     - name: Package
-      run:  mvn jpackage:jpackage
+      run:  mvn package jpackage:jpackage
         
     - name: Show result
       run: ls target/jpackage
