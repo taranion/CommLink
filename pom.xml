@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -20,7 +20,7 @@
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.15</client.plugin.version>
 		<attach.version>4.0.13</attach.version>
-		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClassName>
+		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
 		<prism.verbose>true</prism.verbose>
 	</properties>
 
@@ -113,7 +113,7 @@
 		<dependency>
 			<groupId>org.prelle</groupId>
 			<artifactId>javafx-extensions</artifactId>
-			<version>[5.0.0,)</version>
+			<version>[5.0.1,)</version>
 		</dependency>
 		<dependency>
 			<groupId>de.rpgframework</groupId>
@@ -276,6 +276,25 @@
 					</releaseConfiguration>
 				</configuration>
 			</plugin>
+    
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+            <execution>
+                <id>copy-dependencies</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>copy-dependencies</goal>
+                </goals>
+                <configuration>
+                    <includeScope>runtime</includeScope>
+                    <outputDirectory>target/jmods</outputDirectory>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -287,7 +306,8 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>de.rpgframework.shadowrun6.comlink.ComLinkMain</mainClass>
+							<addClasspath>true</addClasspath>
+							<mainClass>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -336,7 +356,58 @@
             		</configuration>
         			</execution>
     			</executions>
-			</plugin-->			
+			</plugin-->	
+
+			<plugin>
+    			<groupId>org.panteleyev</groupId>
+    			<artifactId>jpackage-maven-plugin</artifactId>
+    			<version>1.5.2</version>
+    			<configuration>
+        			<name>Commlink6</name>
+        			<appVersion>${project.version}</appVersion>
+        			<vendor>RPGFramework</vendor>
+        			<copyright>2022 Stefan Prelle</copyright>
+        			<description>Character Management for Shadowrun 6</description>
+        			<mainClass>${mainClassName}</mainClass>
+        			<mainJar>${artifactId}-${project.version}-jar-with-dependencies.jar</mainJar>
+        			<input>target</input>
+        			<!--modulePaths>
+            		<modulePath>target/mods</modulePath>
+        			</modulePaths-->
+        			<destination>target/jpackage</destination>
+        			<icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
+        			<javaOptions>
+            		<option>--enable-preview</option>
+            		<option>-Dfile.encoding=UTF-8</option>
+        			</javaOptions>
+        			
+        			<linuxAppCategory>Game</linuxAppCategory>
+        			<linuxShortcut>true</linuxShortcut>
+        			<winConsole>true</winConsole>
+        			<winDirChooser>true</winDirChooser>
+        			<winMenu>true</winMenu>
+        			<winPerUserInstall>true</winPerUserInstall>
+        			<winShortcut>true</winShortcut>
+    			</configuration>
+
+    			<executions>
+        			<execution>
+            <id>linux</id>
+            <configuration>
+                <icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
+            </configuration>
+        </execution>
+        <execution>
+            <id>win</id>
+            <configuration>
+                <icon>src/windows/assets/icon.ico</icon>
+                <winMenu>true</winMenu>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+		
 		</plugins>
 	</build>
 

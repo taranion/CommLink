@@ -58,6 +58,12 @@ jobs:
     - name: Show result
       run: ls target/gluonfx/x86_64-windows
 
+    - name: Package
+      run:  mvn jpackage:hpackage
+        
+    - name: Show result
+      run: ls target/jpackage
+
     - name: Logs
       if: always()      
       run: cat target\gluonfx\x86_64-windows/gvm/log/client-debug0.log

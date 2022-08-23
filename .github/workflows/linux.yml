@@ -77,6 +77,12 @@ jobs:
     - name: Show result
       run: ls target/gluonfx/x86_64-linux ; find staging
 
+    - name: Package
+      run:  mvn jpackage:hpackage
+        
+    - name: Show result
+      run: ls target/jpackage
+
 #    - name: Upload Linux binary
 #      uses: actions/upload-artifact@v1
 #      with:
