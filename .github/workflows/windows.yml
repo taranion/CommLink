@@ -39,24 +39,24 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#    - name: Compile
-#      run:  mvn -U -s settings.xml clean gluonfx:compile
-#      env: 
-#        JFROG_USER: ${{ secrets.JFROG_USER }}
-#        JFROG_PASS: ${{ secrets.JFROG_PASS }}
-#        LANG: de_DE
+    - name: Compile
+      run:  mvn -U -s settings.xml clean gluonfx:compile
+      env: 
+        JFROG_USER: ${{ secrets.JFROG_USER }}
+        JFROG_PASS: ${{ secrets.JFROG_PASS }}
+        LANG: de_DE
 
-#    - name: Link
-#      run:  mvn gluonfx:link
+    - name: Link
+      run:  mvn gluonfx:link
         
-#    - name: Show result
-#      run: ls target/gluonfx
+    - name: Show result
+      run: ls target/gluonfx
 
-#    - name: Package
-#      run:  mvn gluonfx:package
+    - name: Package
+      run:  mvn gluonfx:package
         
-#    - name: Show result
-#      run: ls target/gluonfx/x86_64-windows
+    - name: Show result
+      run: ls target/gluonfx/x86_64-windows
 
     - name: Prepare staging
       run: mkdir Staging
@@ -67,24 +67,26 @@ jobs:
     - name: Show result
       run: ls target/jpackage
 
-#    - name: Logs
-#      if: always()      
-#      run: cat target\gluonfx\x86_64-windows/gvm/log/client-debug0.log
+    - name: Logs
+      if: always()      
+      run: cat target\gluonfx\x86_64-windows/gvm/log/client-debug0.log
 
-#    - name: Show created WIX config file
-#      run: cat target\gluonfx\x86_64-windows\gvm\tmp\tmpMSI\config\main.wxs 
+    - name: Show created WIX config file
+      run: cat target\gluonfx\x86_64-windows\gvm\tmp\tmpMSI\config\main.wxs 
 
-#    - name: Upload Windows binary
-#      uses: actions/upload-artifact@v1
-#      with:
-#        name: CommLink6-Windows-Executable-${{ env.RELEASE_VERSION }}
-#        path: target/gluonfx/x86_64-windows/CommLink6.exe
+    - name: Upload Windows binary
+      continue-on-error: true
+      uses: actions/upload-artifact@v1
+      with:
+        name: CommLink6-Windows-Executable-${{ env.RELEASE_VERSION }}
+        path: target/gluonfx/x86_64-windows/CommLink6.exe
 
-#    - name: Upload Windows MSI
-#      uses: actions/upload-artifact@v1
-#      with:
-#        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
-#        path: target/gluonfx/x86_64-windows/CommLink6-1.0.msi
+    - name: Upload Windows MSI
+      continue-on-error: true
+      uses: actions/upload-artifact@v1
+      with:
+        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
+        path: target/gluonfx/x86_64-windows/CommLink6-${{ env.RELEASE_VERSION }}.msi
       
     - name: Deploy EXE
       continue-on-error: true

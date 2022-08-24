@@ -1,0 +1,96 @@
+name: Compile Linux
+on: [push]
+#on:
+#  push:
+#    # Sequence of patterns matched against refs/tags
+#    tags:
+#    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+env:
+  LANG: "de_DE.UTF-8"
+
+jobs:
+  compile-android:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout sources
+      uses: actions/checkout@v2
+      
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-    
+
+    - name: setup-graalvm-ce
+      uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+      
+    - name: Install missing packages
+      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
+      
+    - name: Compile
+      run:  locale ; mvn -U -s settings.xml -Pandroid clean gluonfx:compile
+      env:
+        LANG: "de_DE.UTF-8"
+
+    - name: Link
+      run:  mvn -Pandroid -s settings.xml gluonfx:link
+        
+    - name: Show result
+      run: ls target/gluonfx
+
+    - name: Package
+      run:  mvn -Pandroid -s settings.xml gluonfx:package
+        
+    - name: Show result
+      run: find target/gluonfx
+        
+    - name: Show result
+      run: |
+         ls target/gluonfx/aarch64-android/gvm 
+         find target/gluonfx/aarch64-android/
+#         cat target/gluonfx/aarch64-android/gensrc/android/AndroidManifest.xml
+#         zip -r android-gensrc.zip target/gluonfx/aarch64-android/gensrc/android
+
+#    - name: Upload Generated sources
+#      uses: actions/upload-artifact@v1
+#      with:
+#        name: android-gensrc.zip
+#        path: android-gensrc.zip
+        
+    - name: Prepare staging
+      run: |
+        mkdir staging 
+        cp target/gluonfx/aarch64-android/gvm/CommLink6.apk staging/Commlink6-${{ env.RELEASE_VERSION }}.apk
+        cp target/gluonfx/aarch64-android/gvm/CommLink6.aab staging/Commlink6-${{ env.RELEASE_VERSION }}.aab
+
+#    - name: Upload APK
+#      uses: actions/upload-artifact@v1
+#      with:
+#        name: CommLink6-de-${{ env.RELEASE_VERSION }}.apk
+#        path: target/gluonfx/aarch64-android/gvm/CommLink6.apk
+
+#    - name: Upload APK
+#      uses: actions/upload-artifact@v1
+#      with:
+#        name: CommLink6-de-${{ env.RELEASE_VERSION }}.aab
+#        path: target/gluonfx/aarch64-android/gvm/CommLink6.aab
+      
+    - name: Upload Grossgarten
+      continue-on-error: true
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        verbose: true
+        local: staging
+        remote: /var/www/html/commlink6-builds/linux
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: ${{ secrets.DEPLOY_PASSWORD }}
+      
+      
