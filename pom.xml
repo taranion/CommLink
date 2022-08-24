@@ -260,17 +260,18 @@
 					</attachList>
 					<releaseConfiguration>
 						<description>Shadowrun 6 character management</description>
-						<vendor>RPGFramework</vendor>
+						<vendor>Stefan Prelle</vendor>
 						<version>${package.version}</version>
 						<!-- macOS -->
 						<macAppCategory>public.app-category.role-playing-games</macAppCategory>
 						<macAppStore>false</macAppStore>
 						<skipSigning>true</skipSigning>
 						<!-- macOS / iOS -->
-						<bundleName>Comlink 6</bundleName>
+						<bundleName>Commlink 6</bundleName>
 						<bundleShortVersion>${package.version}</bundleShortVersion>
+						
 						<!-- Android -->
-						<appLabel>ComLink 6</appLabel>
+						<appLabel>CommLink 6</appLabel>
 						<versionCode>${env.GITHUB_RUN_NUMBER}</versionCode>
 						<versionName>${package.version}</versionName>
 					</releaseConfiguration>
