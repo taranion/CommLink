@@ -128,6 +128,7 @@ public class ComLinkMain extends EdenClientApplication {
 //       ScenicView.show(stage.getScene());
 
         ReferencePDFViewer.setPDFPathResolver( (id,lang) -> getPDFPathFor(RoleplayingSystem.SHADOWRUN6,id,lang));
+        ReferencePDFViewer.setEnabled( super.isPDFEnabled());
     }
 
 	//-------------------------------------------------------------------
@@ -208,6 +209,9 @@ public class ComLinkMain extends EdenClientApplication {
 		navigAccount.setId("navig-account");
 		
 		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAbout);
+		if (!Platform.isDesktop()) {
+			drawer.getItems().remove(navigPDF);
+		}
 		
 		// Footer
 		Image img = new Image(ComLinkMain.class.getResourceAsStream("SR6Logo2.png"));
