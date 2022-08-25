@@ -2,8 +2,10 @@ package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
 import java.lang.System.Logger.Level;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import org.prelle.javafx.BitmapIcon;
@@ -13,6 +15,9 @@ import org.prelle.javafx.FontIcon;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.SymbolIcon;
+
+import com.gluonhq.attach.browser.BrowserService;
+import com.gluonhq.attach.util.Platform;
 
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.Attachment;
@@ -37,6 +42,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 
@@ -68,9 +74,15 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
 	protected void prepareBrowser() {
-        /*
-         * If this is a desktop system, install a BrowserServic4e
-         */
+		Optional<BrowserService> opt = BrowserService.create();
+		if (opt.isPresent()) {
+			logger.log(Level.DEBUG, "Found BrowserService: "+opt.get());
+		} else {
+			logger.log(Level.WARNING, "Found no BrowserService!");
+		}
+//        /*
+//         * If this is a desktop system, install a BrowserServic4e
+//         */
 //        if (Platform.isDesktop()) {
 //        	com.gluonhq.attach.util.Services.registerServiceFactory(new ServiceFactory<BrowserService>() {
 //
@@ -100,10 +112,14 @@ public class ComLinkMain extends EdenClientApplication {
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     public void start(Stage stage) throws Exception {
-		stage.setWidth(1600);
-		stage.setHeight(1100);
-		stage.setMinWidth(370);
-		stage.setMinHeight(650);
+    	int prefWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 1600);
+    	int prefHeight = Math.min( (int)Screen.getPrimary().getVisualBounds().getHeight(), 1100);
+		stage.setWidth(prefWidth);
+		stage.setHeight(prefHeight);
+    	int minWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 360);
+    	int minHeight = Math.min( (int)Screen.getPrimary().getVisualBounds().getHeight(), 650);
+		stage.setMinWidth(minWidth);
+		stage.setMinHeight(minHeight);
 		super.start(stage);
         setStyle(stage.getScene(), FlexibleApplication.DARK_STYLE);
         stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
