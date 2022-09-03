@@ -2,10 +2,8 @@ open module de.rpgframework.shadowrun6.commlink6 {
 	exports de.rpgframework.shadowrun6.comlink;
 	exports de.rpgframework.shadowrun6.comlink.pages;
 	
-	provides java.lang.System.LoggerFinder with de.rpgframework.shadowrun6.comlink.CustomLoggerFinder;
+	//provides java.lang.System.LoggerFinder with de.rpgframework.shadowrun6.comlink.CustomLoggerFinder;
 
-	requires com.gluonhq.attach.browser;
-	requires com.gluonhq.attach.util;
 	requires de.rpgframework.core;
 	requires de.rpgframework.eden.client;
 	requires de.rpgframework.eden.client.jfx;
@@ -22,4 +20,6 @@ open module de.rpgframework.shadowrun6.commlink6 {
 	requires shadowrun.common;
 	requires shadowrun.common.chargen.jfx;
 	requires java.desktop;
+	requires com.gluonhq.attach.browser;
+	requires com.gluonhq.attach.util;
 }

@@ -18,7 +18,7 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.15</client.plugin.version>
+		<client.plugin.version>1.0.14</client.plugin.version>
 		<attach.version>4.0.13</attach.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
 		<prism.verbose>true</prism.verbose>
@@ -178,7 +178,7 @@
 <!--   			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath> -->
 <!-- 		</dependency> -->
 
-		<!--dependency>
+		<dependency>
     		<groupId>org.apache.logging.log4j</groupId>
     		<artifactId>log4j-jpl</artifactId>
     		<version>2.17.2</version>
@@ -189,7 +189,7 @@
     		<artifactId>log4j-core</artifactId>
     		<version>2.17.2</version>
     		<scope>runtime</scope>
-		</dependency-->
+		</dependency>
 
 	</dependencies>
 
