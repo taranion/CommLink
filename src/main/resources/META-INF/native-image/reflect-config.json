@@ -5,6 +5,18 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"com.itextpdf.text.ImgRaw",
+  "methods":[{"name":"<init>","parameterTypes":["com.itextpdf.text.Image"] }]
+},
+{
+  "name":"com.itextpdf.text.ImgTemplate",
+  "methods":[{"name":"<init>","parameterTypes":["com.itextpdf.text.Image"] }]
+},
+{
+  "name":"com.itextpdf.text.pdf.PdfName",
+  "allDeclaredFields":true
+},
+{
   "name":"de.rpgframework.classification.Gender",
   "allDeclaredFields":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
@@ -868,5 +880,53 @@
 {
   "name":"de.rpgframework.shadowrun6.persist.WeaponDamageConverter",
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.ApplyModificationsGeneric",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.CalculateAttributePools",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.CalculateDerivedAttributes",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.CalculateEssence",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.CalculateMeleeAndUnarmed",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.CalculatePersona",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.EnsureAttributePresence",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.GetModificationsFromGear",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.GetModificationsFromMagicOrResonance",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.GetModificationsFromPowers",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.GetModificationsFromTechniques",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.ResetModifications",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 }
 ]
