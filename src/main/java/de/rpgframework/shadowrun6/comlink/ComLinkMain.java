@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.LogManager;
 
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.DebugPage;
@@ -13,7 +14,11 @@ import org.prelle.javafx.FlexibleApplication;
 import org.prelle.javafx.FontIcon;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
+import org.prelle.javafx.ResponsiveControlManager;
 import org.prelle.javafx.SymbolIcon;
+import org.prelle.shadowrun6.export.beginner.plugin.SR6BeginnerPDFPlugin;
+import org.prelle.shadowrun6.export.compact.plugin.SR6CompactPDFPlugin;
+import org.prelle.shadowrun6.export.standard.StandardPDFPlugin;
 
 import com.gluonhq.attach.browser.BrowserService;
 import com.gluonhq.attach.util.Platform;
@@ -25,9 +30,12 @@ import de.rpgframework.character.Attachment.Type;
 import de.rpgframework.character.CharacterHandle;
 import de.rpgframework.character.CharacterIOException;
 import de.rpgframework.character.CharacterProviderLoader;
+import de.rpgframework.core.BabylonEventBus;
+import de.rpgframework.core.BabylonEventType;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
+import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.ReferencePDFViewer;
 import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
@@ -60,7 +68,7 @@ public class ComLinkMain extends EdenClientApplication {
 //			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
 //		}
 		Locale.setDefault(Locale.ENGLISH);
-		//LogManager.getLogManager().reset();
+		LogManager.getLogManager().reset();
        launch(args);
     }
 	
@@ -68,7 +76,9 @@ public class ComLinkMain extends EdenClientApplication {
 	public ComLinkMain() {
 		super(RoleplayingSystem.SHADOWRUN6, "CommLink6");
 		
-		//ExportPluginRegistry.register(new StandardPDFPlugin());
+		ExportPluginRegistry.register(new StandardPDFPlugin());
+		ExportPluginRegistry.register(new SR6BeginnerPDFPlugin());
+		ExportPluginRegistry.register(new SR6CompactPDFPlugin());
 	}
 
 	//-------------------------------------------------------------------
@@ -79,9 +89,9 @@ public class ComLinkMain extends EdenClientApplication {
 		} else {
 			logger.log(Level.WARNING, "Found no BrowserService!");
 		}
-//        /*
-//         * If this is a desktop system, install a BrowserServic4e
-//         */
+        /*
+         * If this is a desktop system, install a BrowserServic4e
+         */
 //        if (Platform.isDesktop()) {
 //        	com.gluonhq.attach.util.Services.registerServiceFactory(new ServiceFactory<BrowserService>() {
 //
@@ -111,15 +121,21 @@ public class ComLinkMain extends EdenClientApplication {
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     public void start(Stage stage) throws Exception {
-    	int prefWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 1600);
-    	int prefHeight = Math.min( (int)Screen.getPrimary().getVisualBounds().getHeight(), 1100);
+    	int prefWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 1500);
+    	int prefHeight = Math.min( (int)Screen.getPrimary().getVisualBounds().getHeight(), 900);
+    	System.out.println("Start with "+prefWidth+"x"+prefHeight);
 		stage.setWidth(prefWidth);
 		stage.setHeight(prefHeight);
     	int minWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 360);
     	int minHeight = Math.min( (int)Screen.getPrimary().getVisualBounds().getHeight(), 650);
 		stage.setMinWidth(minWidth);
 		stage.setMinHeight(minHeight);
-		super.start(stage);
+		try {
+			super.start(stage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         setStyle(stage.getScene(), FlexibleApplication.DARK_STYLE);
         stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
@@ -128,6 +144,11 @@ public class ComLinkMain extends EdenClientApplication {
 
         ReferencePDFViewer.setPDFPathResolver( (id,lang) -> getPDFPathFor(RoleplayingSystem.SHADOWRUN6,id,lang));
         ReferencePDFViewer.setEnabled( super.isPDFEnabled());
+        
+        getAppLayout().visibleProperty().addListener( (ov,o,n) -> {
+        	logger.log(Level.INFO, "Visibility changed to "+n);
+            ResponsiveControlManager.initialize(getAppLayout());        	
+        });
     }
 
 	//-------------------------------------------------------------------
@@ -157,13 +178,20 @@ public class ComLinkMain extends EdenClientApplication {
 						Shadowrun6Character parsed = Shadowrun6Core.decode(attach.getData());
 						Shadowrun6Tools.resolveChar(parsed);
 						logger.log(Level.INFO, "Parsed character1: "+parsed);
+						Shadowrun6Tools.runProcessors(parsed);
 						handle.setCharacter(parsed);
 						handle.setShortDescription(parsed.getShortDescription());
 						logger.log(Level.INFO, "Parsed character2: "+parsed.getShortDescription());
+					} catch (CharacterIOException e) {
+						// TODO Auto-generated catch block
+						logger.log(Level.ERROR, "Failed loading character {0}: {1}", handle.getName(),e.getCode(),e);
+						e.printStackTrace();
+						BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.loading_character", handle.getName(), e.getCode()));
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						logger.log(Level.ERROR, "Failed loading character {0}", handle.getName(),e);
 						e.printStackTrace();
+						BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.loading_character", handle.getName()));
 					}
 				}
 			} catch (CharacterIOException e) {

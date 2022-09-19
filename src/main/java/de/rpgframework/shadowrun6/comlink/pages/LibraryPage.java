@@ -29,11 +29,13 @@ import de.rpgframework.shadowrun.chargen.jfx.pane.AdeptPowerPane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.ComplexFormDescriptionPane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.MetatypePane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.SpellDescriptionPane;
+import de.rpgframework.shadowrun6.QualityPath;
 import de.rpgframework.shadowrun6.SR6MetaType;
 import de.rpgframework.shadowrun6.SR6NPC;
 import de.rpgframework.shadowrun6.SR6Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
 import de.rpgframework.shadowrun6.Shadowrun6Tools;
+import de.rpgframework.shadowrun6.chargen.jfx.pane.QualityPathDescriptionPane;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -57,6 +59,7 @@ public class LibraryPage extends Page {
 	private Button btnSpells;
 	private Button btnPowers;
 	private Button btnComplex;
+	private Button btnQualityPaths;
 	private Button btnCritterPowers;
 	private Button btnCritters;
 	private Button btnGrunts;
@@ -106,6 +109,11 @@ public class LibraryPage extends Page {
 		btnComplex.getStyleClass().add("category-button");
 		btnComplex.graphicProperty().addListener( scaleButtons);
 
+		btnQualityPaths    = new Button(ResourceI18N.get(RES, "category.qualityPaths"));
+		btnQualityPaths.setId("qualityPaths");
+		btnQualityPaths.getStyleClass().add("category-button");
+		btnQualityPaths.graphicProperty().addListener( scaleButtons);
+
 		btnCritterPowers = new Button(ResourceI18N.get(RES, "category.critterpowers"));
 		btnCritterPowers.setId("critterpowers");
 		btnCritterPowers.getStyleClass().add("category-button");
@@ -124,7 +132,7 @@ public class LibraryPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void initLayout() {
-		content = new FlowPane(btnMetatypes, btnQualities, btnSpells, btnPowers, btnComplex); //, btnCritterPowers, btnCritters, btnGrunts);
+		content = new FlowPane(btnMetatypes, btnQualities, btnSpells, btnPowers, btnComplex, btnQualityPaths); //, btnCritterPowers, btnCritters, btnGrunts);
 		content.setVgap(10);
 		content.setHgap(10);
 		content.setId("categories");
@@ -153,6 +161,7 @@ public class LibraryPage extends Page {
 		btnQualities.setOnAction(ev -> openQualities(ev));
 		btnMetatypes.setOnAction(ev -> openMetatypes(ev));
 		btnComplex.setOnAction(ev -> openComplexForms(ev));
+		btnQualityPaths.setOnAction(ev -> openQualityPaths(ev));
 		btnCritterPowers.setOnAction(ev -> openCritterPowers(ev));
 		btnCritters.setOnAction(ev -> openCritters(ev));
 		btnGrunts.setOnAction(ev -> openGrunts(ev));
@@ -256,6 +265,25 @@ public class LibraryPage extends Page {
 			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
 			logger.log(Level.ERROR, "Error opening Complex Forms",e);
+		}
+	}
+
+	//-------------------------------------------------------------------
+	private void openQualityPaths(ActionEvent ev) {
+		logger.log(Level.DEBUG, "Navigate Quality Paths");
+		try {
+			QualityPathDescriptionPane pane = new QualityPathDescriptionPane();
+			FilteredListPage<QualityPath> page =new FilteredListPage<QualityPath>(
+					ResourceI18N.get(LibraryPage.RES, "category.qualityPaths"), 
+					() -> Shadowrun6Core.getItemList(QualityPath.class), 
+					pane
+					);
+//			page.setCellFactory(lv -> new SpellListCell());
+//			page.setFilterInjector(new FilterSpells());
+			page.setAppLayout(getAppLayout());
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
+		} catch (Exception e) {
+			logger.log(Level.ERROR, "Error opening Quality Paths",e);
 		}
 	}
 

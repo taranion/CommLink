@@ -22,4 +22,5 @@ open module de.rpgframework.shadowrun6.commlink6 {
 	requires java.desktop;
 	requires com.gluonhq.attach.browser;
 	requires com.gluonhq.attach.util;
+	requires shadowrun6.export.pdf.standard;
 }
