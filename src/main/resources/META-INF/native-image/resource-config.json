@@ -197,13 +197,22 @@
       "pattern":"\\Qorg/controlsfx/control/toggleswitch.css\\E"
     }, 
     {
-      "pattern":"\\Qcom/itextpdf/text/error_messages/en.lng\\E"      
+      "pattern":"\\Qcom/itextpdf/text/error_messages/en.lng\\E"
     }, 
     {
-      "pattern":"\\Qcom/itextpdf/text/pdf/fonts/Times-Bold.afm\\E"      
+      "pattern":"\\Qcom/itextpdf/text/pdf/fonts/Times-Bold.afm\\E"
     }, 
     {
-      "pattern":"\\Qcom/itextpdf/text/pdf/fonts/glyphlist.txt\\E"      
+      "pattern":"\\Qcom/itextpdf/text/pdf/fonts/glyphlist.txt\\E"
+    }, 
+    {
+      "pattern":"org/prelle/shadowrun6/export/standard/fonts/Roboto-Medium.ttf"
+    }, 
+    {
+      "pattern":".*ttf"
+    }, 
+    {
+      "pattern":".*/.*afm$"
     }
   ]},
   "bundles":[
@@ -214,6 +223,13 @@
     {
       "name":"de.rpgframework.eden.client.jfx.PDFPage",
       "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.genericrpg.data.GenericRPGTools",
+      "locales":[
+        "de", 
+        "en"
+      ]
     }, 
     {
       "name":"de.rpgframework.jfx.CharacterHandleBox",
