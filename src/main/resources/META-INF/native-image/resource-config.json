@@ -271,7 +271,7 @@
       ]
     }, 
     {
-      "name":"de.rpgframework.shadowrun.chargen.charctrl.ShadowrunRules",
+      "name":"de.rpgframework.shadowrun.ShadowrunRules",
       "locales":[""]
     }, 
     {
@@ -295,7 +295,7 @@
       "locales":[""]
     }, 
     {
-      "name":"de.rpgframework.shadowrun.chargen.jfx.section.Selection",
+      "name":"de.rpgframework.shadowrun.chargen.jfx.section.Section",
       "locales":[""]
     }, 
     {
@@ -318,19 +318,11 @@
       "locales":[""]
     }, 
     {
-      "name":"de.rpgframework.shadowrun6.chargen.gen.Shadowrun6Rules",
+      "name":"de.rpgframework.shadowrun6.Shadowrun6Rules",
       "locales":[""]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.chargen.jfx.SR6CharacterViewLayout",
-      "locales":[""]
-    }, 
-    {
-      "name":"de.rpgframework.shadowrun6.chargen.jfx.page.BasicDataPage",
-      "locales":[""]
-    }, 
-    {
-      "name":"de.rpgframework.shadowrun6.chargen.jfx.page.SkillPage",
       "locales":[""]
     }, 
     {
