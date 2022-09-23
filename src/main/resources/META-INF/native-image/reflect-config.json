@@ -17,6 +17,11 @@
   "allDeclaredFields":true
 },
 {
+  "name":"com.itextpdf.text.Jpeg",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":["com.itextpdf.text.Image"] }]
+},
+{
   "name":"de.rpgframework.classification.Gender",
   "allDeclaredFields":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
@@ -640,6 +645,18 @@
 {
   "name":"de.rpgframework.shadowrun.persist.FireModesConverter",
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromMetaType",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun.ShadowrunCharacter"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromFoci",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun.ShadowrunCharacter"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromQualities",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun.ShadowrunCharacter"] }]
 },
 {
   "name":"de.rpgframework.shadowrun6.ActionList",

@@ -14,7 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>11</maven.compiler.release>
-		<javafx.version>18</javafx.version>
+		<javafx.version>19</javafx.version>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
@@ -49,11 +49,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.gluonhq.attach</groupId>
-			<artifactId>connectivity</artifactId>
-			<version>${attach.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.gluonhq.attach</groupId>
 			<artifactId>device</artifactId>
 			<version>${attach.version}</version>
 		</dependency>
@@ -65,11 +60,6 @@
 		<dependency>
 			<groupId>com.gluonhq.attach</groupId>
 			<artifactId>lifecycle</artifactId>
-			<version>${attach.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.gluonhq.attach</groupId>
-			<artifactId>orientation</artifactId>
 			<version>${attach.version}</version>
 		</dependency>
 		<dependency>
@@ -92,13 +82,13 @@
 			<artifactId>util</artifactId>
 			<version>${attach.version}</version>
 		</dependency>
-		<!--dependency>
+		<dependency>
 			<groupId>com.gluonhq</groupId>
 			<artifactId>scenicview</artifactId>
 			<version>1</version>
 			<scope>system</scope>
 			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath>
-		</dependency-->
+		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-web</artifactId>
@@ -171,6 +161,16 @@
 			<artifactId>shadowrun6-export-pdf</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!--dependency>
+			<groupId>org.prelle.rpgframework</groupId>
+			<artifactId>shadowrun6-export-fvtt</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.prelle.rpgframework</groupId>
+			<artifactId>shadowrun6-export-json</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency-->
 <!-- 		<dependency> -->
 <!-- 			<groupId>giles</groupId> -->
 <!-- 			<artifactId>scenic-view</artifactId> -->
@@ -236,8 +236,10 @@
 						<list>de.rpgframework.shadowrun6.comlink.pages.LibraryPage</list>
 						<list>de.rpgframework.shadowrun6.comlink.ComLinkMain</list>
 						<list>de.rpgframework.shadowrun.ShadowrunAttribute</list>
-						<list>de.rpgframework.shadowrun6.data.core.i18n.core</list>
 					</bundlesList>
+					<resourcesList>
+						<list>afm</list>
+					</resourcesList>
 					<mainClass>${mainClassName}</mainClass>
 					<!-- <reflectionList> -->
 					<!-- <list>org.prelle.javafx.NavigationView</list> -->
@@ -249,13 +251,9 @@
 					</nativeImageArgs>
 					<attachList>
                         <list>browser</list>
-                        <list>connectivity</list>
                         <list>device</list>
                         <list>display</list>
-                        <list>lifecycle</list>
-                        <list>orientation</list>
                         <list>settings</list>
-                        <list>statusbar</list>
                         <list>storage</list>
 					</attachList>
 					<releaseConfiguration>
@@ -424,16 +422,23 @@
 				<gluonfx.target>host</gluonfx.target>
 			</properties>
 			<dependencies>
-                <dependency>
+                 <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>browser</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+               <dependency>
                     <groupId>com.gluonhq.attach</groupId>
                     <artifactId>display</artifactId>
                     <version>${attach.version}</version>
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
-                <dependency>
+               <dependency>
                     <groupId>com.gluonhq.attach</groupId>
-                    <artifactId>lifecycle</artifactId>
+                    <artifactId>device</artifactId>
                     <version>${attach.version}</version>
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>

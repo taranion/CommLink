@@ -347,6 +347,10 @@
       "locales":[""]
     }, 
     {
+      "name":"de.rpgframework.shadowrun6.chargen.jfx.section.Section",
+      "locales":[""]
+    }, 
+    {
       "name":"de.rpgframework.shadowrun6.chargen.jfx.SR6CharacterViewLayout",
       "locales":[""]
     }, 

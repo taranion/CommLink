@@ -2,11 +2,15 @@ package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
 import java.lang.System.Logger.Level;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.LogManager;
+
+import javax.print.event.PrintServiceAttributeListener;
 
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.DebugPage;
@@ -21,6 +25,7 @@ import org.prelle.shadowrun6.export.compact.plugin.SR6CompactPDFPlugin;
 import org.prelle.shadowrun6.export.standard.StandardPDFPlugin;
 
 import com.gluonhq.attach.browser.BrowserService;
+import com.gluonhq.attach.device.DeviceService;
 import com.gluonhq.attach.util.Platform;
 
 import de.rpgframework.ResourceI18N;
@@ -68,7 +73,7 @@ public class ComLinkMain extends EdenClientApplication {
 //			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
 //		}
 		Locale.setDefault(Locale.ENGLISH);
-		LogManager.getLogManager().reset();
+//		LogManager.getLogManager().reset();
        launch(args);
     }
 	
@@ -79,11 +84,15 @@ public class ComLinkMain extends EdenClientApplication {
 		ExportPluginRegistry.register(new StandardPDFPlugin());
 		ExportPluginRegistry.register(new SR6BeginnerPDFPlugin());
 		ExportPluginRegistry.register(new SR6CompactPDFPlugin());
+//		ExportPluginRegistry.register(new SR6FoundryExportPlugin());
+//		ExportPluginRegistry.register(new SR6JSONExportPlugin());
 	}
 
 	//-------------------------------------------------------------------
 	protected void prepareBrowser() {
 		Optional<BrowserService> opt = BrowserService.create();
+		System.out.println("BrowserService = "+opt.isPresent());
+		System.out.println("DeviceService = "+DeviceService.create().isPresent());
 		if (opt.isPresent()) {
 			logger.log(Level.DEBUG, "Found BrowserService: "+opt.get());
 		} else {
@@ -113,6 +122,23 @@ public class ComLinkMain extends EdenClientApplication {
 //        		}
 //        	});
 //        }
+	}
+	
+	protected void openFile(Path path) {
+		logger.log(Level.WARNING, "openFile");
+		System.out.println("openFile: "+BrowserService.create()+" for "+path.toUri());
+		
+		if (BrowserService.create().isPresent()) {
+			try {
+				BrowserService.create().get().launchExternalBrowser(path.toUri().toString());
+			} catch (IOException | URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			logger.log(Level.ERROR, "No BrowserService found");
+		}
+		
 	}
 	
     //-------------------------------------------------------------------
