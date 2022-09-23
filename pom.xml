@@ -82,13 +82,13 @@
 			<artifactId>util</artifactId>
 			<version>${attach.version}</version>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>com.gluonhq</groupId>
 			<artifactId>scenicview</artifactId>
 			<version>1</version>
 			<scope>system</scope>
 			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-web</artifactId>
