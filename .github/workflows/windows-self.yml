@@ -113,6 +113,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: Visual Studio shell
+      continue-on-error: true
       uses: egor-tensin/vs-shell@v2
 
     - uses: actions/cache@v1
@@ -123,7 +124,6 @@ jobs:
           ${{ runner.os }}-maven-    
 
     - name: Get version (bash)
-      continue-on-error: true
       shell: bash -l {0}
       run: echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
