@@ -50,13 +50,16 @@ jobs:
       run:  mvn gluonfx:package
         
     - name: Show result
+      continue-on-error: true
       run: ls target/gluonfx/x86_64-darwin
 
     - name: Logs
+      continue-on-error: true
       if: always()      
       run: find target/gluonfx/x86_64-darwin/gensrc/darwin ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
         
     - name: Prepare staging
+      continue-on-error: true
       run: mkdir staging ; cp target/gluonfx/x86_64-darwin/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; cp target/gluonfx/x86_64-darwin/CommLink6.app staging/Commlink6-${{ env.RELEASE_VERSION }}.app ; chmod 755 staging/*
         
     - name: Show result

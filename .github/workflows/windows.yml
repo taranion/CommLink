@@ -17,17 +17,10 @@ jobs:
  
     # Setup the Windows build environment
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v1.1
 
     - name: Visual Studio shell
-      uses: egor-tensin/vs-shell@v1
-
-    - uses: actions/cache@v1
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-    
+      uses: egor-tensin/vs-shell@v2
 
     - name: Get version (bash)
       continue-on-error: true
@@ -59,6 +52,7 @@ jobs:
       run: ls target/gluonfx/x86_64-windows
 
     - name: Prepare staging
+      continue-on-error: true
       run: |
         mkdir Staging ; 
         cp target/gluonfx/x86_64-windows/CommLink6.exe Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.exe; 
@@ -114,17 +108,10 @@ jobs:
  
     # Setup the Windows build environment
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v1.1
 
     - name: Visual Studio shell
-      uses: egor-tensin/vs-shell@v1
-
-    - uses: actions/cache@v1
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-    
+      uses: egor-tensin/vs-shell@v2
 
     - name: Get version (bash)
       continue-on-error: true
