@@ -44,42 +44,34 @@ jobs:
       run:  mvn gluonfx:link
         
     - name: Show result
-      run: ls target/gluonfx
+      run: ls -l target/gluonfx/x86_64-darwin
 
     - name: Package
       run:  mvn gluonfx:package
         
     - name: Show result
       continue-on-error: true
-      run: ls target/gluonfx/x86_64-darwin
+      run: ls -l target/gluonfx/x86_64-darwin ; find target/gluonfx/x86_64-darwin
 
     - name: Logs
       continue-on-error: true
       if: always()      
       run: find target/gluonfx/x86_64-darwin/gensrc/darwin ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
+
+    - name: zip APP bundle
+      continue-on-error: true
+      run: cd target/gluonfx/x86_64-darwin ; zip CommLink6.app.zip  CommLink6.app
         
     - name: Prepare staging
       continue-on-error: true
-      run: mkdir staging ; cp target/gluonfx/x86_64-darwin/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; cp target/gluonfx/x86_64-darwin/CommLink6.app staging/Commlink6-${{ env.RELEASE_VERSION }}.app ; chmod 755 staging/*
+      run: |
+        mkdir staging ; 
+        cp target/gluonfx/x86_64-darwin/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; 
+        cp -r target/gluonfx/x86_64-darwin/CommLink6.app staging/Commlink6-${{ env.RELEASE_VERSION }}.app ; 
+        chmod 755 staging/*
         
     - name: Show result
       run: ls target/gluonfx/x86_64-darwin ; find staging
-
-#    - name: Upload Linux binary
-#      uses: actions/upload-artifact@v1
-#      with:
-#        name: CommLink6-Linux-${{ env.RELEASE_VERSION }}
-#        path: target/gluonfx/x86_64-linux/CommLink6
-
-#    - name: Upload 
-#      uses: appleboy/scp-action@master
-#      with:
-#        host: eden.rpgframework.de
-#        username: ghcommlink
-#        password: Oop6oi1o
-#        source: "target/client/x86_64-linux/CommLink6"
-#        target: "/var/www/html/downloads/linux"
-#        strip_components: 3
       
     - name: Upload
       continue-on-error: true
@@ -88,6 +80,17 @@ jobs:
         verbose: true
         local: staging/Commlink6-${{ env.RELEASE_VERSION }}
         remote: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: ${{ secrets.DEPLOY_PASSWORD }}
+      
+    - name: Upload
+      continue-on-error: true
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        verbose: true
+        local: staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip
+        remote: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}.app.zip
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
