@@ -71,9 +71,6 @@ jobs:
 #      if: always()      
 #      run: cat target/gluonfx/x86_64-linux/gvm/log/client-debug0.log
         
-#    - name: Prepare staging
-#      run: mkdir staging ; cp target/gluonfx/x86_64-linux/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; chmod 755 staging/*
-        
 #    - name: Show result
 #      run: ls target/gluonfx/x86_64-linux ; find staging
 
@@ -82,6 +79,9 @@ jobs:
         
     - name: Show result
       run: ls target/jpackage
+        
+    - name: Prepare staging
+      run: mkdir -p staging ; cp target/jpackage/commlink*rpg staging/commlink6-${{ env.RELEASE_VERSION }}.rpm ; chmod 755 staging/*
 
 #    - name: Upload Linux binary
 #      uses: actions/upload-artifact@v1
@@ -104,7 +104,7 @@ jobs:
       uses: garygrossgarten/github-action-scp@release
       with:
         verbose: true
-        local: staging/commlink6-${{ env.RELEASE_VERSION }}
+        local: staging/commlink6-${{ env.RELEASE_VERSION }}*
         remote: /var/www/html/commlink6-builds/linux/CommLink6-${{env.RELEASE_VERSION}}
         host: eden.rpgframework.de
         username: ghcommlink
