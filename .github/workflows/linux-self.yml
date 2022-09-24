@@ -63,14 +63,15 @@ jobs:
       run: |
         mkdir -p staging ; 
         cp target/gluonfx/x86_64-linux/CommLink6 staging/commlink6-${{ env.RELEASE_VERSION }} ;
-        chmod 755 staging/*
+        chmod 755 staging/*  ;
+        ls staging
       
     - name: Upload
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
         verbose: true
-        local: staging/commlink6-${{ env.RELEASE_VERSION }}*
+        local: staging/commlink6-${{ env.RELEASE_VERSION }}
         remote: /var/www/html/commlink6-builds/linux/CommLink6-${{env.RELEASE_VERSION}}
         host: eden.rpgframework.de
         username: ghcommlink
@@ -112,11 +113,10 @@ jobs:
       run: ls target/jpackage
       
     - name: Upload
-      continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
         verbose: true
-        local: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}*rpm
+        local: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm
         remote: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.rpm
         host: eden.rpgframework.de
         username: ghcommlink
