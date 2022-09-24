@@ -1,4 +1,4 @@
-name: Compile Windows Cloud
+name: Compile Windows Self
 on: [push]
 #on:
 #  push:
@@ -9,7 +9,7 @@ env:
   LANG: "de_DE.UTF-8"
 
 jobs:
-  compile-windows:
+  compile-windows-native:
     runs-on: [self-hosted, Windows]
     steps:
     - name: checkout sources
@@ -17,7 +17,7 @@ jobs:
  
     # Setup the Windows build environment
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v1.1.1
 
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v1
@@ -146,7 +146,7 @@ jobs:
       run: ls target/jpackage
 
     - name: Prepare staging 2
-      run: mkdir Staging ; cp target/jpackage/Commlink6_{{ env.RELEASE_VERSION }}.msi Staging/
+      run: mkdir Staging ; cp target/jpackage/Commlink6-{{ env.RELEASE_VERSION }}.msi Staging/
         
     - name: Show Staging content
       run: ls Staging
