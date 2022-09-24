@@ -55,17 +55,20 @@ jobs:
     - name: Package
       run:  mvn gluonfx:package
         
-    - name: Show result
+    - name: Show result Native
       run: ls target/gluonfx/x86_64-windows
 
     - name: Prepare staging
-      run: mkdir Staging
+      run: mkdir Staging ; cp target/gluonfx/x86_64-windows/CommLink6.exe Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.exe; cp target/gluonfx/x86_64-windows/CommLink6-*msi Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.msi
 
     - name: Package
       run:  mvn package jpackage:jpackage@win
         
-    - name: Show result
+    - name: Show result JPackage
       run: ls target/jpackage
+
+    - name: Prepare staging 2
+      run: cp target/jpackage/Commlink6_{{ env.RELEASE_VERSION }}.msi Staging/
 
     - name: Logs
       if: always()      
@@ -73,20 +76,23 @@ jobs:
 
     - name: Show created WIX config file
       run: cat target\gluonfx\x86_64-windows\gvm\tmp\tmpMSI\config\main.wxs 
+        
+    - name: Show Staging content
+      run: ls Staging
 
-    - name: Upload Windows binary
-      continue-on-error: true
-      uses: actions/upload-artifact@v1
-      with:
-        name: CommLink6-Windows-Executable-${{ env.RELEASE_VERSION }}
-        path: target/gluonfx/x86_64-windows/CommLink6.exe
-
-    - name: Upload Windows MSI
-      continue-on-error: true
-      uses: actions/upload-artifact@v1
-      with:
-        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
-        path: target/gluonfx/x86_64-windows/CommLink6-${{ env.RELEASE_VERSION }}.msi
+#    - name: Upload Windows binary
+#      continue-on-error: true
+#      uses: actions/upload-artifact@v1
+#      with:
+#        name: CommLink6-Windows-Executable-${{ env.RELEASE_VERSION }}
+#        path: target/gluonfx/x86_64-windows/CommLink6.exe
+#
+#    - name: Upload Windows MSI
+#      continue-on-error: true
+#      uses: actions/upload-artifact@v1
+#      with:
+#        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
+#        path: target/gluonfx/x86_64-windows/Commlink6-${{ env.RELEASE_VERSION }}.msi
       
     - name: Deploy EXE
       continue-on-error: true
@@ -102,8 +108,8 @@ jobs:
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: "target\\gluonfx\\x86_64-windows\\CommLink6-${{ env.RELEASE_VERSION }}.msi"
-        remote: /var/www/html/commlink6-builds/win/CommLink6-${{env.RELEASE_VERSION}}.msi
+        local: "target\\gluonfx\\x86_64-windows\\Commlink6-${{ env.RELEASE_VERSION }}.msi"
+        remote: /var/www/html/commlink6-builds/win/Commlink6-${{env.RELEASE_VERSION}}.msi
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
