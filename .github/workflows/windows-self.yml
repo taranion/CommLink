@@ -20,7 +20,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: Visual Studio shell
-      uses: egor-tensin/vs-shell@v1
+      uses: egor-tensin/vs-shell@v2
 
     - name: Get version (bash)
       continue-on-error: true
@@ -103,7 +103,7 @@ jobs:
         password: ${{ secrets.DEPLOY_PASSWORD }}
 
   compile-windows-jre:
-    runs-on: windows-latest
+    runs-on: [self-hosted, Windows]
     steps:
     - name: checkout sources
       uses: actions/checkout@v2
@@ -113,7 +113,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: Visual Studio shell
-      uses: egor-tensin/vs-shell@v1
+      uses: egor-tensin/vs-shell@v2
 
     - uses: actions/cache@v1
       with:
