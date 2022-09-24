@@ -46,33 +46,33 @@ jobs:
         password: ${{ secrets.DEPLOY_PASSWORD }}
 
 
-#    - name: Compile
-#      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
-#      env: 
-#        JFROG_USER: ${{ secrets.JFROG_USER }}
-#        JFROG_PASS: ${{ secrets.JFROG_PASS }}
-#        LANG: de_DE
-#        CC: gcc-11
-#        CXX: g++-11
+    - name: Compile
+      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
+      env: 
+        JFROG_USER: ${{ secrets.JFROG_USER }}
+        JFROG_PASS: ${{ secrets.JFROG_PASS }}
+        LANG: de_DE
+        CC: gcc-11
+        CXX: g++-11
       
 #    - name: Install missing packages
 #      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev  libpango1.0-dev libxtst-dev
 
-#    - name: Link
-#      run:  mvn gluonfx:link
+    - name: Link
+      run:  mvn gluonfx:link
         
-#    - name: Show result
-#      run: ls target/gluonfx
+    - name: Show result
+      run: ls target/gluonfx
 
-#    - name: Package
-#      run:  mvn gluonfx:package
+    - name: Package
+      run:  mvn gluonfx:package
 
 #    - name: Logs
 #      if: always()      
 #      run: cat target/gluonfx/x86_64-linux/gvm/log/client-debug0.log
         
-#    - name: Show result
-#      run: ls target/gluonfx/x86_64-linux ; find staging
+    - name: Show result
+      run: ls target/gluonfx/x86_64-linux ; find staging
 
     - name: Package
       run:  mvn jpackage:jpackage
@@ -81,7 +81,7 @@ jobs:
       run: ls target/jpackage
         
     - name: Prepare staging
-      run: mkdir -p staging ; cp target/jpackage/commlink*rpg staging/commlink6-${{ env.RELEASE_VERSION }}.rpm ; chmod 755 staging/*
+      run: mkdir -p staging ; cp target/jpackage/commlink*rpm staging/commlink6-${{ env.RELEASE_VERSION }}.rpm ; chmod 755 staging/*
 
 #    - name: Upload Linux binary
 #      uses: actions/upload-artifact@v1

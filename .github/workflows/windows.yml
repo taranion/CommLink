@@ -47,10 +47,10 @@ jobs:
         LANG: de_DE
 
     - name: Link
-      run:  mvn gluonfx:link
+      run:  mvn -U -s settings.xml gluonfx:link
         
     - name: Show result
-      run: ls target/gluonfx
+      run: ls target/gluonfx/x86_64-windows
 
     - name: Package
       run:  mvn gluonfx:package
@@ -59,16 +59,7 @@ jobs:
       run: ls target/gluonfx/x86_64-windows
 
     - name: Prepare staging
-      run: mkdir Staging ; cp target/gluonfx/x86_64-windows/CommLink6.exe Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.exe; cp target/gluonfx/x86_64-windows/CommLink6-*msi Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.msi
-
-    - name: Package
-      run:  mvn package jpackage:jpackage@win
-        
-    - name: Show result JPackage
-      run: ls target/jpackage
-
-    - name: Prepare staging 2
-      run: cp target/jpackage/Commlink6_{{ env.RELEASE_VERSION }}.msi Staging/
+      run: mkdir Staging ; cp target/gluonfx/x86_64-windows/CommLink6.exe Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.exe; cp target/gluonfx/x86_64-windows/CommLink6-*msi Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.msi ; find Staging
 
     - name: Logs
       if: always()      
@@ -113,6 +104,52 @@ jobs:
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
+
+  compile-windows-jre:
+    runs-on: windows-latest
+    steps:
+    - name: checkout sources
+      uses: actions/checkout@v2
+ 
+    # Setup the Windows build environment
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Visual Studio shell
+      uses: egor-tensin/vs-shell@v1
+
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-    
+
+    - name: Get version (bash)
+      continue-on-error: true
+      shell: bash -l {0}
+      run: echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+
+    - name: setup-graalvm-ce
+      uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Compile
+      run:  mvn  -U -s settings.xml clean package jpackage:jpackage@win
+      env: 
+        JFROG_USER: ${{ secrets.JFROG_USER }}
+        JFROG_PASS: ${{ secrets.JFROG_PASS }}
+        LANG: de_DE
+        
+    - name: Show result JPackage
+      run: ls target/jpackage
+
+    - name: Prepare staging 2
+      run: mkdir Staging ; cp target/jpackage/Commlink6_{{ env.RELEASE_VERSION }}.msi Staging/
+        
+    - name: Show Staging content
+      run: ls Staging
       
     - name: Deploy MSI
       uses: garygrossgarten/github-action-scp@release
@@ -122,14 +159,4 @@ jobs:
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
-
-#    - name: Upload 
-#      uses: appleboy/scp-action@master
-#      with:
-#        host: eden.rpgframework.de
-#        username: bitbucket
-#        password: Oop6oi1o
-#        source: "target/client/x86_64-linux/Mondtor"
-#        target: "/var/www/html/downloads/linux"
-#        strip_components: 3
        
