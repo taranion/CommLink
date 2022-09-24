@@ -1,10 +1,10 @@
 name: Compile Windows Cloud
-#on: [push]
-on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+on: [push]
+#on:
+#  push:
+#    # Sequence of patterns matched against refs/tags
+#    tags:
+#    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 env:
   LANG: "de_DE.UTF-8"
 
@@ -102,7 +102,7 @@ jobs:
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: "target\\gluonfx\\x86_64-windows\\CommLink6-0.1.0.msi"
+        local: "target\\gluonfx\\x86_64-windows\\CommLink6-${{ env.RELEASE_VERSION }}.msi"
         remote: /var/www/html/commlink6-builds/win/CommLink6-${{env.RELEASE_VERSION}}.msi
         host: eden.rpgframework.de
         username: ghcommlink
