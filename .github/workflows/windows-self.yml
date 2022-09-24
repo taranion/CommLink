@@ -17,7 +17,7 @@ jobs:
  
     # Setup the Windows build environment
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.1.1
+      uses: microsoft/setup-msbuild@v1.1
 
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v1
@@ -113,7 +113,7 @@ jobs:
  
     # Setup the Windows build environment
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v1.1
 
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v1
@@ -143,10 +143,10 @@ jobs:
         LANG: de_DE
         
     - name: Show result JPackage
-      run: ls target/jpackage
+      run: ls target/jpackage ; mkdir Staging
 
     - name: Prepare staging 2
-      run: mkdir Staging ; cp target/jpackage/Commlink6-{{ env.RELEASE_VERSION }}.msi Staging/
+      run: cp target/jpackage/Commlink6-{{ env.RELEASE_VERSION }}.msi Staging
         
     - name: Show Staging content
       run: ls Staging

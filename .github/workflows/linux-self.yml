@@ -58,34 +58,12 @@ jobs:
         
     - name: Show result
       run: ls target/gluonfx/x86_64-linux 
-
-    - name: Package
-      run:  mvn jpackage:jpackage
-        
-    - name: Show result
-      run: ls target/jpackage
         
     - name: Prepare staging
       run: |
         mkdir -p staging ; 
         cp target/gluonfx/x86_64-linux/CommLink6 staging/commlink6-${{ env.RELEASE_VERSION }} ;
         chmod 755 staging/*
-
-#    - name: Upload Linux binary
-#      uses: actions/upload-artifact@v1
-#      with:
-#        name: CommLink6-Linux-${{ env.RELEASE_VERSION }}
-#        path: target/gluonfx/x86_64-linux/CommLink6
-
-#    - name: Upload 
-#      uses: appleboy/scp-action@master
-#      with:
-#        host: eden.rpgframework.de
-#        username: ghcommlink
-#        password: Oop6oi1o
-#        source: "target/client/x86_64-linux/CommLink6"
-#        target: "/var/www/html/downloads/linux"
-#        strip_components: 3
       
     - name: Upload
       continue-on-error: true
@@ -114,7 +92,7 @@ jobs:
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
         
     - name: Compile update artifact
-      run: mvn install
+      run: mvn package
     
     - name: Upload update artifact
       continue-on-error: false
@@ -127,7 +105,7 @@ jobs:
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
 
-    - name: Package
+    - name: JPackage
       run:  mvn jpackage:jpackage
         
     - name: Show result
