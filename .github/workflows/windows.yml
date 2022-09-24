@@ -1,4 +1,4 @@
-name: Compile Windows
+name: Compile Windows Cloud
 #on: [push]
 on:
   push:

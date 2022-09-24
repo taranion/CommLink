@@ -1,4 +1,4 @@
-name: Compile Android Cloud
+name: Compile Android Self
 on: [push]
 #on:
 #  push:

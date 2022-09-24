@@ -1,4 +1,4 @@
-name: Compile Windows
+name: Compile Windows Self
 on: [push]
 #on:
 #  push:
