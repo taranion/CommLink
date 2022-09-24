@@ -10,7 +10,7 @@ env:
 
 jobs:
   compile-windows:
-    runs-on: windows-latest
+    runs-on: [self-hosted, Windows]
     steps:
     - name: checkout sources
       uses: actions/checkout@v2
@@ -59,11 +59,7 @@ jobs:
       run: ls target/gluonfx/x86_64-windows
 
     - name: Prepare staging
-      run: |
-        mkdir Staging ; 
-        cp target/gluonfx/x86_64-windows/CommLink6.exe Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.exe; 
-        cp target/gluonfx/x86_64-windows/CommLink6-*msi Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.msi ; 
-        ls Staging
+      run: mkdir Staging ; cp target/gluonfx/x86_64-windows/CommLink6.exe Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.exe; cp target/gluonfx/x86_64-windows/CommLink6-*msi Staging/Commlink6_Native_${{ env.RELEASE_VERSION }}.msi ; find Staging
 
     - name: Logs
       if: always()      
@@ -71,6 +67,9 @@ jobs:
 
     - name: Show created WIX config file
       run: cat target\gluonfx\x86_64-windows\gvm\tmp\tmpMSI\config\main.wxs 
+        
+    - name: Show Staging content
+      run: ls Staging
 
 #    - name: Upload Windows binary
 #      continue-on-error: true
@@ -86,7 +85,7 @@ jobs:
 #        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
 #        path: target/gluonfx/x86_64-windows/Commlink6-${{ env.RELEASE_VERSION }}.msi
       
-    - name: Deploy Native EXE
+    - name: Deploy EXE
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
@@ -100,7 +99,7 @@ jobs:
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: "target\\gluonfx\\x86_64-windows\\CommLink6-1.0.msi"
+        local: "target\\gluonfx\\x86_64-windows\\Commlink6-${{ env.RELEASE_VERSION }}.msi"
         remote: /var/www/html/commlink6-builds/win/Commlink6-${{env.RELEASE_VERSION}}.msi
         host: eden.rpgframework.de
         username: ghcommlink
@@ -147,9 +146,7 @@ jobs:
       run: ls target/jpackage
 
     - name: Prepare staging 2
-      run: |
-        mkdir Staging ; 
-        cp target/jpackage/Commlink6-{{ env.RELEASE_VERSION }}.msi Staging/
+      run: mkdir Staging ; cp target/jpackage/Commlink6_{{ env.RELEASE_VERSION }}.msi Staging/
         
     - name: Show Staging content
       run: ls Staging
