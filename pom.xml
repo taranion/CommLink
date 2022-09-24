@@ -18,7 +18,7 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.14</client.plugin.version>
+		<client.plugin.version>1.0.15</client.plugin.version>
 		<attach.version>4.0.13</attach.version>
 		<rpgfw.version>5.0.2-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>

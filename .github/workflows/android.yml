@@ -10,7 +10,7 @@ env:
 
 jobs:
   compile-android:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,linux]
     steps:
     - name: checkout sources
       uses: actions/checkout@v2

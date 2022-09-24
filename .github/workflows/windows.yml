@@ -10,7 +10,7 @@ env:
 
 jobs:
   compile-windows:
-    runs-on: windows-latest
+    runs-on: [self-hosted,windows-latest]
     steps:
     - name: checkout sources
       uses: actions/checkout@v2
