@@ -114,7 +114,7 @@
 		<dependency>
 			<groupId>de.rpgframework</groupId>
 			<artifactId>eden-client-jfx</artifactId>
-			<version>0.0.3-SNAPSHOT</version>
+			<version>0.0.4-SNAPSHOT</version>
 		</dependency>
       <dependency>
         <groupId>org.prelle</groupId>
@@ -266,7 +266,7 @@
 						<skipSigning>true</skipSigning>
 						<!-- macOS / iOS -->
 						<bundleName>Commlink 6</bundleName>
-						<bundleShortVersion>${package.version}</bundleShortVersion>
+						<bundleVersion>${env.GITHUB_RUN_NUMBER}</bundleVersion>
 						
 						<!-- Android -->
 						<appLabel>CommLink 6</appLabel>

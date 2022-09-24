@@ -60,7 +60,7 @@ jobs:
 
     - name: zip APP bundle
       continue-on-error: true
-      run: cd target/gluonfx/x86_64-darwin ; zip CommLink6.app.zip  CommLink6.app
+      run: cd target/gluonfx/x86_64-darwin ; zip -r CommLink6.app.zip  CommLink6.app
         
     - name: Prepare staging
       continue-on-error: true
@@ -68,6 +68,7 @@ jobs:
         mkdir staging ; 
         cp target/gluonfx/x86_64-darwin/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; 
         cp -r target/gluonfx/x86_64-darwin/CommLink6.app staging/Commlink6-${{ env.RELEASE_VERSION }}.app ; 
+        cp -r target/gluonfx/x86_64-darwin/CommLink6.app.zip staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip ; 
         chmod 755 staging/*
         
     - name: Show result

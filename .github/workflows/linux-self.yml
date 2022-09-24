@@ -47,7 +47,7 @@ jobs:
       run:  mvn gluonfx:link
         
     - name: Show result
-      run: ls target/gluonfx/x86_64-linux
+      run: ls -l target/gluonfx/x86_64-linux
 
     - name: Create Native Installer
       run:  mvn gluonfx:package
@@ -57,7 +57,7 @@ jobs:
 #      run: cat target/gluonfx/x86_64-linux/gvm/log/client-debug0.log
         
     - name: Show result
-      run: ls target/gluonfx/x86_64-linux 
+      run: ls -l target/gluonfx/x86_64-linux 
         
     - name: Prepare staging
       run: |
@@ -112,12 +112,24 @@ jobs:
     - name: Show result
       run: ls target/jpackage
       
-    - name: Upload
+    - name: Upload JRE RPM
+      continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
         verbose: true
         local: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm
         remote: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.rpm
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: ${{ secrets.DEPLOY_PASSWORD }}
+      
+    - name: Upload JRE DEB
+      continue-on-error: true
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        verbose: true
+        local: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1_amd64.deb
+        remote: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.deb
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
