@@ -50,6 +50,7 @@ import de.rpgframework.shadowrun6.chargen.jfx.SR6CharactersOverviewPage;
 import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
 import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
+import de.rpgframework.shadowrun6.export.json.SR6JSONExportPlugin;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -85,7 +86,7 @@ public class ComLinkMain extends EdenClientApplication {
 		ExportPluginRegistry.register(new SR6BeginnerPDFPlugin());
 		ExportPluginRegistry.register(new SR6CompactPDFPlugin());
 //		ExportPluginRegistry.register(new SR6FoundryExportPlugin());
-//		ExportPluginRegistry.register(new SR6JSONExportPlugin());
+		ExportPluginRegistry.register(new SR6JSONExportPlugin());
 	}
 
 	//-------------------------------------------------------------------
@@ -203,7 +204,7 @@ public class ComLinkMain extends EdenClientApplication {
 						if (attach==null) continue;
 						Shadowrun6Character parsed = Shadowrun6Core.decode(attach.getData());
 						Shadowrun6Tools.resolveChar(parsed);
-						logger.log(Level.INFO, "Parsed character1: "+parsed);
+						logger.log(Level.INFO, "Parsed character1: {1} is {0}", parsed.getName(), handle.getUUID());
 						Shadowrun6Tools.runProcessors(parsed);
 						handle.setCharacter(parsed);
 						handle.setShortDescription(parsed.getShortDescription());
@@ -220,6 +221,7 @@ public class ComLinkMain extends EdenClientApplication {
 						BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.loading_character", handle.getName()));
 					}
 				}
+				BabylonEventBus.fireEvent(BabylonEventType.CHAR_MODIFIED, 2);
 			} catch (CharacterIOException e) {
 				logger.log(Level.ERROR, "Error accessing characters",e);
 				handleError(e);
