@@ -1,8 +1,6 @@
 [
 {
-  "name":"java.lang.String",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "name":"[Ljavafx.collections.transformation.SortedList$Element;"
 },
 {
   "name":"com.itextpdf.text.ImgRaw",
@@ -13,13 +11,13 @@
   "methods":[{"name":"<init>","parameterTypes":["com.itextpdf.text.Image"] }]
 },
 {
-  "name":"com.itextpdf.text.pdf.PdfName",
-  "allDeclaredFields":true
-},
-{
   "name":"com.itextpdf.text.Jpeg",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":["com.itextpdf.text.Image"] }]
+},
+{
+  "name":"com.itextpdf.text.pdf.PdfName",
+  "allDeclaredFields":true
 },
 {
   "name":"de.rpgframework.classification.Gender",
@@ -647,11 +645,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromMetaType",
+  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromFoci",
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun.ShadowrunCharacter"] }]
 },
 {
-  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromFoci",
+  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromMetaType",
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun.ShadowrunCharacter"] }]
 },
 {
@@ -763,6 +761,10 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.Shadowrun6Rules$PRIORITY_MAGIC",
+  "methods":[{"name":"getName","parameterTypes":["java.util.Locale"] }]
+},
+{
   "name":"de.rpgframework.shadowrun6.SkillList",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -829,11 +831,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun6.items.SoftwareTypes",
-  "allDeclaredFields":true,
-  "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
-},
-{
   "name":"de.rpgframework.shadowrun6.items.SR6AlternateUsage",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -850,6 +847,11 @@
 },
 {
   "name":"de.rpgframework.shadowrun6.items.SR6UsageMode",
+  "allDeclaredFields":true,
+  "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.items.SoftwareTypes",
   "allDeclaredFields":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
@@ -923,6 +925,10 @@
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.proc.CalculateSkillPools",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
   "name":"de.rpgframework.shadowrun6.proc.EnsureAttributePresence",
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 },
@@ -945,5 +951,23 @@
 {
   "name":"de.rpgframework.shadowrun6.proc.ResetModifications",
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
+  "name":"org.apache.commons.logging.LogFactory"
+},
+{
+  "name":"org.apache.commons.logging.impl.Jdk14Logger",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"org.apache.commons.logging.impl.Log4JLogger"
+},
+{
+  "name":"org.apache.commons.logging.impl.LogFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.commons.logging.impl.WeakHashtable",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]
