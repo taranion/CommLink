@@ -13,13 +13,13 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.release>11</maven.compiler.release>
+		<maven.compiler.release>17</maven.compiler.release>
 		<javafx.version>19</javafx.version>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.15</client.plugin.version>
-		<attach.version>4.0.13</attach.version>
+		<attach.version>4.0.16-SNAPSHOT</attach.version>
 		<rpgfw.version>5.0.2-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
 		<prism.verbose>true</prism.verbose>
@@ -179,7 +179,7 @@
 <!--   			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath> -->
 <!-- 		</dependency> -->
 
-		<dependency>
+		<!--dependency>
     		<groupId>org.apache.logging.log4j</groupId>
     		<artifactId>log4j-jpl</artifactId>
     		<version>2.18.0</version>
@@ -190,7 +190,7 @@
     		<artifactId>log4j-core</artifactId>
     		<version>2.18.0</version>
     		<scope>runtime</scope>
-		</dependency>
+		</dependency-->
 	</dependencies>
 
 	<repositories>
