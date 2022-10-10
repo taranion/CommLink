@@ -125,11 +125,11 @@ jobs:
         password: ${{ secrets.DEPLOY_PASSWORD }}
       
     - name: Upload JRE DEB
-      continue-on-error: true
+      continue-on-error: false
       uses: garygrossgarten/github-action-scp@release
       with:
         verbose: true
-        local: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1_amd64.deb
+        local: target/jpackage/commlink6_${{ env.RELEASE_VERSION }}-1_amd64.deb
         remote: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.deb
         host: eden.rpgframework.de
         username: ghcommlink

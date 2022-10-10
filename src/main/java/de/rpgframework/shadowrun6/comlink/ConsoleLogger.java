@@ -52,9 +52,17 @@ public class ConsoleLogger implements Logger {
 	@Override
 	public void log(Level level, ResourceBundle bundle, String format, Object... params) {
 		if (!isLoggable(level)) return;
+		String prefix = "";
 		try {
-			System.out.printf("ConsoleLogger [%s]: %s%n", level, 
-			MessageFormat.format(format, params));
+			throw new RuntimeException("trace");
+		} catch (Exception e) {
+			StackTraceElement element = e.getStackTrace()[2];
+			if (element.getClassName().equals("de.rpgframework.MultiLanguageResourceBundle"))
+				element = e.getStackTrace()[5];
+			prefix="("+element.getClassName().substring(element.getClassName().lastIndexOf(".")+1)+".java:"+element.getLineNumber()+") : ";
+		}
+		try {
+			System.out.printf("[%7s]: %s%n", level, prefix+MessageFormat.format(format, params));
 		} catch (Exception e) {
 		}
 	}

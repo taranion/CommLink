@@ -616,11 +616,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun.chargen.jfx.pane.ContactDetailPane",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"de.rpgframework.shadowrun.chargen.gen.APerValuePoints3",
   "allDeclaredFields":true
 },

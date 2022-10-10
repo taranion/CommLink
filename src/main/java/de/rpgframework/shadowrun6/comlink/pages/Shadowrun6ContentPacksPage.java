@@ -1,15 +1,11 @@
 package de.rpgframework.shadowrun6.comlink.pages;
 
-import java.io.IOException;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
-import java.net.URISyntaxException;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.gluonhq.attach.browser.BrowserService;
 import com.gluonhq.attach.util.Platform;
 
 import de.rpgframework.ResourceI18N;
@@ -73,14 +69,14 @@ public class Shadowrun6ContentPacksPage extends ContentPacksPage {
 			String url = ResourceI18N.get(RES, "page.contents.more.link.url");
 			logger.log(Level.INFO, "Visit "+url);
 			
-			BrowserService.create().ifPresent(service -> {
-			      try {
-					service.launchExternalBrowser(url);
-				} catch (IOException | URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			  });
+//			BrowserService.create().ifPresent(service -> {
+//			      try {
+//					service.launchExternalBrowser(url);
+//				} catch (IOException | URISyntaxException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			  });
 		});
 	}
 

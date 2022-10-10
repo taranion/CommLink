@@ -19,6 +19,8 @@ import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun.AdeptPower;
 import de.rpgframework.shadowrun.ComplexForm;
 import de.rpgframework.shadowrun.CritterPower;
+import de.rpgframework.shadowrun.MentorSpirit;
+import de.rpgframework.shadowrun.MentorSpirit.Type;
 import de.rpgframework.shadowrun.NPCType;
 import de.rpgframework.shadowrun.Quality;
 import de.rpgframework.shadowrun.chargen.jfx.FilterSpells;
@@ -35,6 +37,7 @@ import de.rpgframework.shadowrun6.SR6NPC;
 import de.rpgframework.shadowrun6.SR6Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
 import de.rpgframework.shadowrun6.Shadowrun6Tools;
+import de.rpgframework.shadowrun6.chargen.jfx.pane.MentorSpiritDescriptionPane;
 import de.rpgframework.shadowrun6.chargen.jfx.pane.QualityPathDescriptionPane;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
@@ -58,7 +61,9 @@ public class LibraryPage extends Page {
 	private Button btnQualities;
 	private Button btnSpells;
 	private Button btnPowers;
+	private Button btnMentor;
 	private Button btnComplex;
+	private Button btnParagon;
 	private Button btnQualityPaths;
 	private Button btnCritterPowers;
 	private Button btnCritters;
@@ -104,10 +109,20 @@ public class LibraryPage extends Page {
 		btnPowers.getStyleClass().add("category-button");
 		btnPowers.graphicProperty().addListener( scaleButtons);
 
+		btnMentor   = new Button(ResourceI18N.get(RES, "category.mentorspirits"));
+		btnMentor.setId("mentorspirits");
+		btnMentor.getStyleClass().add("category-button");
+		btnMentor.graphicProperty().addListener( scaleButtons);
+
 		btnComplex = new Button(ResourceI18N.get(RES, "category.complexforms"));
 		btnComplex.setId("complexforms");
 		btnComplex.getStyleClass().add("category-button");
 		btnComplex.graphicProperty().addListener( scaleButtons);
+
+		btnParagon   = new Button(ResourceI18N.get(RES, "category.paragons"));
+		btnParagon.setId("paragons");
+		btnParagon.getStyleClass().add("category-button");
+		btnParagon.graphicProperty().addListener( scaleButtons);
 
 		btnQualityPaths    = new Button(ResourceI18N.get(RES, "category.qualityPaths"));
 		btnQualityPaths.setId("qualityPaths");
@@ -132,7 +147,7 @@ public class LibraryPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void initLayout() {
-		content = new FlowPane(btnMetatypes, btnQualities, btnSpells, btnPowers, btnComplex, btnQualityPaths); //, btnCritterPowers, btnCritters, btnGrunts);
+		content = new FlowPane(btnMetatypes, btnQualities, btnQualityPaths, btnSpells, btnPowers, btnMentor, btnComplex, btnParagon, btnCritterPowers); //, btnCritterPowers, btnCritters, btnGrunts);
 		content.setVgap(10);
 		content.setHgap(10);
 		content.setId("categories");
@@ -160,7 +175,9 @@ public class LibraryPage extends Page {
 		btnPowers.setOnAction(ev -> openPowers(ev));
 		btnQualities.setOnAction(ev -> openQualities(ev));
 		btnMetatypes.setOnAction(ev -> openMetatypes(ev));
+		btnMentor.setOnAction(ev -> openMentors(ev));
 		btnComplex.setOnAction(ev -> openComplexForms(ev));
+		btnParagon.setOnAction(ev -> openParagon(ev));
 		btnQualityPaths.setOnAction(ev -> openQualityPaths(ev));
 		btnCritterPowers.setOnAction(ev -> openCritterPowers(ev));
 		btnCritters.setOnAction(ev -> openCritters(ev));
@@ -183,6 +200,48 @@ public class LibraryPage extends Page {
 			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
 			logger.log(Level.ERROR, "Error opening SpellPage",e);
+		}
+	}
+
+	//-------------------------------------------------------------------
+	private void openMentors(ActionEvent ev) {
+		logger.log(Level.WARNING, "Navigate Mentor Spirits");
+		try {
+			MentorSpiritDescriptionPane pane = new MentorSpiritDescriptionPane(Shadowrun6Tools.requirementResolver(Locale.getDefault()));
+			pane.setStyle("-fx-max-width: 35em");
+			FilteredListPage<MentorSpirit> page =new FilteredListPage<MentorSpirit>(
+					ResourceI18N.get(LibraryPage.RES, "category.mentorspirits"), 
+					() -> Shadowrun6Core.getItemList(MentorSpirit.class).stream().filter(m-> m.getType()==Type.MENTOR_SPIRIT).collect(Collectors.toList()), 
+					pane
+					);
+//			page.setCellFactory(lv -> new SpellListCell());
+//			page.setFilterInjector(new FilterSpells());
+			page.setAppLayout(getAppLayout());
+//			getAppLayout().navigateTo(page, false);
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
+		} catch (Exception e) {
+			logger.log(Level.ERROR, "Error opening Mentor Spirits",e);
+		}
+	}
+
+	//-------------------------------------------------------------------
+	private void openParagon(ActionEvent ev) {
+		logger.log(Level.WARNING, "Navigate Paragons");
+		try {
+			MentorSpiritDescriptionPane pane = new MentorSpiritDescriptionPane(Shadowrun6Tools.requirementResolver(Locale.getDefault()));
+			pane.setStyle("-fx-max-width: 35em");
+			FilteredListPage<MentorSpirit> page =new FilteredListPage<MentorSpirit>(
+					ResourceI18N.get(LibraryPage.RES, "category.paragons"), 
+					() -> Shadowrun6Core.getItemList(MentorSpirit.class).stream().filter(m-> m.getType()==Type.PARAGON).collect(Collectors.toList()), 
+					pane
+					);
+//			page.setCellFactory(lv -> new SpellListCell());
+//			page.setFilterInjector(new FilterSpells());
+			page.setAppLayout(getAppLayout());
+//			getAppLayout().navigateTo(page, false);
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
+		} catch (Exception e) {
+			logger.log(Level.ERROR, "Error opening Paragons",e);
 		}
 	}
 
@@ -253,11 +312,10 @@ public class LibraryPage extends Page {
 	private void openComplexForms(ActionEvent ev) {
 		logger.log(Level.WARNING, "Navigate Complex Forms");
 		try {
-			ComplexFormDescriptionPane pane = new ComplexFormDescriptionPane();
 			FilteredListPage<ComplexForm> page =new FilteredListPage<ComplexForm>(
 					ResourceI18N.get(LibraryPage.RES, "category.complexforms"), 
 					() -> Shadowrun6Core.getItemList(ComplexForm.class), 
-					pane
+					new ComplexFormDescriptionPane()
 					);
 //			page.setCellFactory(lv -> new SpellListCell());
 //			page.setFilterInjector(new FilterSpells());

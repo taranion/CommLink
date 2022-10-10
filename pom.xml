@@ -422,7 +422,7 @@
 				<gluonfx.target>host</gluonfx.target>
 			</properties>
 			<dependencies>
-                 <!--dependency>
+                 <dependency>
                     <groupId>com.gluonhq.attach</groupId>
                     <artifactId>browser</artifactId>
                     <version>${attach.version}</version>
@@ -435,7 +435,7 @@
                     <version>${attach.version}</version>
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
-                </dependency-->
+                </dependency>
                <dependency>
                     <groupId>com.gluonhq.attach</groupId>
                     <artifactId>display</artifactId>
