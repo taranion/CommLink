@@ -3,6 +3,10 @@
   "name":"[Ljavafx.collections.transformation.SortedList$Element;"
 },
 {
+  "name":"java.lang.String",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"com.itextpdf.text.ImgRaw",
   "methods":[{"name":"<init>","parameterTypes":["com.itextpdf.text.Image"] }]
 },
@@ -313,6 +317,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"de.rpgframework.shadowrun.ComplexFormValue",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"de.rpgframework.shadowrun.Contact",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -603,6 +612,11 @@
 },
 {
   "name":"de.rpgframework.shadowrun.TraditionList",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun.chargen.jfx.pane.ContactDetailPane",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
