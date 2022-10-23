@@ -9,12 +9,14 @@ import java.util.ResourceBundle;
  *
  */
 public class ConsoleLogger implements Logger {
+	
+	private String name;
+	private Level minLevel;
 
 	//-------------------------------------------------------------------
-	/**
-	 */
-	public ConsoleLogger() {
-		// TODO Auto-generated constructor stub
+	public ConsoleLogger(String name, Level minLevel) {
+		this.name = name;
+		this.minLevel = minLevel;
 	}
 
 	//-------------------------------------------------------------------
@@ -23,7 +25,7 @@ public class ConsoleLogger implements Logger {
 	 */
 	@Override
 	public String getName() {
-		return "ConsoleLogger";
+		return name;
 	}
 
 	//-------------------------------------------------------------------
@@ -32,7 +34,7 @@ public class ConsoleLogger implements Logger {
 	 */
 	@Override
 	public boolean isLoggable(Level level) {
-		return level.getSeverity()>=Level.WARNING.getSeverity();
+		return level.getSeverity()>=minLevel.getSeverity();
 	}
 
 	//-------------------------------------------------------------------
@@ -62,7 +64,7 @@ public class ConsoleLogger implements Logger {
 			prefix="("+element.getClassName().substring(element.getClassName().lastIndexOf(".")+1)+".java:"+element.getLineNumber()+") : ";
 		}
 		try {
-			System.out.printf("[%7s]: %s%n", level, prefix+MessageFormat.format(format, params));
+			System.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
 		} catch (Exception e) {
 		}
 	}

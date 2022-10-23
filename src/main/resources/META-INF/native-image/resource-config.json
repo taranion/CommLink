@@ -2,6 +2,21 @@
   "resources":{
   "includes":[
     {
+      "pattern":".*/.*afm$"
+    }, 
+    {
+      "pattern":".*ttf"
+    }, 
+    {
+      "pattern":"\\Qcom/itextpdf/text/error_messages/en.lng\\E"
+    }, 
+    {
+      "pattern":"\\Qcom/itextpdf/text/pdf/fonts/Times-Bold.afm\\E"
+    }, 
+    {
+      "pattern":"\\Qcom/itextpdf/text/pdf/fonts/glyphlist.txt\\E"
+    }, 
+    {
       "pattern":"\\Qde/rpgframework/jfx/Person.png\\E"
     }, 
     {
@@ -197,32 +212,27 @@
       "pattern":"\\Qorg/controlsfx/control/toggleswitch.css\\E"
     }, 
     {
-      "pattern":"\\Qcom/itextpdf/text/error_messages/en.lng\\E"
-    }, 
-    {
-      "pattern":"\\Qcom/itextpdf/text/pdf/fonts/Times-Bold.afm\\E"
-    }, 
-    {
-      "pattern":"\\Qcom/itextpdf/text/pdf/fonts/glyphlist.txt\\E"
-    }, 
-    {
       "pattern":"org/prelle/shadowrun6/export/standard/fonts/Roboto-Medium.ttf"
-    }, 
-    {
-      "pattern":".*ttf"
-    }, 
-    {
-      "pattern":".*/.*afm$"
     }
   ]},
   "bundles":[
     {
+      "name":"com.sun.javafx.tk.quantum.QuantumMessagesBundle",
+      "locales":[
+        "", 
+        "und"
+      ]
+    }, 
+    {
       "name":"de.rpgframework.eden.client.jfx.EdenClientApplication",
-      "locales":[""]
+      "locales":[
+        "", 
+        "und"
+      ]
     }, 
     {
       "name":"de.rpgframework.eden.client.jfx.PDFPage",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.genericrpg.data.GenericRPGTools",
@@ -233,95 +243,102 @@
     }, 
     {
       "name":"de.rpgframework.jfx.CharacterHandleBox",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.jfx.FilteredListPage",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.jfx.GenericDescriptionVBox",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.jfx.pages.CharacterViewLayout",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.jfx.pages.CharactersOverviewPage",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.jfx.pages.ContentPacksPage",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.jfx.rules.SkillTable",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.jfx.section.AppearanceSection",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.jfx.wizard.WizardPageGenerator",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun.ASpell",
       "locales":[
         "", 
-        "de"
+        "de", 
+        "und"
       ]
     }, 
     {
       "name":"de.rpgframework.shadowrun.Quality",
       "locales":[
-        "", 
-        "de"
+        "de", 
+        "und"
       ]
     }, 
     {
       "name":"de.rpgframework.shadowrun.ShadowrunAttribute",
       "locales":[
         "", 
-        "de"
+        "de", 
+        "und"
       ]
     }, 
     {
       "name":"de.rpgframework.shadowrun.ShadowrunCore",
       "locales":[
         "de", 
-        "en"
+        "en", 
+        "und"
       ]
     }, 
     {
       "name":"de.rpgframework.shadowrun.ShadowrunRules",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun.chargen.gen.IShadowrunCharacterGenerator",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.ShadowrunAttributeTable",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.ShadowrunSkillTable",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.pane.DescriptionPanes",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.pane.MetatypePane",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.section.Section",
-      "locales":[""]
+      "locales":["und"]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.Shadowrun6Rules",
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.Shadowrun6Tools",
@@ -332,84 +349,90 @@
     }, 
     {
       "name":"de.rpgframework.shadowrun6.chargen.charctrl.SR6CharacterGenerator",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.chargen.gen.CommonSkillGenerator",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.chargen.gen.PriorityCharacterGenerator",
-      "locales":[""]
-    }, 
-    {
-      "name":"de.rpgframework.shadowrun6.Shadowrun6Rules",
-      "locales":[""]
-    }, 
-    {
-      "name":"de.rpgframework.shadowrun6.chargen.jfx.section.Section",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.chargen.jfx.SR6CharacterViewLayout",
-      "locales":[""]
+      "locales":["und"]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.chargen.jfx.section.Section",
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.comlink.ComLinkMain",
-      "locales":["de"]
+      "locales":[
+        "", 
+        "de", 
+        "und"
+      ]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.comlink.pages.LibraryPage",
-      "locales":["de"]
+      "locales":[
+        "", 
+        "de", 
+        "und"
+      ]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.data.companion.i18n.companion",
-      "locales":[""]
-    }, 
-    {
-      "name":"de.rpgframework.shadowrun6.data.firing_squad.i18n.firing_squad",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.data.core.i18n.core",
       "locales":[
         "", 
-        "de"
+        "de", 
+        "und"
       ]
     }, 
     {
+      "name":"de.rpgframework.shadowrun6.data.firing_squad.i18n.firing_squad",
+      "locales":["und"]
+    }, 
+    {
       "name":"de.rpgframework.shadowrun6.data.hack_slash.i18n.hack_slash",
-      "locales":[""]
+      "locales":["und"]
     }, 
     {
       "name":"de.rpgframework.shadowrun6.i18n.core",
       "locales":[
-        "", 
-        "de"
+        "de", 
+        "und"
       ]
-    }, 
-    {
-      "name":"org.prelle.shadowrun6.export.standard.i18n.print",
-      "locales":[""]
-    }, 
-    {
-      "name":"org.prelle.shadowrun6.export.beginner.i18n.print",
-      "locales":[""]
-    }, 
-    {
-      "name":"org.prelle.shadowrun6.export.compact.i18n.print",
-      "locales":[""]
     }, 
     {
       "name":"org.prelle.javafx.JavaFXConstants",
       "locales":[
         "", 
-        "de"
+        "de", 
+        "und"
       ]
+    }, 
+    {
+      "name":"org.prelle.shadowrun6.export.beginner.i18n.print",
+      "locales":["und"]
+    }, 
+    {
+      "name":"org.prelle.shadowrun6.export.compact.i18n.print",
+      "locales":["und"]
+    }, 
+    {
+      "name":"org.prelle.shadowrun6.export.standard.i18n.print",
+      "locales":["und"]
     }
   ]
 }

@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import java.util.logging.LogManager;
 
 import org.prelle.javafx.BitmapIcon;
-import org.prelle.javafx.DebugPage;
 import org.prelle.javafx.FlexibleApplication;
 import org.prelle.javafx.FontIcon;
 import org.prelle.javafx.NavigationPane;
@@ -28,12 +27,15 @@ import de.rpgframework.character.Attachment.Type;
 import de.rpgframework.character.CharacterHandle;
 import de.rpgframework.character.CharacterIOException;
 import de.rpgframework.character.CharacterProviderLoader;
+import de.rpgframework.character.RuleSpecificCharacterObject;
 import de.rpgframework.core.BabylonEventBus;
 import de.rpgframework.core.BabylonEventType;
 import de.rpgframework.core.RoleplayingSystem;
+import de.rpgframework.eden.client.jfx.EdenDebugPage;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
+import de.rpgframework.genericrpg.items.CarriedItem;
 import de.rpgframework.jfx.ReferencePDFViewer;
 import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
@@ -44,6 +46,7 @@ import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
 import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import de.rpgframework.shadowrun6.export.json.SR6JSONExportPlugin;
+import de.rpgframework.shadowrun6.items.ItemTemplate;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -229,7 +232,7 @@ public class ComLinkMain extends EdenClientApplication {
 		logger.log(Level.INFO, "createPage(" + menuItem + ")");
 		try {
 			if (menuItem == navigAbout) {
-				return new DebugPage(super.getDirectories());
+				return new EdenDebugPage(super.getDirectories());
 			} else if (menuItem == navigLookup) {
 				return new LibraryPage();
 			} else if (menuItem == navigChars) {
@@ -248,6 +251,24 @@ public class ComLinkMain extends EdenClientApplication {
 		}
 		logger.log(Level.WARNING, "No page for " + menuItem.getText());
 		return null;
+	}
+
+	//-------------------------------------------------------------------
+	/**
+	 * @see de.rpgframework.eden.client.jfx.EdenClientApplication#importXML(byte[])
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	protected Shadowrun6Character importXML(byte[] xml) {
+		try {
+			Shadowrun6Character model = Shadowrun6Core.decode(xml);
+			Shadowrun6Tools.resolveChar(model);
+			Shadowrun6Tools.runProcessors(model);
+			return model;
+		} catch (CharacterIOException e) {
+			logger.log(Level.ERROR, "Failed decoding imported XML",e);
+			return null;
+		}
 	}
 
 }
