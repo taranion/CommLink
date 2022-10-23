@@ -1,15 +1,20 @@
 package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.System.Logger.Level;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.LogManager;
 
 import org.prelle.javafx.BitmapIcon;
+import org.prelle.javafx.CloseType;
 import org.prelle.javafx.FlexibleApplication;
 import org.prelle.javafx.FontIcon;
+import org.prelle.javafx.ManagedDialog;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.ResponsiveControlManager;
@@ -17,6 +22,7 @@ import org.prelle.javafx.SymbolIcon;
 import org.prelle.shadowrun6.export.beginner.plugin.SR6BeginnerPDFPlugin;
 import org.prelle.shadowrun6.export.compact.plugin.SR6CompactPDFPlugin;
 import org.prelle.shadowrun6.export.standard.StandardPDFPlugin;
+import org.prelle.simplepersist.SerializationException;
 
 import com.gluonhq.attach.util.Platform;
 
@@ -47,10 +53,14 @@ import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import de.rpgframework.shadowrun6.export.json.SR6JSONExportPlugin;
 import de.rpgframework.shadowrun6.items.ItemTemplate;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -110,7 +120,8 @@ public class ComLinkMain extends EdenClientApplication {
         setStyle(stage.getScene(), FlexibleApplication.DARK_STYLE);
         stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-        
+        loadData();
+       
 //       ScenicView.show(stage.getScene());
 
         ReferencePDFViewer.setPDFPathResolver( (id,lang) -> getPDFPathFor(RoleplayingSystem.SHADOWRUN6,id,lang));
@@ -137,8 +148,8 @@ public class ComLinkMain extends EdenClientApplication {
 			try {
 				List<CharacterHandle> handles = CharacterProviderLoader.getCharacterProvider().getMyCharacters(RoleplayingSystem.SHADOWRUN6);
 				for (CharacterHandle handle : handles) {
+					Attachment attach = null;
 					try {
-						Attachment attach = null;
 						try {
 							attach = CharacterProviderLoader.getCharacterProvider().getFirstAttachment(handle, Type.CHARACTER, Format.RULESPECIFIC);
 						} catch (Exception e) {
@@ -154,10 +165,20 @@ public class ComLinkMain extends EdenClientApplication {
 						handle.setShortDescription(parsed.getShortDescription());
 						logger.log(Level.INFO, "Parsed character2: "+parsed.getShortDescription());
 					} catch (CharacterIOException e) {
-						// TODO Auto-generated catch block
-						logger.log(Level.ERROR, "Failed loading character {0}: {1}", handle.getName(),e.getCode(),e);
-						e.printStackTrace();
-						BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.loading_character", handle.getName(), e.getCode()));
+						if (e.getCause()!=null && e.getCause() instanceof SerializationException) {
+							SerializationException cause = (SerializationException) e.getCause();
+							logger.log(Level.ERROR, "Failed decoding character {0} in line {2}:{3}\nReason: {1}", handle.getName(),cause.getMessage(), cause.getLine(), cause.getColumn());
+							BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.decoding_character", 
+									handle.getName(), 
+									e.getCode(), 
+									cause.getLine(), 
+									cause.getColumn(), 
+									cause.getMessage()
+									), cause, (attach!=null)?attach.getLocalFile():null);
+						} else {
+							logger.log(Level.ERROR, "Failed loading character {0}: {1}", handle.getName(),e.getCode(),e);
+							BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.loading_character", handle.getName(), e.getCode()), e);
+						}
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						logger.log(Level.ERROR, "Failed loading character {0}", handle.getName(),e);
@@ -177,6 +198,60 @@ public class ComLinkMain extends EdenClientApplication {
 		});
 		thread.run();
 	}
+	
+    //-------------------------------------------------------------------
+    /**
+     * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getErrorDialogResourceBundle()
+     */
+    @Override
+	protected ResourceBundle getErrorDialogResourceBundle() {
+		return RES;
+	}
+	
+    //-------------------------------------------------------------------
+    /**
+     * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getErrorDialogImage()
+     */
+    @Override
+	protected Image getErrorDialogImage() {
+		return new Image(ComLinkMain.class.getResourceAsStream("Dialog1.png"));
+	}
+	
+//	//-------------------------------------------------------------------
+//	/**
+//	 * @see de.rpgframework.eden.client.jfx.EdenClientApplication#showUIMessage(int, java.lang.String, java.lang.Throwable)
+//	 */
+//    @Override
+//	protected void showUIMessage(int type, String mess, Throwable cause, Path file) {
+//		String title = (type==0)?ResourceI18N.get(RES, "uimessage.info"):((type==1)?ResourceI18N.get(RES, "uimessage.warning"):ResourceI18N.get(RES, "uimessage.error"));
+//
+//		Label content= new Label(mess);
+//		content.setWrapText(true);
+//		content.getStyleClass().add("text-body");
+//		
+//		
+//		VBox layout = new VBox(10, content);
+//		if (cause!=null) {
+//			StringWriter out = new StringWriter();
+//			cause.printStackTrace(new PrintWriter(out));
+//			TextArea taTrace = new TextArea(out.toString());
+//			taTrace.setPrefColumnCount(40);
+//			TitledPane tpTrace = new TitledPane(ResourceI18N.get(RES, "uimessage.stacktrace"), taTrace);
+//			tpTrace.setStyle("-fx-font-size: 100%");
+//			Accordion accord = new Accordion(tpTrace);
+//			if (file!=null) {
+//				TitledPane tpPath = new TitledPane(ResourceI18N.get(RES, "uimessage.file"), new Label(file.toAbsolutePath().toString()));
+//				tpPath.setStyle("-fx-font-size: 100%");
+//				accord.getPanes().add(tpPath);
+//			}
+//			layout.getChildren().add(accord);
+//		}
+//		
+//		ManagedDialog dialog = new ManagedDialog(title, layout, CloseType.OK);
+//		dialog.setImage(new Image(ComLinkMain.class.getResourceAsStream("Dialog1.png")));
+//		
+//		showAlertAndCall(dialog, null);
+//	}
 
 	//-------------------------------------------------------------------
 	/**
