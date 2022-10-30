@@ -112,6 +112,11 @@
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
 {
+  "name":"de.rpgframework.genericrpg.Reward",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"de.rpgframework.genericrpg.ValueType",
   "allDeclaredFields":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
@@ -327,6 +332,10 @@
   "name":"de.rpgframework.genericrpg.requirements.ValueRequirement",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun.ACommonCharacterSettings",
+  "allDeclaredFields":true
 },
 {
   "name":"de.rpgframework.shadowrun.ANPC",
@@ -703,7 +712,7 @@
   "allDeclaredFields":true
 },
 {
-  "name":"de.rpgframework.shadowrun.chargen.gen.APrioritySettings",
+  "name":"de.rpgframework.shadowrun.chargen.gen.IPrioritySettings",
   "allDeclaredFields":true
 },
 {
@@ -862,11 +871,25 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun6.chargen.gen.PriorityCharacterGenerator",
+  "name":"de.rpgframework.shadowrun6.chargen.gen.CommonSR6GeneratorSettings",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.PointBuyCharacterGenerator",
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }]
 },
 {
-  "name":"de.rpgframework.shadowrun6.chargen.gen.SR6PrioritySettings",
+  "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.SR6PointBuySettings",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.PriorityCharacterGenerator",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SR6PrioritySettings",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },

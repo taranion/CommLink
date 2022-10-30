@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.System.Logger.Level;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -71,14 +73,19 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
+    	System.out.println("Default locale = "+Locale.getDefault());
 //    	System.setProperty("prism.forceGPU", "true");
 //    	System.setProperty("prism.verbose", "true");
-//    	List<String> keys = new ArrayList<String>();
-//    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
-//    	Collections.sort(keys);
-//		for (String key : keys) {
-//			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
-//		}
+    	List<String> keys = new ArrayList<String>();
+    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
+    	Collections.sort(keys);
+		for (String key : keys) {
+			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+		}
+		
+		System.out.println("No. Args = "+args.length);
+		for (int i=0; i<args.length; i++)
+			System.out.println("Arg "+i+": "+args[i]);
 //		Locale.setDefault(Locale.ENGLISH);
 		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
 		LogManager.getLogManager().reset();

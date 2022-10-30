@@ -270,7 +270,7 @@
       "locales":["und"]
     }, 
     {
-      "name":"de.rpgframework.jfx.section.AppearanceSection",
+      "name":"de.rpgframework.jfx.section.Section",
       "locales":["und"]
     }, 
     {
@@ -352,11 +352,15 @@
       "locales":["und"]
     }, 
     {
+      "name":"de.rpgframework.shadowrun6.chargen.gen.CharacterGeneratorRegistry",
+      "locales":["und"]
+    }, 
+    {
       "name":"de.rpgframework.shadowrun6.chargen.gen.CommonSkillGenerator",
       "locales":["und"]
     }, 
     {
-      "name":"de.rpgframework.shadowrun6.chargen.gen.PriorityCharacterGenerator",
+      "name":"de.rpgframework.shadowrun6.chargen.gen.priority.PriorityCharacterGenerator",
       "locales":["und"]
     }, 
     {

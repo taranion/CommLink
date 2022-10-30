@@ -64,7 +64,7 @@ public class ConsoleLogger implements Logger {
 			prefix="("+element.getClassName().substring(element.getClassName().lastIndexOf(".")+1)+".java:"+element.getLineNumber()+") : ";
 		}
 		try {
-			System.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
+			System.out.printf("CL[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
 		} catch (Exception e) {
 		}
 	}

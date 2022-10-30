@@ -23,6 +23,8 @@
 		<rpgfw.version>5.0.2-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
 		<prism.verbose>true</prism.verbose>
+		<runtime.jvm.options>-DhelloJVM=world</runtime.jvm.options>
+      <runtime.options>-Duse.fullscreen=true,-Dhello=world</runtime.options>
 	</properties>
 
 	<dependencies>
@@ -174,7 +176,7 @@
 <!--   			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath> -->
 <!-- 		</dependency> -->
 
-		<dependency>
+		<!--dependency>
     		<groupId>org.apache.logging.log4j</groupId>
     		<artifactId>log4j-jpl</artifactId>
     		<version>2.18.0</version>
@@ -185,7 +187,7 @@
     		<artifactId>log4j-core</artifactId>
     		<version>2.18.0</version>
     		<scope>runtime</scope>
-		</dependency>
+		</dependency-->
 	</dependencies>
 
 	<repositories>
@@ -214,8 +216,13 @@
 		     <configuration>
 			    <mainClass>${mainClassName}</mainClass>
 			    <options>
-				     <option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option>
+			    	<option>-Doption1=wert1</option>
+			    	<option>--add-opens</option>
+			    	<option>-Doption2=wert2</option>
+			    	<option>Hello</option>
+			    	<option>Hallo=Welt</option>
 			    </options>
+			    <commandlineArgs>Held</commandlineArgs>
 		     </configuration>
 	      </plugin>
 
@@ -236,6 +243,10 @@
 						<list>afm</list>
 					</resourcesList>
 					<mainClass>${mainClassName}</mainClass>
+					<runtimeArgs>
+						<arg>RTARG1</arg>
+						<arg>RTARG2=welt</arg>
+					</runtimeArgs>
 					<!-- <reflectionList> -->
 					<!-- <list>org.prelle.javafx.NavigationView</list> -->
 					<!-- </reflectionList> -->
@@ -243,6 +254,8 @@
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
 						<arg>-H:IncludeLocales=de,en</arg>
+						<arg>-Dapp.testprop=1</arg>
+						 <arg>-Dprism.verbose=true</arg>
 					</nativeImageArgs>
 					<attachList>
                         <list>browser</list>
@@ -252,6 +265,7 @@
                         <list>storage</list>
 					</attachList>
 					<releaseConfiguration>
+					
 						<description>Shadowrun 6 character management</description>
 						<vendor>Stefan Prelle</vendor>
 						<version>${package.version}</version>
@@ -373,6 +387,7 @@
         			<javaOptions>
             		<option>--enable-preview</option>
             		<option>-Dfile.encoding=UTF-8</option>
+            		<option>-Dproject.version=${project.version}</option>
         			</javaOptions>
         			
         			<linuxAppCategory>Game</linuxAppCategory>
