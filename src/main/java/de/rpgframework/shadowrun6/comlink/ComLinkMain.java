@@ -50,6 +50,7 @@ import de.rpgframework.shadowrun6.Shadowrun6Character;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
 import de.rpgframework.shadowrun6.Shadowrun6Tools;
 import de.rpgframework.shadowrun6.chargen.jfx.SR6CharactersOverviewPage;
+import de.rpgframework.shadowrun6.comlink.pages.AboutPage;
 import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
 import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
@@ -314,7 +315,7 @@ public class ComLinkMain extends EdenClientApplication {
 		logger.log(Level.INFO, "createPage(" + menuItem + ")");
 		try {
 			if (menuItem == navigAbout) {
-				return new EdenDebugPage(super.getDirectories());
+				return new AboutPage(super.getDirectories());
 			} else if (menuItem == navigLookup) {
 				return new LibraryPage();
 			} else if (menuItem == navigChars) {

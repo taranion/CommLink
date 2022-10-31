@@ -244,13 +244,11 @@
 					</resourcesList>
 					<mainClass>${mainClassName}</mainClass>
 					<runtimeArgs>
+					<!-- Added as command line params when on Android (but not on desktop) -->
 						<arg>RTARG1</arg>
 						<arg>RTARG2=welt</arg>
+						<arg>-Dproject.version=${project.version}</arg>
 					</runtimeArgs>
-					<!-- <reflectionList> -->
-					<!-- <list>org.prelle.javafx.NavigationView</list> -->
-					<!-- </reflectionList> -->
-					<!--reflectionList>org.apache.logging.log4j.message.DefaultFlowMessageFactory,org.apache.logging.log4j.message.ParameterizedMessageFactory</reflectionList -->
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
 						<arg>-H:IncludeLocales=de,en</arg>
