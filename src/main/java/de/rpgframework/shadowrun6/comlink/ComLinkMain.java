@@ -87,7 +87,7 @@ public class ComLinkMain extends EdenClientApplication {
 		System.out.println("No. Args = "+args.length);
 		for (int i=0; i<args.length; i++)
 			System.out.println("Arg "+i+": "+args[i]);
-//		Locale.setDefault(Locale.ENGLISH);
+		Locale.setDefault(Locale.ENGLISH);
 		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
 		LogManager.getLogManager().reset();
        launch(args);

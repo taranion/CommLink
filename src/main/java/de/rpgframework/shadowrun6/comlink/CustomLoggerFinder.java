@@ -29,6 +29,8 @@ public class CustomLoggerFinder extends LoggerFinder {
 			ret = new ConsoleLogger(name, Level.ERROR);
 		} else if (name.endsWith(".proc")) {
 			ret = new ConsoleLogger(name, Level.WARNING);
+		} else if (name.equals("de.rpgframework.shadowrun6.chargen.gen.priority.attrib")) {
+			ret = new ConsoleLogger(name, Level.TRACE);
 		} else {
 			System.err.println("getLogger: "+name);
 			ret = new ConsoleLogger(name, Level.WARNING);

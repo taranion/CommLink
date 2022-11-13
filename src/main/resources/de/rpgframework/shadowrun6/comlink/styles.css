@@ -57,13 +57,23 @@
 }
 */
 
-.toggle-button {
+.tabs-button {
 	-fx-background-color: transparent;
 	-fx-padding: 4px 4px 0 4px;
 	-fx-border-width: 0px;
 }
-.toggle-button:selected {
+.tabs-button:selected {
 	-fx-border-width: 0 0 2px 0;
+}
+.install-button {
+	-fx-graphic: url("toggle-unselected.png");
+	-fx-background-color: transparent;
+	-fx-padding: 4px 4px 0 4px;
+	-fx-border-width: 0px;
+	-fx-content-display: graphic-only;
+}
+.install-button:selected {
+	-fx-graphic: url("toggle-selected.png");
 }
 
 .application-screen-navig {
