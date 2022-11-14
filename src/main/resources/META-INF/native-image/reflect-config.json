@@ -886,12 +886,22 @@
 },
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.priority.PriorityCharacterGenerator",
-  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }]
+  "methods":[
+		{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] },
+		{"name":"<init>","parameterTypes":[] }
+		]
 },
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SR6PrioritySettings",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SumToTenCharacterGenerator",
+  "methods":[
+		{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] },
+		{"name":"<init>","parameterTypes":[] }
+		]
 },
 {
   "name":"de.rpgframework.shadowrun6.comlink.ComLinkMain",

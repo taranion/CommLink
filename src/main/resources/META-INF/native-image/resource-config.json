@@ -364,6 +364,10 @@
       "locales":["und"]
     }, 
     {
+      "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SumToTenCharacterGenerator",
+      "locales":["und"]
+    }, 
+    {
       "name":"de.rpgframework.shadowrun6.chargen.jfx.SR6CharacterViewLayout",
       "locales":["und"]
     }, 
