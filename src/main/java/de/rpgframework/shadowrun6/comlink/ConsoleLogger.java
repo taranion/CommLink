@@ -45,6 +45,9 @@ public class ConsoleLogger implements Logger {
 	public void log(Level level, ResourceBundle bundle, String msg, Throwable thrown) {
 		if (!isLoggable(level)) return;
 		System.out.printf("ConsoleLogger [%s]: %s - %s%n", level, msg, thrown);
+		if (ComLinkMain.out!=null && !ComLinkMain.out.checkError()) {
+			ComLinkMain.out.printf("ConsoleLogger [%s]: %s - %s%n", level, msg, thrown);
+		}
 	}
 
 	//-------------------------------------------------------------------
@@ -65,6 +68,10 @@ public class ConsoleLogger implements Logger {
 		}
 		try {
 			System.out.printf("CL[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
+			if (ComLinkMain.out!=null && !ComLinkMain.out.checkError()) {
+				ComLinkMain.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
+				
+			}
 		} catch (Exception e) {
 		}
 	}

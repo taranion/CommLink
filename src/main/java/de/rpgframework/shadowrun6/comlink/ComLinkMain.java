@@ -1,22 +1,24 @@
 package de.rpgframework.shadowrun6.comlink;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.lang.System.Logger.Level;
+import java.lang.System.LoggerFinder;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 import org.prelle.javafx.BitmapIcon;
-import org.prelle.javafx.CloseType;
 import org.prelle.javafx.FlexibleApplication;
 import org.prelle.javafx.FontIcon;
-import org.prelle.javafx.ManagedDialog;
 import org.prelle.javafx.NavigationPane;
 import org.prelle.javafx.Page;
 import org.prelle.javafx.ResponsiveControlManager;
@@ -35,15 +37,12 @@ import de.rpgframework.character.Attachment.Type;
 import de.rpgframework.character.CharacterHandle;
 import de.rpgframework.character.CharacterIOException;
 import de.rpgframework.character.CharacterProviderLoader;
-import de.rpgframework.character.RuleSpecificCharacterObject;
 import de.rpgframework.core.BabylonEventBus;
 import de.rpgframework.core.BabylonEventType;
 import de.rpgframework.core.RoleplayingSystem;
-import de.rpgframework.eden.client.jfx.EdenDebugPage;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
-import de.rpgframework.genericrpg.items.CarriedItem;
 import de.rpgframework.jfx.ReferencePDFViewer;
 import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
@@ -55,15 +54,10 @@ import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
 import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import de.rpgframework.shadowrun6.export.json.SR6JSONExportPlugin;
-import de.rpgframework.shadowrun6.items.ItemTemplate;
-import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -71,12 +65,17 @@ import javafx.stage.Stage;
 public class ComLinkMain extends EdenClientApplication {
 	
 	private ResourceBundle RES = ResourceBundle.getBundle(ComLinkMain.class.getName(), ComLinkMain.class.getModule());
+	
+	static PrintWriter out;
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
+    	checkInit();
+//    	System.getLogger("test");
+		LogManager.getLogManager().reset();
     	System.out.println("Default locale = "+Locale.getDefault());
 //    	System.setProperty("prism.forceGPU", "true");
-//    	System.setProperty("prism.verbose", "true");
+    	System.setProperty("prism.verbose", "false");
     	List<String> keys = new ArrayList<String>();
     	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
     	Collections.sort(keys);
@@ -89,7 +88,8 @@ public class ComLinkMain extends EdenClientApplication {
 			System.out.println("Arg "+i+": "+args[i]);
 		Locale.setDefault(Locale.ENGLISH);
 		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
-		LogManager.getLogManager().reset();
+		
+		LoggerFinder.getLoggerFinder();
        launch(args);
     }
 	
@@ -102,6 +102,23 @@ public class ComLinkMain extends EdenClientApplication {
 		ExportPluginRegistry.register(new SR6CompactPDFPlugin());
 //		ExportPluginRegistry.register(new SR6FoundryExportPlugin());
 		ExportPluginRegistry.register(new SR6JSONExportPlugin());
+	}
+	
+    //-------------------------------------------------------------------
+	private static void checkInit() {
+		if (out!=null) return;
+		System.out.println("CustomLoggerFinder.checkInit");
+		Path home = Paths.get(System.getProperty("user.home"));
+		Path logDir = home.resolve("commlink-logs");
+		System.setProperty("logdir", logDir.toAbsolutePath().toString());
+		System.out.println("Log directory = "+logDir.toAbsolutePath().toString());
+		try {
+			Files.createDirectories(logDir);
+			Path logFile = logDir.resolve("logfile.txt");
+			out = new PrintWriter( new FileWriter(logFile.toFile()) );
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
     //-------------------------------------------------------------------
