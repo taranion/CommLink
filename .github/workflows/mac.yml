@@ -32,7 +32,7 @@ jobs:
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
     - name: Compile
-      run:  export LC_ALL=en_EN.UTF-8; export LC_MESSAGES=en_EN.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
+      run:  export LC_ALL=en_EN.UTF-8; export LC_MESSAGES=en_EN.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile -Pdesktop
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}
@@ -41,13 +41,13 @@ jobs:
         CXX: g++-11
 
     - name: Link
-      run:  mvn gluonfx:link
+      run:  mvn gluonfx:link -Pdesktop
         
     - name: Show result
       run: ls -l target/gluonfx/x86_64-darwin
 
     - name: Package
-      run:  mvn gluonfx:package
+      run:  mvn gluonfx:package -Pdesktop
         
     - name: Show result
       continue-on-error: true

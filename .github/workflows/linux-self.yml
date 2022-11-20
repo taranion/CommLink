@@ -32,7 +32,7 @@ jobs:
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
         
     - name: Compile
-      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile
+      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile -Pdesktop
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}
@@ -44,13 +44,13 @@ jobs:
 #      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev  libpango1.0-dev libxtst-dev
 
     - name: Link
-      run:  mvn gluonfx:link
+      run:  mvn gluonfx:link -Pdesktop
         
     - name: Show result
       run: ls -l target/gluonfx/x86_64-linux
 
     - name: Create Native Installer
-      run:  mvn gluonfx:package
+      run:  mvn gluonfx:package -Pdesktop
 
 #    - name: Logs
 #      if: always()      
