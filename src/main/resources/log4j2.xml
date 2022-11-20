@@ -6,7 +6,7 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<Root level="DEBUG">
+		<Root level="WARN">
 			<AppenderRef ref="Console" />
 		</Root>
     <Logger name="sun" level="ERROR"/>
@@ -14,28 +14,6 @@
     <Logger name="jdk" level="warn"/>
     <Logger name="javafx" level="info"/>
     <Logger name="prelle.jfx" level="WARN"/>
-    <Logger name="eden.client" level="INFO"/>
-    <Logger name="rpgframework.jfx" level="INFO"/>
-    <Logger name="rpgframework.jfx.skill" level="DEBUG"/>
-    <Logger name="de.rpgframework.jfx.pages" level="DEBUG"/>
-    <Logger name="de.rpgframework.genericrpg" level="WARN"/>
-    <Logger name="de.rpgframework.genericrpg.chargen" level="INFO"/>
-    <Logger name="de.rpgframework.genericrpg.items" level="WARN"/>
-    <Logger name="de.rpgframework.genericrpg.items.formula" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun.chargen.gen" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun.jfx" level="WARN"/>
-    <Logger name="dXe.rpgframework.shadowrun.chargen.jfx.wizard.skill" level="TRACE"/>
-    <Logger name="de.rpgframework.shadowrun6" level="ERROR"/>
-    <Logger name="de.rpgframework.shadowrun6.proc" level="WARN"/>
-    <Logger name="dXe.rpgframework.shadowrun6.proc.derived" level="DEBUG"/>
-    <Logger name="dXe.rpgframework.shadowrun6.proc.attr" level="INFO"/>
-    <!--Logger name="de.rpgframework.shadowrun6.chargen" level="INFO"/-->
-    <Logger name="de.rpgframework.shadowrun6.chargen" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun6.chargen.charctrl" level="DEBUG"/>
-    <Logger name="de.rpgframework.shadowrun6.chargen.jfx" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun6.items" level="WARN"/>
-    <Logger name="de.rpgframework.shadowrun6.chargen.jfx.wizard.meta" level="DEBUG"/>
 	</Loggers>
 </Configuration>
 			
