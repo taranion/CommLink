@@ -94,7 +94,7 @@ jobs:
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: "target\\gluonfx\\x86_64-windows\\CommLink6-1.0.msi"
+        local: "Staging\\Commlink6_Native_${{ env.RELEASE_VERSION }}.msi"
         remote: /var/www/html/commlink6-builds/win/Commlink6-${{env.RELEASE_VERSION}}.msi
         host: eden.rpgframework.de
         username: ghcommlink
@@ -135,7 +135,7 @@ jobs:
 
     - name: Prepare staging 2
       continue-on-error: true
-      run: mkdir Staging ; cp target/jpackage/Commlink6-{{ env.RELEASE_VERSION }}.msi Staging/
+      run: mkdir Staging ; cp target/jpackage/Commlink6-{{env.RELEASE_VERSION}}.msi Staging/
         
     - name: Show Staging content
       run: ls -l Staging

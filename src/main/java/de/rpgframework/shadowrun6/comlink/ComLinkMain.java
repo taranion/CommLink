@@ -73,17 +73,17 @@ public class ComLinkMain extends EdenClientApplication {
     	System.out.println("Default locale = "+Locale.getDefault());
 //    	System.setProperty("prism.forceGPU", "true");
     	System.setProperty("prism.verbose", "false");
-    	List<String> keys = new ArrayList<String>();
-    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
-    	Collections.sort(keys);
-		for (String key : keys) {
-			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
-		}
-		
+//    	List<String> keys = new ArrayList<String>();
+//    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
+//    	Collections.sort(keys);
+//		for (String key : keys) {
+//			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+//		}
+//		
 //		System.out.println("No. Args = "+args.length);
 //		for (int i=0; i<args.length; i++)
 //			System.out.println("Arg "+i+": "+args[i]);
-		Locale.setDefault(Locale.ENGLISH);
+//		Locale.setDefault(Locale.ENGLISH);
 		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
 		
        launch(args);
@@ -152,8 +152,6 @@ public class ComLinkMain extends EdenClientApplication {
         	logger.log(Level.INFO, "Visibility changed to "+n);
             ResponsiveControlManager.initialize(getAppLayout());        	
         });
-        
-        BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, "Hello");
     }
 
 	//-------------------------------------------------------------------
