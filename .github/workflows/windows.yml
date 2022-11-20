@@ -135,7 +135,7 @@ jobs:
 
     - name: Prepare staging 2
       continue-on-error: true
-      run: mkdir Staging ; set ; cp target/jpackage/Commlink6-*.msi Staging/
+      run: mkdir Staging ; cp target/jpackage/Commlink6-*.msi Staging/
         
     - name: Show Staging content
       run: ls -l Staging

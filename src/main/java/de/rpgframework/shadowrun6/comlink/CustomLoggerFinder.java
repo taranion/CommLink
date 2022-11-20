@@ -1,14 +1,8 @@
 package de.rpgframework.shadowrun6.comlink;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.lang.System.LoggerFinder;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,13 +27,15 @@ public class CustomLoggerFinder extends LoggerFinder {
 			ret = new ConsoleLogger(name, Level.WARNING);
 		} else if (name.startsWith("javafx")) {
 			ret = new ConsoleLogger(name, Level.ERROR);
-		} else if (name.endsWith(".proc")) {
+		} else if (name.startsWith("de.rpgframework.genericrpg.items") || name.startsWith("de.rpgframework.shadowrun6.items")) {
+			ret = new ConsoleLogger(name, Level.WARNING);
+		} else if (name.contains(".proc")) {
 			ret = new ConsoleLogger(name, Level.WARNING);
 //		} else if (name.equals("de.rpgframework.shadowrun6.chargen.gen.priority.attrib")) {
 //			ret = new ConsoleLogger(name, Level.TRACE);
 		} else {
 //			System.err.println("getLogger: "+name);
-			ret = new ConsoleLogger(name, Level.WARNING);
+			ret = new ConsoleLogger(name, Level.INFO);
 		}
 		loggerByName.put(name, ret);
 		
