@@ -88,7 +88,7 @@ jobs:
       with:
         verbose: true
         local: staging
-        remote: /var/www/html/commlink6-builds/linux
+        remote: /var/www/html/commlink6-builds/android
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}

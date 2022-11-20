@@ -18,7 +18,7 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.16</client.plugin.version>
+		<client.plugin.version>1.0.15</client.plugin.version>
 		<attach.version>4.0.16</attach.version>
 		<rpgfw.version>5.0.2-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
@@ -78,6 +78,11 @@
 			<groupId>com.gluonhq.attach</groupId>
 			<artifactId>util</artifactId>
 			<version>${attach.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>de.rpgframework</groupId>
+			<artifactId>attach-pdf</artifactId>
+			<version>${rpgfw.version}</version>
 		</dependency>
 		<!--dependency>
 			<groupId>com.gluonhq</groupId>
@@ -253,7 +258,7 @@
 						<!--arg>-H:DefaultLocale=en</arg-->
 						<arg>-H:IncludeLocales=de,en</arg>
 						<arg>-Dapp.testprop=1</arg>
-						 <arg>-Dprism.verbose=true</arg>
+						 <arg>-Dprism.verbose=false</arg>
 					</nativeImageArgs>
 					<attachList>
                         <list>browser</list>
@@ -266,7 +271,7 @@
 					
 						<description>Shadowrun 6 character management</description>
 						<vendor>Stefan Prelle</vendor>
-						<version>${package.version}</version>
+						<version>${project.version}</version>
 						<!-- macOS -->
 						<macAppCategory>public.app-category.role-playing-games</macAppCategory>
 						<macAppStore>false</macAppStore>
@@ -278,7 +283,7 @@
 						<!-- Android -->
 						<appLabel>CommLink 6</appLabel>
 						<versionCode>${env.GITHUB_RUN_NUMBER}</versionCode>
-						<versionName>${package.version}</versionName>
+						<versionName>${project.version}</versionName>
 					</releaseConfiguration>
 				</configuration>
 			</plugin>
@@ -423,9 +428,6 @@
 	<profiles>
 		<profile>
 			<id>desktop</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<gluonfx.target>host</gluonfx.target>
 			</properties>
@@ -478,6 +480,58 @@
 			<properties>
 				<gluonfx.target>ios</gluonfx.target>
 			</properties>
+		</profile>
+		<profile>
+			<id>interpreted</id>
+			<properties>
+				<gluonfx.target>host</gluonfx.target>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+                 <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>browser</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+               <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>device</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+               <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>display</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>settings</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>storage</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>de.rpgframework</groupId>
+                    <artifactId>attach-pdf-pdfbox</artifactId>
+                    <version>${rpgfw.version}</version>
+                    <scope>runtime</scope>
+                 </dependency>
+			</dependencies>
 		</profile>
 	</profiles>
 

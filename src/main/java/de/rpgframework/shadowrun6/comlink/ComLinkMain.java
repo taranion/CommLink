@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.System.Logger.Level;
-import java.lang.System.LoggerFinder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.FlexibleApplication;
@@ -43,7 +41,7 @@ import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
-import de.rpgframework.jfx.ReferencePDFViewer;
+import de.rpgframework.jfx.attach.PDFViewerConfig;
 import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
@@ -71,7 +69,6 @@ public class ComLinkMain extends EdenClientApplication {
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
     	checkInit();
-//    	System.getLogger("test");
 		LogManager.getLogManager().reset();
     	System.out.println("Default locale = "+Locale.getDefault());
 //    	System.setProperty("prism.forceGPU", "true");
@@ -83,13 +80,12 @@ public class ComLinkMain extends EdenClientApplication {
 			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
 		}
 		
-		System.out.println("No. Args = "+args.length);
-		for (int i=0; i<args.length; i++)
-			System.out.println("Arg "+i+": "+args[i]);
+//		System.out.println("No. Args = "+args.length);
+//		for (int i=0; i<args.length; i++)
+//			System.out.println("Arg "+i+": "+args[i]);
 		Locale.setDefault(Locale.ENGLISH);
 		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
 		
-		LoggerFinder.getLoggerFinder();
        launch(args);
     }
 	
@@ -106,16 +102,16 @@ public class ComLinkMain extends EdenClientApplication {
 	
     //-------------------------------------------------------------------
 	private static void checkInit() {
-		if (out!=null) return;
-		System.out.println("CustomLoggerFinder.checkInit");
+		if (out != null)
+			return;
 		Path home = Paths.get(System.getProperty("user.home"));
 		Path logDir = home.resolve("commlink-logs");
 		System.setProperty("logdir", logDir.toAbsolutePath().toString());
-		System.out.println("Log directory = "+logDir.toAbsolutePath().toString());
+		System.out.println("Log directory = " + logDir.toAbsolutePath().toString());
 		try {
 			Files.createDirectories(logDir);
 			Path logFile = logDir.resolve("logfile.txt");
-			out = new PrintWriter( new FileWriter(logFile.toFile()) );
+			out = new PrintWriter(new FileWriter(logFile.toFile()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -149,13 +145,15 @@ public class ComLinkMain extends EdenClientApplication {
        
 //       ScenicView.show(stage.getScene());
 
-        ReferencePDFViewer.setPDFPathResolver( (id,lang) -> getPDFPathFor(RoleplayingSystem.SHADOWRUN6,id,lang));
-        ReferencePDFViewer.setEnabled( super.isPDFEnabled());
+        PDFViewerConfig.setPDFPathResolver( (id,lang) -> getPDFPathFor(RoleplayingSystem.SHADOWRUN6,id,lang));
+        PDFViewerConfig.setEnabled( super.isPDFEnabled());
         
         getAppLayout().visibleProperty().addListener( (ov,o,n) -> {
         	logger.log(Level.INFO, "Visibility changed to "+n);
             ResponsiveControlManager.initialize(getAppLayout());        	
         });
+        
+        BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, "Hello");
     }
 
 	//-------------------------------------------------------------------

@@ -27,4 +27,5 @@ open module de.rpgframework.shadowrun6.commlink6 {
 	requires com.gluonhq.attach.util;
 //	requires com.gluonhq.attach.device;
 	requires java.logging;
+	requires rpgframework.pdfviewer;
 }
