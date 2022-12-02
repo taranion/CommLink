@@ -68,6 +68,7 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
+		Locale.setDefault(Locale.ENGLISH);
     	checkInit();
 		LogManager.getLogManager().reset();
     	System.out.println("Default locale = "+Locale.getDefault());
@@ -83,7 +84,6 @@ public class ComLinkMain extends EdenClientApplication {
 //		System.out.println("No. Args = "+args.length);
 //		for (int i=0; i<args.length; i++)
 //			System.out.println("Arg "+i+": "+args[i]);
-//		Locale.setDefault(Locale.ENGLISH);
 		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
 		
        launch(args);
@@ -235,7 +235,16 @@ public class ComLinkMain extends EdenClientApplication {
      */
     @Override
 	protected Image getErrorDialogImage() {
-		return new Image(ComLinkMain.class.getResourceAsStream("Dialog1.png"));
+		return new Image(ComLinkMain.class.getResourceAsStream("ErrorDialog.png"));
+	}
+	
+    //-------------------------------------------------------------------
+    /**
+     * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getUpdateDialogImage()
+     */
+    @Override
+	protected Image getUpdateDialogImage() {
+		return new Image(ComLinkMain.class.getResourceAsStream("UpdateDialog.png"));
 	}
 	
 //	//-------------------------------------------------------------------
