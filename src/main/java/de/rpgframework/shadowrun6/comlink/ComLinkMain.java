@@ -68,7 +68,6 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
-		Locale.setDefault(Locale.ENGLISH);
     	checkInit();
 		LogManager.getLogManager().reset();
     	System.out.println("Default locale = "+Locale.getDefault());
