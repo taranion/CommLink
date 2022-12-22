@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>0.5.3</version>
+	<version>0.6.0</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -220,14 +220,9 @@
 		     <version>${javafx.plugin.version}</version>
 		     <configuration>
 			    <mainClass>${mainClassName}</mainClass>
-			    <options>
-			    	<option>-Doption1=wert1</option>
-			    	<option>--add-opens</option>
-			    	<option>-Doption2=wert2</option>
-			    	<option>Hello</option>
-			    	<option>Hallo=Welt</option>
-			    </options>
-			    <commandlineArgs>Held</commandlineArgs>
+          	 <options>
+            	<option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option>
+          	 </options>
 		     </configuration>
 	      </plugin>
 
@@ -256,7 +251,7 @@
 					</runtimeArgs>
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
-						<arg>-H:IncludeLocales=de,en</arg>
+						<arg>-H:IncludeLocales=de,en,fr,pt</arg>
 						<arg>-Dapp.testprop=1</arg>
 						 <arg>-Dprism.verbose=false</arg>
 					</nativeImageArgs>

@@ -219,7 +219,8 @@
 },
 {
   "name":"de.rpgframework.genericrpg.items.AlternateUsage",
-  "allDeclaredFields":true
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"de.rpgframework.genericrpg.items.CarriedItem",
@@ -674,30 +675,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun.Spirit",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun.SpiritList",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun.Sprite",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun.SpriteList",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun.Summonable",
-  "allDeclaredFields":true
-},
-{
   "name":"de.rpgframework.shadowrun.Tradition",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -822,16 +799,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun6.SR6Ritual",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun6.SR6RitualList",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"de.rpgframework.shadowrun6.SR6Skill",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -887,9 +854,9 @@
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.priority.PriorityCharacterGenerator",
   "methods":[
-		{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] },
-		{"name":"<init>","parameterTypes":[] }
-		]
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+  ]
 },
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SR6PrioritySettings",
@@ -899,9 +866,9 @@
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SumToTenCharacterGenerator",
   "methods":[
-		{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] },
-		{"name":"<init>","parameterTypes":[] }
-		]
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+  ]
 },
 {
   "name":"de.rpgframework.shadowrun6.comlink.ComLinkMain",
@@ -909,6 +876,15 @@
     {"name":"<init>","parameterTypes":[] }, 
     {"name":"main","parameterTypes":["java.lang.String[]"] }
   ]
+},
+{
+  "name":"de.rpgframework.shadowrun6.items.AmmunitionClass",
+  "queriedMethods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.items.AmmunitionData",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"de.rpgframework.shadowrun6.items.AmmunitionType",
@@ -922,6 +898,11 @@
 },
 {
   "name":"de.rpgframework.shadowrun6.items.ArmorData",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.items.ItemEnhancementList",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -966,12 +947,22 @@
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.items.SR6ItemEnhancement",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"de.rpgframework.shadowrun6.items.SR6PieceOfGearVariant",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"de.rpgframework.shadowrun6.items.SR6UsageMode",
+  "allDeclaredFields":true,
+  "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.items.SR6VariantMode",
   "allDeclaredFields":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
