@@ -40,6 +40,7 @@ import de.rpgframework.core.BabylonEventType;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.PDFPage;
+import de.rpgframework.genericrpg.LicenseManager;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.attach.PDFViewerConfig;
 import de.rpgframework.shadowrun.ASpell;
@@ -68,6 +69,7 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
+//    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION"));
     	checkInit();
 		LogManager.getLogManager().reset();
     	System.out.println("Default locale = "+Locale.getDefault());
@@ -79,10 +81,10 @@ public class ComLinkMain extends EdenClientApplication {
 //		for (String key : keys) {
 //			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
 //		}
-//		
-//		System.out.println("No. Args = "+args.length);
-//		for (int i=0; i<args.length; i++)
-//			System.out.println("Arg "+i+": "+args[i]);
+		
+		System.out.println("No. Args = "+args.length);
+		for (int i=0; i<args.length; i++)
+			System.out.println("Arg "+i+": "+args[i]);
 		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
 		
        launch(args);
@@ -234,6 +236,13 @@ public class ComLinkMain extends EdenClientApplication {
      */
     @Override
 	protected Image getErrorDialogImage() {
+		try {
+			throw new RuntimeException("Trace2");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return new Image(ComLinkMain.class.getResourceAsStream("ErrorDialog.png"));
 	}
 	

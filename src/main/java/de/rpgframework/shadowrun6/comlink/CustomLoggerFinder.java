@@ -29,6 +29,8 @@ public class CustomLoggerFinder extends LoggerFinder {
 			ret = new ConsoleLogger(name, Level.ERROR);
 		} else if (name.startsWith("de.rpgframework.genericrpg.items") || name.startsWith("de.rpgframework.shadowrun6.items")) {
 			ret = new ConsoleLogger(name, Level.WARNING);
+		} else if (name.startsWith("de.rpgframework.shadowrun.chargen") || name.startsWith("de.rpgframework.shadowrun6.chargen")) {
+			ret = new ConsoleLogger(name, Level.WARNING);
 		} else if (name.contains(".proc")) {
 			ret = new ConsoleLogger(name, Level.WARNING);
 //		} else if (name.equals("de.rpgframework.shadowrun6.chargen.gen.priority.attrib")) {
