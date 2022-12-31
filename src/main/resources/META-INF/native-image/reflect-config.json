@@ -62,7 +62,7 @@
 {
   "name":"com.sun.prism.GraphicsPipeline",
   "methods":[
-    {"name":"getFontFactory","parameterTypes":[] }, 
+    {"name":"getFontFactory","parameterTypes":[] },
     {"name":"getPipeline","parameterTypes":[] }
   ]
 },
@@ -844,7 +844,10 @@
 },
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.PointBuyCharacterGenerator",
-  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }]
+  "methods":[
+    {"name":"<init>","parameterTypes":[] },
+	 {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+	]
 },
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.SR6PointBuySettings",
@@ -854,7 +857,7 @@
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.priority.PriorityCharacterGenerator",
   "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"<init>","parameterTypes":[] },
     {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
   ]
 },
@@ -866,14 +869,14 @@
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SumToTenCharacterGenerator",
   "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"<init>","parameterTypes":[] },
     {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
   ]
 },
 {
   "name":"de.rpgframework.shadowrun6.comlink.ComLinkMain",
   "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"<init>","parameterTypes":[] },
     {"name":"main","parameterTypes":["java.lang.String[]"] }
   ]
 },
