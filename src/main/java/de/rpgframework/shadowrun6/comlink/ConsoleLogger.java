@@ -1,5 +1,7 @@
 package de.rpgframework.shadowrun6.comlink;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.System.Logger;
 import java.text.MessageFormat;
 import java.util.ResourceBundle;
@@ -44,9 +46,22 @@ public class ConsoleLogger implements Logger {
 	@Override
 	public void log(Level level, ResourceBundle bundle, String msg, Throwable thrown) {
 		if (!isLoggable(level)) return;
-		System.out.printf("CL [%s]: %s - %s%n", level, msg, thrown);
+		StringWriter out = new StringWriter();
+		thrown.printStackTrace(new PrintWriter(out));
+
+		String prefix = "";
+		try {
+			throw new RuntimeException("trace");
+		} catch (Exception e) {
+			StackTraceElement element = e.getStackTrace()[2];
+			if (element.getClassName().equals("de.rpgframework.MultiLanguageResourceBundle"))
+				element = e.getStackTrace()[5];
+			prefix="("+element.getClassName().substring(element.getClassName().lastIndexOf(".")+1)+".java:"+element.getLineNumber()+") : ";
+		}
+
+		System.out.printf("[%7s][%10s]: %s\n%s", level, name, prefix+msg, out.toString());
 		if (ComLinkMain.out!=null && !ComLinkMain.out.checkError()) {
-			ComLinkMain.out.printf("[%s]: %s - %s%n", level, msg, thrown);
+			ComLinkMain.out.printf("[%s]: %s - %s\n%s%n", level, name, prefix+msg, thrown);
 		}
 	}
 

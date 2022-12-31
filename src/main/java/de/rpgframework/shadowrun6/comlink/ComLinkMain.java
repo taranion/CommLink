@@ -62,9 +62,9 @@ import javafx.stage.Stage;
 
 
 public class ComLinkMain extends EdenClientApplication {
-	
+
 	private ResourceBundle RES = ResourceBundle.getBundle(ComLinkMain.class.getName(), ComLinkMain.class.getModule());
-	
+
 	static PrintWriter out;
 
 	//-------------------------------------------------------------------
@@ -81,26 +81,26 @@ public class ComLinkMain extends EdenClientApplication {
 //		for (String key : keys) {
 //			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
 //		}
-		
+
 		System.out.println("No. Args = "+args.length);
 		for (int i=0; i<args.length; i++)
 			System.out.println("Arg "+i+": "+args[i]);
 		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
-		
+
        launch(args);
     }
-	
+
     //-------------------------------------------------------------------
 	public ComLinkMain() {
 		super(RoleplayingSystem.SHADOWRUN6, "CommLink6");
-		
+
 		ExportPluginRegistry.register(new StandardPDFPlugin());
 		ExportPluginRegistry.register(new SR6BeginnerPDFPlugin());
 		ExportPluginRegistry.register(new SR6CompactPDFPlugin());
 //		ExportPluginRegistry.register(new SR6FoundryExportPlugin());
 		ExportPluginRegistry.register(new SR6JSONExportPlugin());
 	}
-	
+
     //-------------------------------------------------------------------
 	private static void checkInit() {
 		if (out != null)
@@ -117,10 +117,10 @@ public class ComLinkMain extends EdenClientApplication {
 			e.printStackTrace();
 		}
 	}
-	
+
     //-------------------------------------------------------------------
     /**
-     * @throws IOException 
+     * @throws IOException
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     public void start(Stage stage) throws Exception {
@@ -143,15 +143,15 @@ public class ComLinkMain extends EdenClientApplication {
         stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         loadData();
-       
+
 //       ScenicView.show(stage.getScene());
 
         PDFViewerConfig.setPDFPathResolver( (id,lang) -> getPDFPathFor(RoleplayingSystem.SHADOWRUN6,id,lang));
         PDFViewerConfig.setEnabled( super.isPDFEnabled());
-        
+
         getAppLayout().visibleProperty().addListener( (ov,o,n) -> {
         	logger.log(Level.INFO, "Visibility changed to "+n);
-            ResponsiveControlManager.initialize(getAppLayout());        	
+            ResponsiveControlManager.initialize(getAppLayout());
         });
     }
 
@@ -185,16 +185,16 @@ public class ComLinkMain extends EdenClientApplication {
 						Shadowrun6Tools.runProcessors(parsed);
 						handle.setCharacter(parsed);
 						handle.setShortDescription(parsed.getShortDescription());
-						logger.log(Level.INFO, "Parsed character2: "+parsed.getShortDescription());
+						logger.log(Level.INFO, "Parsed character2: "+handle.getName()+": "+parsed.getShortDescription());
 					} catch (CharacterIOException e) {
 						if (e.getCause()!=null && e.getCause() instanceof SerializationException) {
 							SerializationException cause = (SerializationException) e.getCause();
 							logger.log(Level.ERROR, "Failed decoding character {0} in line {2}:{3}\nReason: {1}", handle.getName(),cause.getMessage(), cause.getLine(), cause.getColumn());
-							BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.decoding_character", 
-									handle.getName(), 
-									e.getCode(), 
-									cause.getLine(), 
-									cause.getColumn(), 
+							BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.decoding_character",
+									handle.getName(),
+									e.getCode(),
+									cause.getLine(),
+									cause.getColumn(),
 									cause.getMessage()
 									), cause, (attach!=null)?attach.getLocalFile():null);
 						} else {
@@ -215,12 +215,12 @@ public class ComLinkMain extends EdenClientApplication {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				
+
 			}
 		});
 		thread.run();
 	}
-	
+
     //-------------------------------------------------------------------
     /**
      * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getErrorDialogResourceBundle()
@@ -229,23 +229,16 @@ public class ComLinkMain extends EdenClientApplication {
 	protected ResourceBundle getErrorDialogResourceBundle() {
 		return RES;
 	}
-	
+
     //-------------------------------------------------------------------
     /**
      * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getErrorDialogImage()
      */
     @Override
 	protected Image getErrorDialogImage() {
-		try {
-			throw new RuntimeException("Trace2");
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
 		return new Image(ComLinkMain.class.getResourceAsStream("ErrorDialog.png"));
 	}
-	
+
     //-------------------------------------------------------------------
     /**
      * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getUpdateDialogImage()
@@ -254,7 +247,7 @@ public class ComLinkMain extends EdenClientApplication {
 	protected Image getUpdateDialogImage() {
 		return new Image(ComLinkMain.class.getResourceAsStream("UpdateDialog.png"));
 	}
-	
+
 //	//-------------------------------------------------------------------
 //	/**
 //	 * @see de.rpgframework.eden.client.jfx.EdenClientApplication#showUIMessage(int, java.lang.String, java.lang.Throwable)
@@ -266,8 +259,8 @@ public class ComLinkMain extends EdenClientApplication {
 //		Label content= new Label(mess);
 //		content.setWrapText(true);
 //		content.getStyleClass().add("text-body");
-//		
-//		
+//
+//
 //		VBox layout = new VBox(10, content);
 //		if (cause!=null) {
 //			StringWriter out = new StringWriter();
@@ -284,10 +277,10 @@ public class ComLinkMain extends EdenClientApplication {
 //			}
 //			layout.getChildren().add(accord);
 //		}
-//		
+//
 //		ManagedDialog dialog = new ManagedDialog(title, layout, CloseType.OK);
 //		dialog.setImage(new Image(ComLinkMain.class.getResourceAsStream("Dialog1.png")));
-//		
+//
 //		showAlertAndCall(dialog, null);
 //	}
 
@@ -319,12 +312,12 @@ public class ComLinkMain extends EdenClientApplication {
 		navigAbout  .setId("navig-about");
 		navigPDF    .setId("navig-pdf");
 		navigAccount.setId("navig-account");
-		
+
 		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAbout);
 		if (!Platform.isDesktop()) {
 			drawer.getItems().remove(navigPDF);
 		}
-		
+
 		// Footer
 		Image img = new Image(ComLinkMain.class.getResourceAsStream("SR6Logo2.png"));
 		if (img!=null) {
