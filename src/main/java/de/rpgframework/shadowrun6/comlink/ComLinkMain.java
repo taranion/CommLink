@@ -44,6 +44,7 @@ import de.rpgframework.genericrpg.LicenseManager;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.attach.PDFViewerConfig;
 import de.rpgframework.shadowrun.ASpell;
+import de.rpgframework.shadowrun6.SR6Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
 import de.rpgframework.shadowrun6.Shadowrun6Tools;
@@ -69,7 +70,7 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
-//    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION"));
+    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD"));
     	checkInit();
 		LogManager.getLogManager().reset();
     	System.out.println("Default locale = "+Locale.getDefault());
@@ -163,11 +164,12 @@ public class ComLinkMain extends EdenClientApplication {
 	protected void loadData() {
 		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
 		plugin.init( );
-		logger.log(Level.INFO, "Loaded "+Shadowrun6Core.getItemList(ASpell.class).size()+" spells");
+		logger.log(Level.INFO, "Loaded "+Shadowrun6Core.getItemList(SR6Spell.class).size()+" spells");
 //		logger.log(Level.INFO, "Loaded "+SplitterMondCore.getItemList(CreatureType.class).size()+" creature types");
 
 		Thread thread = new Thread(() -> {
 			try {
+				logger.log(Level.INFO, "CharacterProvider {0}", CharacterProviderLoader.getCharacterProvider());
 				List<CharacterHandle> handles = CharacterProviderLoader.getCharacterProvider().getMyCharacters(RoleplayingSystem.SHADOWRUN6);
 				for (CharacterHandle handle : handles) {
 					Attachment attach = null;
@@ -313,7 +315,7 @@ public class ComLinkMain extends EdenClientApplication {
 		navigPDF    .setId("navig-pdf");
 		navigAccount.setId("navig-account");
 
-		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAbout);
+		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAccount, navigAbout);
 		if (!Platform.isDesktop()) {
 			drawer.getItems().remove(navigPDF);
 		}

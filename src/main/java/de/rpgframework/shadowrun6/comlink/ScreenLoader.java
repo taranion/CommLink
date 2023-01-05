@@ -1,6 +1,7 @@
 package de.rpgframework.shadowrun6.comlink;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.prelle.javafx.ExtendedComponentBuilderFactory;
@@ -10,6 +11,7 @@ import org.prelle.javafx.Page;
 import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun.chargen.jfx.fxml.SpellPageController;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
+import de.rpgframework.shadowrun6.Shadowrun6Tools;
 import javafx.fxml.FXMLLoader;
 
 /**
@@ -44,9 +46,10 @@ public class ScreenLoader {
 		Page ret = loader.load();
 		ret.setId("spells");
 		((SpellPageController)loader.getController()).setComponent(
-				ret, 
+				ret,
 				()-> Shadowrun6Core.getItemList(ASpell.class),
-				(req) -> req.toString()
+				Shadowrun6Tools.requirementResolver(Locale.getDefault()),
+				Shadowrun6Tools.modificationResolver(Locale.getDefault())
 				);
 		return ret;
 	}

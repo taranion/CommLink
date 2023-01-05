@@ -73,7 +73,7 @@ public class LibraryPage extends Page {
 	public LibraryPage() {
 		super(ResourceI18N.get(RES,"page.title"));
 		setId("library");
-		
+
 		initComponents();
 		initLayout();
 		initStyle();
@@ -189,8 +189,8 @@ public class LibraryPage extends Page {
 		logger.log(Level.WARNING, "Navigate Spells");
 		try {
 			FilteredListPage<ASpell> page =new FilteredListPage<ASpell>(
-					ResourceI18N.get(LibraryPage.RES, "category.spells"), 
-					() -> Shadowrun6Core.getItemList(SR6Spell.class), 
+					ResourceI18N.get(LibraryPage.RES, "category.spells"),
+					() -> Shadowrun6Core.getItemList(SR6Spell.class),
 					new SpellDescriptionPane()
 					);
 			page.setCellFactory(lv -> new SpellListCell());
@@ -210,8 +210,8 @@ public class LibraryPage extends Page {
 			MentorSpiritDescriptionPane pane = new MentorSpiritDescriptionPane(Shadowrun6Tools.requirementResolver(Locale.getDefault()));
 			pane.setStyle("-fx-max-width: 35em");
 			FilteredListPage<MentorSpirit> page =new FilteredListPage<MentorSpirit>(
-					ResourceI18N.get(LibraryPage.RES, "category.mentorspirits"), 
-					() -> Shadowrun6Core.getItemList(MentorSpirit.class).stream().filter(m-> m.getType()==Type.MENTOR_SPIRIT).collect(Collectors.toList()), 
+					ResourceI18N.get(LibraryPage.RES, "category.mentorspirits"),
+					() -> Shadowrun6Core.getItemList(MentorSpirit.class).stream().filter(m-> m.getType()==Type.MENTOR_SPIRIT).collect(Collectors.toList()),
 					pane
 					);
 //			page.setCellFactory(lv -> new SpellListCell());
@@ -231,8 +231,8 @@ public class LibraryPage extends Page {
 			MentorSpiritDescriptionPane pane = new MentorSpiritDescriptionPane(Shadowrun6Tools.requirementResolver(Locale.getDefault()));
 			pane.setStyle("-fx-max-width: 35em");
 			FilteredListPage<MentorSpirit> page =new FilteredListPage<MentorSpirit>(
-					ResourceI18N.get(LibraryPage.RES, "category.paragons"), 
-					() -> Shadowrun6Core.getItemList(MentorSpirit.class).stream().filter(m-> m.getType()==Type.PARAGON).collect(Collectors.toList()), 
+					ResourceI18N.get(LibraryPage.RES, "category.paragons"),
+					() -> Shadowrun6Core.getItemList(MentorSpirit.class).stream().filter(m-> m.getType()==Type.PARAGON).collect(Collectors.toList()),
 					pane
 					);
 //			page.setCellFactory(lv -> new SpellListCell());
@@ -250,9 +250,12 @@ public class LibraryPage extends Page {
 		logger.log(Level.DEBUG, "Navigate Powers");
 		try {
 			FilteredListPage<AdeptPower> page =new FilteredListPage<AdeptPower>(
-					ResourceI18N.get(LibraryPage.RES, "category.powers"), 
-					() -> Shadowrun6Core.getItemList(AdeptPower.class), 
-					new AdeptPowerPane(Shadowrun6Tools.requirementResolver(Locale.getDefault()))
+					ResourceI18N.get(LibraryPage.RES, "category.powers"),
+					() -> Shadowrun6Core.getItemList(AdeptPower.class),
+					new AdeptPowerPane(
+							Shadowrun6Tools.requirementResolver(Locale.getDefault()),
+							Shadowrun6Tools.modificationResolver(Locale.getDefault())
+							)
 					);
 			page.setCellFactory(lv -> new ComplexDataItemListCell<AdeptPower>( p -> String.valueOf(p.getCost())));
 //			page.setFilterInjector(new FilterQualities());
@@ -268,9 +271,12 @@ public class LibraryPage extends Page {
 		logger.log(Level.DEBUG, "Navigate Qualities  ");
 		try {
 			FilteredListPage<Quality> page =new FilteredListPage<Quality>(
-					ResourceI18N.get(LibraryPage.RES, "category.qualities"), 
-					() -> Shadowrun6Core.getItemList(Quality.class), 
-					new GenericDescriptionVBox(Shadowrun6Tools.requirementResolver(Locale.getDefault()))
+					ResourceI18N.get(LibraryPage.RES, "category.qualities"),
+					() -> Shadowrun6Core.getItemList(Quality.class),
+					new GenericDescriptionVBox(
+							Shadowrun6Tools.requirementResolver(Locale.getDefault()),
+							Shadowrun6Tools.modificationResolver(Locale.getDefault())
+							)
 					);
 			page.setAppLayout(getAppLayout());
 			page.setCellFactory(lv -> new QualityListCell(null));
@@ -294,8 +300,8 @@ public class LibraryPage extends Page {
 		descPane.setItems(Shadowrun6Core.getItemList(SR6MetaType.class));
 		try {
 			FilteredListPage<SR6MetaType> page =new FilteredListPage<SR6MetaType>(
-					ResourceI18N.get(LibraryPage.RES, "category.metatypes"), 
-					() -> Shadowrun6Core.getItemList(SR6MetaType.class), 
+					ResourceI18N.get(LibraryPage.RES, "category.metatypes"),
+					() -> Shadowrun6Core.getItemList(SR6MetaType.class),
 					descPane
 					);
 			page.setId("filtered-meta");
@@ -313,8 +319,8 @@ public class LibraryPage extends Page {
 		logger.log(Level.WARNING, "Navigate Complex Forms");
 		try {
 			FilteredListPage<ComplexForm> page =new FilteredListPage<ComplexForm>(
-					ResourceI18N.get(LibraryPage.RES, "category.complexforms"), 
-					() -> Shadowrun6Core.getItemList(ComplexForm.class), 
+					ResourceI18N.get(LibraryPage.RES, "category.complexforms"),
+					() -> Shadowrun6Core.getItemList(ComplexForm.class),
 					new ComplexFormDescriptionPane()
 					);
 //			page.setCellFactory(lv -> new SpellListCell());
@@ -332,8 +338,8 @@ public class LibraryPage extends Page {
 		try {
 			QualityPathDescriptionPane pane = new QualityPathDescriptionPane();
 			FilteredListPage<QualityPath> page =new FilteredListPage<QualityPath>(
-					ResourceI18N.get(LibraryPage.RES, "category.qualityPaths"), 
-					() -> Shadowrun6Core.getItemList(QualityPath.class), 
+					ResourceI18N.get(LibraryPage.RES, "category.qualityPaths"),
+					() -> Shadowrun6Core.getItemList(QualityPath.class),
 					pane
 					);
 //			page.setCellFactory(lv -> new SpellListCell());
@@ -350,9 +356,12 @@ public class LibraryPage extends Page {
 		logger.log(Level.DEBUG, "Navigate Critter Powers  ");
 		try {
 			FilteredListPage<CritterPower> page =new FilteredListPage<CritterPower>(
-					ResourceI18N.get(LibraryPage.RES, "category.critterpowers"), 
-					() -> Shadowrun6Core.getItemList(CritterPower.class), 
-					new GenericDescriptionVBox((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					ResourceI18N.get(LibraryPage.RES, "category.critterpowers"),
+					() -> Shadowrun6Core.getItemList(CritterPower.class),
+					new GenericDescriptionVBox(
+							Shadowrun6Tools.requirementResolver(Locale.getDefault()),
+							Shadowrun6Tools.modificationResolver(Locale.getDefault())
+							)
 					);
 			page.setAppLayout(getAppLayout());
 //			page.setCellFactory(lv -> new QualityListCell(null));
@@ -368,9 +377,12 @@ public class LibraryPage extends Page {
 		logger.log(Level.DEBUG, "Navigate Critter");
 		try {
 			FilteredListPage<SR6NPC> page =new FilteredListPage<SR6NPC>(
-					ResourceI18N.get(LibraryPage.RES, "category.critters"), 
-					() -> Shadowrun6Core.getItemList(SR6NPC.class).stream().filter(npc -> npc.getType()==NPCType.CRITTER || npc.getType()==NPCType.CRITTER_AWAKENED).collect(Collectors.toList()), 
-					new GenericDescriptionVBox((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					ResourceI18N.get(LibraryPage.RES, "category.critters"),
+					() -> Shadowrun6Core.getItemList(SR6NPC.class).stream().filter(npc -> npc.getType()==NPCType.CRITTER || npc.getType()==NPCType.CRITTER_AWAKENED).collect(Collectors.toList()),
+					new GenericDescriptionVBox(
+							Shadowrun6Tools.requirementResolver(Locale.getDefault()),
+							Shadowrun6Tools.modificationResolver(Locale.getDefault())
+							)
 					);
 			page.setAppLayout(getAppLayout());
 //			page.setCellFactory(lv -> new QualityListCell(null));
@@ -386,9 +398,12 @@ public class LibraryPage extends Page {
 		logger.log(Level.DEBUG, "Navigate Grunts");
 		try {
 			FilteredListPage<SR6NPC> page =new FilteredListPage<SR6NPC>(
-					ResourceI18N.get(LibraryPage.RES, "category.grunts"), 
-					() -> Shadowrun6Core.getItemList(SR6NPC.class).stream().filter(npc -> npc.getType()==NPCType.GRUNT).collect(Collectors.toList()), 
-					new GenericDescriptionVBox((r) -> Shadowrun6Tools.getRequirementString(r, Locale.getDefault()))
+					ResourceI18N.get(LibraryPage.RES, "category.grunts"),
+					() -> Shadowrun6Core.getItemList(SR6NPC.class).stream().filter(npc -> npc.getType()==NPCType.GRUNT).collect(Collectors.toList()),
+					new GenericDescriptionVBox(
+							Shadowrun6Tools.requirementResolver(Locale.getDefault()),
+							Shadowrun6Tools.modificationResolver(Locale.getDefault())
+							)
 					);
 			page.setAppLayout(getAppLayout());
 //			page.setCellFactory(lv -> new QualityListCell(null));
