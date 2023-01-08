@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
  *
  */
 public class ConsoleLogger implements Logger {
-	
+
 	private String name;
 	private Level minLevel;
 
@@ -61,7 +61,9 @@ public class ConsoleLogger implements Logger {
 
 		System.out.printf("[%7s][%10s]: %s\n%s", level, name, prefix+msg, out.toString());
 		if (ComLinkMain.out!=null && !ComLinkMain.out.checkError()) {
-			ComLinkMain.out.printf("[%s]: %s - %s\n%s%n", level, name, prefix+msg, thrown);
+			ComLinkMain.out.printf("[%s]: %s - %s", level, name, prefix+msg, thrown);
+			ComLinkMain.out.append(out.toString());
+			ComLinkMain.out.flush();
 		}
 	}
 
@@ -85,9 +87,10 @@ public class ConsoleLogger implements Logger {
 			System.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
 			if (ComLinkMain.out!=null && !ComLinkMain.out.checkError()) {
 				ComLinkMain.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
-				
+
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
