@@ -24,7 +24,7 @@ public class CustomLoggerFinder extends LoggerFinder {
 	private static Map<String, Level> levelByPrefix = new HashMap<>();
 
 	//-------------------------------------------------------------------
-	static {
+	static void initialize() {
 		InputStream ins = ClassLoader.getSystemResourceAsStream("loglevel.properties");
 		if (ins!=null) {
 			try {
@@ -47,6 +47,7 @@ public class CustomLoggerFinder extends LoggerFinder {
 
 	//-------------------------------------------------------------------
 	private static Level getLevelFor(String name) {
+		if (levelByPrefix.isEmpty()) initialize();
 		List<String> keys = levelByPrefix.keySet().stream().filter(key -> name.startsWith(key)).collect(Collectors.toList());
 		Collections.sort(keys, new Comparator<String>() {
 			public int compare(String o1, String o2) {
