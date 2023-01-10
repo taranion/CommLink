@@ -3,6 +3,7 @@
     highlight: #c44895;
     -jfxe-backplane-color: #202020;
     textcolor-warning: brown;
+    negative: #D03030;
 }
 
 .character-view-layout {
@@ -30,7 +31,7 @@
 	-fx-background-image: url(border.png);
   	-fx-background-size: contain;
   	-fx-background-position: right top;
-  	-fx-background-repeat: no-repeat; 
+  	-fx-background-repeat: no-repeat;
 }
 
 .app-layout:nonminimal .page-head {
@@ -44,7 +45,7 @@
 	-fx-background-image: url(border.png);
   	-fx-background-size: contain;
   	-fx-background-position: right top;
-  	-fx-background-repeat: no-repeat; 
+  	-fx-background-repeat: no-repeat;
 	-fx-padding: 0 3em 0 1em;
 }
 
@@ -52,7 +53,7 @@
 	-fx-background-image: url(border.png);
   	-fx-background-size: contain;
   	-fx-background-position: right top;
-  	-fx-background-repeat: no-repeat; 
+  	-fx-background-repeat: no-repeat;
 	-fx-padding: 0 3em 0 1em;
 }
 */
@@ -190,7 +191,7 @@
 }
 
 .page #debug {
-	-fx-background-image: url(ChapterIntroBG.jpg);	
+	-fx-background-image: url(ChapterIntroBG.jpg);
 }
 
 /*
@@ -228,7 +229,7 @@
 
 
 /*
- * Priority table 
+ * Priority table
  */
 .priobutton {
 	-fx-background-color: transparent;
@@ -254,7 +255,7 @@
    -fx-background-color: #cbcac0;
 	-fx-text-fill: black;
 	-fx-padding: 1em;
-	-fx-background-radius: 1em; 
+	-fx-background-radius: 1em;
 	-fx-border-radius: 1em;
 	-fx-border-width: 5px;
     -fx-border-color: -fx-base;
@@ -271,5 +272,5 @@
 }
 
 .device-circle {
-	-fx-stroke: highlight; 
+	-fx-stroke: highlight;
 }
