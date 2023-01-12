@@ -43,7 +43,6 @@ import de.rpgframework.eden.client.jfx.PDFPage;
 import de.rpgframework.genericrpg.LicenseManager;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.attach.PDFViewerConfig;
-import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun6.SR6Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
@@ -70,23 +69,18 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
-    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD"));
+//    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD"));
     	checkInit();
 		LogManager.getLogManager().reset();
     	System.out.println("Default locale = "+Locale.getDefault());
 //    	System.setProperty("prism.forceGPU", "true");
     	System.setProperty("prism.verbose", "false");
-//    	List<String> keys = new ArrayList<String>();
-//    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
-//    	Collections.sort(keys);
-//		for (String key : keys) {
-//			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
-//		}
-
-		System.out.println("No. Args = "+args.length);
-		for (int i=0; i<args.length; i++)
-			System.out.println("Arg "+i+": "+args[i]);
-		//System.setProperty("org.apache.commons.logging.Log", "hello.World");
+    	List<String> keys = new ArrayList<String>();
+    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
+    	Collections.sort(keys);
+		for (String key : keys) {
+			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+		}
 
        launch(args);
     }
@@ -315,7 +309,7 @@ public class ComLinkMain extends EdenClientApplication {
 		navigPDF    .setId("navig-pdf");
 		navigAccount.setId("navig-account");
 
-		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAccount, navigAbout);
+		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAbout);
 		if (!Platform.isDesktop()) {
 			drawer.getItems().remove(navigPDF);
 		}
@@ -355,7 +349,7 @@ public class ComLinkMain extends EdenClientApplication {
 				logger.log(Level.WARNING, "No page for " + menuItem.getText());
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.ERROR, "Failed creating page: "+menuItem,e);
 		}
 		logger.log(Level.WARNING, "No page for " + menuItem.getText());
 		return null;

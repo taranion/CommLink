@@ -3,6 +3,14 @@
   "name":"[Ljavafx.collections.transformation.SortedList$Element;"
 },
 {
+  "name":"de.rpgframework.jfx.attach.impl.DesktopPDFViewerService",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.pdfbox.pdmodel.PDDocument",
+  "allPublicConstructors" : true
+},
+{
   "name":"com.gluonhq.attach.browser.impl.DesktopBrowserService",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -1139,6 +1147,9 @@
 },
 {
   "name":"javafx.scene.layout.Region"
+},
+{
+  "name":"javafx.scene.shape.Polyline"
 },
 {
   "name":"javafx.scene.shape.Rectangle"

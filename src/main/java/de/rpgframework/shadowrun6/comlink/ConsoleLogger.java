@@ -84,10 +84,16 @@ public class ConsoleLogger implements Logger {
 			prefix="("+element.getClassName().substring(element.getClassName().lastIndexOf(".")+1)+".java:"+element.getLineNumber()+") : ";
 		}
 		try {
-			System.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
-			if (ComLinkMain.out!=null && !ComLinkMain.out.checkError()) {
-				ComLinkMain.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
-
+			if (params!=null && params.length>0) {
+				System.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
+				if (ComLinkMain.out!=null && !ComLinkMain.out.checkError()) {
+					ComLinkMain.out.printf("[%7s][%10s]: %s%n", level, name, prefix+MessageFormat.format(format, params));
+				}
+			} else {
+				System.out.printf("[%7s][%10s]: %s%n", level, name, prefix+format);
+				if (ComLinkMain.out!=null && !ComLinkMain.out.checkError()) {
+					ComLinkMain.out.printf("[%7s][%10s]: %s%n", level, name, prefix+format);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

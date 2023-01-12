@@ -530,15 +530,6 @@
       ]
     },
     {
-      "name":"de.rpgframework.shadowrun6.i18n.core",
-      "locales":[
-        "",
-        "de",
-        "en",
-        "fr"
-      ]
-    },
-    {
       "name":"org.prelle.javafx.JavaFXConstants",
       "locales":[
         "",

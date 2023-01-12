@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>0.7.0</version>
+	<version>0.8.0</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -121,7 +121,7 @@
       <dependency>
         <groupId>org.prelle</groupId>
         <artifactId>simple-persist</artifactId>
-				<version>[3.5.0-SNAPSHOT,3.99.99)</version>
+				<version>[3.5.0,3.99.99)</version>
         </dependency>
 		<dependency>
 			<groupId>de.rpgframework</groupId>
@@ -193,7 +193,7 @@
     		<version>2.18.0</version>
     		<scope>runtime</scope>
 		</dependency-->
-	</dependencies>
+		</dependencies>
 
 	<repositories>
 		<repository>
@@ -255,6 +255,9 @@
 						<arg>-Dapp.testprop=1</arg>
 						 <arg>-Dprism.verbose=false</arg>
 					</nativeImageArgs>
+					<linkerArgs>
+       				<arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
+    				</linkerArgs>
 					<attachList>
                         <list>browser</list>
                         <list>device</list>
@@ -462,6 +465,11 @@
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
+                <dependency>
+                    <groupId>de.rpgframework</groupId>
+                    <artifactId>attach-pdf-pdfbox</artifactId>
+                    <version>${rpgfw.version}</version>
+                 </dependency>
 			</dependencies>
 		</profile>
 		<profile>
