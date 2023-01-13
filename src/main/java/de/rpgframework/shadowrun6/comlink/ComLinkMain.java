@@ -43,6 +43,7 @@ import de.rpgframework.eden.client.jfx.PDFPage;
 import de.rpgframework.genericrpg.LicenseManager;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.attach.PDFViewerConfig;
+import de.rpgframework.jfx.attach.PDFViewerServiceFactory;
 import de.rpgframework.shadowrun6.SR6Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
@@ -310,7 +311,7 @@ public class ComLinkMain extends EdenClientApplication {
 		navigAccount.setId("navig-account");
 
 		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAbout);
-		if (!Platform.isDesktop()) {
+		if (!Platform.isDesktop() || !PDFViewerServiceFactory.create().isPresent()) {
 			drawer.getItems().remove(navigPDF);
 		}
 

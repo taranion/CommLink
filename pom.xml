@@ -255,9 +255,9 @@
 						<arg>-Dapp.testprop=1</arg>
 						 <arg>-Dprism.verbose=false</arg>
 					</nativeImageArgs>
-					<linkerArgs>
+					<!--linkerArgs>
        				<arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
-    				</linkerArgs>
+    				</linkerArgs-->
 					<attachList>
                         <list>browser</list>
                         <list>device</list>
