@@ -465,11 +465,11 @@
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
-                <dependency>
+                <!--dependency>
                     <groupId>de.rpgframework</groupId>
                     <artifactId>attach-pdf-pdfbox</artifactId>
                     <version>${rpgfw.version}</version>
-                 </dependency>
+                 </dependency-->
 			</dependencies>
 		</profile>
 		<profile>
