@@ -293,7 +293,7 @@ public class LibraryPage extends Page {
 		logger.log(Level.INFO, "Navigate Metatypes  "+Shadowrun6Core.getItemList(SR6MetaType.class));
 		BiFunction<SR6MetaType,Modification,String> modResolver = new BiFunction<SR6MetaType,Modification, String>() {
 			public String apply(SR6MetaType data, Modification t) {
-				return Shadowrun6Tools.getModificationString(data, t);
+				return Shadowrun6Tools.getModificationString(data, t, Locale.getDefault());
 			}
 		};
 		MetatypePane<SR6MetaType> descPane = new MetatypePane<SR6MetaType>(modResolver);
