@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.logging.LogManager;
 
 import org.prelle.javafx.BitmapIcon;
 import org.prelle.javafx.FlexibleApplication;
@@ -178,7 +177,7 @@ public class ComLinkMain extends EdenClientApplication {
 						Shadowrun6Character parsed = Shadowrun6Core.decode(attach.getData());
 						Shadowrun6Tools.resolveChar(parsed);
 						logger.log(Level.INFO, "Parsed character1: {1} is {0}", parsed.getName(), handle.getUUID());
-						Shadowrun6Tools.runProcessors(parsed);
+						Shadowrun6Tools.runProcessors(parsed, Locale.getDefault());
 						handle.setCharacter(parsed);
 						handle.setShortDescription(parsed.getShortDescription());
 						logger.log(Level.INFO, "Parsed character2: "+handle.getName()+": "+parsed.getShortDescription());
@@ -365,7 +364,7 @@ public class ComLinkMain extends EdenClientApplication {
 		try {
 			Shadowrun6Character model = Shadowrun6Core.decode(xml);
 			Shadowrun6Tools.resolveChar(model);
-			Shadowrun6Tools.runProcessors(model);
+			Shadowrun6Tools.runProcessors(model, Locale.getDefault());
 			return model;
 		} catch (CharacterIOException e) {
 			logger.log(Level.ERROR, "Failed decoding imported XML",e);
