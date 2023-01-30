@@ -13,17 +13,12 @@ import de.rpgframework.eden.client.jfx.EdenDebugPage;
 import de.rpgframework.eden.client.jfx.EdenSettingsPage;
 import de.rpgframework.eden.client.jfx.PDFPage;
 import de.rpgframework.jfx.attach.PDFViewerServiceFactory;
-import de.rpgframework.shadowrun6.comlink.CSSStyle;
-import de.rpgframework.shadowrun6.comlink.ComLinkMain;
-import javafx.scene.control.ChoiceBox;
 
 /**
  * @author prelle
  *
  */
 public class AboutPage extends PagePile {
-
-	private ChoiceBox<CSSStyle> cbStyle;
 
 	private EdenSettingsPage pgSettings;
 	private PDFPage pgPDF;
@@ -33,10 +28,6 @@ public class AboutPage extends PagePile {
 
 	//-------------------------------------------------------------------
 	public AboutPage(File[] directories, EdenClientApplication app, RoleplayingSystem rules) {
-		cbStyle = new ChoiceBox<>();
-		cbStyle.getItems().addAll(CSSStyle.values());
-		cbStyle.setValue(CSSStyle.DARK);
-
 		pgSettings = new EdenSettingsPage(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.forLanguageTag("pt"));
 //		pgSettings.addSettingsOneLine(ComLinkMain.RES ,"page.about.settings.style", cbStyle);
 
