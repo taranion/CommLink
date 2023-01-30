@@ -19,13 +19,13 @@
     <Logger name="de.rpgframework.shadowrun.chargen" level="INFO"/>
     <Logger name="de.rpgframework.shadowrun.chargen.jfx.section" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun.chargen.jfx.wizard.skill" level="DEBUG"/>
-    <Logger name="de.rpgframework.shadowrun6.chargen.proc" level="INFO"/>
-    <Logger name="de.rpgframework.shadowrun6.chargen" level="INFO"/>
+     <Logger name="de.rpgframework.shadowrun6.chargen" level="INFO"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.gen.adept" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.gen.spells" level="DEBUG"/>
 
     <Logger name="de.rpgframework.shadowrun6.chargen.charctrl" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.jfx.selector" level="DEBUG"/>
+    <Logger name="de.rpgframework.shadowrun6.chargen.proc" level="INFO"/>
     <Logger name="de.rpgframework.shadowrun6.data" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6.items" level="INFO"/>
     <Logger name="de.rpgframework.shadowrun6.proc" level="WARN"/>

@@ -235,13 +235,6 @@
       ]
     },
     {
-      "name":"de.rpgframework.eden.client.jfx.PDFPage",
-      "locales":[
-        "de",
-        "en"
-      ]
-    },
-    {
       "name":"de.rpgframework.genericrpg.data.GenericRPGTools",
       "locales":[
         "",
@@ -433,6 +426,13 @@
       ]
     },
     {
+      "name":"de.rpgframework.shadowrun6.chargen.gen.karma.KarmaCharacterGenerator",
+      "locales":[
+        "de",
+        "en"
+      ]
+    },
+    {
       "name":"de.rpgframework.shadowrun6.chargen.gen.priority.PriorityCharacterGenerator",
       "locales":[
         "de",
@@ -455,13 +455,6 @@
     },
     {
       "name":"de.rpgframework.shadowrun6.chargen.jfx.SR6CharacterViewLayout",
-      "locales":[
-        "de",
-        "en"
-      ]
-    },
-    {
-      "name":"de.rpgframework.shadowrun6.chargen.jfx.wizard.SR6WizardPageMagicOrResonance",
       "locales":[
         "de",
         "en"
@@ -515,6 +508,14 @@
       ]
     },
     {
+      "name":"de.rpgframework.shadowrun6.data.body_shop.i18n.body_shop",
+      "locales":[
+        "",
+        "de",
+        "en"
+      ]
+    },
+    {
       "name":"de.rpgframework.shadowrun6.data.firing_squad.i18n.firing_squad",
       "locales":[
         "",
@@ -525,6 +526,14 @@
     {
       "name":"de.rpgframework.shadowrun6.data.hack_slash.i18n.hack_slash",
       "locales":[
+        "de",
+        "en"
+      ]
+    },
+    {
+      "name":"de.rpgframework.shadowrun6.data.street_wyrd.i18n.street_wyrd",
+      "locales":[
+        "",
         "de",
         "en"
       ]

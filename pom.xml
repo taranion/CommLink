@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>0.8.0</version>
+	<version>0.9.0</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -18,7 +18,7 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.15</client.plugin.version>
+		<client.plugin.version>1.0.16</client.plugin.version>
 		<attach.version>4.0.16</attach.version>
 		<rpgfw.version>5.0.2-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
@@ -79,11 +79,11 @@
 			<artifactId>util</artifactId>
 			<version>${attach.version}</version>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>de.rpgframework</groupId>
 			<artifactId>attach-pdf</artifactId>
 			<version>${rpgfw.version}</version>
-		</dependency>
+		</dependency-->
 		<!--dependency>
 			<groupId>com.gluonhq</groupId>
 			<artifactId>scenicview</artifactId>
@@ -222,6 +222,7 @@
 			    <mainClass>${mainClassName}</mainClass>
           	 <options>
             	<option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option>
+            	<option>-Dproject.version=0.9.a</option>
           	 </options>
 		     </configuration>
 	      </plugin>
@@ -528,12 +529,6 @@
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
-                <dependency>
-                    <groupId>de.rpgframework</groupId>
-                    <artifactId>attach-pdf-pdfbox</artifactId>
-                    <version>${rpgfw.version}</version>
-                    <scope>runtime</scope>
-                 </dependency>
 			</dependencies>
 		</profile>
 	</profiles>

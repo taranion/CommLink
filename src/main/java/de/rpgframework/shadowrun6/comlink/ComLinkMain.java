@@ -69,7 +69,7 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
-    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD","SHADOWRUN6/STREET_WYRD"));
+//    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD","SHADOWRUN6/STREET_WYRD"));
     	checkInit();
     	System.out.println("Default locale = "+Locale.getDefault());
 //    	System.setProperty("prism.forceGPU", "true");
@@ -79,6 +79,9 @@ public class ComLinkMain extends EdenClientApplication {
     	Collections.sort(keys);
 		for (String key : keys) {
 			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+		}
+		for (String key : args) {
+			System.out.println("argument "+key);
 		}
 
        launch(args);

@@ -3,14 +3,6 @@
   "name":"[Ljavafx.collections.transformation.SortedList$Element;"
 },
 {
-  "name":"de.rpgframework.jfx.attach.impl.DesktopPDFViewerService",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.pdfbox.pdmodel.PDDocument",
-  "allPublicConstructors" : true
-},
-{
   "name":"com.gluonhq.attach.browser.impl.DesktopBrowserService",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -73,42 +65,6 @@
     {"name":"getFontFactory","parameterTypes":[] },
     {"name":"getPipeline","parameterTypes":[] }
   ]
-},
-{
-  "name":"com.sun.prism.es2.ES2Pipeline",
-  "methods":[{"name":"getInstance","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.prism.es2.X11GLFactory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.prism.shader.DrawPgram_Color_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
-  "name":"com.sun.prism.shader.FillPgram_Color_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
-  "name":"com.sun.prism.shader.Solid_TextureFirstPassLCD_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
-  "name":"com.sun.prism.shader.Solid_TextureRGB_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
-  "name":"com.sun.prism.shader.Solid_TextureSecondPassLCD_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
-  "name":"com.sun.prism.shader.Texture_Color_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
-  "name":"com.sun.prism.shader.Texture_LinearGradient_PAD_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
 },
 {
   "name":"com.sun.xml.internal.stream.XMLInputFactoryImpl",
@@ -849,6 +805,13 @@
   "name":"de.rpgframework.shadowrun6.chargen.gen.CommonSR6GeneratorSettings",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.karma.KarmaCharacterGenerator",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] },
+	 {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+	]
 },
 {
   "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.PointBuyCharacterGenerator",
