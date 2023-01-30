@@ -24,6 +24,7 @@ import de.rpgframework.shadowrun.MentorSpirit.Type;
 import de.rpgframework.shadowrun.NPCType;
 import de.rpgframework.shadowrun.Quality;
 import de.rpgframework.shadowrun.chargen.jfx.FilterSpells;
+import de.rpgframework.shadowrun.chargen.jfx.listcell.MentorSpiritCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.QualityListCell;
 import de.rpgframework.shadowrun.chargen.jfx.listcell.SpellListCell;
 import de.rpgframework.shadowrun.chargen.jfx.pages.FilterQualities;
@@ -211,10 +212,20 @@ public class LibraryPage extends Page {
 			pane.setStyle("-fx-max-width: 35em");
 			FilteredListPage<MentorSpirit> page =new FilteredListPage<MentorSpirit>(
 					ResourceI18N.get(LibraryPage.RES, "category.mentorspirits"),
-					() -> Shadowrun6Core.getItemList(MentorSpirit.class).stream().filter(m-> m.getType()==Type.MENTOR_SPIRIT).collect(Collectors.toList()),
+					() -> Shadowrun6Core.getItemList(MentorSpirit.class)
+						.stream()
+						.filter(m-> m.getType()==Type.MENTOR_SPIRIT)
+						.filter(Shadowrun6Tools.filterByLanguage(MentorSpirit.class, Locale.getDefault()))
+						.collect(Collectors.toList()),
 					pane
-					);
-//			page.setCellFactory(lv -> new SpellListCell());
+					) {
+				@Override
+				public boolean nameMatch(MentorSpirit item, String search) {
+					return item.getName().toLowerCase().indexOf(search.toLowerCase())>-1 || item.getSimilarNames(Locale.getDefault()).toLowerCase().contains(search.toLowerCase());
+				}
+
+			};
+			page.setCellFactory(lv -> new MentorSpiritCell());
 //			page.setFilterInjector(new FilterSpells());
 			page.setAppLayout(getAppLayout());
 //			getAppLayout().navigateTo(page, false);

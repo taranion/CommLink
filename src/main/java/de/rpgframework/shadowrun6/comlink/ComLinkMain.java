@@ -63,7 +63,7 @@ import javafx.stage.Stage;
 
 public class ComLinkMain extends EdenClientApplication {
 
-	private ResourceBundle RES = ResourceBundle.getBundle(ComLinkMain.class.getName(), ComLinkMain.class.getModule());
+	public final static ResourceBundle RES = ResourceBundle.getBundle(ComLinkMain.class.getName(), ComLinkMain.class.getModule());
 
 	static PrintWriter out;
 
@@ -286,7 +286,7 @@ public class ComLinkMain extends EdenClientApplication {
 	@Override
 	public void populateNavigationPane(NavigationPane drawer) {
 		// Header
-		Label header = new Label("ComLink6");
+		Label header = new Label("CommLink6");
 		BitmapIcon icoCommLink = new BitmapIcon(ComLinkMain.class.getResource("AppLogo.png").toString());
 		icoCommLink.setStyle("-fx-pref-width: 3em");
 		header.setGraphic(icoCommLink);
@@ -294,24 +294,25 @@ public class ComLinkMain extends EdenClientApplication {
 
 		// Items
 		SymbolIcon icoLookup = new SymbolIcon("library");
-		FontIcon icoAbout   = new FontIcon("\uD83D\uDEC8");
+		//FontIcon icoAbout   = new FontIcon("\uD83D\uDEC8");
+		SymbolIcon icoAbout = new SymbolIcon("setting");
 		FontIcon icoAccount = new FontIcon("\uE2AF");
-		SymbolIcon icoPDF     = new SymbolIcon("pdf");
+//		SymbolIcon icoPDF     = new SymbolIcon("pdf");
 		navigChars  = new MenuItem(ResourceI18N.get(RES, "navig.chars"), new SymbolIcon("people"));
 		navigLookup = new MenuItem(ResourceI18N.get(RES, "navig.lookup"), icoLookup);
 		navigAccount= new MenuItem(ResourceI18N.get(RES, "navig.account"), icoAccount);
-		navigPDF    = new MenuItem(ResourceI18N.get(RES, "navig.pdf"), icoPDF);
+//		navigPDF    = new MenuItem(ResourceI18N.get(RES, "navig.pdf"), icoPDF);
 		navigAbout  = new MenuItem(ResourceI18N.get(RES, "navig.about"), icoAbout);
 		navigChars  .setId("navig-chars");
 		navigLookup .setId("navig-lookup");
 		navigAbout  .setId("navig-about");
-		navigPDF    .setId("navig-pdf");
+//		navigPDF    .setId("navig-pdf");
 		navigAccount.setId("navig-account");
 
-		drawer.getItems().addAll(navigChars, navigLookup, navigPDF, navigAbout);
-		if (!Platform.isDesktop() || !PDFViewerServiceFactory.create().isPresent()) {
-			drawer.getItems().remove(navigPDF);
-		}
+		drawer.getItems().addAll(navigChars, navigLookup, navigAbout);
+//		if (!Platform.isDesktop() || !PDFViewerServiceFactory.create().isPresent()) {
+//			drawer.getItems().remove(navigPDF);
+//		}
 
 		// Footer
 		Image img = new Image(ComLinkMain.class.getResourceAsStream("SR6Logo2.png"));
@@ -333,7 +334,7 @@ public class ComLinkMain extends EdenClientApplication {
 		logger.log(Level.INFO, "createPage(" + menuItem + ")");
 		try {
 			if (menuItem == navigAbout) {
-				return new AboutPage(super.getDirectories());
+				return new AboutPage(super.getDirectories(), this, RoleplayingSystem.SHADOWRUN6);
 			} else if (menuItem == navigLookup) {
 				return new LibraryPage();
 			} else if (menuItem == navigChars) {
