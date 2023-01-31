@@ -38,6 +38,7 @@ import de.rpgframework.core.BabylonEventBus;
 import de.rpgframework.core.BabylonEventType;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
+import de.rpgframework.eden.client.jfx.EdenSettings;
 import de.rpgframework.eden.client.jfx.PDFPage;
 import de.rpgframework.genericrpg.LicenseManager;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
@@ -78,7 +79,9 @@ public class ComLinkMain extends EdenClientApplication {
     	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
     	Collections.sort(keys);
 		for (String key : keys) {
-			System.out.println(key+" \t= "+System.getProperties().getProperty(key));
+			if (key.startsWith("com.sun") || key.startsWith("java."))
+				continue;
+			System.out.println("PROP "+key+" \t= "+System.getProperties().getProperty(key));
 		}
 		for (String key : args) {
 			System.out.println("argument "+key);
@@ -102,12 +105,22 @@ public class ComLinkMain extends EdenClientApplication {
 	private static void checkInit() {
 		if (out != null)
 			return;
-		Path home = Paths.get(System.getProperty("user.home"));
-		Path logDir = home.resolve("commlink-logs");
+		//Path home = Paths.get(System.getProperty("user.home"));
+		Path logDir = EdenSettings.logDir; //home.resolve("commlink-logs");
 		System.setProperty("logdir", logDir.toAbsolutePath().toString());
 		System.out.println("Log directory = " + logDir.toAbsolutePath().toString());
 		try {
-			Files.createDirectories(logDir);
+			if (!Files.exists(logDir))
+				Files.createDirectories(logDir);
+			// Delete all files
+			List<Path> toDelete = new ArrayList<>();
+			Files.newDirectoryStream(logDir).forEach(file -> {
+				try {
+					Files.delete(file);
+				} catch (IOException e) {
+				}
+			});
+
 			Path logFile = logDir.resolve("logfile.txt");
 			out = new PrintWriter(new FileWriter(logFile.toFile()));
 		} catch (IOException e) {
