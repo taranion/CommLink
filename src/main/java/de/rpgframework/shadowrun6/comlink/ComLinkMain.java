@@ -71,6 +71,7 @@ public class ComLinkMain extends EdenClientApplication {
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
 //    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD","SHADOWRUN6/STREET_WYRD"));
+    	System.out.println("ComLinkMain.main");
     	checkInit();
     	System.out.println("Default locale = "+Locale.getDefault());
 //    	System.setProperty("prism.forceGPU", "true");
@@ -103,21 +104,27 @@ public class ComLinkMain extends EdenClientApplication {
 
     //-------------------------------------------------------------------
 	private static void checkInit() {
-		if (out != null)
-			return;
-		//Path home = Paths.get(System.getProperty("user.home"));
-		Path logDir = EdenSettings.logDir; //home.resolve("commlink-logs");
-		System.setProperty("logdir", logDir.toAbsolutePath().toString());
-		System.out.println("Log directory = " + logDir.toAbsolutePath().toString());
 		try {
-			if (!Files.exists(logDir))
+			if (out != null) {
+				System.out.println("Already initialized");
+				return;
+			}
+			//Path home = Paths.get(System.getProperty("user.home"));
+			Path logDir = EdenSettings.logDir; //home.resolve("commlink-logs");
+			System.setProperty("logdir", logDir.toAbsolutePath().toString());
+			System.out.println("Log directory = " + logDir.toAbsolutePath().toString());
+			if (!Files.exists(logDir)) {
+				System.out.println("Log dir does not exist");
 				Files.createDirectories(logDir);
+			}
 			// Delete all files
-			List<Path> toDelete = new ArrayList<>();
 			Files.newDirectoryStream(logDir).forEach(file -> {
-				try {
-					Files.delete(file);
-				} catch (IOException e) {
+				if (Files.isWritable(file)) {
+					try {
+						Files.delete(file);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			});
 
@@ -125,6 +132,7 @@ public class ComLinkMain extends EdenClientApplication {
 			out = new PrintWriter(new FileWriter(logFile.toFile()));
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
 		}
 	}
 
