@@ -32,6 +32,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.8.7
+
     - name: Compile
       run:  mvn -U -s settings.xml clean gluonfx:compile
       env: 
