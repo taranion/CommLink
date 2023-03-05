@@ -37,7 +37,7 @@ jobs:
         maven-version: 3.8.7
 
     - name: Compile
-      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile -Pdesktop
+      run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile -Pdesktop-binary
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}
