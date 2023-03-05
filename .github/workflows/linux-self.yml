@@ -49,7 +49,7 @@ jobs:
 #      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev  libpango1.0-dev libxtst-dev
 
     - name: Link
-      run:  mvn gluonfx:link -Pdesktop
+      run:  mvn gluonfx:link -Pdesktop-binary
         
     - name: Show result
       run: ls -l target/gluonfx/x86_64-linux
@@ -98,7 +98,7 @@ jobs:
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
         
     - name: Compile update artifact
-      run: mvn package
+      run: mvn package -Pdesktop
     
     - name: Upload update artifact
       continue-on-error: false
@@ -112,7 +112,7 @@ jobs:
         password: ${{ secrets.DEPLOY_PASSWORD }}
 
     - name: JPackage
-      run:  mvn jpackage:jpackage
+      run:  mvn jpackage:jpackage -Pdesktop
         
     - name: Show result
       run: ls target/jpackage

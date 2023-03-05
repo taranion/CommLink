@@ -20,6 +20,7 @@
     <Logger name="de.rpgframework.shadowrun6.chargen" level="INFO"/>
 
     <Logger name="de.rpgframework.shadowrun6.chargen.charctrl" level="DEBUG"/>
+    <Logger name="de.rpgframework.shadowrun6.chargen.gen.karma" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.jfx.selector" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.jfx.section" level="DEBUG"/>
     <Logger name="de.rpgframework.shadowrun6.chargen.proc" level="INFO"/>

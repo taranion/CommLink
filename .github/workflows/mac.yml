@@ -55,7 +55,7 @@ jobs:
       run: ls -l target/gluonfx/x86_64-darwin
 
     - name: Package
-      run:  mvn gluonfx:package -Pdesktop
+      run:  mvn gluonfx:package -Pdesktop-binary
         
     - name: Show result
       continue-on-error: true
