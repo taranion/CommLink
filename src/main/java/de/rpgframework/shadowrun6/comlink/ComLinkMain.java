@@ -260,6 +260,24 @@ public class ComLinkMain extends EdenClientApplication {
 
     //-------------------------------------------------------------------
     /**
+     * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getWarningDialogImage()
+     */
+    @Override
+	protected Image getWarningDialogImage() {
+		return new Image(ComLinkMain.class.getResourceAsStream("WarningDialog.png"));
+	}
+
+	//-------------------------------------------------------------------
+	/**
+	 * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getInfoDialogImage()
+	 */
+    @Override
+	protected Image getInfoDialogImage() {
+		return new Image(ComLinkMain.class.getResourceAsStream("InfoDialog.png"));
+	}
+
+    //-------------------------------------------------------------------
+    /**
      * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getUpdateDialogImage()
      */
     @Override
