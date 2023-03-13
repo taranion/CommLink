@@ -103,4 +103,7 @@ jobs:
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
-      
+
+    - name: JPackage
+      continue-on-error: true
+      run: mvn jpackage:jpackage@osx 

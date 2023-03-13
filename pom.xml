@@ -368,15 +368,17 @@
     			</executions>
 			</plugin-->
 
+
+
 			<plugin>
     			<groupId>org.panteleyev</groupId>
     			<artifactId>jpackage-maven-plugin</artifactId>
-    			<version>1.5.2</version>
+    			<version>1.6.0</version>
     			<configuration>
         			<name>Commlink6</name>
         			<appVersion>${project.version}</appVersion>
         			<vendor>RPGFramework</vendor>
-        			<copyright>2022 Stefan Prelle</copyright>
+        			<copyright>2023 Stefan Prelle</copyright>
         			<description>Character Management for Shadowrun 6</description>
         			<mainClass>${mainClassName}</mainClass>
         			<mainJar>${project.artifactId}-${project.version}-jar-with-dependencies.jar</mainJar>
@@ -387,40 +389,44 @@
         			<destination>target/jpackage</destination>
         			<icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
         			<javaOptions>
-            		<option>--enable-preview</option>
             		<option>-Dfile.encoding=UTF-8</option>
             		<option>-Dproject.version=${project.version}</option>
         			</javaOptions>
+					<aboutUrl>https://www.rpgframework.de/commlink6/</aboutUrl>
+					<temp>target/tmp</temp>
+  			</configuration>
 
-        			<linuxAppCategory>Game</linuxAppCategory>
-        			<linuxShortcut>true</linuxShortcut>
-        			<winConsole>true</winConsole>
-        			<winDirChooser>true</winDirChooser>
+  			<executions>
+     			<execution>
+            	<id>linux</id>
+            	<configuration>
+               	<icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
+						<type>RPM</type>
+        				<linuxAppCategory>Game</linuxAppCategory>
+        				<linuxShortcut>true</linuxShortcut>
+          		</configuration>
+     		</execution>
+        	<execution>
+            <id>win</id>
+            <configuration>
+               <icon>src/windows/assets/icon.ico</icon>
+               <type>MSI</type>
+					<winDirChooser>true</winDirChooser>
+        			<winConsole>false</winConsole>
         			<winMenu>true</winMenu>
         			<winPerUserInstall>true</winPerUserInstall>
         			<winShortcut>true</winShortcut>
-    			</configuration>
-
-    			<executions>
-        			<execution>
-            		<id>linux</id>
-            		<configuration>
-                		<icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
-							<type>RPM</type>
-            		</configuration>
-        </execution>
-        <execution>
-            <id>win</id>
-            <configuration>
-                <icon>src/windows/assets/icon.ico</icon>
-                <winMenu>true</winMenu>
-                <type>MSI</type>
             </configuration>
         </execution>
-    </executions>
-</plugin>
-
-
+        	<execution>
+            <id>osx</id>
+            <configuration>
+                <icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
+                <type>DMG</type>
+             </configuration>
+        		</execution>
+    		</executions>
+			</plugin>
 		</plugins>
 	</build>
 
