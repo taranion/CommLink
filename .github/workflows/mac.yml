@@ -107,3 +107,9 @@ jobs:
     - name: JPackage
       continue-on-error: true
       run: mvn jpackage:jpackage@osx 
+        
+    - name: Show result JPackage
+      run: ls -l target/jpackage
+        
+    - name: Show result
+      run: find target/tmp
