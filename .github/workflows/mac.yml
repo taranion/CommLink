@@ -19,6 +19,11 @@ jobs:
     - name: Debug Maven
       run: mvn -version
 
+    - name: setup-graalvm-ce
+      uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Set Release version env variable
       run: |
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
