@@ -10,14 +10,19 @@ env:
 
 jobs:
 
+
   compile-jpackage:
     runs-on: macos-latest
     steps:
     - name: checkout sources
       uses: actions/checkout@v3
 
-    - name: Debug Maven
-      run: mvn -version
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-    
 
     - name: setup-graalvm-ce
       uses: gluonhq/setup-graalvm@master
@@ -44,8 +49,15 @@ jobs:
         
     - name: Show result JPackage
       continue-on-error: true
-      run: find target
-        
-    - name: Show result
+      run: ls target/jpackage
+      
+    - name: Upload
       continue-on-error: true
-      run: find target/tmp
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        verbose: true
+        local: target/jpackage/Commlink6-1.0.0.dmg
+        remote: /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.dmg
+        host: eden.rpgframework.de
+        username: ghcommlink
+        password: ${{ secrets.DEPLOY_PASSWORD }}
