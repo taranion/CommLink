@@ -49,7 +49,7 @@ jobs:
         CXX: g++-11
 
     - name: Link
-      run:  mvn gluonfx:link -Pdesktop
+      run:  mvn gluonfx:link -Pdesktop-binary
         
     - name: Show result
       run: ls -l target/gluonfx/x86_64-darwin
