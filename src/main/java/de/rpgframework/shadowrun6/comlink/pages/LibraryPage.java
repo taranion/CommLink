@@ -215,7 +215,7 @@ public class LibraryPage extends Page {
 					() -> Shadowrun6Core.getItemList(MentorSpirit.class)
 						.stream()
 						.filter(m-> m.getType()==Type.MENTOR_SPIRIT)
-						.filter(Shadowrun6Tools.filterByLanguage(MentorSpirit.class, Locale.getDefault()))
+						.filter(Shadowrun6Tools.filterByLanguage(Locale.getDefault()))
 						.collect(Collectors.toList()),
 					pane
 					) {
@@ -300,15 +300,18 @@ public class LibraryPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void openMetatypes(ActionEvent ev) {
-		logger.log(Level.INFO, "Navigate Metatypes");
-		logger.log(Level.INFO, "Navigate Metatypes  "+Shadowrun6Core.getItemList(SR6MetaType.class));
+		logger.log(Level.DEBUG, "Navigate Metatypes");
 		BiFunction<SR6MetaType,Modification,String> modResolver = new BiFunction<SR6MetaType,Modification, String>() {
 			public String apply(SR6MetaType data, Modification t) {
 				return Shadowrun6Tools.getModificationString(data, t, Locale.getDefault());
 			}
 		};
 		MetatypePane<SR6MetaType> descPane = new MetatypePane<SR6MetaType>(modResolver);
-		descPane.setItems(Shadowrun6Core.getItemList(SR6MetaType.class));
+		descPane.setItems(
+				Shadowrun6Core.getItemList(SR6MetaType.class).stream()
+				.filter(Shadowrun6Tools.filterByLanguage(Locale.getDefault()))
+				.collect(Collectors.toList())
+				);
 		try {
 			FilteredListPage<SR6MetaType> page =new FilteredListPage<SR6MetaType>(
 					ResourceI18N.get(LibraryPage.RES, "category.metatypes"),

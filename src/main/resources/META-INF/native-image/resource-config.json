@@ -491,54 +491,6 @@
       ]
     },
     {
-      "name":"de.rpgframework.shadowrun6.data.companion.i18n.companion",
-      "locales":[
-        "de",
-        "en"
-      ]
-    },
-    {
-      "name":"de.rpgframework.shadowrun6.data.core.i18n.core",
-      "locales":[
-        "",
-        "de",
-        "en",
-        "fr",
-        "pt"
-      ]
-    },
-    {
-      "name":"de.rpgframework.shadowrun6.data.body_shop.i18n.body_shop",
-      "locales":[
-        "",
-        "de",
-        "en"
-      ]
-    },
-    {
-      "name":"de.rpgframework.shadowrun6.data.firing_squad.i18n.firing_squad",
-      "locales":[
-        "",
-        "de",
-        "en"
-      ]
-    },
-    {
-      "name":"de.rpgframework.shadowrun6.data.hack_slash.i18n.hack_slash",
-      "locales":[
-        "de",
-        "en"
-      ]
-    },
-    {
-      "name":"de.rpgframework.shadowrun6.data.street_wyrd.i18n.street_wyrd",
-      "locales":[
-        "",
-        "de",
-        "en"
-      ]
-    },
-    {
       "name":"org.prelle.javafx.JavaFXConstants",
       "locales":[
         "",
