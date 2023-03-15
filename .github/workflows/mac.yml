@@ -28,8 +28,15 @@ jobs:
       run: |
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
-    - name: Compile
-      run:  export LC_ALL=en_EN.UTF-8; export LC_MESSAGES=en_EN.UTF-8; locale ; mvn clean ; mkdir target ; mvn -U -s settings.xml jpackage:jpackage@osx  -Pdesktop
+    - name: Compile 
+      run:  export LC_ALL=en_EN.UTF-8; export LC_MESSAGES=en_EN.UTF-8; locale ; mvn -U -s settings.xml clean package  -Pdesktop
+      env: 
+        JFROG_USER: ${{ secrets.JFROG_USER }}
+        JFROG_PASS: ${{ secrets.JFROG_PASS }}
+        LANG: en_EN
+
+    - name: JPackage
+      run:   mvn jpackage:jpackage@osx
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}
