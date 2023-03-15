@@ -140,9 +140,6 @@ jobs:
         
     - name: Show result JPackage
       run: ls -l target/jpackage
-        
-    - name: Show result JPackage
-      run: ls -l target/tmp
 
     - name: Prepare staging 2
       continue-on-error: true
