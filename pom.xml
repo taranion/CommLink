@@ -424,6 +424,7 @@
             <configuration>
                 <icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
                 <type>DMG</type>
+        			<appVersion>1.0.0</appVersion>
              </configuration>
         		</execution>
     		</executions>
