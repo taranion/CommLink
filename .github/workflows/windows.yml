@@ -41,14 +41,14 @@ jobs:
       run: mvn -version
 
     - name: Compile
-      run:  mvn -U -s settings.xml clean gluonfx:compile -Pdesktop
+      run:  mvn -U -s settings.xml clean gluonfx:compile -Pdesktop-binary
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}
         LANG: de_DE
 
     - name: Link
-      run:  mvn -U -s settings.xml gluonfx:link -Pdesktop
+      run:  mvn -U -s settings.xml gluonfx:link -Pdesktop-binary
         
     - name: Show result
       run: ls target/gluonfx/x86_64-windows
@@ -132,7 +132,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Compile
-      run:  mvn  -U -s settings.xml clean package jpackage:jpackage@win
+      run:  mvn  -U -s settings.xml clean package jpackage:jpackage@win -Pdesktop
       env: 
         JFROG_USER: ${{ secrets.JFROG_USER }}
         JFROG_PASS: ${{ secrets.JFROG_PASS }}

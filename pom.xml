@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>0.10.1</version>
+	<version>0.10.2</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -475,12 +475,12 @@
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
-                <!--dependency>
+                <dependency>
                     <groupId>de.rpgframework</groupId>
                     <artifactId>attach-pdf-pdfbox</artifactId>
                     <version>${rpgfw.version}</version>
                     <scope>runtime</scope>
-                 </dependency-->
+                 </dependency>
 			</dependencies>
 		</profile>
 		<profile>
