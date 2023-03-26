@@ -94,6 +94,7 @@ public class ComLinkMain extends EdenClientApplication {
     //-------------------------------------------------------------------
 	public ComLinkMain() {
 		super(RoleplayingSystem.SHADOWRUN6, "CommLink6");
+    	checkInit();
 
 		ExportPluginRegistry.register(new StandardPDFPlugin());
 		ExportPluginRegistry.register(new SR6BeginnerPDFPlugin());

@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>0.10.2</version>
+	<version>0.10.3</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -16,7 +16,7 @@
 		<maven.compiler.release>17</maven.compiler.release>
 		<javafx.version>19</javafx.version>
 		<maven.skip.deploy>true</maven.skip.deploy>
-		<maven.skip.install>true</maven.skip.install>
+		<maven.skip.install>false</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.16</client.plugin.version>
 		<attach.version>4.0.17-SNAPSHOT</attach.version>
@@ -203,6 +203,7 @@
 		<repository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/groups/public</url>
+			<snapshots><enabled>true</enabled></snapshots>
 		</repository>
 	</repositories>
 

@@ -679,26 +679,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun.persist.FadingConverter",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun.persist.FireModesConverter",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromFoci",
-  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun.ShadowrunCharacter"] }]
-},
-{
-  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromMetaType",
-  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun.ShadowrunCharacter"] }]
-},
-{
-  "name":"de.rpgframework.shadowrun.proc.GetModificationsFromQualities",
-  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun.ShadowrunCharacter"] }]
-},
-{
   "name":"de.rpgframework.shadowrun6.ActionList",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
