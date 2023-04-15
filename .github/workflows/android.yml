@@ -23,7 +23,7 @@ jobs:
           ${{ runner.os }}-maven-    
 
     - name: setup-graalvm-ce
-      uses: gluonhq/setup-graalvm@master
+      uses: taranion/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
