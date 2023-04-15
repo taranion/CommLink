@@ -104,13 +104,6 @@ jobs:
     - name: checkout sources
       uses: actions/checkout@v3
 
-    - uses: actions/cache@v1
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-    
-
     - name: setup-graalvm-ce
       uses: taranion/setup-graalvm@master
       env:
