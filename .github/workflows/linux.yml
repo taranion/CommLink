@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout sources
-      uses: actions/checkout@v3
+      uses: actions/checkout@master
  
 #    - uses: actions/cache@v1
 #      with:
@@ -89,7 +89,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout sources
-      uses: actions/checkout@v2
+      uses: actions/checkout@master
 
     - name: setup-graalvm-ce
       uses: taranion/setup-graalvm@master
