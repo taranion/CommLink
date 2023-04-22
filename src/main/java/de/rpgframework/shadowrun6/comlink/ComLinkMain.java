@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.lang.System.Logger.Level;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,8 +24,6 @@ import org.prelle.shadowrun6.export.compact.plugin.SR6CompactPDFPlugin;
 import org.prelle.shadowrun6.export.standard.StandardPDFPlugin;
 import org.prelle.simplepersist.SerializationException;
 
-import com.gluonhq.attach.util.Platform;
-
 import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.Attachment;
 import de.rpgframework.character.Attachment.Format;
@@ -43,7 +40,6 @@ import de.rpgframework.eden.client.jfx.PDFPage;
 import de.rpgframework.genericrpg.LicenseManager;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.attach.PDFViewerConfig;
-import de.rpgframework.jfx.attach.PDFViewerServiceFactory;
 import de.rpgframework.shadowrun6.SR6Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
@@ -53,6 +49,7 @@ import de.rpgframework.shadowrun6.comlink.pages.AboutPage;
 import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
 import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
 import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
+import de.rpgframework.shadowrun6.export.fvtt.SR6FoundryExportPlugin;
 import de.rpgframework.shadowrun6.export.json.SR6JSONExportPlugin;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -99,7 +96,7 @@ public class ComLinkMain extends EdenClientApplication {
 		ExportPluginRegistry.register(new StandardPDFPlugin());
 		ExportPluginRegistry.register(new SR6BeginnerPDFPlugin());
 		ExportPluginRegistry.register(new SR6CompactPDFPlugin());
-//		ExportPluginRegistry.register(new SR6FoundryExportPlugin());
+		ExportPluginRegistry.register(new SR6FoundryExportPlugin());
 		ExportPluginRegistry.register(new SR6JSONExportPlugin());
 	}
 
