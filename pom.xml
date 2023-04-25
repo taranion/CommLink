@@ -20,11 +20,8 @@
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.18</client.plugin.version>
 		<attach.version>4.0.18</attach.version>
-		<rpgfw.version>5.0.2-SNAPSHOT</rpgfw.version>
+		<rpgfw.version>5.1.0</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
-		<prism.verbose>true</prism.verbose>
-		<runtime.jvm.options>-DhelloJVM=world</runtime.jvm.options>
-      <runtime.options>-Duse.fullscreen=true,-Dhello=world</runtime.options>
 	</properties>
 
 	<dependencies>
