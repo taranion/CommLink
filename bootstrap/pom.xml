@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>Update4j Demo Create Configuration</name>
+		<groupId>de.rpgframework.shadowrun6</groupId>
+		<artifactId>create-config</artifactId>
+		<version>0.12.0</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<javafx.version>20.0.1</javafx.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.release>17</maven.compiler.release>
+		<maven.skip.deploy>true</maven.skip.deploy>
+		<maven.skip.install>true</maven.skip.install>
+	</properties>
+
+	<dependencies>
+		<dependency>
+    		<groupId>org.update4j</groupId>
+    		<artifactId>update4j</artifactId>
+   		<version>1.5.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+    		<artifactId>log4j-jpl</artifactId>
+    		<version>2.18.0</version>
+    		<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+    		<artifactId>log4j-core</artifactId>
+    		<version>2.18.0</version>
+    		<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>create-config</id>
+						<phase>package</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<includeProjectDependencies>true</includeProjectDependencies>
+					<mainClass>de.rpgframework.shadowrun6.updater.CreateConfig</mainClass>
+					<systemProperties>
+						<systemProperty>
+							<key>maven.dir</key>
+							<value>${root}</value>
+						</systemProperty>
+						<systemProperty>
+							<key>target</key>
+							<value>${target}</value>
+						</systemProperty>
+						<systemProperty>
+							<key>config.location</key>
+							<value>${config.location}</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

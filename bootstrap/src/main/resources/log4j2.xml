@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+  <Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%5p [%15c] (%F:%L) - %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO">
+			<AppenderRef ref="Console" />
+		</Root>
+    	<Logger name="javafx" level="WARN"/>
+    	<Logger name="jdk" level="ERROR"/>
+    	<Logger name="sun" level="INFO"/>
+    	<Logger name="xml" level="WARN"/>
+    	<Logger name="prelle.jfx" level="WARN"/>
+    	<Logger name="de.rpgframework" level="INFO"/>
+    	<Logger name="de.rpgframework.genericrpg" level="ERROR"/>
+    	<Logger name="de.rpgframework.shadowrun6.items" level="ERROR"/>
+    	<Logger name="de.rpgframework.shadowrun6.proc" level="WARN"/>
+	</Loggers>
+</Configuration>

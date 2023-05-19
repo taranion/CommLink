@@ -1,0 +1,13 @@
+Bitbucket Shadowrun6NG
+- baut ein JAR-File (A) OHNE JavaFX
+- JAR-File (A) wird auf Webserver abgelegt
+- jeweils nach Deployment-Umgebung in ein anderes Verzeichnis
+- Skript/Plugin erzeugt eine Update4J Config-Datei, in der
+  - das JAR-File (A) und 
+  - auch die OS-spezifischen JavaFX-JARs enthalten sind
+- die Config.xml wird auch in die gleiche Deployment-Umgebung hochgeladen
+
+
+
+Github
+- Projekt ohne Sourcecode baut Binaries mit GraalVM
