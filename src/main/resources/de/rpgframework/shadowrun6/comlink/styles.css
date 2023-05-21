@@ -274,3 +274,14 @@
 .device-circle {
 	-fx-stroke: highlight;
 }
+
+.hovered {
+	-fx-fill: red;
+}
+
+.state-plus {
+	-fx-text-fill: green;
+}
+.state-minus {
+	-fx-text-fill: red;
+}

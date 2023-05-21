@@ -11,14 +11,13 @@ open module de.rpgframework.shadowrun6.commlink6 {
 	requires de.rpgframework.shadowrun6.chargen.jfx;
 	requires de.rpgframework.shadowrun6.core;
 	requires de.rpgframework.shadowrun6.data;
-//	requires de.rpgframework.shadowrun6.export.fvtt;
+	requires de.rpgframework.shadowrun6.export.fvtt;
 	requires de.rpgframework.shadowrun6.export.json;
 	requires shadowrun6.export.pdf.standard;
 
 	requires javafx.base;
 	requires javafx.controls;
 	requires javafx.extensions;
-	requires javafx.fxml;
 	requires javafx.graphics;
 	requires shadowrun.common;
 	requires shadowrun.common.chargen.jfx;
@@ -29,6 +28,5 @@ open module de.rpgframework.shadowrun6.commlink6 {
 	requires java.logging;
 	requires rpgframework.pdfviewer;
 	requires java.prefs;
-	requires de.rpgframework.shadowrun6.export.fvtt;
 
 }

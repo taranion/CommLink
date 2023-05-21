@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>0.11.1</version>
+	<version>0.12.0</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -14,13 +14,13 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>17</maven.compiler.release>
-		<javafx.version>19</javafx.version>
+		<javafx.version>20.0.1</javafx.version>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>false</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.18</client.plugin.version>
 		<attach.version>4.0.18</attach.version>
-		<rpgfw.version>5.1.0</rpgfw.version>
+		<rpgfw.version>5.1.2-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
 	</properties>
 
