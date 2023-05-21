@@ -14,7 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>17</maven.compiler.release>
-		<javafx.version>20</javafx.version>
+		<javafx.version>20.0.1</javafx.version>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>false</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
