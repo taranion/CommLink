@@ -113,7 +113,7 @@
 		<dependency>
 			<groupId>de.rpgframework</groupId>
 			<artifactId>eden-client-jfx</artifactId>
-			<version>0.0.4</version>
+			<version>0.0.5-SNAPSHOT</version>
 		</dependency>
       <dependency>
         <groupId>org.prelle</groupId>

@@ -7,7 +7,6 @@ import java.lang.System.Logger.Level;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -22,25 +21,18 @@ import org.prelle.javafx.SymbolIcon;
 import org.prelle.shadowrun6.export.beginner.plugin.SR6BeginnerPDFPlugin;
 import org.prelle.shadowrun6.export.compact.plugin.SR6CompactPDFPlugin;
 import org.prelle.shadowrun6.export.standard.StandardPDFPlugin;
-import org.prelle.simplepersist.SerializationException;
 
 import de.rpgframework.ResourceI18N;
-import de.rpgframework.character.Attachment;
-import de.rpgframework.character.Attachment.Format;
-import de.rpgframework.character.Attachment.Type;
-import de.rpgframework.character.CharacterHandle;
 import de.rpgframework.character.CharacterIOException;
 import de.rpgframework.character.CharacterProviderLoader;
-import de.rpgframework.core.BabylonEventBus;
-import de.rpgframework.core.BabylonEventType;
 import de.rpgframework.core.RoleplayingSystem;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.EdenSettings;
 import de.rpgframework.eden.client.jfx.PDFPage;
+import de.rpgframework.eden.client.jfx.steps.StartupStep;
 import de.rpgframework.genericrpg.LicenseManager;
 import de.rpgframework.genericrpg.export.ExportPluginRegistry;
 import de.rpgframework.jfx.attach.PDFViewerConfig;
-import de.rpgframework.shadowrun6.SR6Spell;
 import de.rpgframework.shadowrun6.Shadowrun6Character;
 import de.rpgframework.shadowrun6.Shadowrun6Core;
 import de.rpgframework.shadowrun6.Shadowrun6Tools;
@@ -48,7 +40,6 @@ import de.rpgframework.shadowrun6.chargen.jfx.SR6CharactersOverviewPage;
 import de.rpgframework.shadowrun6.comlink.pages.AboutPage;
 import de.rpgframework.shadowrun6.comlink.pages.LibraryPage;
 import de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage;
-import de.rpgframework.shadowrun6.data.Shadowrun6DataPlugin;
 import de.rpgframework.shadowrun6.export.fvtt.SR6FoundryExportPlugin;
 import de.rpgframework.shadowrun6.export.json.SR6JSONExportPlugin;
 import javafx.scene.control.Label;
@@ -73,19 +64,21 @@ public class ComLinkMain extends EdenClientApplication {
     	System.out.println("Default locale = "+Locale.getDefault());
 //    	System.setProperty("prism.forceGPU", "true");
     	System.setProperty("prism.verbose", "false");
-    	List<String> keys = new ArrayList<String>();
-    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
-    	Collections.sort(keys);
-		for (String key : keys) {
-			if (key.startsWith("com.sun") || key.startsWith("java."))
-				continue;
-			System.out.println("PROP "+key+" \t= "+System.getProperties().getProperty(key));
-		}
-		for (String key : args) {
-			System.out.println("argument "+key);
-		}
+//    	List<String> keys = new ArrayList<String>();
+//    	System.getProperties().keySet().forEach(k -> keys.add( (String)k));
+//    	Collections.sort(keys);
+//		for (String key : keys) {
+//			if (key.startsWith("com.sun") || key.startsWith("java."))
+//				continue;
+//			System.out.println("PROP "+key+" \t= "+System.getProperties().getProperty(key));
+//		}
+//		for (String key : args) {
+//			System.out.println("argument "+key);
+//		}
 
+    	System.setProperty("javafx.preloader", CommlinkPreloader.class.getName());
        launch(args);
+
     }
 
     //-------------------------------------------------------------------
@@ -134,13 +127,34 @@ public class ComLinkMain extends EdenClientApplication {
 		}
 	}
 
+	//-------------------------------------------------------------------
+	protected List<StartupStep> getPreGUISteps() {
+		List<StartupStep> merged = new ArrayList<>(super.getPreGUISteps());
+		merged.add(new LoadSR6DataStep());
+		merged.add(new LoadSR6CharactersStep(this));
+		return merged;
+	}
+
+	//-------------------------------------------------------------------
+	/**
+	 * @see de.rpgframework.eden.client.jfx.EdenClientApplication#init()
+	 */
+	@Override
+	public void init() {
+		super.init();
+	       loadData();
+	}
+
     //-------------------------------------------------------------------
     /**
      * @throws IOException
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
+	@Override
     public void start(Stage stage) throws Exception {
-    	int prefWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 1500);
+    	stage.setOnShowing((ev) -> System.out.println("----SHOWING"));
+    	stage.setOnShown((ev) -> System.out.println("----SHOWN"));
+     	int prefWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 1500);
     	int prefHeight = Math.min( (int)Screen.getPrimary().getVisualBounds().getHeight(), 900);
     	System.out.println("Start with "+prefWidth+"x"+prefHeight);
 		stage.setWidth(prefWidth);
@@ -158,7 +172,7 @@ public class ComLinkMain extends EdenClientApplication {
         setStyle(stage.getScene(), FlexibleApplication.DARK_STYLE);
         stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-        loadData();
+
 
 //       ScenicView.show(stage.getScene());
 
@@ -166,9 +180,11 @@ public class ComLinkMain extends EdenClientApplication {
         PDFViewerConfig.setEnabled( super.isPDFEnabled());
 
         getAppLayout().visibleProperty().addListener( (ov,o,n) -> {
-        	logger.log(Level.INFO, "Visibility changed to "+n);
+        	logger.log(Level.INFO, "Visibility changed to "+n+"-------------------");
+        	System.err.println("Visibility changed to "+n+"-------------------");
             ResponsiveControlManager.initialize(getAppLayout());
         });
+		logger.log(Level.INFO, "LEAVE start (thread {0})", Thread.currentThread());
     }
 
 	//-------------------------------------------------------------------
@@ -177,65 +193,13 @@ public class ComLinkMain extends EdenClientApplication {
 	 */
     @Override
 	protected void loadData() {
-		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
-		plugin.init( );
-		logger.log(Level.INFO, "Loaded "+Shadowrun6Core.getItemList(SR6Spell.class).size()+" spells");
-//		logger.log(Level.INFO, "Loaded "+SplitterMondCore.getItemList(CreatureType.class).size()+" creature types");
-
-		Thread thread = new Thread(() -> {
-			try {
-				logger.log(Level.INFO, "CharacterProvider {0}", CharacterProviderLoader.getCharacterProvider());
-				List<CharacterHandle> handles = CharacterProviderLoader.getCharacterProvider().getMyCharacters(RoleplayingSystem.SHADOWRUN6);
-				for (CharacterHandle handle : handles) {
-					Attachment attach = null;
-					try {
-						try {
-							attach = CharacterProviderLoader.getCharacterProvider().getFirstAttachment(handle, Type.CHARACTER, Format.RULESPECIFIC);
-						} catch (Exception e) {
-							logger.log(Level.ERROR, "Error loading character attachment",e);
-							continue;
-						}
-						if (attach==null) continue;
-						Shadowrun6Character parsed = Shadowrun6Core.decode(attach.getData());
-						Shadowrun6Tools.resolveChar(parsed);
-						logger.log(Level.INFO, "Parsed character1: {1} is {0}", parsed.getName(), handle.getUUID());
-						Shadowrun6Tools.runProcessors(parsed, Locale.getDefault());
-						handle.setCharacter(parsed);
-						handle.setShortDescription(parsed.getShortDescription());
-						logger.log(Level.INFO, "Parsed character2: "+handle.getName()+": "+parsed.getShortDescription());
-					} catch (CharacterIOException e) {
-						if (e.getCause()!=null && e.getCause() instanceof SerializationException) {
-							SerializationException cause = (SerializationException) e.getCause();
-							logger.log(Level.ERROR, "Failed decoding character {0} in line {2}:{3}\nReason: {1}", handle.getName(),cause.getMessage(), cause.getLine(), cause.getColumn());
-							BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.decoding_character",
-									handle.getName(),
-									e.getCode(),
-									cause.getLine(),
-									cause.getColumn(),
-									cause.getMessage()
-									), cause, (attach!=null)?attach.getLocalFile():null);
-						} else {
-							logger.log(Level.ERROR, "Failed loading character {0}: {1}", handle.getName(),e.getCode(),e);
-							BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.loading_character", handle.getName(), e.getCode()), e);
-						}
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						logger.log(Level.ERROR, "Failed loading character {0}", handle.getName(),e);
-						e.printStackTrace();
-						BabylonEventBus.fireEvent(BabylonEventType.UI_MESSAGE, 2, ResourceI18N.format(RES, "error.loading_character", handle.getName()));
-					}
-				}
-				BabylonEventBus.fireEvent(BabylonEventType.CHAR_MODIFIED, 2);
-			} catch (CharacterIOException e) {
-				logger.log(Level.ERROR, "Error accessing characters",e);
-				handleError(e);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-
-			}
-		});
-		thread.run();
+    	logger.log(Level.INFO, "Loading data-------------------------------------");
+//		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
+//		plugin.init( );
+//		logger.log(Level.INFO, "Loaded "+Shadowrun6Core.getItemList(SR6Spell.class).size()+" spells");
+//
+//		Thread thread = new Thread(new LoadSR6CharactersStep(this));
+//		thread.run();
 	}
 
     //-------------------------------------------------------------------
