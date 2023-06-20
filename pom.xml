@@ -20,7 +20,7 @@
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.18</client.plugin.version>
 		<attach.version>4.0.18</attach.version>
-		<rpgfw.version>5.1.2-SNAPSHOT</rpgfw.version>
+		<rpgfw.version>5.1.4-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.comlink.ComLinkStarter</mainClassName>
 	</properties>
 
@@ -163,12 +163,12 @@
 		<dependency>
 			<groupId>de.rpgframework</groupId>
 			<artifactId>shadowrun6-export-fvtt</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.prelle.rpgframework</groupId>
 			<artifactId>shadowrun6-export-json</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 <!-- 		<dependency> -->
 <!-- 			<groupId>giles</groupId> -->
@@ -194,10 +194,6 @@
 
 	<repositories>
 		<repository>
-			<id>jfrog</id>
-			<url>https://rpgframework.jfrog.io/artifactory/RPGFramework</url>
-		</repository>
-		<repository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/groups/public</url>
 			<snapshots><enabled>true</enabled></snapshots>
@@ -209,7 +205,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.10.1</version>
 			</plugin>
 
 	      <plugin>
@@ -250,7 +246,7 @@
 					</runtimeArgs>
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
-						<arg>-H:IncludeLocales=de,en,fr,pt</arg>
+						<arg>-H:IncludeLocales=de,en,fr,pt,ru,jp</arg>
 						<arg>-Dapp.testprop=1</arg>
 						 <arg>-Dprism.verbose=false</arg>
 					</nativeImageArgs>
