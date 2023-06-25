@@ -71,6 +71,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.comlink.CommlinkPreloader",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"de.rpgframework.classification.Gender",
   "allDeclaredFields":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
@@ -386,7 +391,7 @@
 {
   "name":"de.rpgframework.shadowrun.ContactType",
   "allDeclaredFields":true,
-  "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"de.rpgframework.shadowrun.CritterPower",
@@ -771,10 +776,6 @@
   "name":"de.rpgframework.shadowrun6.Shadowrun6Character",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun6.Shadowrun6Rules$PRIORITY_MAGIC",
-  "methods":[{"name":"getName","parameterTypes":["java.util.Locale"] }]
 },
 {
   "name":"de.rpgframework.shadowrun6.SkillList",
