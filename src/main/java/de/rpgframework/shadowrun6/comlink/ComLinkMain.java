@@ -128,9 +128,17 @@ public class ComLinkMain extends EdenClientApplication {
 	}
 
 	//-------------------------------------------------------------------
+	@Override
 	protected List<StartupStep> getPreGUISteps() {
 		List<StartupStep> merged = new ArrayList<>(super.getPreGUISteps());
 		merged.add(new LoadSR6DataStep());
+		return merged;
+	}
+
+	//-------------------------------------------------------------------
+	@Override
+	protected List<StartupStep> getPostGUISteps() {
+		List<StartupStep> merged = new ArrayList<>(super.getPostGUISteps());
 		merged.add(new LoadSR6CharactersStep(this));
 		return merged;
 	}
@@ -142,7 +150,7 @@ public class ComLinkMain extends EdenClientApplication {
 	@Override
 	public void init() {
 		super.init();
-	       loadData();
+	    //   loadData();
 	}
 
     //-------------------------------------------------------------------
@@ -197,9 +205,6 @@ public class ComLinkMain extends EdenClientApplication {
 //		Shadowrun6DataPlugin plugin = new Shadowrun6DataPlugin();
 //		plugin.init( );
 //		logger.log(Level.INFO, "Loaded "+Shadowrun6Core.getItemList(SR6Spell.class).size()+" spells");
-//
-//		Thread thread = new Thread(new LoadSR6CharactersStep(this));
-//		thread.run();
 	}
 
     //-------------------------------------------------------------------
@@ -245,6 +250,15 @@ public class ComLinkMain extends EdenClientApplication {
     @Override
 	protected Image getUpdateDialogImage() {
 		return new Image(ComLinkMain.class.getResourceAsStream("UpdateDialog.png"));
+	}
+
+    //-------------------------------------------------------------------
+    /**
+     * @see de.rpgframework.eden.client.jfx.EdenClientApplication#getSecurityDialogImage()
+     */
+    @Override
+	public Image getSecurityDialogImage() {
+		return new Image(ComLinkMain.class.getResourceAsStream("SecurityDialog.png"));
 	}
 
 //	//-------------------------------------------------------------------
@@ -325,8 +339,9 @@ public class ComLinkMain extends EdenClientApplication {
 			ivShadowrun.setId("footer-logo");
 			ivShadowrun.setPreserveRatio(true);
 			ivShadowrun.fitWidthProperty().bind(drawer.prefWidthProperty());
-			drawer.setFooter(ivShadowrun);
+			bxFooter.getChildren().add(ivShadowrun);
 		}
+		drawer.setFooter(bxFooter);
 	}
 
 	//-------------------------------------------------------------------
