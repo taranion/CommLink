@@ -58,7 +58,7 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
-    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD","SHADOWRUN6/STREET_WYRD"));
+    	//LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD","SHADOWRUN6/STREET_WYRD"));
     	System.out.println("ComLinkMain.main");
     	checkInit();
     	System.out.println("Default locale = "+Locale.getDefault());
@@ -76,7 +76,7 @@ public class ComLinkMain extends EdenClientApplication {
 //			System.out.println("argument "+key);
 //		}
 
-    	System.setProperty("javafx.preloader", CommlinkPreloader.class.getName());
+    	//System.setProperty("javafx.preloader", CommlinkPreloader.class.getName());
        launch(args);
 
     }
