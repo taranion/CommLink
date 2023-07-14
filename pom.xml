@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.99.0</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
