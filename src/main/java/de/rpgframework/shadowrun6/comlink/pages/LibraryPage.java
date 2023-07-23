@@ -19,6 +19,7 @@ import de.rpgframework.shadowrun.ASpell;
 import de.rpgframework.shadowrun.AdeptPower;
 import de.rpgframework.shadowrun.ComplexForm;
 import de.rpgframework.shadowrun.CritterPower;
+import de.rpgframework.shadowrun.Focus;
 import de.rpgframework.shadowrun.MentorSpirit;
 import de.rpgframework.shadowrun.MentorSpirit.Type;
 import de.rpgframework.shadowrun.NPCType;
@@ -32,6 +33,7 @@ import de.rpgframework.shadowrun.chargen.jfx.pane.AdeptPowerPane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.ComplexFormDescriptionPane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.MetatypePane;
 import de.rpgframework.shadowrun.chargen.jfx.pane.SpellDescriptionPane;
+import de.rpgframework.shadowrun6.DataStructure;
 import de.rpgframework.shadowrun6.QualityPath;
 import de.rpgframework.shadowrun6.SR6MetaType;
 import de.rpgframework.shadowrun6.SR6NPC;
@@ -62,8 +64,10 @@ public class LibraryPage extends Page {
 	private Button btnQualities;
 	private Button btnSpells;
 	private Button btnPowers;
+	private Button btnFoci;
 	private Button btnMentor;
 	private Button btnComplex;
+	private Button btnDataStruct;
 	private Button btnParagon;
 	private Button btnQualityPaths;
 	private Button btnCritterPowers;
@@ -115,6 +119,11 @@ public class LibraryPage extends Page {
 		btnMentor.getStyleClass().add("category-button");
 		btnMentor.graphicProperty().addListener( scaleButtons);
 
+		btnFoci   = new Button(ResourceI18N.get(RES, "category.foci"));
+		btnFoci.setId("foci");
+		btnFoci.getStyleClass().add("category-button");
+		btnFoci.graphicProperty().addListener( scaleButtons);
+
 		btnComplex = new Button(ResourceI18N.get(RES, "category.complexforms"));
 		btnComplex.setId("complexforms");
 		btnComplex.getStyleClass().add("category-button");
@@ -124,6 +133,11 @@ public class LibraryPage extends Page {
 		btnParagon.setId("paragons");
 		btnParagon.getStyleClass().add("category-button");
 		btnParagon.graphicProperty().addListener( scaleButtons);
+
+		btnDataStruct   = new Button(ResourceI18N.get(RES, "category.dataStructures"));
+		btnDataStruct.setId("dataStructures");
+		btnDataStruct.getStyleClass().add("category-button");
+		btnDataStruct.graphicProperty().addListener( scaleButtons);
 
 		btnQualityPaths    = new Button(ResourceI18N.get(RES, "category.qualityPaths"));
 		btnQualityPaths.setId("qualityPaths");
@@ -148,7 +162,7 @@ public class LibraryPage extends Page {
 
 	//-------------------------------------------------------------------
 	private void initLayout() {
-		content = new FlowPane(btnMetatypes, btnQualities, btnQualityPaths, btnSpells, btnPowers, btnMentor, btnComplex, btnParagon, btnCritterPowers); //, btnCritterPowers, btnCritters, btnGrunts);
+		content = new FlowPane(btnMetatypes, btnQualities, btnQualityPaths, btnSpells, btnPowers, btnMentor, btnFoci, btnComplex, btnParagon, btnDataStruct, btnCritterPowers); //, btnCritterPowers, btnCritters, btnGrunts);
 		content.setVgap(10);
 		content.setHgap(10);
 		content.setId("categories");
@@ -177,8 +191,10 @@ public class LibraryPage extends Page {
 		btnQualities.setOnAction(ev -> openQualities(ev));
 		btnMetatypes.setOnAction(ev -> openMetatypes(ev));
 		btnMentor.setOnAction(ev -> openMentors(ev));
+		btnFoci.setOnAction(ev -> openFoci(ev));
 		btnComplex.setOnAction(ev -> openComplexForms(ev));
 		btnParagon.setOnAction(ev -> openParagon(ev));
+		btnDataStruct.setOnAction(ev -> openDataStructures(ev));
 		btnQualityPaths.setOnAction(ev -> openQualityPaths(ev));
 		btnCritterPowers.setOnAction(ev -> openCritterPowers(ev));
 		btnCritters.setOnAction(ev -> openCritters(ev));
@@ -253,6 +269,50 @@ public class LibraryPage extends Page {
 			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
 		} catch (Exception e) {
 			logger.log(Level.ERROR, "Error opening Paragons",e);
+		}
+	}
+
+	//-------------------------------------------------------------------
+	@SuppressWarnings("unchecked")
+	private void openDataStructures(ActionEvent ev) {
+		logger.log(Level.DEBUG, "Navigate Data Strcutures");
+		try {
+			FilteredListPage<DataStructure> page =new FilteredListPage<DataStructure>(
+					ResourceI18N.get(LibraryPage.RES, "category.dataStructures"),
+					() -> Shadowrun6Core.getItemList(DataStructure.class),
+					new GenericDescriptionVBox(
+							Shadowrun6Tools.requirementResolver(Locale.getDefault()),
+							Shadowrun6Tools.modificationResolver(Locale.getDefault())
+							)
+					);
+			page.setCellFactory(lv -> new ComplexDataItemListCell<DataStructure>( p -> null));
+//			page.setFilterInjector(new FilterQualities());
+			page.setAppLayout(getAppLayout());
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
+		} catch (Exception e) {
+			logger.log(Level.ERROR, "Error opening Data Structures",e);
+		}
+	}
+
+	//-------------------------------------------------------------------
+	@SuppressWarnings("unchecked")
+	private void openFoci(ActionEvent ev) {
+		logger.log(Level.DEBUG, "Navigate foci");
+		try {
+			FilteredListPage<Focus> page =new FilteredListPage<Focus>(
+					ResourceI18N.get(LibraryPage.RES, "category.foci"),
+					() -> Shadowrun6Core.getItemList(Focus.class),
+					new GenericDescriptionVBox(
+							Shadowrun6Tools.requirementResolver(Locale.getDefault()),
+							Shadowrun6Tools.modificationResolver(Locale.getDefault())
+							)
+					);
+			page.setCellFactory(lv -> new ComplexDataItemListCell<Focus>( p -> null));
+//			page.setFilterInjector(new FilterQualities());
+			page.setAppLayout(getAppLayout());
+			getAppLayout().getApplication().openScreen(new ApplicationScreen(page));
+		} catch (Exception e) {
+			logger.log(Level.ERROR, "Error opening Data Structures",e);
 		}
 	}
 
