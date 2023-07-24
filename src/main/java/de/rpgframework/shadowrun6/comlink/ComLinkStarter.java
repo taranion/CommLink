@@ -8,7 +8,7 @@ import de.rpgframework.eden.client.jfx.EdenSettings;
 public class ComLinkStarter {
 
 	public static void main(String[] args) {
-		Locale.setDefault(Locale.ENGLISH);
+		//Locale.setDefault(Locale.ENGLISH);
 		LogManager.getLogManager().reset();
 		EdenSettings.setupDirectories("CommLink6");
 		Locale.setDefault(EdenSettings.getPreferredLangauge("CommLink6"));
