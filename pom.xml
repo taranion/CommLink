@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>0.99.3</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -209,7 +209,7 @@
 			    <mainClass>${mainClassName}</mainClass>
           	 <options>
             	<option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option>
-            	<option>-Dproject.version=0.9.a</option>
+            	<option>-Dproject.version=1.0.0</option>
           	 </options>
 		     </configuration>
 	      </plugin>
@@ -239,7 +239,7 @@
 					</runtimeArgs>
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
-						<arg>-H:IncludeLocales=de,en,fr,pt,ru,jp</arg>
+						<arg>-H:IncludeLocales=en,de,fr,pt,ru,jp</arg>
 						<arg>-Dapp.testprop=1</arg>
 						 <arg>-Dprism.verbose=false</arg>
 					</nativeImageArgs>
