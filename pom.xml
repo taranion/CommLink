@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.1</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -240,8 +240,8 @@
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
 						<arg>-H:IncludeLocales=en,de,fr,pt,ru,jp</arg>
-						<arg>-Dapp.testprop=1</arg>
-						 <arg>-Dprism.verbose=false</arg>
+						<arg>-Dprism.verbose=false</arg>
+						<arg>-Dproject.version=${project.version}</arg>
 					</nativeImageArgs>
 					<!--linkerArgs>
        				<arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
