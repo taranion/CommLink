@@ -26,6 +26,7 @@ import de.rpgframework.ResourceI18N;
 import de.rpgframework.character.CharacterIOException;
 import de.rpgframework.character.CharacterProviderLoader;
 import de.rpgframework.core.RoleplayingSystem;
+import de.rpgframework.eden.client.jfx.AccountPage;
 import de.rpgframework.eden.client.jfx.EdenClientApplication;
 import de.rpgframework.eden.client.jfx.EdenSettings;
 import de.rpgframework.eden.client.jfx.PDFPage;
@@ -58,7 +59,7 @@ public class ComLinkMain extends EdenClientApplication {
 
 	//-------------------------------------------------------------------
     public static void main(String[] args) {
-    	LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD","SHADOWRUN6/STREET_WYRD","SHADOWRUN6/DOUBLE_CLUTCH","SHADOWRUN6/HACK_SLASH"));
+    	//LicenseManager.storeGlobalLicenses(List.of("SHADOWRUN6/CORE","SHADOWRUN6/COMPANION","SHADOWRUN6/FIRING_SQUAD","SHADOWRUN6/STREET_WYRD","SHADOWRUN6/DOUBLE_CLUTCH","SHADOWRUN6/HACK_SLASH"));
     	System.out.println("ComLinkMain.main");
     	checkInit();
     	System.out.println("Default locale = "+Locale.getDefault());
@@ -361,7 +362,8 @@ public class ComLinkMain extends EdenClientApplication {
 				CharacterProviderLoader.getCharacterProvider().setListener(pg);
 				return pg;
 			} else if (menuItem == navigAccount) {
-				return new Shadowrun6ContentPacksPage(eden);
+				return new AccountPage(this, RoleplayingSystem.SHADOWRUN6, new Shadowrun6ContentPacksPage(eden));
+
 			} else if (menuItem == navigPDF) {
 				return new PDFPage(this, RoleplayingSystem.SHADOWRUN6);
 			} else {
