@@ -161,9 +161,7 @@ public class ComLinkMain extends EdenClientApplication {
      */
 	@Override
     public void start(Stage stage) throws Exception {
-    	stage.setOnShowing((ev) -> System.out.println("----SHOWING"));
-    	stage.setOnShown((ev) -> System.out.println("----SHOWN"));
-     	int prefWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 1500);
+     	int prefWidth = Math.min( (int)Screen.getPrimary().getVisualBounds().getWidth(), 1600);
     	int prefHeight = Math.min( (int)Screen.getPrimary().getVisualBounds().getHeight(), 900);
     	System.out.println("Start with "+prefWidth+"x"+prefHeight);
 		stage.setWidth(prefWidth);
@@ -182,15 +180,11 @@ public class ComLinkMain extends EdenClientApplication {
         stage.getScene().getStylesheets().add(de.rpgframework.jfx.Constants.class.getResource("css/rpgframework.css").toExternalForm());
         stage.getScene().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
-
-//       ScenicView.show(stage.getScene());
-
         PDFViewerConfig.setPDFPathResolver( (id,lang) -> getPDFPathFor(RoleplayingSystem.SHADOWRUN6,id,lang));
         PDFViewerConfig.setEnabled( super.isPDFEnabled());
 
         getAppLayout().visibleProperty().addListener( (ov,o,n) -> {
         	logger.log(Level.INFO, "Visibility changed to "+n+"-------------------");
-        	System.err.println("Visibility changed to "+n+"-------------------");
             ResponsiveControlManager.initialize(getAppLayout());
         });
 		logger.log(Level.INFO, "LEAVE start (thread {0})", Thread.currentThread());
