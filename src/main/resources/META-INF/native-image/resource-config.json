@@ -299,7 +299,7 @@
       ]
     },
     {
-      "name":"de.rpgframework.jfx.wizard.WizardPageGenerator",
+      "name":"de.rpgframework.jfx.wizard.WizardPages",
       "locales":[
         "de",
         "en"
@@ -518,6 +518,10 @@
         "de",
         "en"
       ]
+    },
+    {
+      "name":"controlsfx",
+      "locales":["und"]
     }
   ]
 }
