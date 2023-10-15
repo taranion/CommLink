@@ -4,19 +4,26 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>de.rpgframework</groupId>
+		<artifactId>shadowrun6-master</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+
 	<groupId>de.rpgframework.shadowrun6</groupId>
-	<artifactId>commlink6</artifactId>
-	<version>1.2.3</version>
+	<artifactId>commlink6-binary</artifactId>
+	<version>1.3.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
+	<description>Create GraalVM compiled versions of Commlink6</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.release>17</maven.compiler.release>
 		<javafx.version>20.0.1</javafx.version>
+		<maven.compiler.release>17</maven.compiler.release>
 		<maven.skip.deploy>true</maven.skip.deploy>
-		<maven.skip.install>false</maven.skip.install>
+		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.18</client.plugin.version>
 		<attach.version>4.0.18</attach.version>
@@ -76,18 +83,6 @@
 			<artifactId>util</artifactId>
 			<version>${attach.version}</version>
 		</dependency>
-		<!--dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>attach-pdf</artifactId>
-			<version>${rpgfw.version}</version>
-		</dependency-->
-		<!--dependency>
-			<groupId>com.gluonhq</groupId>
-			<artifactId>scenicview</artifactId>
-			<version>1</version>
-			<scope>system</scope>
-			<systemPath>/opt/scenicview/lib/scenicview.jar</systemPath>
-		</dependency-->
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-web</artifactId>
@@ -99,91 +94,12 @@
 			<version>${javafx.version}</version>
 		</dependency>
 
-
 		<dependency>
-			<groupId>org.prelle</groupId>
-			<artifactId>javafx-extensions</artifactId>
-			<version>[5.0.2-SNAPSHOT,)</version>
+			<groupId>de.rpgframework.shadowrun6</groupId>
+			<artifactId>commlink6</artifactId>
+			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>eden-client</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>eden-client-jfx</artifactId>
-			<version>0.0.5-SNAPSHOT</version>
-		</dependency>
-      <dependency>
-        <groupId>org.prelle</groupId>
-        <artifactId>simple-persist</artifactId>
-				<version>[3.5.0,3.99.99)</version>
-        </dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>rpgframework-core</artifactId>
-			<version>${rpgfw.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>rpgframework-javafx</artifactId>
-			<version>${rpgfw.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>rpgframework-rules</artifactId>
-			<version>${rpgfw.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>shadowrun6-core</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>shadowrun6-chargen</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>shadowrun6-chargen-jfx</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>shadowrun6-data</artifactId>
-  			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.prelle.rpgframework</groupId>
-			<artifactId>shadowrun6-export-pdf</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>de.rpgframework</groupId>
-			<artifactId>shadowrun6-export-fvtt</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.prelle.rpgframework</groupId>
-			<artifactId>shadowrun6-export-json</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
-
-		<!--dependency>
-    		<groupId>org.apache.logging.log4j</groupId>
-    		<artifactId>log4j-jpl</artifactId>
-    		<version>2.18.0</version>
-    		<scope>runtime</scope>
-		</dependency>
-		<dependency>
-    		<groupId>org.apache.logging.log4j</groupId>
-    		<artifactId>log4j-core</artifactId>
-    		<version>2.18.0</version>
-    		<scope>runtime</scope>
-		</dependency-->
-		</dependencies>
+	</dependencies>
 
 	<repositories>
 		<repository>

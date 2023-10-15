@@ -1,7 +1,5 @@
-open module de.rpgframework.shadowrun6.commlink6 {
-	exports de.rpgframework.shadowrun6.comlink.pages;
-
-	provides java.lang.System.LoggerFinder with de.rpgframework.shadowrun6.comlink.CustomLoggerFinder;
+open module de.rpgframework.commlink6binary {
+	exports de.rpgframework.shadowrun6.commlinkbinary;
 
 	requires de.rpgframework.core;
 	requires de.rpgframework.eden.client;
@@ -29,5 +27,6 @@ open module de.rpgframework.shadowrun6.commlink6 {
 	requires rpgframework.pdfviewer;
 	requires java.prefs;
 	requires org.controlsfx.controls;
+	requires de.rpgframework.shadowrun6.commlink6;
 
 }
