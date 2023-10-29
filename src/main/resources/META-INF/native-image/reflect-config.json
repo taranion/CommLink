@@ -71,11 +71,6 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun6.comlink.CommlinkPreloader",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"de.rpgframework.classification.Gender",
   "allDeclaredFields":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
@@ -783,54 +778,16 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"de.rpgframework.shadowrun6.chargen.gen.CommonSR6GeneratorSettings",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun6.chargen.gen.karma.KarmaCharacterGenerator",
-  "methods":[
-    {"name":"<init>","parameterTypes":[] },
-	 {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
-	]
-},
-{
-  "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.PointBuyCharacterGenerator",
-  "methods":[
-    {"name":"<init>","parameterTypes":[] },
-	 {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
-	]
-},
-{
-  "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.SR6PointBuySettings",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.PriorityCharacterGenerator",
-  "methods":[
-    {"name":"<init>","parameterTypes":[] },
-    {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
-  ]
-},
-{
-  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SR6PrioritySettings",
-  "allDeclaredFields":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SumToTenCharacterGenerator",
-  "methods":[
-    {"name":"<init>","parameterTypes":[] },
-    {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
-  ]
-},
-{
   "name":"de.rpgframework.shadowrun6.comlink.ComLinkMain",
   "methods":[
     {"name":"<init>","parameterTypes":[] },
     {"name":"main","parameterTypes":["java.lang.String[]"] }
   ]
+},
+{
+  "name":"de.rpgframework.shadowrun6.comlink.CommlinkPreloader",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"de.rpgframework.shadowrun6.items.AmmunitionClass",
