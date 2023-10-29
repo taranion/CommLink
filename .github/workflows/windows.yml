@@ -1,10 +1,10 @@
 name: Compile Windows Cloud
-#on: [push]
-on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+on: [push]
+#on:
+#  push:
+#    # Sequence of patterns matched against refs/tags
+#    tags:
+#    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 env:
   LANG: "de_DE.UTF-8"
 
@@ -148,6 +148,13 @@ jobs:
     - name: Show Staging content
       run: ls -l Staging
       
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: Commlink-MSI
+        path: "target\\jpackage\\Commlink6-${{env.RELEASE_VERSION}}.msi"
+        retention-days: 5
+      
     - name: Deploy MSI
       uses: garygrossgarten/github-action-scp@release
       with:
@@ -156,4 +163,29 @@ jobs:
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
-       
+
+  start-store-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure Store Credentials
+        uses: microsoft/store-submission@v1
+        with:
+          command: configure
+          type: win32
+          seller-id: ${{ secrets.SELLER_ID }}
+          product-id: ${{ secrets.PRODUCT_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+
+      - name: Update Draft Submission
+        uses: microsoft/store-submission@v1
+        with:
+          command: update
+          product-update: '{"packages":[{"packageUrl":"https://eden.rpgframework.de/commlink6-builds/win/CommLink6-Interpreted-Installer-${{env.RELEASE_VERSION}}.msi","languages":["en","de","fr","pt"],"architectures":["X64"],"isSilentInstall":true}]}'
+
+      - name: Publish Submission
+        uses: microsoft/store-submission@v1
+        with:
+          command: publish
+         
