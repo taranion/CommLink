@@ -315,8 +315,8 @@
                <type>MSI</type>
 					<winDirChooser>true</winDirChooser>
         			<winConsole>false</winConsole>
-        			<winMenu>true</winMenu>
-        			<winPerUserInstall>true</winPerUserInstall>
+        			<winMenu>false</winMenu>
+        			<winPerUserInstall>false</winPerUserInstall>
         			<winShortcut>true</winShortcut>
 					<winHelpUrl>https://rpgframework.atlassian.net/servicedesk/customer/portal/18</winHelpUrl>
 					<winUpdateUrl>https://rpgframework.atlassian.net/wiki/spaces/COM6/pages/2037055489/Releases</winUpdateUrl>
