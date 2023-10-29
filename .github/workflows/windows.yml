@@ -166,6 +166,7 @@ jobs:
 
   start-store-submission:
     runs-on: ubuntu-latest
+    needs: [compile-windows-jre]
     steps:
       - name: Configure Store Credentials
         uses: microsoft/store-submission@v1
