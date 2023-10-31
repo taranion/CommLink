@@ -981,11 +981,54 @@
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.chargen.gen.CommonSR6GeneratorSettings",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"de.rpgframework.shadowrun6.chargen.gen.free.FreeCharacterGenerator",
   "methods":[
     {"name":"<init>","parameterTypes":[] },
 	 {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
 	]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.karma.KarmaCharacterGenerator",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] },
+	 {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+	]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.PointBuyCharacterGenerator",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] },
+	 {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+	]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.pointbuy.SR6PointBuySettings",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.PriorityCharacterGenerator",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] },
+    {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+  ]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SR6PrioritySettings",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.chargen.gen.priority.SumToTenCharacterGenerator",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] },
+    {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+  ]
 },
 {
   "name":"java.lang.Character",
