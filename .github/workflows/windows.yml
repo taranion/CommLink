@@ -173,6 +173,7 @@ jobs:
     needs: [compile-windows-jre]
     steps:
       - name: Configure Store Credentials
+        continue-on-error: true
         uses: microsoft/store-submission@v1
         with:
           command: configure
@@ -184,12 +185,14 @@ jobs:
           client-secret: ${{ secrets.CLIENT_SECRET }}
 
       - name: Update Draft Submission
+        continue-on-error: true
         uses: microsoft/store-submission@v1
         with:
           command: update
           product-update: '{"packages":[{"packageUrl":"https://eden.rpgframework.de/commlink6-builds/win/CommLink6-Interpreted-Installer-${{env.RELEASE_VERSION}}.msi","languages":["en"],"architectures":["X64"],"isSilentInstall":true}]}'
 
       - name: Publish Submission
+        continue-on-error: true
         uses: microsoft/store-submission@v1
         with:
           command: publish

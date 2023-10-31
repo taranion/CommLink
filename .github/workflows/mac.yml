@@ -9,7 +9,7 @@ env:
   LANG: "de_DE.UTF-8"
 
 jobs:
-  compile-osx:
+  compile-osx-native:
     runs-on: macos-latest
     steps:
     - name: checkout sources
@@ -85,7 +85,7 @@ jobs:
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
       
-    - name: Upload
+    - name: Upload APP bundle
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
@@ -103,10 +103,10 @@ jobs:
     - name: checkout sources
       uses: actions/checkout@v3
 
-    - name: setup-graalvm-ce
-      uses: taranion/setup-graalvm@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '20'
 
     - name: Set Release version env variable
       run: |
@@ -119,7 +119,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: JPackage
-      run:   mvn jpackage:jpackage@osx
+      run:   mvn -s settings jpackage:jpackage@osx
       env:
         LANG: en_EN
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

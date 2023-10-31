@@ -92,31 +92,31 @@ jobs:
 
     - name: setup-graalvm-ce
       uses: taranion/setup-graalvm@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set Release version env variable
       run: |
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
         
-    - name: Compile update artifact
-      run: mvn -s settings.xml package
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#    - name: Compile update artifact
+#      run: mvn -s settings.xml package
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
-    - name: Upload update artifact
-      continue-on-error: false
-      uses: garygrossgarten/github-action-scp@release
-      with:
-        verbose: true
-        local: target/commlink6-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
-        remote: /var/www/html/commlink6-updates/linux/commLink6-${{env.RELEASE_VERSION}}.jar
-        host: eden.rpgframework.de
-        username: ghcommlink
-        password: ${{ secrets.DEPLOY_PASSWORD }}
+#    - name: Upload update artifact
+#      continue-on-error: false
+#      uses: garygrossgarten/github-action-scp@release
+#      with:
+#        verbose: true
+#        local: target/commlink6-binary-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
+#        remote: /var/www/html/commlink6-updates/linux/commLink6-${{env.RELEASE_VERSION}}.jar
+#        host: eden.rpgframework.de
+#        username: ghcommlink
+#        password: ${{ secrets.DEPLOY_PASSWORD }}
 
     - name: JPackage
-      run:  mvn jpackage:jpackage
+      run:  mvn -s settings.xml -B jpackage:jpackage
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Show result
       run: ls target/jpackage
@@ -136,7 +136,7 @@ jobs:
       continue-on-error: false
       uses: garygrossgarten/github-action-scp@release
       with:
-        verbose: true
+        verbose: false
         local: target/jpackage/commlink6_${{ env.RELEASE_VERSION }}-1_amd64.deb
         remote: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.deb
         host: eden.rpgframework.de
