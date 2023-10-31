@@ -34,10 +34,9 @@ jobs:
 
     - name: Compile
       run:  export LC_ALL=en_EN.UTF-8; export LC_MESSAGES=en_EN.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile -Pdesktop-binary
-      env: 
-        JFROG_USER: ${{ secrets.JFROG_USER }}
-        JFROG_PASS: ${{ secrets.JFROG_PASS }}
+      env:
         LANG: en_EN
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CC: gcc-11
         CXX: g++-11
 
@@ -115,17 +114,15 @@ jobs:
 
     - name: Compile 
       run:  export LC_ALL=en_EN.UTF-8; export LC_MESSAGES=en_EN.UTF-8; locale ; mvn -U -s settings.xml clean package  -Pdesktop
-      env: 
-        JFROG_USER: ${{ secrets.JFROG_USER }}
-        JFROG_PASS: ${{ secrets.JFROG_PASS }}
+      env:
         LANG: en_EN
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: JPackage
       run:   mvn jpackage:jpackage@osx
-      env: 
-        JFROG_USER: ${{ secrets.JFROG_USER }}
-        JFROG_PASS: ${{ secrets.JFROG_PASS }}
+      env:
         LANG: en_EN
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Show result JPackage
       continue-on-error: true

@@ -38,10 +38,9 @@ jobs:
 
     - name: Compile
       run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile -Pdesktop-binary
-      env: 
-        JFROG_USER: ${{ secrets.JFROG_USER }}
-        JFROG_PASS: ${{ secrets.JFROG_PASS }}
-        LANG: de_DE
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        LANG: en_EN
         CC: gcc-11
         CXX: g++-11
       
