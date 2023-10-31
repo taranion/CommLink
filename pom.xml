@@ -190,24 +190,6 @@
 				</configuration>
 			</plugin>
 
-<!--    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-            <execution>
-                <id>copy-dependencies</id>
-                <phase>package</phase>
-                <goals>
-                    <goal>copy-dependencies</goal>
-                </goals>
-                <configuration>
-                    <includeScope>runtime</includeScope>
-                    <outputDirectory>target/jmods</outputDirectory>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
--->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -236,42 +218,6 @@
 				</executions>
 
 			</plugin>
-			<!--plugin>
-    			<groupId>org.moditect</groupId>
-    			<artifactId>moditect-maven-plugin</artifactId>
-   			<version>1.0.0.RC2</version>
-    			<executions>
-        			<execution>
-            		<id>generate-module-infos</id>
-           			<phase>generate-sources</phase>
-            		<goals>
-                		<goal>generate-module-info</goal>
-            		</goals>
-            		<configuration>
-            			<modules>
-            				<module>
-            					<artifact>
-                           	<groupId>${groupId}</groupId>
-                           	<artifactId>${artifactId}</artifactId>
-                           	<version>${project.version}</version>
-                        	</artifact>
-                				<moduleInfo>
-                        		<name>de.rpgframework.shadowrun6.commlink6</name>
-                        		<open>true</open>
-                        		<exports>
-                        			de.rpgframework.shadowrun6.comlink;
-                        			de.rpgframework.shadowrun6;
-                        			!com.gluonhq.attach.display
-                        		</exports>
-                    			</moduleInfo>
-            				</module>
-            			</modules>
-            		</configuration>
-        			</execution>
-    			</executions>
-			</plugin-->
-
-
 
 			<plugin>
     			<groupId>org.panteleyev</groupId>
@@ -279,16 +225,13 @@
     			<version>1.6.0</version>
     			<configuration>
         			<name>Commlink6</name>
+        			<input>target</input>
         			<appVersion>${project.version}</appVersion>
         			<vendor>RPGFramework</vendor>
         			<copyright>2023 Stefan Prelle</copyright>
         			<description>Character Management for Shadowrun 6</description>
         			<mainClass>${mainClassName}</mainClass>
         			<mainJar>${project.artifactId}-${project.version}-jar-with-dependencies.jar</mainJar>
-        			<input>target</input>
-        			<!--modulePaths>
-            		<modulePath>target/mods</modulePath>
-        			</modulePaths-->
         			<destination>target/jpackage</destination>
         			<icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
         			<javaOptions>
@@ -296,6 +239,25 @@
             		<option>-Dproject.version=${project.version}</option>
         			</javaOptions>
 					<aboutUrl>https://www.rpgframework.de/commlink6/</aboutUrl>
+					<!-- Linux specific settings -->
+  					<linuxAppCategory>Game</linuxAppCategory>
+  					<linuxShortcut>true</linuxShortcut>
+        			<linuxDebMaintainer>stefan@rpgframework.de</linuxDebMaintainer>
+        			<linuxMenuGroup>RPGFramework</linuxMenuGroup>
+
+					<!-- Windows specific settings -->
+					<winDirChooser>false</winDirChooser>
+        			<winConsole>false</winConsole>
+        			<winMenu>true</winMenu>
+        			<winPerUserInstall>false</winPerUserInstall>
+        			<winShortcut>true</winShortcut>
+					<winHelpUrl>https://rpgframework.atlassian.net/servicedesk/customer/portal/18</winHelpUrl>
+					<winUpdateUrl>https://rpgframework.atlassian.net/wiki/spaces/COM6/pages/2037055489/Releases</winUpdateUrl>
+					<!-- MAC specific settings -->
+					<macAppCategory>role-playing-games</macAppCategory>
+					<macDmgContentPaths>
+					<macDmgContentPath>/docs</macDmgContentPath>
+					</macDmgContentPaths>
   			</configuration>
 
   			<executions>
@@ -303,34 +265,27 @@
             	<id>linux</id>
             	<configuration>
                	<icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
-						<type>RPM</type>
         				<linuxAppCategory>Game</linuxAppCategory>
         				<linuxShortcut>true</linuxShortcut>
           		</configuration>
-     		</execution>
-        	<execution>
-            <id>win</id>
-            <configuration>
-               <icon>src/windows/assets/icon.ico</icon>
-               <type>MSI</type>
-					<winDirChooser>true</winDirChooser>
-        			<winConsole>false</winConsole>
-        			<winMenu>false</winMenu>
-        			<winPerUserInstall>false</winPerUserInstall>
-        			<winShortcut>true</winShortcut>
-					<winHelpUrl>https://rpgframework.atlassian.net/servicedesk/customer/portal/18</winHelpUrl>
-					<winUpdateUrl>https://rpgframework.atlassian.net/wiki/spaces/COM6/pages/2037055489/Releases</winUpdateUrl>
-            </configuration>
-        </execution>
-        	<execution>
-            <id>osx</id>
-            <configuration>
-                <icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
-                <type>DMG</type>
-        			<appVersion>1.0.0</appVersion>
-             </configuration>
+     			</execution>
+        		<execution>
+           		<id>win</id>
+            	<configuration>
+  						<resourceDir>src/jpackage/win</resourceDir>
+              		<icon>src/jpackage/win/Commlink6_128.ico</icon>
+               	<type>MSI</type>
+            	</configuration>
         		</execution>
-    		</executions>
+        		<execution>
+            	<id>osx</id>
+            	<configuration>
+						<type>DMG</type>
+           			<icon>src/jpackage/osx/Commlink6.icns</icon>
+             		<type>DMG</type>
+             	</configuration>
+        		</execution>
+    		  </executions>
 			</plugin>
 		</plugins>
 	</build>
