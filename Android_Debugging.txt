@@ -1,0 +1,1 @@
+/home/prelle/.gluon/substrate/Android/platform-tools/adb logcat |grep AndroidRuntime
