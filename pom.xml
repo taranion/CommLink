@@ -256,7 +256,7 @@
 					<!-- MAC specific settings -->
 					<macAppCategory>role-playing-games</macAppCategory>
 					<macDmgContentPaths>
-						<macDmgContentPath>jpackage/osx/docs</macDmgContentPath>
+						<macDmgContentPath>src/jpackage/osx/docs</macDmgContentPath>
 					</macDmgContentPaths>
   			</configuration>
 
