@@ -981,6 +981,13 @@
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.chargen.gen.free.FreeCharacterGenerator",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] },
+	 {"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","de.rpgframework.character.CharacterHandle"] }
+	]
+},
+{
   "name":"java.lang.Character",
   "methods":[{"name":"isIdeographic","parameterTypes":["int"] }]
 },
