@@ -119,7 +119,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: JPackage
-      run:   mvn -s settings jpackage:jpackage@osx
+      run:   mvn -s settings.xml jpackage:jpackage@osx
       env:
         LANG: en_EN
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

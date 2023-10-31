@@ -90,8 +90,12 @@ jobs:
     - name: checkout sources
       uses: actions/checkout@master
 
-    - name: setup-graalvm-ce
-      uses: taranion/setup-graalvm@master
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '20'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set Release version env variable
       run: |
