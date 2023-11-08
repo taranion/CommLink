@@ -9,7 +9,7 @@ env:
   LANG: "en_EN.UTF-8"
 
 jobs:
-  compile-windows:
+  compile-windows-native:
     runs-on: windows-latest
     steps:
     - name: checkout sources
