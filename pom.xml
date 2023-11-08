@@ -264,7 +264,7 @@
      			<execution>
             	<id>linux</id>
             	<configuration>
-               	<icon>src/darwin/assets/AppIcon.iconset/icon_128x1.png</icon>
+               	<icon>src/linux/Commlink6.png</icon>
           		</configuration>
      			</execution>
         		<execution>

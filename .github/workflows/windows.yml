@@ -6,7 +6,7 @@ on:
     tags:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 env:
-  LANG: "de_DE.UTF-8"
+  LANG: "en_EN.UTF-8"
 
 jobs:
   compile-windows:
