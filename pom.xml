@@ -170,7 +170,6 @@
                         <list>storage</list>
 					</attachList>
 					<releaseConfiguration>
-
 						<description>Shadowrun 6 character management</description>
 						<vendor>Stefan Prelle</vendor>
 						<version>${project.version}</version>
@@ -247,7 +246,7 @@
 
 					<!-- Windows specific settings -->
 					<winDirChooser>false</winDirChooser>
-        			<winConsole>false</winConsole>
+        			<winConsole>true</winConsole>
         			<winMenu>true</winMenu>
         			<winPerUserInstall>false</winPerUserInstall>
         			<winShortcut>true</winShortcut>
