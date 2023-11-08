@@ -102,7 +102,7 @@
 {
   "name":"com.sun.prism.GraphicsPipeline",
   "methods":[
-    {"name":"getFontFactory","parameterTypes":[] },
+    {"name":"getFontFactory","parameterTypes":[] }, 
     {"name":"getPipeline","parameterTypes":[] }
   ]
 },
@@ -181,7 +181,6 @@
 {
   "name":"de.rpgframework.classification.Gender",
   "allDeclaredFields":true,
-  "fields":[{"name":"FEMALE"}],
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
 {
@@ -212,7 +211,6 @@
 {
   "name":"de.rpgframework.genericrpg.chargen.DataSetMode",
   "allDeclaredFields":true,
-  "fields":[{"name":"ALL"}],
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
 {
@@ -327,11 +325,6 @@
 {
   "name":"de.rpgframework.genericrpg.items.CarryMode",
   "allDeclaredFields":true,
-  "fields":[
-    {"name":"CARRIED"},
-    {"name":"EMBEDDED"},
-    {"name":"VIRTUAL"}
-  ],
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
 {
@@ -747,7 +740,6 @@
 {
   "name":"de.rpgframework.shadowrun.SIN$FakeRating",
   "allDeclaredFields":true,
-  "fields":[{"name":"ANYONE"}],
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
 {
@@ -1276,6 +1268,10 @@
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.proc.BuildForbiddenSources",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
   "name":"de.rpgframework.shadowrun6.proc.CalculateAttributePools",
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","java.util.Locale"] }]
 },
@@ -1298,6 +1294,10 @@
 {
   "name":"de.rpgframework.shadowrun6.proc.CalculateSkillPools",
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character","java.util.Locale"] }]
+},
+{
+  "name":"de.rpgframework.shadowrun6.proc.CleanVirtualItems",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 },
 {
   "name":"de.rpgframework.shadowrun6.proc.EnsureAttributePresence",
@@ -1553,7 +1553,7 @@
   "name":"javax.imageio.spi.ImageReaderWriterSpi",
   "methods":[{"name":"getFormatNames","parameterTypes":[] }],
   "queriedMethods":[
-    {"name":"getFileSuffixes","parameterTypes":[] },
+    {"name":"getFileSuffixes","parameterTypes":[] }, 
     {"name":"getMIMETypes","parameterTypes":[] }
   ]
 },

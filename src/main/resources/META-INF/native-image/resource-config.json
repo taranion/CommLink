@@ -8,6 +8,9 @@
       "pattern":".*ttf"
     }, 
     {
+      "pattern":"\\QMETA-INF/services/de.rpgframework.jfx.attach.PDFViewerService\\E"
+    }, 
+    {
       "pattern":"\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
     }, 
     {
@@ -212,6 +215,9 @@
       "pattern":"\\Qde/rpgframework/shadowrun6/data/hack_slash/data/sprites.xml\\E"
     }, 
     {
+      "pattern":"\\Qloglevel.properties\\E"
+    }, 
+    {
       "pattern":"\\Qorg/controlsfx/control/toggleswitch.css\\E"
     }, 
     {
@@ -222,8 +228,16 @@
     {
       "name":"com.sun.javafx.tk.quantum.QuantumMessagesBundle",
       "locales":[
+        "", 
         "de", 
         "und"
+      ]
+    }, 
+    {
+      "name":"com/sun/javafx/scene/control/skin/resources/controls",
+      "locales":[
+        "", 
+        "de"
       ]
     }, 
     {
@@ -231,12 +245,24 @@
       "locales":["und"]
     }, 
     {
+      "name":"de.rpgframework.RPGFrameworkConstants",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
       "name":"de.rpgframework.eden.client.jfx.EdenClientApplication",
-      "locales":["und"]
+      "locales":[
+        "", 
+        "de", 
+        "und"
+      ]
     }, 
     {
       "name":"de.rpgframework.genericrpg.data.GenericRPGTools",
       "locales":[
+        "", 
         "de", 
         "en", 
         "und"
@@ -245,6 +271,7 @@
     {
       "name":"de.rpgframework.jfx.CharacterHandleBox",
       "locales":[
+        "", 
         "de", 
         "en"
       ]
@@ -266,6 +293,7 @@
     {
       "name":"de.rpgframework.jfx.pages.CharacterViewLayout",
       "locales":[
+        "", 
         "de", 
         "en"
       ]
@@ -273,6 +301,7 @@
     {
       "name":"de.rpgframework.jfx.pages.CharactersOverviewPage",
       "locales":[
+        "", 
         "de", 
         "en"
       ]
@@ -308,6 +337,7 @@
     {
       "name":"de.rpgframework.shadowrun.ASpell",
       "locales":[
+        "", 
         "de", 
         "und"
       ]
@@ -315,6 +345,7 @@
     {
       "name":"de.rpgframework.shadowrun.Quality",
       "locales":[
+        "", 
         "de", 
         "und"
       ]
@@ -322,6 +353,7 @@
     {
       "name":"de.rpgframework.shadowrun.ShadowrunAttribute",
       "locales":[
+        "", 
         "de", 
         "fr", 
         "pt", 
@@ -331,6 +363,7 @@
     {
       "name":"de.rpgframework.shadowrun.ShadowrunCore",
       "locales":[
+        "", 
         "de", 
         "en", 
         "fr", 
@@ -340,6 +373,7 @@
     {
       "name":"de.rpgframework.shadowrun.ShadowrunRules",
       "locales":[
+        "", 
         "de", 
         "en"
       ]
@@ -389,6 +423,7 @@
     {
       "name":"de.rpgframework.shadowrun6.Shadowrun6Rules",
       "locales":[
+        "", 
         "de", 
         "en"
       ]
@@ -396,6 +431,7 @@
     {
       "name":"de.rpgframework.shadowrun6.Shadowrun6Tools",
       "locales":[
+        "", 
         "de", 
         "en"
       ]
@@ -466,6 +502,7 @@
     {
       "name":"de.rpgframework.shadowrun6.comlink.ComLinkMain",
       "locales":[
+        "", 
         "de", 
         "en", 
         "und"
@@ -474,6 +511,7 @@
     {
       "name":"de.rpgframework.shadowrun6.comlink.pages.LibraryPage",
       "locales":[
+        "", 
         "de", 
         "en", 
         "und"
@@ -487,8 +525,148 @@
       ]
     }, 
     {
+      "name":"de.rpgframework.shadowrun6.data.astral_ways.i18n.astral_ways",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.body_shop.i18n.body_shop",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.collapsing_now.i18n.collapsing_now",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.companion.i18n.companion",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.core.i18n.core",
+      "locales":[
+        "", 
+        "de", 
+        "fr", 
+        "pt"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_alpen.i18n.de_alpen",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_berlin2080.i18n.de_berlin2080",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_feuerlaeufer.i18n.de_feuerlaeufer",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_other.i18n.de_other",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_piraten.i18n.de_piraten",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_revierbericht.i18n.de_revierbericht",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_sota2081.i18n.de_sota2081",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_sota2082.i18n.de_sota2082",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_westphalen.i18n.de_westphalen",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.double_clutch.i18n.double_clutch",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.firing_squad.i18n.firing_squad",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.hack_slash.i18n.hack_slash",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.krime.i18n.krime",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.lofwyr.i18n.lofwyr",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.other_us.i18n.other_us",
+      "locales":[""]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.power_plays.i18n.power_plays",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.slip_streams.i18n.slip_streams",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.data.street_wyrd.i18n.street_wyrd",
+      "locales":[
+        "", 
+        "de"
+      ]
+    }, 
+    {
+      "name":"de.rpgframework.shadowrun6.i18n.core",
+      "locales":[
+        "", 
+        "de", 
+        "fr", 
+        "pt"
+      ]
+    }, 
+    {
       "name":"org.prelle.javafx.JavaFXConstants",
       "locales":[
+        "", 
         "de", 
         "und"
       ]
@@ -510,8 +688,16 @@
     {
       "name":"org.prelle.shadowrun6.export.standard.i18n.print",
       "locales":[
+        "", 
         "de", 
         "en"
+      ]
+    }, 
+    {
+      "name":"org/prelle/shadowrun6/export/standard/i18n/print",
+      "locales":[
+        "", 
+        "de"
       ]
     }
   ]
