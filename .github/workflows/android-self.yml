@@ -1,12 +1,12 @@
 name: Compile Android Self
-#on: [push]
-on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+on: [push]
+#on:
+#  push:
+#    # Sequence of patterns matched against refs/tags
+#    tags:
+#    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 env:
-  LANG: "de_DE.UTF-8"
+  LANG: "en_EN.UTF-8"
 
 jobs:
   compile-android-self:
@@ -34,8 +34,6 @@ jobs:
       
     - name: Compile
       run:  locale ; mvn -U -s settings.xml -Pandroid clean gluonfx:compile
-      env:
-        LANG: "de_DE.UTF-8"
 
     - name: Link
       run:  mvn -Pandroid -s settings.xml gluonfx:link
