@@ -567,19 +567,11 @@
     },
     {
       "name":"de.rpgframework.shadowrun6.data.companion.i18n.companion",
-      "locales":[
-        "",
-        "de"
-      ]
+      "locales":["","de"]
     },
     {
       "name":"de.rpgframework.shadowrun6.data.core.i18n.core",
-      "locales":[
-        "",
-        "de",
-        "fr",
-        "pt"
-      ]
+      "locales":["en","de","fr","pt"]
     },
     {
       "name":"de.rpgframework.shadowrun6.data.de_alpen.i18n.de_alpen",
@@ -658,33 +650,23 @@
     },
     {
       "name":"de.rpgframework.shadowrun6.data.power_plays.i18n.power_plays",
-      "locales":[
-        "",
-        "de"
-      ]
+      "locales":["","de"]
     },
     {
       "name":"de.rpgframework.shadowrun6.data.slip_streams.i18n.slip_streams",
-      "locales":[
-        "",
-        "de"
-      ]
+      "locales":["","de"]
     },
     {
       "name":"de.rpgframework.shadowrun6.data.street_wyrd.i18n.street_wyrd",
-      "locales":[
-        "",
-        "de"
-      ]
+      "locales":["","de"]
     },
     {
-      "name":"de.rpgframework.shadowrun6.i18n.core",
-      "locales":[
-        "",
-        "de",
-        "fr",
-        "pt"
-      ]
+      "name":"de.rpgframework.shadowrun6.data.core.i18n.core_berlin",
+      "locales":["en","de"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun6.data.core.i18n.core_seattle",
+      "locales":["en","de"]
     },
     {
       "name":"de.rpgframework.shadowrun6.data.sif_new_orleans.i18n.easycome",

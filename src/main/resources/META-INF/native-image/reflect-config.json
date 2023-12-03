@@ -62,7 +62,7 @@
 {
   "name":"com.sun.prism.GraphicsPipeline",
   "methods":[
-    {"name":"getFontFactory","parameterTypes":[] }, 
+    {"name":"getFontFactory","parameterTypes":[] },
     {"name":"getPipeline","parameterTypes":[] }
   ]
 },
@@ -1398,24 +1398,6 @@
 },
 {
   "name":"javafx.stage.Window"
-},
-{
-  "name":"org.apache.commons.logging.LogFactory"
-},
-{
-  "name":"org.apache.commons.logging.impl.Jdk14Logger",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
-},
-{
-  "name":"org.apache.commons.logging.impl.Log4JLogger"
-},
-{
-  "name":"org.apache.commons.logging.impl.LogFactoryImpl",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.commons.logging.impl.WeakHashtable",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"sun.security.provider.MD5",
