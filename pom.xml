@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6-binary</artifactId>
-	<version>1.4.0</version>
+	<version>1.4.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>CommLink6</name>
@@ -19,9 +19,9 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.18</client.plugin.version>
+		<client.plugin.version>1.0.19</client.plugin.version>
 		<attach.version>4.0.18</attach.version>
-		<rpgfw.version>5.1.5-SNAPSHOT</rpgfw.version>
+		<rpgfw.version>5.1.6-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.commlinkbinary.ComLinkStarter</mainClassName>
 	</properties>
 
@@ -331,12 +331,12 @@
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
-                <dependency>
-                    <groupId>de.rpgframework</groupId>
-                    <artifactId>attach-pdf-pdfbox</artifactId>
-                    <version>${rpgfw.version}</version>
-                    <scope>runtime</scope>
-                 </dependency>
+<!--                <dependency>-->
+<!--                    <groupId>de.rpgframework</groupId>-->
+<!--                    <artifactId>attach-pdf-pdfbox</artifactId>-->
+<!--                    <version>${rpgfw.version}</version>-->
+<!--                    <scope>runtime</scope>-->
+<!--                 </dependency>-->
 			</dependencies>
 		</profile>
 		<profile>
