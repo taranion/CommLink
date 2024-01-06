@@ -157,6 +157,7 @@
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
 						<arg>-H:IncludeLocales=en,de,fr,pt,ru,jp</arg>
+						<arg>-H:-EnableSecurityServicesFeature.</arg>
 						<arg>-Dprism.verbose=false</arg>
 						<arg>-Dproject.version=${project.version}</arg>
 					</nativeImageArgs>
