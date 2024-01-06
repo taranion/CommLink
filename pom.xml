@@ -160,7 +160,6 @@
 						<arg>-H:-EnableSecurityServicesFeature</arg>
 						<arg>-Dprism.verbose=false</arg>
 						<arg>-Dproject.version=${project.version}</arg>
-						<arg>-H:PrintFlags=</arg>
 					</nativeImageArgs>
 					<!--linkerArgs>
        				<arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
