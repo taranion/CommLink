@@ -283,6 +283,20 @@
         "und"
       ]
     },
+    {"name":"de.rpgframework.eden.client.SyncingCharacterProvider", "locales":["en,de"]},
+    {"name":"de.rpgframework.eden.client.jfx.Dialogs", "locales":["en,de"]},
+    {"name":"de.rpgframework.eden.client.jfx.EdenClientApplication", "locales":["en,de"]},
+    {"name":"de.rpgframework.eden.client.jfx.EdenPages", "locales":["en,de"]},
+    {"name":"de.rpgframework.eden.client.jfx.Panes", "locales":["en,de"]},
+    {"name":"de.rpgframework.eden.client.jfx.Sections", "locales":["en,de"]},
+    {
+      "name":"de.rpgframework.jfx.CharacterHandleBox",
+      "locales":[
+        "",
+        "de",
+        "en"
+      ]
+    },
     {
       "name":"de.rpgframework.jfx.CharacterHandleBox",
       "locales":[
@@ -322,7 +336,7 @@
       ]
     },
     {
-      "name":"de.rpgframework.jfx.pages.ContentPacksPage",
+      "name":"de.rpgframework.jfx.pages.Pages",
       "locales":[
         "de",
         "en"
@@ -541,7 +555,7 @@
       ]
     },
     {
-      "name":"de.rpgframework.shadowrun6.comlink.pages.Shadowrun6ContentPacksPage",
+      "name":"de.rpgframework.shadowrun6.comlink.pages.SpellsPage",
       "locales":[
         "de",
         "en"
