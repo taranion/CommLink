@@ -812,6 +812,7 @@
 {
   "name":"de.rpgframework.shadowrun.ShadowrunAttribute",
   "allDeclaredFields":true,
+  "allDeclaredMethods":true,
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
 {

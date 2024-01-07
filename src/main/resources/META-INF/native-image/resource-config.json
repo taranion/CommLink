@@ -429,6 +429,7 @@
         "und"
       ]
     },
+    { "name":"de.rpgframework.shadowrun.chargen.charctrl.IRejectReasons", "locales":["de","en"] },
     {
       "name":"de.rpgframework.shadowrun.chargen.gen.IShadowrunCharacterGenerator",
       "locales":[
