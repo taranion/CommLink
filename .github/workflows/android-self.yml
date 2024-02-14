@@ -13,7 +13,7 @@ jobs:
     runs-on: [self-hosted, Linux]
     steps:
     - name: checkout sources
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: setup-graalvm-ce
       uses: taranion/setup-graalvm@master
@@ -28,7 +28,7 @@ jobs:
 #      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
 
     - name: Set up Maven
-      uses: stCarolas/setup-maven@v4.5
+      uses: stCarolas/setup-maven@v5
       with:
         maven-version: 3.8.7
       
