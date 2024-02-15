@@ -724,20 +724,20 @@
       ]
     },
     {
+      "name":"de.rpgframework.shadowrun6.data.kechibi.i18n.kechibi",
+      "locales":["","de", "und"]
+    },
+    {
       "name":"de.rpgframework.shadowrun6.data.krime.i18n.krime",
-      "locales":[
-        "",
-        "de",
-        "und"
-      ]
+      "locales":["","de", "und"]
     },
     {
       "name":"de.rpgframework.shadowrun6.data.lofwyr.i18n.lofwyr",
-      "locales":[
-        "",
-        "de",
-        "und"
-      ]
+      "locales":["en","de"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun6.data.no_future.i18n.no_future",
+      "locales":["en"]
     },
     {
       "name":"de.rpgframework.shadowrun6.data.other_us.i18n.other_us",

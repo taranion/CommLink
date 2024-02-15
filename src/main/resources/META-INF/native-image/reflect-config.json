@@ -560,6 +560,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"de.rpgframework.shadowrun.ASpell$Category",
+  "allDeclaredFields":true,
+  "methods":[{"name":"getName","parameterTypes":["java.util.Locale"] }]
+},
+{
   "name":"de.rpgframework.shadowrun.ComplexForm",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -625,6 +630,11 @@
 },
 {
   "name":"de.rpgframework.shadowrun.Focus",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"de.rpgframework.shadowrun.FocusValue",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
