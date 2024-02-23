@@ -473,6 +473,10 @@
       ]
     },
     {
+      "name":"de.rpgframework.shadowrun.chargen.jfx.wizard.WizardPages",
+      "locales":["de","en"]
+    },
+    {
       "name":"de.rpgframework.shadowrun6.Shadowrun6Rules",
       "locales":[
         "",
