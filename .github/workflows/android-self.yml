@@ -64,7 +64,7 @@ jobs:
       run: |
         mkdir staging 
         cp target/gluonfx/aarch64-android/gvm/CommLink6.apk staging/Commlink6-${{ env.RELEASE_VERSION }}.apk
-        cp target/gluonfx/aarch64-android/gvm/CommLink6.aab staging/Commlink6-${{ env.RELEASE_VERSION }}.aab
+#        cp target/gluonfx/aarch64-android/gvm/CommLink6.aab staging/Commlink6-${{ env.RELEASE_VERSION }}.aab
 
 #    - name: Upload APK
 #      uses: actions/upload-artifact@v1

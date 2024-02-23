@@ -439,42 +439,47 @@
     },
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.ShadowrunAttributeTable",
-      "locales":[
-        "de",
-        "en"
-      ]
+      "locales":["de","en"]
     },
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.ShadowrunSkillTable",
-      "locales":[
-        "de",
-        "en"
-      ]
+      "locales":["de","en"]
     },
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.pane.DescriptionPanes",
-      "locales":[
-        "de",
-        "en"
-      ]
+      "locales":["de","en"]
     },
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.pane.MetatypePane",
-      "locales":[
-        "de",
-        "en"
-      ]
+      "locales":["de","en"]
     },
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.section.Section",
-      "locales":[
-        "de",
-        "en"
-      ]
+      "locales":["de","en"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun.chargen.jfx.wizard.PriorityTable",
+      "locales":["und"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun.chargen.jfx.wizard.WideAttributeGeneratorTable",
+      "locales":["und"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun.chargen.jfx.wizard.WizardPageAdeptPowers",
+      "locales":["und"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun.chargen.jfx.wizard.WizardPageName",
+      "locales":["und"]
     },
     {
       "name":"de.rpgframework.shadowrun.chargen.jfx.wizard.WizardPages",
       "locales":["de","en"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun.chargen.jfx.wizard.WizardPageSkills",
+      "locales":["und"]
     },
     {
       "name":"de.rpgframework.shadowrun6.Shadowrun6Rules",
