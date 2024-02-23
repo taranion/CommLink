@@ -8,6 +8,7 @@
 	<artifactId>commlink6-binary</artifactId>
 	<version>1.5.1</version>
 	<packaging>jar</packaging>
+	<!-- Dummy -->
 
 	<name>CommLink6</name>
 	<description>Create GraalVM compiled versions of Commlink6</description>
