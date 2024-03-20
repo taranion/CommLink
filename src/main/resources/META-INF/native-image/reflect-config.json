@@ -1343,6 +1343,10 @@
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.proc.CalculateExowareBonus",
+  "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
+},
+{
   "name":"de.rpgframework.shadowrun6.proc.CalculateMeleeAndUnarmed",
   "methods":[{"name":"<init>","parameterTypes":["de.rpgframework.shadowrun6.Shadowrun6Character"] }]
 },
