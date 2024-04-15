@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6-binary</artifactId>
-	<version>1.5.2</version>
+	<version>1.6.0</version>
 	<packaging>jar</packaging>
 	<!-- Dummy -->
 
@@ -22,7 +22,7 @@
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.22</client.plugin.version>
 		<attach.version>4.0.18</attach.version>
-		<rpgfw.version>5.1.6-SNAPSHOT</rpgfw.version>
+		<rpgfw.version>5.2.0-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.commlinkbinary.ComLinkStarter</mainClassName>
 	</properties>
 
