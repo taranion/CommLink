@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6-binary</artifactId>
-	<version>1.6.0</version>
+	<version>1.7.0</version>
 	<packaging>jar</packaging>
 	<!-- Dummy -->
 
@@ -126,7 +126,7 @@
 			    <mainClass>${mainClassName}</mainClass>
           	 <options>
             	<option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option>
-            	<option>-Dproject.version=1.3.99</option>
+            	<option>-Dproject.version=1.7.0</option>
           	 </options>
 		     </configuration>
 	      </plugin>

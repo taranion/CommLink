@@ -771,6 +771,13 @@
       ]
     },
     {
+      "name":"de.rpgframework.shadowrun6.data.emerald.i18n.emerald",
+      "locales":[
+        "",
+        "en"
+      ]
+    },
+    {
       "name":"de.rpgframework.shadowrun6.data.slip_streams.i18n.slip_streams",
       "locales":[
         "",
