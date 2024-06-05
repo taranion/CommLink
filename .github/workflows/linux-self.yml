@@ -93,12 +93,12 @@ jobs:
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
         
     - name: Compile update artifact
-      run: mvn -s settings.xml package -Pdesktop
+      run: mvn -s settings.xml package -Pinterpreted
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: JPackage
-      run:  mvn -s settings.xml -B jpackage:jpackage
+      run:  mvn -s settings.xml -B jpackage:jpackage -Pinterpreted
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
