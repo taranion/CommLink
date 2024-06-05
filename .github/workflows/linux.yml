@@ -14,13 +14,6 @@ jobs:
     steps:
     - name: checkout sources
       uses: actions/checkout@master
- 
-#    - uses: actions/cache@v1
-#      with:
-#        path: ~/.m2/repository
-#        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-#        restore-keys: |
-#          ${{ runner.os }}-maven-    
 
     - name: setup-graalvm-ce
       uses: taranion/setup-graalvm@master
@@ -102,7 +95,7 @@ jobs:
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
         
     - name: Compile update artifact
-      run: mvn -s settings.xml package
+      run: mvn -s settings.xml package -Pdesktop
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
