@@ -22,7 +22,7 @@
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.24</client.plugin.version>
 		<attach.version>4.0.21</attach.version>
-		<rpgfw.version>5.2.0-SNAPSHOT</rpgfw.version>
+		<rpgfw.version>5.2.0</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.commlinkbinary.ComLinkStarter</mainClassName>
 	</properties>
 
