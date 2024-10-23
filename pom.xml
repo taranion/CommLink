@@ -150,8 +150,6 @@
 					<mainClass>${mainClassName}</mainClass>
 					<runtimeArgs>
 					<!-- Added as command line params when on Android (but not on desktop) -->
-						<arg>RTARG1</arg>
-						<arg>RTARG2=welt</arg>
 						<arg>-Dproject.version=${project.version}</arg>
 						<arg>-Dcom.gluonhq.attach.debug=true</arg>
 					</runtimeArgs>
@@ -161,6 +159,7 @@
 						<arg>-Dprism.verbose=false</arg>
 						<arg>-Dproject.version=${project.version}</arg>
 						<arg>-Dsecurity.provider.3=org.bouncycastle.jce.provider.BouncyCastleProvider</arg>
+                  <arg>--initialize-at-build-time=de.rpgframework.shadowrun6.comlink.CustomLoggerFinder</arg>
 					</nativeImageArgs>
 					<!--linkerArgs>
        				<arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
