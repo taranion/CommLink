@@ -13,7 +13,7 @@ jobs:
     runs-on: [self-hosted, Linux]
     steps:
     - name: checkout sources
-      uses: actions/checkout@latest
+      uses: actions/checkout@master
 
     - name: setup-graalvm-ce
       uses: gluonhq/setup-graalvm@master
@@ -33,11 +33,6 @@ jobs:
       
 #    - name: Install missing packages
 #      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
-
-    - name: Set up Maven
-      uses: stCarolas/setup-maven@v5
-      with:
-        maven-version: 3.8.7
       
     - name: Compile
       run:  locale ; mvn -U -s settings.xml -Pandroid clean gluonfx:compile
