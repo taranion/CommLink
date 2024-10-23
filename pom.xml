@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6-binary</artifactId>
-	<version>1.7.2</version>
+	<version>1.7.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<!-- Dummy -->
 
@@ -20,8 +20,8 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.22</client.plugin.version>
-		<attach.version>4.0.18</attach.version>
+		<client.plugin.version>1.0.24</client.plugin.version>
+		<attach.version>4.0.21</attach.version>
 		<rpgfw.version>5.2.0-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.commlinkbinary.ComLinkStarter</mainClassName>
 	</properties>
@@ -115,7 +115,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.1</version>
+				<version>3.13.0</version>
 			</plugin>
 
 	      <plugin>
@@ -248,13 +248,15 @@
         			<linuxMenuGroup>RPGFramework</linuxMenuGroup>
 
 					<!-- Windows specific settings -->
-					<winDirChooser>false</winDirChooser>
+					<winDirChooser>true</winDirChooser>
         			<winConsole>true</winConsole>
         			<winMenu>true</winMenu>
+        			<winMenuGroup>RPGFramework</winMenuGroup>
         			<winPerUserInstall>false</winPerUserInstall>
         			<winShortcut>true</winShortcut>
 					<winHelpUrl>https://rpgframework.atlassian.net/servicedesk/customer/portal/18</winHelpUrl>
 					<winUpdateUrl>https://rpgframework.atlassian.net/wiki/spaces/COM6/pages/2037055489/Releases</winUpdateUrl>
+					<winUpgradeUuid>f299f81f-fe6f-441c-9e67-52f9968c03c4</winUpgradeUuid>
 					<!-- MAC specific settings -->
 					<macAppCategory>role-playing-games</macAppCategory>
 					<macDmgContentPaths>
@@ -267,7 +269,7 @@
             	<id>linux</id>
             	<configuration>
                	<icon>src/linux/Commlink6.png</icon>
-               	<type>RPM,DEB</type>
+               	<type>RPM,DEB,APP-IMAGE</type>
           		</configuration>
      			</execution>
         		<execution>
@@ -275,13 +277,13 @@
             	<configuration>
   						<resourceDir>src/jpackage/win</resourceDir>
               		<icon>src/jpackage/win/Commlink6_128.ico</icon>
-               	<type>MSI</type>
+               	<type>MSI,APP-IMAGE</type>
             	</configuration>
         		</execution>
         		<execution>
             	<id>osx</id>
             	<configuration>
-						<type>DMG</type>
+						<type>DMG,APP-IMAGE</type>
            			<icon>src/jpackage/osx/Commlink6.icns</icon>
              		<type>DMG</type>
              	</configuration>
