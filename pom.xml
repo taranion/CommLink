@@ -229,7 +229,7 @@
         			<input>target</input>
         			<appVersion>${project.version}</appVersion>
         			<vendor>RPGFramework</vendor>
-        			<copyright>2023 Stefan Prelle</copyright>
+        			<copyright>2019-2024 Stefan Prelle</copyright>
         			<description>Character Management for Shadowrun 6</description>
         			<mainClass>${mainClassName}</mainClass>
         			<mainJar>${project.artifactId}-${project.version}-jar-with-dependencies.jar</mainJar>
