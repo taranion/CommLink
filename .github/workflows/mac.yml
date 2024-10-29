@@ -45,13 +45,14 @@ jobs:
        with:
          name: Commlink6-${{env.RELEASE_VERSION}}.dmg
          path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
-                    
+       
      - name: Upload
        continue-on-error: true
-       uses: appleboy/scp-action@v0.1.7
+       uses: garygrossgarten/github-action-scp@release
        with:
-         source: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
-         target: /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.dmg
+         verbose: true
+         local: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
+         remote: /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.dmg
          host: eden.rpgframework.de
          username: ghcommlink
          password: ${{ secrets.DEPLOY_PASSWORD }}
