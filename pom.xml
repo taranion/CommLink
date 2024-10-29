@@ -239,7 +239,7 @@
             		<option>-Dfile.encoding=UTF-8</option>
             		<option>-Dproject.version=${project.version}</option>
         			</javaOptions>
-					<aboutUrl>https://www.rpgframework.de/commlink6/</aboutUrl>
+					<!--aboutUrl>https://www.rpgframework.de/commlink6/</aboutUrl-->
 					<!-- Linux specific settings -->
   					<linuxAppCategory>Game</linuxAppCategory>
   					<linuxShortcut>true</linuxShortcut>

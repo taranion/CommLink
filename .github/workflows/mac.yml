@@ -137,12 +137,17 @@ jobs:
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
+
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Commlink6-${{env.RELEASE_VERSION}}.app.zip
+        path: staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip
       
     - name: Upload APP bundle
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
-        verbose: true
         local: staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip
         remote: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}.app.zip
         host: eden.rpgframework.de
