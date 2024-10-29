@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6-binary</artifactId>
-	<version>1.7.3-SNAPSHOT</version>
+	<version>1.7.3</version>
 	<packaging>jar</packaging>
 	<!-- Dummy -->
 
@@ -126,7 +126,7 @@
 			    <mainClass>${mainClassName}</mainClass>
           	 <options>
             	<option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option>
-            	<option>-Dproject.version=1.7.0</option>
+            	<option>-Dproject.version=1.7.3</option>
           	 </options>
 		     </configuration>
 	      </plugin>
@@ -159,7 +159,6 @@
 						<arg>-Dprism.verbose=false</arg>
 						<arg>-Dproject.version=${project.version}</arg>
 						<arg>-Dsecurity.provider.3=org.bouncycastle.jce.provider.BouncyCastleProvider</arg>
-                  <arg>--initialize-at-build-time=de.rpgframework.shadowrun6.comlink.CustomLoggerFinder</arg>
 					</nativeImageArgs>
 					<!--linkerArgs>
        				<arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
