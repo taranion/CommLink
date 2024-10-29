@@ -39,7 +39,13 @@ jobs:
      - name: Show result JPackage
        continue-on-error: true
        run: ls target/jpackage
-       
+
+     - name: Archive production artifacts
+       uses: actions/upload-artifact@v4
+       with:
+         name: Commlink6-${{env.RELEASE_VERSION}}.dmg
+         path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
+                    
      - name: Upload
        continue-on-error: true
        uses: appleboy/scp-action@v0.1.7
@@ -112,10 +118,11 @@ jobs:
       
     - name: Upload
       continue-on-error: true
-      uses: appleboy/scp-action@v0.1.7
+      uses: garygrossgarten/github-action-scp@release
       with:
-        source: staging/Commlink6-${{ env.RELEASE_VERSION }}
-        target: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}
+        verbose: true
+        local: staging/Commlink6-${{ env.RELEASE_VERSION }}
+        remote: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
