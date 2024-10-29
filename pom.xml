@@ -281,7 +281,7 @@
         		<execution>
             	<id>osx</id>
             	<configuration>
-						<type>DMG,PKG,APP-IMAGE</type>
+						<type>app-image</type>
            			<icon>src/jpackage/osx/Commlink6.icns</icon>
              	</configuration>
         		</execution>
