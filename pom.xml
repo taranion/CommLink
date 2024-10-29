@@ -159,6 +159,7 @@
 						<arg>-Dprism.verbose=false</arg>
 						<arg>-Dproject.version=${project.version}</arg>
 						<arg>-Dsecurity.provider.3=org.bouncycastle.jce.provider.BouncyCastleProvider</arg>
+						<arg>--initialize-at-build-time=de.rpgframework.shadowrun6.comlink.CustomLoggerFinder,de.rpgframework.shadowrun6.comlink.ConsoleLogger</arg>
 					</nativeImageArgs>
 					<!--linkerArgs>
        				<arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
@@ -267,7 +268,7 @@
             	<id>linux</id>
             	<configuration>
                	<icon>src/linux/Commlink6.png</icon>
-               	<type>RPM,DEB,APP-IMAGE</type>
+               	<type>RPM,DEB,APP_IMAGE</type>
           		</configuration>
      			</execution>
         		<execution>
@@ -275,13 +276,13 @@
             	<configuration>
   						<resourceDir>src/jpackage/win</resourceDir>
               		<icon>src/jpackage/win/Commlink6_128.ico</icon>
-               	<type>MSI,APP-IMAGE</type>
+               	<type>MSI,APP_IMAGE</type>
             	</configuration>
         		</execution>
         		<execution>
             	<id>osx</id>
             	<configuration>
-						<type>app-image</type>
+						<type>APP_IMAGE</type>
            			<icon>src/jpackage/osx/Commlink6.icns</icon>
              	</configuration>
         		</execution>
