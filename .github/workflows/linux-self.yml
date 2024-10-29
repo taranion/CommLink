@@ -67,11 +67,10 @@ jobs:
       
     - name: Upload
       continue-on-error: true
-      uses: garygrossgarten/github-action-scp@release
+      uses: appleboy/scp-action@v0.1.7
       with:
-        verbose: true
-        local: staging/commlink6-${{ env.RELEASE_VERSION }}
-        remote: /var/www/html/commlink6-builds/linux/CommLink6-${{env.RELEASE_VERSION}}
+        source: staging/commlink6-${{ env.RELEASE_VERSION }}
+        target: /var/www/html/commlink6-builds/linux/CommLink6-${{env.RELEASE_VERSION}}
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
@@ -108,12 +107,10 @@ jobs:
       run: ls target/jpackage
       
     - name: Upload JRE RPM
-      continue-on-error: true
-      uses: garygrossgarten/github-action-scp@release
+      uses: appleboy/scp-action@v0.1.7
       with:
-        verbose: false
-        local: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm
-        remote: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.rpm
+        source: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm
+        target: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.rpm
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}

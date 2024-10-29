@@ -126,6 +126,18 @@ jobs:
         
     - name: Show result
       run: ls target/gluonfx/x86_64-darwin ; find staging
+
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Commlink6-${{env.RELEASE_VERSION}}
+        path: staging/Commlink6-${{ env.RELEASE_VERSION }}
+
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Commlink6-${{env.RELEASE_VERSION}}.app.zip
+        path: staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip
       
     - name: Upload
       continue-on-error: true
@@ -137,12 +149,6 @@ jobs:
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
-
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: Commlink6-${{env.RELEASE_VERSION}}.app.zip
-        path: staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip
       
     - name: Upload APP bundle
       continue-on-error: true

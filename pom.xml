@@ -156,6 +156,7 @@
 					<nativeImageArgs>
 						<!--arg>-H:DefaultLocale=en</arg-->
 						<arg>-H:IncludeLocales=en,de,fr,pt,ru,jp</arg>
+						<arg>-H:+UnlockExperimentalVMOptions</arg>
 						<arg>-Dprism.verbose=false</arg>
 						<arg>-Dproject.version=${project.version}</arg>
 						<arg>-Dsecurity.provider.3=org.bouncycastle.jce.provider.BouncyCastleProvider</arg>
