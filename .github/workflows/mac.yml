@@ -42,11 +42,10 @@ jobs:
        
      - name: Upload
        continue-on-error: true
-       uses: garygrossgarten/github-action-scp@release
+       uses: appleboy/scp-action@v0.1.7
        with:
-         verbose: true
-         local: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
-         remote: /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.dmg
+         source: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
+         target: /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.dmg
          host: eden.rpgframework.de
          username: ghcommlink
          password: ${{ secrets.DEPLOY_PASSWORD }}
@@ -58,7 +57,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: setup-graalvm-ce
-      uses: taranion/setup-graalvm@master
+      uses: gluonhq/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -113,11 +112,10 @@ jobs:
       
     - name: Upload
       continue-on-error: true
-      uses: garygrossgarten/github-action-scp@release
+      uses: appleboy/scp-action@v0.1.7
       with:
-        verbose: true
-        local: staging/Commlink6-${{ env.RELEASE_VERSION }}
-        remote: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}
+        source: staging/Commlink6-${{ env.RELEASE_VERSION }}
+        target: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
