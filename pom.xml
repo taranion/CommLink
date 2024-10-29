@@ -269,7 +269,7 @@
             	<id>linux</id>
             	<configuration>
                	<icon>src/linux/Commlink6.png</icon>
-               	<type>RPM,DEB,APP_IMAGE</type>
+               	<type>RPM,DEB</type>
           		</configuration>
      			</execution>
         		<execution>
@@ -277,13 +277,13 @@
             	<configuration>
   						<resourceDir>src/jpackage/win</resourceDir>
               		<icon>src/jpackage/win/Commlink6_128.ico</icon>
-               	<type>MSI,APP_IMAGE</type>
+               	<type>MSI</type>
             	</configuration>
         		</execution>
         		<execution>
             	<id>osx</id>
             	<configuration>
-						<type>APP_IMAGE</type>
+						<type>DMG</type>
            			<icon>src/jpackage/osx/Commlink6.icns</icon>
              	</configuration>
         		</execution>
