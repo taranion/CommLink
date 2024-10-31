@@ -115,6 +115,7 @@ jobs:
         host: eden.rpgframework.de
         username: dummy
         password: ${{ secrets.DEPLOY_PASSWORD }}
+        strip_components: 2
           
     - name: Upload JRE RPM
       continue-on-error: true
@@ -125,4 +126,5 @@ jobs:
         host: eden.rpgframework.de
         username: dummy
         password: ${{ secrets.DEPLOY_PASSWORD }}
+        strip_components: 2
         
