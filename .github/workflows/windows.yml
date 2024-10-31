@@ -84,6 +84,9 @@ jobs:
 #      with:
 #        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
 #        path: target/gluonfx/x86_64-windows/Commlink6-${{ env.RELEASE_VERSION }}.msi
+    - name: Try scp
+      continue-on-error: true
+      run: scp -v ; ls
       
     - name: Deploy Native EXE
       continue-on-error: true

@@ -39,14 +39,18 @@ jobs:
      - name: Show result JPackage
        continue-on-error: true
        run: ls target/jpackage
+       
+     - name: Try scp
+       continue-on-error: true
+       run: scp -v ; ls
 
-     - name: Archive production artifacts
+     - name: Archive production artifacts PKG
        uses: actions/upload-artifact@v4
        with:
-         name: Commlink6-${{env.RELEASE_VERSION}}.dmg
-         path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
+         name: Commlink6-${{env.RELEASE_VERSION}}.pkg
+         path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg
 
-     - name: Archive production artifacts
+     - name: Archive production artifacts DMG
        uses: actions/upload-artifact@v4
        with:
          name: Commlink6-${{env.RELEASE_VERSION}}.dmg
@@ -119,7 +123,7 @@ jobs:
       continue-on-error: true
       run: |
         mkdir staging ; 
-        cp target/gluonfx/x86_64-darwin/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }} ; 
+        cp target/gluonfx/x86_64-darwin/CommLink6 staging/Commlink6-${{ env.RELEASE_VERSION }}-binary ; 
         cp -r target/gluonfx/x86_64-darwin/CommLink6.app staging/Commlink6-${{ env.RELEASE_VERSION }}.app ; 
         cp -r target/gluonfx/x86_64-darwin/CommLink6.app.zip staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip ; 
         chmod 755 staging/*

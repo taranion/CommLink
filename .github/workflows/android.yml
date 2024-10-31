@@ -75,7 +75,7 @@ jobs:
 #        name: CommLink6-de-${{ env.RELEASE_VERSION }}.aab
 #        path: target/gluonfx/aarch64-android/gvm/CommLink6.aab
       
-    - name: Upload Grossgarten
+    - name: Upload
       continue-on-error: true
       uses: appleboy/scp-action@v0.1.7
       with:
