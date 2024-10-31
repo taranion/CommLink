@@ -257,11 +257,6 @@
 					<winHelpUrl>https://rpgframework.atlassian.net/servicedesk/customer/portal/18</winHelpUrl>
 					<winUpdateUrl>https://rpgframework.atlassian.net/wiki/spaces/COM6/pages/2037055489/Releases</winUpdateUrl>
 					<winUpgradeUuid>f299f81f-fe6f-441c-9e67-52f9968c03c4</winUpgradeUuid>
-					<!-- MAC specific settings -->
-					<macAppCategory>role-playing-games</macAppCategory>
-					<!--macDmgContentPaths>
-						<macDmgContentPath>src/jpackage/osx/docs</macDmgContentPath>
-					</macDmgContentPaths-->
   			</configuration>
 
   			<executions>
@@ -283,8 +278,12 @@
         		<execution>
             	<id>osx</id>
             	<configuration>
-<!--						<type>PKG</type>
--->           			<icon>src/jpackage/osx/Commlink6.icns</icon>
+						<type>PKG</type>
+           			<icon>src/jpackage/osx/Commlink6.icns</icon>
+                  <macAppCategory>role-playing-games</macAppCategory>
+                  <!--macDmgContentPaths>
+                     <macDmgContentPath>src/jpackage/osx/docs</macDmgContentPath>
+                  </macDmgContentPaths-->
              	</configuration>
         		</execution>
     		  </executions>
