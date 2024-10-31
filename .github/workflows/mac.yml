@@ -45,23 +45,6 @@ jobs:
        with:
          name: Commlink6-${{env.RELEASE_VERSION}}.pkg
          path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg
-
-     - name: Archive production artifacts DMG
-       uses: actions/upload-artifact@v4
-       with:
-         name: Commlink6-${{env.RELEASE_VERSION}}.dmg
-         path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
-
-     - name: Set up SSH
-       uses: webfactory/ssh-agent@v0.9.0
-       with:
-         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-                                 
-     - name: Upload via SCP
-       continue-on-error: true
-       run: |
-         apt install sshpass
-         ssh -p  ${{ secrets.GHCOMMLINK_PW }} scp -o ConnectTimeout=30 -o 'StrictHostKeyChecking no' target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg ghcommlink@eden.rpgframework.de:
                    
      - name: Upload
        uses: garygrossgarten/github-action-scp@release
@@ -71,7 +54,7 @@ jobs:
          remote: /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.pkg
          host: eden.rpgframework.de
          username: ghcommlink
-         password: ${{ secrets.GHCOMMLINK_PW }}
+         password: ${{ secrets.DEPLOY_PASSWORD }}
          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
 #
 #   compile-osx-native:

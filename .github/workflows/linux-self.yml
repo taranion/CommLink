@@ -105,10 +105,6 @@ jobs:
         
     - name: Show result
       run: ls -l target/jpackage
-        
-    - name: Try scp
-      continue-on-error: true
-      run: scp -o stricthostkeychechink=no target/jpackage/commlink6_${{ env.RELEASE_VERSION }}-_amd64.deb  ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.deb ; ls
       
     - name: Upload JRE DEB
       continue-on-error: true
