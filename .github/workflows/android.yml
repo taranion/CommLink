@@ -81,11 +81,11 @@ jobs:
       
     - name: Upload Grossgarten
       continue-on-error: true
-      uses: garygrossgarten/github-action-scp@release
+      uses: appleboy/scp-action@v0.1.7
       with:
-        verbose: true
-        local: staging
-        remote: /var/www/html/commlink6-builds/android
+        source: staging/*
+        target: /var/www/html/commlink6-builds/android
+        strip_components: 1
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}

@@ -116,14 +116,23 @@ jobs:
         
     - name: Show result
       run: ls target/jpackage
+            
+    - name: Prepare staging
+      run: |
+        mkdir -p staging ;
+        cp target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.deb 2>/dev/null || :
+        cp target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm 2>/dev/null || :
+              
+    - name: Show Staging
+      run: ls -l staging
       
     - name: Upload JRE RPM
       continue-on-error: true
       uses: appleboy/scp-action@v0.1.7
       with:
-        source: "target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm"
+        source: "staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm"
         target: /var/www/html/commlink6-builds/linux/
-        strip_components: 2
+        strip_components: 1
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
@@ -132,9 +141,9 @@ jobs:
       continue-on-error: false
       uses: appleboy/scp-action@v0.1.7
       with:
-        source: "target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb"
+        source: "staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.deb"
         target: /var/www/html/commlink6-builds/linux/
-        strip_components: 2
+        strip_components: 1
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}

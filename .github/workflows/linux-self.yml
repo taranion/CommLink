@@ -61,7 +61,7 @@ jobs:
     - name: Prepare staging
       run: |
         mkdir -p staging ; 
-        cp target/gluonfx/x86_64-linux/CommLink6 staging/commlink6-${{ env.RELEASE_VERSION }} ;
+        cp target/gluonfx/x86_64-linux/CommLink6 staging/CommLink6-${{ env.RELEASE_VERSION }} ;
         chmod 755 staging/*  ;
         ls staging
       
@@ -120,9 +120,9 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         source: "staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm"
-        target: /home/dummy
+        target: /var/www/html/commlink6-builds/linux/
         host: eden.rpgframework.de
-        username: dummy
+        username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
         strip_components: 1
           
@@ -130,10 +130,10 @@ jobs:
       continue-on-error: true
       uses: appleboy/scp-action@master
       with:
-        source: "target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm"
+        source: "staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.deb"
         target: /var/www/html/commlink6-builds/linux/
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
-        strip_components: 2
+        strip_components: 1
         

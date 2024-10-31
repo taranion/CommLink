@@ -86,6 +86,7 @@ jobs:
       with:
         source: staging/*
         target: /var/www/html/commlink6-builds/android
+        strip_components: 1
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
