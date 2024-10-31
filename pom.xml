@@ -259,9 +259,9 @@
 					<winUpgradeUuid>f299f81f-fe6f-441c-9e67-52f9968c03c4</winUpgradeUuid>
 					<!-- MAC specific settings -->
 					<macAppCategory>role-playing-games</macAppCategory>
-					<macDmgContentPaths>
+					<!--macDmgContentPaths>
 						<macDmgContentPath>src/jpackage/osx/docs</macDmgContentPath>
-					</macDmgContentPaths>
+					</macDmgContentPaths-->
   			</configuration>
 
   			<executions>
