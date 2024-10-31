@@ -51,7 +51,7 @@ jobs:
         
     - name: Show result
       run: |
-         ls -l target/gluonfx/aarch64-android/gvm 
+         ls target/gluonfx/aarch64-android/gvm 
          find target/gluonfx/aarch64-android/
 #         cat target/gluonfx/aarch64-android/gensrc/android/AndroidManifest.xml
 #         zip -r android-gensrc.zip target/gluonfx/aarch64-android/gensrc/android
@@ -80,12 +80,13 @@ jobs:
 #        name: CommLink6-de-${{ env.RELEASE_VERSION }}.aab
 #        path: target/gluonfx/aarch64-android/gvm/CommLink6.aab
       
-    - name: Upload 
+    - name: Upload Grossgarten
       continue-on-error: true
-      uses: appleboy/scp-action@master
+      uses: garygrossgarten/github-action-scp@release
       with:
-        source: staging/*
-        target: /var/www/html/commlink6-builds/android
+        verbose: true
+        local: staging
+        remote: /var/www/html/commlink6-builds/android
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}

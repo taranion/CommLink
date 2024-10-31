@@ -75,12 +75,13 @@ jobs:
 #        name: CommLink6-de-${{ env.RELEASE_VERSION }}.aab
 #        path: target/gluonfx/aarch64-android/gvm/CommLink6.aab
       
-    - name: Upload
+    - name: Upload Grossgarten
       continue-on-error: true
-      uses: appleboy/scp-action@v0.1.7
+      uses: garygrossgarten/github-action-scp@release
       with:
-        source: staging/*
-        target: /var/www/html/commlink6-builds/android
+        verbose: true
+        local: staging
+        remote: /var/www/html/commlink6-builds/android
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
