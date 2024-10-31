@@ -48,7 +48,7 @@ jobs:
       
     - name: Logs
       if: always()      
-      run: find target/gluonfx/aarch64-android/gvm/log
+      run: cat target/gluonfx/aarch64-android/gvm/log/client-debug0.log ; echo "----"; cat target/gluonfx/log/process-package-task*.log
         
     - name: Show result
       run: find target/gluonfx
