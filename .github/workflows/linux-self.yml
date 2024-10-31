@@ -44,9 +44,6 @@ jobs:
 
     - name: Link
       run:  mvn gluonfx:link -Pdesktop-binary
-        
-    - name: Show result
-      run: ls -l target/gluonfx/x86_64-linux
 
     - name: Create Native Installer
       run:  mvn gluonfx:package -Pdesktop
@@ -68,7 +65,7 @@ jobs:
     - name: Upload
       uses: appleboy/scp-action@master
       with:
-        source: staging/commlink6-${{ env.RELEASE_VERSION }}
+        source: staging/CommLink6-${{ env.RELEASE_VERSION }}
         target: /var/www/html/commlink6-builds/linux/
         strip_components: 1
         host: eden.rpgframework.de

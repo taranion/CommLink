@@ -35,16 +35,20 @@ jobs:
 #      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
       
     - name: Compile
-      run:  locale ; mvn -U -s settings.xml -Pandroid clean gluonfx:compile
+      run:  locale ; mvn -U -s settings.xml clean gluonfx:compile -Pandroid
 
     - name: Link
-      run:  mvn -Pandroid -s settings.xml gluonfx:link
+      run:  mvn -s settings.xml gluonfx:link -Pandroid
         
     - name: Show result
       run: ls target/gluonfx
 
     - name: Package
-      run:  mvn -Pandroid -s settings.xml gluonfx:package
+      run:  mvn -s settings.xml gluonfx:package -Pandroid
+      
+    - name: Logs
+      if: always()      
+      run: cat gluonfx/aarch64-android/gvm/log 
         
     - name: Show result
       run: find target/gluonfx
