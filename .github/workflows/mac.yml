@@ -56,15 +56,11 @@ jobs:
        uses: webfactory/ssh-agent@v0.9.0
        with:
          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-           
-     - name: Try scp
-       continue-on-error: true
-       run: scp -v ; ls
                                  
-     - name: Upload
+     - name: Upload via SCP
        continue-on-error: true
        run: |
-         scp -o ConnectTimeout=30 target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg ghcommlink@eden.rpgframework.de:
+         scp -o ConnectTimeout=30 -o 'StrictHostKeyChecking no' target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg ghcommlink@eden.rpgframework.de:
        
      - name: Upload
        continue-on-error: true
@@ -76,6 +72,7 @@ jobs:
          host: eden.rpgframework.de
          username: ghcommlink
          password: ${{ secrets.DEPLOY_PASSWORD }}
+         privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
 #
 #   compile-osx-native:
 #    runs-on: macos-latest
