@@ -67,7 +67,7 @@ jobs:
        with:
          host: eden.rpgframework.de
          user: ghcommlink
-         pass: ${{ secrets.DEPLOY_PASSWORD }}
+         pass: ${{ secrets.GHCOMMLINK_PW }}
          scp: |
             'target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg' => /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.pkg
                    
@@ -79,7 +79,7 @@ jobs:
          remote: /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.pkg
          host: eden.rpgframework.de
          username: ghcommlink
-         password: ${{ secrets.DEPLOY_PASSWORD }}
+         password: ${{ secrets.GHCOMMLINK_PW }}
          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
 #
 #   compile-osx-native:
