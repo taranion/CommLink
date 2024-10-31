@@ -110,7 +110,7 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         source: target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb
-        target: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.deb
+        target: /var/www/html/commlink6-builds/linux/
         host: eden.rpgframework.de
         username: dummy
         password: ${{ secrets.DEPLOY_PASSWORD }}
@@ -120,7 +120,7 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         source: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm
-        target: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.rpm
+        target: /var/www/html/commlink6-builds/linux/
         host: eden.rpgframework.de
         username: dummy
         password: ${{ secrets.DEPLOY_PASSWORD }}
