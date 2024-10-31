@@ -56,7 +56,7 @@ jobs:
 #      run: cat target/gluonfx/x86_64-linux/gvm/log/client-debug0.log
         
     - name: Show result
-      run: ls -l target/gluonfx/x86_64-linux 
+      run: ls -l target/ 
         
     - name: Prepare staging
       run: |
