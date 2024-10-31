@@ -48,7 +48,7 @@ jobs:
       
     - name: Logs
       if: always()      
-      run: cat gluonfx/aarch64-android/gvm/log 
+      run: find gluonfx/aarch64-android 
         
     - name: Show result
       run: find target/gluonfx
