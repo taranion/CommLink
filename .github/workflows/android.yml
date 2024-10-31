@@ -34,12 +34,16 @@ jobs:
 
     - name: Link
       run:  mvn -Pandroid -s settings.xml gluonfx:link
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Show result
       run: ls target/gluonfx
 
     - name: Package
       run:  mvn -Pandroid -s settings.xml gluonfx:package
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Show result
       run: find target/gluonfx
