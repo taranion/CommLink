@@ -49,14 +49,12 @@ jobs:
      - name: Upload
        uses: garygrossgarten/github-action-scp@release
        with:
-         verbose: true
-         local: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg
-         remote: /var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.pkg
+         local: "target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg"
+         remote: "/var/www/html/commlink6-builds/osx/CommLink6-Interpreted-${{env.RELEASE_VERSION}}.pkg"
          host: eden.rpgframework.de
          username: ghcommlink
          password: ${{ secrets.DEPLOY_PASSWORD }}
-         privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-         atomicPut: true
+
 #
 #   compile-osx-native:
 #    runs-on: macos-latest
