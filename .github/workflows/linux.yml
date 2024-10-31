@@ -110,7 +110,7 @@ jobs:
 #        password: ${{ secrets.DEPLOY_PASSWORD }}
 
     - name: JPackage
-      run:  mvn -s settings.xml -B jpackage:jpackage -Pinterpreted
+      run:  mvn -s settings.xml -B jpackage:jpackage@linux -Pinterpreted
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
@@ -121,7 +121,7 @@ jobs:
       continue-on-error: true
       uses: appleboy/scp-action@v0.1.7
       with:
-        source: target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm
+        source: "target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm"
         target: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.rpm
         host: eden.rpgframework.de
         username: ghcommlink
@@ -131,7 +131,7 @@ jobs:
       continue-on-error: false
       uses: appleboy/scp-action@v0.1.7
       with:
-        source: target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb
+        source: "target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb"
         target: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.deb
         host: eden.rpgframework.de
         username: ghcommlink
