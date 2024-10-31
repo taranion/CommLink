@@ -38,7 +38,7 @@ jobs:
          
      - name: Show result JPackage
        continue-on-error: true
-       run: ls target/jpackage
+       run: ls -l target/jpackage
        
      - name: Try scp
        continue-on-error: true
@@ -55,6 +55,14 @@ jobs:
        with:
          name: Commlink6-${{env.RELEASE_VERSION}}.dmg
          path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg
+
+     - name: Set up SSH
+       uses: webfactory/ssh-agent@v0.9.0
+       with:
+         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+                                 
+     - name: Upload
+       run: scp -o ConnectTimeout=30 target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.dmg ghcommlink@eden.rpgframework.de
        
      - name: Upload
        continue-on-error: true

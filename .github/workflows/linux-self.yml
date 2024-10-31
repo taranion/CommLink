@@ -104,7 +104,11 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Show result
-      run: ls target/jpackage
+      run: ls -l target/jpackage
+        
+    - name: Try scp
+      continue-on-error: true
+      run: scp -v ; ls
       
     - name: Upload JRE DEB
       continue-on-error: true

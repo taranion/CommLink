@@ -51,7 +51,7 @@ jobs:
         
     - name: Show result
       run: |
-         ls target/gluonfx/aarch64-android/gvm 
+         ls -l target/gluonfx/aarch64-android/gvm 
          find target/gluonfx/aarch64-android/
 #         cat target/gluonfx/aarch64-android/gensrc/android/AndroidManifest.xml
 #         zip -r android-gensrc.zip target/gluonfx/aarch64-android/gensrc/android
