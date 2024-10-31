@@ -283,7 +283,7 @@
         		<execution>
             	<id>osx</id>
             	<configuration>
-						<type>DMG</type>
+						<type>DMG,PKG</type>
            			<icon>src/jpackage/osx/Commlink6.icns</icon>
              	</configuration>
         		</execution>

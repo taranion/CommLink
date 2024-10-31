@@ -115,13 +115,12 @@ jobs:
       run:  mvn gluonfx:package -Pdesktop-binary
         
     - name: Show result
-      continue-on-error: true
-      run: ls -l target/gluonfx/x86_64-darwin ; find target/gluonfx/x86_64-darwin
+      run: ls -l target/gluonfx/x86_64-darwin
 
-    - name: Logs
-      continue-on-error: true
-      if: always()      
-      run: find target/gluonfx/x86_64-darwin/gensrc/darwin ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
+#    - name: Logs
+#      continue-on-error: true
+#      if: always()      
+#      run: find target/gluonfx/x86_64-darwin/gensrc/darwin ; cat target/gluonfx/x86_64-darwin/gvm/log/client-debug0.log
 
     - name: zip APP bundle
       continue-on-error: true
@@ -137,26 +136,26 @@ jobs:
         chmod 755 staging/*
         
     - name: Show result
-      run: ls target/gluonfx/x86_64-darwin ; find staging
+      run: ls -l target/gluonfx/x86_64-darwin ; find staging
 
-    - name: Archive production artifacts
+    - name: Archive Binary Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Commlink6-${{env.RELEASE_VERSION}}
-        path: staging/Commlink6-${{ env.RELEASE_VERSION }}
+        name: Commlink6-${{env.RELEASE_VERSION}}-binary
+        path: staging/Commlink6-${{ env.RELEASE_VERSION }}-binary
 
-    - name: Archive production artifacts
+    - name: Archive App Bundle artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Commlink6-${{env.RELEASE_VERSION}}.app.zip
         path: staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip
       
-    - name: Upload
+    - name: Upload Binary
       continue-on-error: true
       uses: garygrossgarten/github-action-scp@release
       with:
         verbose: true
-        local: staging/Commlink6-${{ env.RELEASE_VERSION }}
+        local: staging/Commlink6-${{ env.RELEASE_VERSION }}-binary
         remote: /var/www/html/commlink6-builds/osx/CommLink6-${{env.RELEASE_VERSION}}
         host: eden.rpgframework.de
         username: ghcommlink
