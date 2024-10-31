@@ -107,10 +107,9 @@ jobs:
       run: ls -l target/jpackage
       
     - name: Upload JRE DEB
-      continue-on-error: true
       uses: appleboy/scp-action@master
       with:
-        source: target/jpackage/commlink6_${{ env.RELEASE_VERSION }}-_amd64.deb
+        source: target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb
         target: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{env.RELEASE_VERSION}}.deb
         host: eden.rpgframework.de
         username: ghcommlink
