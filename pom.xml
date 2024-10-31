@@ -264,7 +264,6 @@
             	<id>linux</id>
             	<configuration>
                	<icon>src/jpackage/linux/Commlink6.png</icon>
-               	<type>RPM</type>
           		</configuration>
      			</execution>
         		<execution>

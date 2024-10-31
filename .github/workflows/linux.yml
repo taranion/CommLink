@@ -16,18 +16,13 @@ jobs:
       uses: actions/checkout@master
 
     - name: setup-graalvm-ce
-      uses: taranion/setup-graalvm@master
+      uses: gluonhq/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set Release version env variable
       run: |
         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-
-    - name: Set up Maven
-      uses: stCarolas/setup-maven@v5
-      with:
-        maven-version: 3.8.7
 
     - name: Compile
       run:  export LC_ALL=de_DE.UTF-8; export LC_MESSAGES=de_DE.UTF-8; locale ; mvn -U -s settings.xml clean gluonfx:compile -Pdesktop-binary

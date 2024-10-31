@@ -31,6 +31,13 @@ jobs:
       uses: gluonhq/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+         # GraalVM version. Default: latest
+         graalvm: 'latest'
+         # Java version. Since GraalVM 22, either java11, java17 or java23. Before GraalVM 22, empty. Default: java23
+         jdk: 'java23'
+         # Architecture flag. Available options are 'x86_64' (default) and 'aarch64'. The latter is available for M1 runners starting GraalVM 22.1.
+         arch: 'x86_64'
 
     - name: Compile
       run:  mvn -U -s settings.xml clean gluonfx:compile -Pdesktop-binary
@@ -127,7 +134,7 @@ jobs:
       run: echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
     - name: setup-graalvm-ce
-      uses: taranion/setup-graalvm@master
+      uses: gluonhq/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
