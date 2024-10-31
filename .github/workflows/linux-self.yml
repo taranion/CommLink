@@ -66,11 +66,11 @@ jobs:
         ls staging
       
     - name: Upload
-      continue-on-error: true
       uses: appleboy/scp-action@master
       with:
         source: staging/commlink6-${{ env.RELEASE_VERSION }}
-        target: /var/www/html/commlink6-builds/linux/CommLink6-${{env.RELEASE_VERSION}}
+        target: /var/www/html/commlink6-builds/linux/
+        strip_components: 1
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
@@ -108,9 +108,9 @@ jobs:
           
     - name: Prepare staging
       run: |
-        mkdir staging 
-        cp target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.deb 2> /dev/null
-        cp target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm 2> /dev/null
+        mkdir -p staging ;
+        cp target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.deb
+        cp target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm
             
     - name: Show Staging
       run: ls -l staging
