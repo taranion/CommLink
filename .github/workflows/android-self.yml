@@ -41,7 +41,7 @@ jobs:
       run:  mvn -s settings.xml gluonfx:link -Pandroid
         
     - name: Show result
-      run: ls target/gluonfx
+      run: ls target/gluonfx/aarch64-android
 
     - name: Package
       run:  mvn -s settings.xml gluonfx:package -Pandroid
