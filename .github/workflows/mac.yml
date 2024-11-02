@@ -1,10 +1,10 @@
 name: Compile OS X
-#on: [push]
-on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+on: [push]
+#on:
+#  push:
+#    # Sequence of patterns matched against refs/tags
+#    tags:
+#    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 env:
   LANG: "de_DE.UTF-8"
 
@@ -48,13 +48,14 @@ jobs:
 
      - name: nogsantos scp
        continue-on-error: true
-       uses: nogsantos/scp-deploy@master
+       uses: nicklasfrahm/scp-action@main
        with:
-          src : target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg
-          host: eden.rpgframework.de
-          remote: /var/www/html/commlink6-builds/osx/
-          user: ghcommlink
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+         direction: upload
+         host: eden.rpgframework.de
+         username: ghcommlink
+         key: ${{ secrets.SSH_PRIVATE_KEY }}
+         source: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg
+         target: /var/www/html/commlink6-builds/osx/
                    
 #     - name: Upload
 #       uses: garygrossgarten/github-action-scp@release
@@ -142,13 +143,14 @@ jobs:
         path: staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip
     
     - name: Upload with SCP
-      uses: nogsantos/scp-deploy@master
+      uses: nicklasfrahm/scp-action@main
       with:
-         src : staging/*
+         direction: upload
          host: eden.rpgframework.de
-         remote: /var/www/html/commlink6-builds/osx/
-         user: ghcommlink
+         username: ghcommlink
          key: ${{ secrets.SSH_PRIVATE_KEY }}
+         source : staging/*
+         target: /var/www/html/commlink6-builds/osx/
           
 #    - name: Upload Binary
 #      continue-on-error: true
