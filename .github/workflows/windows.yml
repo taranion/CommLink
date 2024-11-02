@@ -80,14 +80,14 @@ jobs:
 
 #    - name: Upload Windows binary
 #      continue-on-error: true
-#      uses: actions/upload-artifact@v1
+#      uses: actions/upload-artifact@v4
 #      with:
 #        name: CommLink6-Windows-Executable-${{ env.RELEASE_VERSION }}
 #        path: target/gluonfx/x86_64-windows/CommLink6.exe
 #
 #    - name: Upload Windows MSI
 #      continue-on-error: true
-#      uses: actions/upload-artifact@v1
+#      uses: actions/upload-artifact@v4
 #      with:
 #        name: CommLink6-Windows-Installer-${{ env.RELEASE_VERSION }}
 #        path: target/gluonfx/x86_64-windows/Commlink6-${{ env.RELEASE_VERSION }}.msi
