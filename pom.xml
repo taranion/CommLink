@@ -264,9 +264,17 @@
      			<execution>
             	<id>linux</id>
             	<configuration>
+                  <type>DEB</type>
                	<icon>src/jpackage/linux/Commlink6.png</icon>
           		</configuration>
      			</execution>
+            <execution>
+               <id>linuxrpm</id>
+               <configuration>
+                  <type>RPM</type>
+                  <icon>src/jpackage/linux/Commlink6.png</icon>
+               </configuration>
+            </execution>
         		<execution>
            		<id>win</id>
             	<configuration>

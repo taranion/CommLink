@@ -99,6 +99,11 @@ jobs:
       run:  mvn -s settings.xml -B jpackage:jpackage@linux -Pinterpreted
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: JPackage
+      run:  mvn -s settings.xml -B jpackage:jpackage@linuxrpm -Pinterpreted
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Show result
       run: ls -l target/jpackage

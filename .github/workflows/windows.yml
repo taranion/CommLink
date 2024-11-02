@@ -119,11 +119,11 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: checkout sources
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
  
     # Setup the Windows build environment
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.1
+      uses: microsoft/setup-msbuild@v2
 
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v2
@@ -155,7 +155,7 @@ jobs:
       run: ls -l Staging
       
     - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Commlink-MSI
         path: "target\\jpackage\\Commlink6-${{env.RELEASE_VERSION}}.msi"
@@ -176,7 +176,7 @@ jobs:
     steps:
       - name: Configure Store Credentials
         continue-on-error: true
-        uses: microsoft/store-submission@v1
+        uses: microsoft/store-submission@v2
         with:
           command: configure
           type: win32
@@ -188,7 +188,7 @@ jobs:
 
       - name: Update Draft Submission
         continue-on-error: true
-        uses: microsoft/store-submission@v1
+        uses: microsoft/store-submission@v2
         with:
           command: update
 #          product-update: '{"packages":[{"packageUrl":"https://eden.rpgframework.de/commlink6-builds/win/CommLink6-Interpreted-Installer-${{env.RELEASE_VERSION}}.msi","languages":["en"],"architectures":["X64"],"isSilentInstall":true}]}'
@@ -196,7 +196,7 @@ jobs:
 
       - name: Publish Submission
         continue-on-error: true
-        uses: microsoft/store-submission@v1
+        uses: microsoft/store-submission@v2
         with:
           command: publish
          
