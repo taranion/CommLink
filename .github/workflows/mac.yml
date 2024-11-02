@@ -46,14 +46,16 @@ jobs:
          name: Commlink6-${{env.RELEASE_VERSION}}.pkg
          path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg
 
-
+     - uses: webfactory/ssh-agent@v0.9.0
+       with:
+         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
      - name: Upload with SCP
        run: |
          touch .id_rsa
          echo "$SSH_PRIVATE_KEY" >> .id_rsa
          chmod 600 .id_rsa
          cat .id_rsa
-         scp -o StrictHostKeyChecking=no -i .id_rsa target/jpackage/Commlink6-${{ env.RELEASE_VERSION }}.pkg ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
+         scp -o StrictHostKeyChecking=no  target/jpackage/Commlink6-${{ env.RELEASE_VERSION }}.pkg ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
        env:
          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEYS}}
                    
