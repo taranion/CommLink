@@ -1,10 +1,10 @@
 name: Compile OS X
-on: [push]
-#on:
-#  push:
-#    # Sequence of patterns matched against refs/tags
-#    tags:
-#    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+#on: [push]
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 env:
   LANG: "de_DE.UTF-8"
 
@@ -144,6 +144,8 @@ jobs:
     - name: Upload with SCP
       run: |
         scp -o StrictHostKeyChecking=no  staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
+        scp -o StrictHostKeyChecking=no  staging/Commlink6-${{ env.RELEASE_VERSION }}-binary ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
+        scp -o StrictHostKeyChecking=no  staging/Commlink6-${{ env.RELEASE_VERSION }}-binary ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
           
 #    - name: Upload Binary
 #      continue-on-error: true
