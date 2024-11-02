@@ -50,8 +50,10 @@ jobs:
      - name: Upload with SCP
        run: |
          touch .id_rsa
-         printf "${{secrets.SSH_PRIVATE_KEY}}"" >> .id_rsa
+         printf "$SSH_PRIVATE_KEY" >> .id_rsa
          scp -o StrictHostKeyChecking=no -i .id_rsa staging/Commlink6-${{ env.RELEASE_VERSION }}.pkg ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
+       env:
+         SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEYS}}
                    
 #     - name: Upload
 #       uses: garygrossgarten/github-action-scp@release
@@ -141,8 +143,10 @@ jobs:
     - name: Upload with SCP
       run: |
         touch .id_rsa
-        printf "${{secrets.SSH_PRIVATE_KEY}}"" >> .id_rsa
+        printf "$SSH_PRIVATE_KEY" >> .id_rsa
         scp -o StrictHostKeyChecking=no -i .id_rsa staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
+      env:
+         SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
           
 #    - name: Upload Binary
 #      continue-on-error: true
