@@ -50,8 +50,7 @@ jobs:
      - name: Upload with SCP
        run: |
          touch .id_rsa
-         printf -h
-         printf "$SSH_PRIVATE_KEY" >> .id_rsa
+         echo "$SSH_PRIVATE_KEY" >> .id_rsa
          scp -o StrictHostKeyChecking=no -i .id_rsa target/jpackage/Commlink6-${{ env.RELEASE_VERSION }}.pkg ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
        env:
          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEYS}}
