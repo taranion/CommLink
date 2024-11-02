@@ -31,6 +31,7 @@ jobs:
       run:  locale ; mvn -U -s settings.xml -Pandroid clean gluonfx:compile
       env:
         LANG: "en_EN.UTF-8"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Link
       run:  mvn -Pandroid -s settings.xml gluonfx:link
