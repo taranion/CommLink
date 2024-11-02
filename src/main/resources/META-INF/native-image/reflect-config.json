@@ -1062,6 +1062,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"de.rpgframework.shadowrun6.SignatureManeuver",
+  "allDeclaredFields":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"de.rpgframework.shadowrun6.SR6Lifestyle",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
