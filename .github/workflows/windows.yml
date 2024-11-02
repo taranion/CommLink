@@ -40,13 +40,13 @@ jobs:
          arch: 'x86_64'
 
     - name: Compile
-      run:  mvn -U -s settings.xml clean gluonfx:compile -Pdesktop-binary
+      run:  mvn -U -s settings.xml -f pom-windows.xml clean gluonfx:compile -Pdesktop-binary
       env:
         LANG: en_EN
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Link
-      run:  mvn -U -s settings.xml gluonfx:link -Pdesktop-binary
+      run:  mvn -U -s settings.xml -f pom-windows.xml gluonfx:link -Pdesktop-binary
       env:
         LANG: en_EN
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
       run: ls target/gluonfx/x86_64-windows
 
     - name: Package
-      run:  mvn gluonfx:package -Pdesktop
+      run:  mvn -f pom-windows.xml gluonfx:package -Pdesktop-binary
       env:
         LANG: en_EN
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
