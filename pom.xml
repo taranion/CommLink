@@ -15,8 +15,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<javafx.version>20.0.1</javafx.version>
-		<maven.compiler.release>17</maven.compiler.release>
+		<javafx.version>23.0.1</javafx.version>
+		<maven.compiler.release>21</maven.compiler.release>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
@@ -138,6 +138,7 @@
 				<configuration>
 					<!-- Uncomment to run on iOS: -->
 					<target>${gluonfx.target}</target>
+					<verbose>true</verbose>
 					<bundlesList>
 						<list>de.rpgframework.shadowrun6.comlink.LoginDialog</list>
 						<list>de.rpgframework.shadowrun6.comlink.pages.LibraryPage</list>
