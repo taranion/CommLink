@@ -35,16 +35,16 @@ jobs:
 #      run: sudo apt-get install libgtk-3-dev libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev
       
     - name: Compile
-      run:  locale ; mvn -U -s settings.xml clean gluonfx:compile -Pandroid
+      run:  locale ; mvn -U -s settings.xml -f pom-windows.xml clean gluonfx:compile -Pandroid
 
     - name: Link
-      run:  mvn -s settings.xml gluonfx:link -Pandroid
+      run:  mvn -s settings.xml -f pom-windows.xml gluonfx:link -Pandroid
         
     - name: Show result
       run: ls target/gluonfx/aarch64-android
 
     - name: Package
-      run:  mvn -s settings.xml gluonfx:package -Pandroid
+      run:  mvn -s settings.xml -f pom-windows.xml gluonfx:package -Pandroid
       
     - name: Logs
       if: always()      
