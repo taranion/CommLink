@@ -191,7 +191,8 @@ jobs:
         uses: microsoft/store-submission@v1
         with:
           command: update
-          product-update: '{"packages":[{"packageUrl":"https://eden.rpgframework.de/commlink6-builds/win/CommLink6-Interpreted-Installer-${{env.RELEASE_VERSION}}.msi","languages":["en"],"architectures":["X64"],"isSilentInstall":true}]}'
+#          product-update: '{"packages":[{"packageUrl":"https://eden.rpgframework.de/commlink6-builds/win/CommLink6-Interpreted-Installer-${{env.RELEASE_VERSION}}.msi","languages":["en"],"architectures":["X64"],"isSilentInstall":true}]}'
+          product-update: '{"packages":[{"packageUrl":"https://eden.rpgframework.de/commlink6-builds/win/CommLink6-Interpreted-Installer-1.7.3.msi","languages":["en"],"architectures":["X64"],"isSilentInstall":true}]}'
 
       - name: Publish Submission
         continue-on-error: true
