@@ -15,12 +15,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<javafx.version>20.0.1</javafx.version>
-		<maven.compiler.release>17</maven.compiler.release>
+		<javafx.version>23.0.1</javafx.version>
+		<maven.compiler.release>21</maven.compiler.release>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.24</client.plugin.version>
+		<client.plugin.version>1.0.23</client.plugin.version>
 		<attach.version>4.0.21</attach.version>
 		<rpgfw.version>5.2.0</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.commlinkbinary.ComLinkStarter</mainClassName>
