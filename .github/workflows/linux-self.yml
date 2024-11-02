@@ -95,7 +95,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: JPackage
+    - name: JPackage DEB
       run:  mvn -s settings.xml -B jpackage:jpackage@linux -Pinterpreted
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -109,7 +109,7 @@ jobs:
         cp target/jpackage/commlink6_${{ env.RELEASE_VERSION }}_amd64.deb staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.deb 2>/dev/null || :
         cp target/jpackage/commlink6-${{ env.RELEASE_VERSION }}-1.x86_64.rpm staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm 2>/dev/null || :
 
-    - name: JPackage
+    - name: Build again for RPM
       run:  mvn -s settings.xml -B clean package jpackage:jpackage@linuxrpm -Pinterpreted
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -125,13 +125,15 @@ jobs:
       run: ls -l staging
       
     - name: Upload JRE DEB
-      uses: garygrossgarten/github-action-scp@release
+      continue-on-error: true
+      uses: appleboy/scp-action@master
       with:
-        local: "staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm"
-        remote: /var/www/html/commlink6-builds/linux/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm
+        source: "staging/CommLink6-jre-${{ env.RELEASE_VERSION }}.rpm"
+        target: /var/www/html/commlink6-builds/linux/
         host: eden.rpgframework.de
         username: ghcommlink
         password: ${{ secrets.DEPLOY_PASSWORD }}
+        strip_components: 1
           
     - name: Upload JRE RPM
       continue-on-error: true

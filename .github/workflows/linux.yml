@@ -104,7 +104,7 @@ jobs:
 #        username: ghcommlink
 #        password: ${{ secrets.DEPLOY_PASSWORD }}
 
-    - name: JPackage
+    - name: JPackage DEB
       run:  mvn -s settings.xml -B jpackage:jpackage@linux -Pinterpreted
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
