@@ -46,16 +46,10 @@ jobs:
          name: Commlink6-${{env.RELEASE_VERSION}}.pkg
          path: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg
 
-     - name: nogsantos scp
-       continue-on-error: true
-       uses: nicklasfrahm/scp-action@main
-       with:
-         direction: upload
-         host: eden.rpgframework.de
-         username: ghcommlink
-         key: ${{ secrets.SSH_PRIVATE_KEY }}
-         source: target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg
-         target: /var/www/html/commlink6-builds/osx/
+
+     - name: Upload with SCP
+       run: |
+         scp target/jpackage/Commlink6-${{env.RELEASE_VERSION}}.pkg ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
                    
 #     - name: Upload
 #       uses: garygrossgarten/github-action-scp@release
@@ -78,10 +72,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#    - name: Set up Maven
-#      uses: stCarolas/setup-maven@v5
-#      with:
-#        maven-version: 3.8.7
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v5
+      with:
+        maven-version: 3.9.0
     - name: Debug Maven
       run: mvn -version
 
@@ -143,14 +137,8 @@ jobs:
         path: staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip
     
     - name: Upload with SCP
-      uses: nicklasfrahm/scp-action@main
-      with:
-         direction: upload
-         host: eden.rpgframework.de
-         username: ghcommlink
-         key: ${{ secrets.SSH_PRIVATE_KEY }}
-         source : staging/*
-         target: /var/www/html/commlink6-builds/osx/
+      run: |
+        scp staging/Commlink6-${{ env.RELEASE_VERSION }}.app.zip ghcommlink@eden.rpgframework.de:/var/www/html/commlink6-builds/osx/
           
 #    - name: Upload Binary
 #      continue-on-error: true
