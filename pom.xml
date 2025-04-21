@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6-binary</artifactId>
-	<version>1.7.3</version>
+	<version>1.9.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<!-- Dummy -->
 
@@ -20,9 +20,9 @@
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
-		<client.plugin.version>1.0.24</client.plugin.version>
+		<client.plugin.version>1.0.25</client.plugin.version>
 		<attach.version>4.0.21</attach.version>
-		<rpgfw.version>5.2.0</rpgfw.version>
+		<rpgfw.version>5.3.1-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.commlinkbinary.ComLinkStarter</mainClassName>
 	</properties>
 
@@ -231,7 +231,7 @@
         			<input>target</input>
         			<appVersion>${project.version}</appVersion>
         			<vendor>RPGFramework</vendor>
-        			<copyright>2019-2024 Stefan Prelle</copyright>
+        			<copyright>2019-2025 Stefan Prelle</copyright>
         			<description>Character Management for Shadowrun 6</description>
         			<mainClass>${mainClassName}</mainClass>
         			<mainJar>${project.artifactId}-${project.version}-jar-with-dependencies.jar</mainJar>

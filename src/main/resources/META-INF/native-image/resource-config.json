@@ -794,6 +794,18 @@
       ]
     },
     {
+      "name":"de.rpgframework.shadowrun6.data.smooth_operations.i18n.smooth_operations",
+      "locales":["","de","und"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun6.data.de_bundeswehr.i18n.de_bundeswehr",
+      "locales":["de","und"]
+    },
+    {
+      "name":"de.rpgframework.shadowrun6.data.bestial_nature.i18n.bestial_nature",
+      "locales":["","de","und"]
+    },
+    {
       "name":"de.rpgframework.shadowrun6.i18n.core",
       "locales":[
         "",
@@ -826,11 +838,7 @@
     },
     {
       "name":"org.prelle.shadowrun6.export.standard.i18n.print",
-      "locales":[
-        "de",
-        "en",
-        "und"
-      ]
+      "locales":["en","de","und"]
     },
     {
       "name":"org/prelle/shadowrun6/export/standard/i18n/print",
