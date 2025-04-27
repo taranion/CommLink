@@ -6,7 +6,7 @@
 
 	<groupId>de.rpgframework.shadowrun6</groupId>
 	<artifactId>commlink6-binary</artifactId>
-	<version>1.9.0-SNAPSHOT</version>
+	<version>1.9.0</version>
 	<packaging>jar</packaging>
 	<!-- Dummy -->
 
@@ -15,13 +15,13 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<javafx.version>20.0.1</javafx.version>
+      <javafx.version>24-ea+5</javafx.version>
 		<maven.compiler.release>17</maven.compiler.release>
 		<maven.skip.deploy>true</maven.skip.deploy>
 		<maven.skip.install>true</maven.skip.install>
 		<javafx.plugin.version>0.0.8</javafx.plugin.version>
 		<client.plugin.version>1.0.25</client.plugin.version>
-		<attach.version>4.0.21</attach.version>
+		<attach.version>4.0.22</attach.version>
 		<rpgfw.version>5.3.1-SNAPSHOT</rpgfw.version>
 		<mainClassName>de.rpgframework.shadowrun6.commlinkbinary.ComLinkStarter</mainClassName>
 	</properties>
@@ -33,11 +33,6 @@
       	<snapshots><enabled>true</enabled></snapshots>
       	<releases><enabled>true</enabled></releases>
       </repository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/groups/staging</url>
-			<snapshots><enabled>true</enabled></snapshots>
-		</repository>
 	</repositories>
 
 	<dependencies>
@@ -126,7 +121,7 @@
 			    <mainClass>${mainClassName}</mainClass>
           	 <options>
             	<option>-agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image</option>
-            	<option>-Dproject.version=1.7.3</option>
+            	<option>-Dproject.version=${project.version}</option>
           	 </options>
 		     </configuration>
 	      </plugin>
@@ -155,10 +150,10 @@
 						<arg>-Dcom.gluonhq.attach.debug=true</arg>
 					</runtimeArgs>
 					<nativeImageArgs>
-						<!--arg>-H:DefaultLocale=en</arg-->
 						<arg>-H:IncludeLocales=en,de,fr,pt,ru,jp</arg>
 						<arg>-H:+UnlockExperimentalVMOptions</arg>
-						<arg>-Dprism.verbose=false</arg>
+						<arg>--enable-http</arg>
+                  <arg>--enable-https</arg>
 						<arg>-Dproject.version=${project.version}</arg>
 						<arg>-Dsecurity.provider.3=org.bouncycastle.jce.provider.BouncyCastleProvider</arg>
 						<arg>--initialize-at-build-time=de.rpgframework.shadowrun6.comlink.CustomLoggerFinder,de.rpgframework.shadowrun6.comlink.ConsoleLogger</arg>
@@ -186,9 +181,13 @@
 						<bundleVersion>${env.GITHUB_RUN_NUMBER}</bundleVersion>
 
 						<!-- Android -->
-						<appLabel>CommLink 6</appLabel>
-						<versionCode>${env.GITHUB_RUN_NUMBER}</versionCode>
-						<versionName>${project.version}</versionName>
+						<appLabel>Commlink 6</appLabel>
+						<versionCode>4</versionCode>
+						<versionName>${project.version}-c</versionName>
+						<providedKeyStorePath>/home/prelle/git/CommLink/PStar.jks</providedKeyStorePath>
+                  <providedKeyStorePassword>Tamina88Ke</providedKeyStorePassword>
+                  <providedKeyAlias>pstar</providedKeyAlias>
+                  <providedKeyAliasPassword>Tamina88Ke</providedKeyAliasPassword>
 					</releaseConfiguration>
 				</configuration>
 			</plugin>
@@ -459,17 +458,4 @@
 			</dependencies>
 		</profile>
 	</profiles>
-
-
-	<pluginRepositories>
-		<pluginRepository>
-            <id>snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </pluginRepository>
-		<pluginRepository>
-			<id>gluon-releases</id>
-			<url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 </project>
